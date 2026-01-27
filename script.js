@@ -5,7 +5,8 @@
                 name: "SkyX Pro Drone",
                 category: "drone",
                 feature: "8K Cinematic Camera",
-                price: 1299,
+                price: "$1299",
+                tags: ["8K HDR", "GPS Lock", "Carbon Build"],
                 image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400"
             },
             {
@@ -13,7 +14,8 @@
                 name: "Falcon Mini",
                 category: "drone",
                 feature: "Ultra Portable Design",
-                price: 799,
+                price: "$799",
+                tags: ["Foldable", "45min Flight", "Smart Return"],
                 image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=400"
             },
             {
@@ -21,7 +23,8 @@
                 name: "Sound Pro Headphones",
                 category: "headphones",
                 feature: "Active Noise Cancellation",
-                price: 349,
+                price: "$349",
+                tags: ["ANC", "Studio Tuned", "USB-C"],
                 image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
             },
             {
@@ -29,7 +32,8 @@
                 name: "Bass X Headphones",
                 category: "headphones",
                 feature: "Deep Bass Technology",
-                price: 279,
+                price: "$279",
+                tags: ["Deep Bass", "40H Play", "Comfort Fit"],
                 image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400"
             },
             {
@@ -37,7 +41,8 @@
                 name: "AirFlow TWS",
                 category: "tws",
                 feature: "30Hr Battery Life",
-                price: 199,
+                price: "$199",
+                tags: ["30H Battery", "IPX4", "Transparency"],
                 image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400"
             },
             {
@@ -45,10 +50,57 @@
                 name: "Sonic Buds Pro",
                 category: "tws",
                 feature: "Spatial Audio",
-                price: 249,
+                price: "$249",
+                tags: ["Spatial", "Wireless Charge", "Wind Guard"],
                 image: "https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=400"
+            },
+            {
+                id: 7,
+                name: "Storm Racer Drone",
+                category: "drone",
+                feature: "120 kph Sport Mode",
+                price: "$999",
+                tags: ["Sport", "Obstacle Avoid", "4K/120"],
+                image: "https://images.unsplash.com/photo-1523966211575-eb4a6b8e0f6b?w=400"
+            },
+            {
+                id: 8,
+                name: "Arc Pulse Headphones",
+                category: "headphones",
+                feature: "Adaptive EQ + LDAC",
+                price: "$399",
+                tags: ["Hi-Res", "Adaptive EQ", "LDAC"],
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400"
+            },
+            {
+                id: 9,
+                name: "Nova Air TWS",
+                category: "tws",
+                feature: "Featherweight Fit",
+                price: "$179",
+                tags: ["Feather", "Dual Pair", "Low Latency"],
+                image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400"
             }
         ];
+
+        // THEME TOGGLE
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const bodyElement = document.body;
+
+        function applyTheme(theme) {
+            const isLight = theme === 'light';
+            bodyElement.classList.toggle('light-mode', isLight);
+            themeToggleBtn.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('aeronixTheme', theme);
+        }
+
+        const savedTheme = localStorage.getItem('aeronixTheme') || 'dark';
+        applyTheme(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const nextTheme = bodyElement.classList.contains('light-mode') ? 'dark' : 'light';
+            applyTheme(nextTheme);
+        });
 
         // Cart Array
         let cart = JSON.parse(localStorage.getItem('aeronixCart')) || [];
@@ -66,6 +118,9 @@
                 <div class="product-card">
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
+                        <div class="product-tags">
+                            ${(product.tags || []).map(tag => `<span class="product-tag">${tag}</span>`).join('')}
+                        </div>
                         <h3 class="product-name">${product.name}</h3>
                         <p class="product-feature">${product.feature}</p>
                         <p class="product-price">${product.price}</p>
