@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AERONIX - Redefining the Future</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">AERONIX</div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    Drones
+                    <div class="mega-menu">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400" alt="Drone" class="mega-image">
+                        </div>
+                        <div class="mega-products">
+                            <div class="mega-product">
+                                <h4>Aeronix SkyX Pro</h4>
+                                <p>Cinematic Aerial Shots</p>
+                            </div>
+                            <div class="mega-product">
+                                <h4>Aeronix Falcon Mini</h4>
+                                <p>Compact. Powerful.</p>
+                            </div>
+                            <div class="mega-product">
+                                <h4>Aeronix Storm 4K</h4>
+                                <p>Built for Speed</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    Headphones
+                    <div class="mega-menu">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="Headphones" class="mega-image">
+                        </div>
+                        <div class="mega-products">
+                            <div class="mega-product">
+                                <h4>Aeronix Sound Pro</h4>
+                                <p>Studio Quality Audio</p>
+                            </div>
+                            <div class="mega-product">
+                                <h4>Aeronix Bass X</h4>
+                                <p>Deep. Immersive. Bold.</p>
+                            </div>
+                            <div class="mega-product">
+                                <h4>Aeronix Wireless Elite</h4>
+                                <p>Premium Comfort</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    TWS
+                    <div class="mega-menu">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400" alt="TWS" class="mega-image">
+                        </div>
+                        <div class="mega-products">
+                            <div class="mega-product">
+                                <h4>Aeronix AirFlow</h4>
+                                <p>True Wireless Freedom</p>
+                            </div>
+                            <div class="mega-product">
+                                <h4>Aeronix Sonic Buds</h4>
+                                <p>Crystal Clear Sound</p>
+                            </div>
+                            <div class="mega-product">
+                                <h4>Aeronix Sport Pro</h4>
+                                <p>Engineered for Motion</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">Innovation</li>
+                <li class="nav-item">About</li>
+            </ul>
+            
+            <div class="nav-actions">
+                <i class="fas fa-shopping-cart nav-icon">
+                    <span class="cart-badge" id="cartCount">0</span>
+                </i>
+                <i class="fas fa-user nav-icon"></i>
+                <button class="cta-btn">Explore Tech</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="video-slider">
+            <!-- Drone Video 1 -->
+            <div class="video-slide active">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="drone.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- Drone Video 2 -->
+            <!-- Headphones Video 1 -->
+            <div class="video-slide">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="headphone.mp4" type="video/mp4">
+                </video>
+            </div>
+            <!-- TWS Video 1 -->
+            <div class="video-slide">
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="earburds.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Redefining the Future of Sound & Flight</h1>
+            <p class="hero-subtitle">Engineered for Humans. Powered by Innovation.</p>
+            <button class="hero-cta">Discover Aeronix</button>
+        </div>
+    </section>
+
+    <!-- HORIZONTAL DRONE SHOWCASE -->
+    <section class="horizontal-section">
+        <div class="drone-container">
+            <div class="drone-slide" id="drone1">
+                <div class="drone-name">SKYX PRO</div>
+                <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600" alt="SkyX Pro" class="drone-image">
+            </div>
+            <div class="drone-slide" id="drone2">
+                <div class="drone-name">HEADPHONE</div>
+                <img src="headphone.jpg" alt="Falcon Mini" class="drone-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- SUPERHERO SECTION -->
+    <section class="superhero-section">
+        <div class="superhero-container">
+            <div class="superhero-scene">
+                <div class="flying-airpod" id="airpod1" style="left: 10%; top: 20%;"></div>
+                <div class="flying-airpod" id="airpod2" style="right: 10%; top: 20%;"></div>
+                <div class="superhero" id="superhero">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <div class="superhero-text" id="heroText">
+                    When Technology Becomes a Superpower.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section">
+        <h2 class="section-title">Our Products</h2>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+        <div class="about-content" id="aboutContent">
+            <h2 class="about-title" id="aboutTitle">AERONIX</h2>
+            <p class="about-text">
+                We don't just create technology — we craft experiences that elevate human potential. 
+                From the skies to your ears, AERONIX represents the pinnacle of innovation, design, and performance. 
+                Our mission is to push boundaries and redefine what's possible.
+            </p>
+            <p class="about-text">
+                Every product is engineered with precision, designed with passion, and built for those who dare to dream bigger.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contactSection">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <i class="fab fa-facebook social-icon"></i>
+                <i class="fab fa-twitter social-icon"></i>
+                <i class="fab fa-instagram social-icon"></i>
+                <i class="fab fa-youtube social-icon"></i>
+            </div>
+            <p>&copy; 2026 AERONIX. All Rights Reserved. | Educational Project</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
