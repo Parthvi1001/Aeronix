@@ -403,6 +403,14 @@
             z-index: 1;
         }
 
+        .greenscreen {
+            width: 100%;
+            height: auto;
+            mix-blend-mode: screen;
+            background: transparent;
+        }
+
+
         body.light-mode .video-slide::before {
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(247, 248, 251, 0.3) 50%, rgba(247, 248, 251, 0.7) 100%);
         }
@@ -927,4 +935,71 @@
             font-weight: 700;
         }
 
-        /* RESPONSIVE */\n        @media (max-width: 1024px) {\n            .nav-container {\n                padding: 10px 10px 10px 20px;\n            }\n\n            .nav-menu {\n                gap: 4px;\n            }\n\n            .nav-item {\n                padding: 6px 12px;\n                font-size: 0.8rem;\n            }\n\n            .nav-btn {\n                padding: 8px 16px;\n                font-size: 0.8rem;\n            }\n        }\n\n        @media (max-width: 768px) {\n            .navbar {\n                padding: 12px 16px;\n            }\n\n            .nav-container {\n                padding: 8px 8px 8px 16px;\n            }\n\n            .nav-menu,\n            .nav-btn-secondary {\n                display: none;\n            }\n\n            .mobile-toggle {\n                display: flex;\n            }\n\n            .nav-actions {\n                gap: 8px;\n            }\n\n            .nav-btn-primary {\n                padding: 8px 16px;\n                font-size: 0.8rem;\n            }\n\n            .hero-title {\n                font-size: 2.5rem;\n            }\n\n            .hero-subtitle {\n                font-size: 1.2rem;\n            }\n\n            .drone-name {\n                font-size: 5rem;\n            }\n\n            .superhero-text {\n                font-size: 1.5rem;\n            }\n\n            .about-title {\n                font-size: 2.5rem;\n            }\n        }
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-container {
+                padding: 10px 10px 10px 20px;
+            }
+
+            .nav-menu {
+                gap: 4px;
+            }
+
+            .nav-item {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 16px;
+            }
+
+            .nav-container {
+                padding: 8px 8px 8px 16px;
+            }
+
+            .nav-menu,
+            .nav-btn-secondary {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-actions {
+                gap: 8px;
+            }
+
+            .nav-btn-primary {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .drone-name {
+                font-size: 5rem;
+            }
+
+            .superhero-text {
+                font-size: 1.5rem;
+            }
+
+            .about-title {
+                font-size: 2.5rem;
+            }
+        }
