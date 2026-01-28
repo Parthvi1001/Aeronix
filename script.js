@@ -83,6 +83,8 @@ const productsData = [
     }
 ];
 
+let horizontalFinished = false;
+
 // THEME TOGGLE
 const themeToggleBtn = document.getElementById('themeToggle');
 const bodyElement = document.body;
@@ -106,10 +108,12 @@ themeToggleBtn.addEventListener('click', () => {
 let cart = JSON.parse(localStorage.getItem('aeronixCart')) || [];
 
 // Update cart count
-function updateCartCount() {
-    document.getElementById('cartCount').textContent = cart.length;
-    localStorage.setItem('aeronixCart', JSON.stringify(cart));
+function updateCartCount(count) {
+  const el = document.getElementById("cart-count");
+  if (!el) return; // 🔥 prevents crash
+  el.textContent = count;
 }
+
 
 // Render Products
 function renderProducts() {
@@ -168,7 +172,7 @@ function nextSlide() {
     const newVideo = slides[currentSlide].querySelector('.hero-video');
     if (newVideo) {
         newVideo.currentTime = 0;
-        newVideo.play().catch(e => console.log('Video play failed:', e));
+        // newVideo.play().catch(e => console.log('Video play failed:', e));
     }
 }
 
@@ -248,62 +252,728 @@ window.addEventListener('load', () => {
 //   }
 // });
 
-const frameCount = 150;
+// const frameCount = 150;
 
-function setupDrone(canvasId, wrapperId, direction) {
+// function setupDrone(canvasId, wrapperId) {
+//   const canvas = document.getElementById(canvasId);
+//   const ctx = canvas.getContext("2d");
+//   const wrapper = document.getElementById(wrapperId);
+
+//   function resize() {
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+//   }
+//   resize();
+//   window.addEventListener("resize", resize);
+
+//   const images = [];
+//   for (let i = 1; i <= frameCount; i++) {
+//     const img = new Image();
+//     img.src = `assets/frames/frame_${String(i).padStart(6, "0")}.png`;
+//     images.push(img);
+//   }
+
+//   return { canvas, ctx, images, wrapper };
+// }
+
+// const drone1 = setupDrone("canvasOne", "droneOne");
+// const drone2 = setupDrone("canvasTwo", "droneTwo");
+
+// window.addEventListener("scroll", () => {
+//   const section = document.querySelector(".horizontal-section");
+//   if (!section) return;
+
+//   const scrollY = window.scrollY;
+//   const start = section.offsetTop;
+//   const end = start + section.offsetHeight - window.innerHeight;
+
+//   let totalProgress = (scrollY - start) / (end - start);
+//   totalProgress = Math.max(0, Math.min(1, totalProgress)); // clamp
+
+//   const vw = window.innerWidth;
+//   const vh = window.innerHeight;
+
+//   const droneWidth = Math.min(vw * 0.7, 1000);
+//   const droneHeight = droneWidth * (2 / 3);
+
+//   const startX = vw + droneWidth;
+//   const endX = -droneWidth;
+
+//   // ---- DRONE 1 ----
+//   if (totalProgress < 0.5) {
+//     const p = totalProgress / 0.5;
+//     const frame = Math.floor(p * (frameCount - 1));
+
+//     drone1.wrapper.style.opacity = 1;
+//     drone2.wrapper.style.opacity = 0;
+
+//     const x = startX + (endX - startX) * p;
+//     const y = (vh - droneHeight) / 2;
+
+//     drone1.ctx.clearRect(0, 0, vw, vh);
+//     drone1.ctx.drawImage(
+//       drone1.images[frame],
+//       x,
+//       y,
+//       droneWidth,
+//       droneHeight
+//     );
+//   }
+
+//   // ---- DRONE 2 ----
+//   if (totalProgress >= 0.5) {
+//     const p = (totalProgress - 0.5) / 0.5;
+//     const frame = Math.floor(p * (frameCount - 1));
+
+//     drone1.wrapper.style.opacity = 0;
+//     drone2.wrapper.style.opacity = 1;
+
+//     const x = startX + (endX - startX) * p;
+//     const y = (vh - droneHeight) / 2;
+
+//     drone2.ctx.clearRect(0, 0, vw, vh);
+//     drone2.ctx.drawImage(
+//       drone2.images[frame],
+//       x,
+//       y,
+//       droneWidth,
+//       droneHeight
+//     );
+//   }
+// });
+
+// ================================
+// CONFIG
+// ================================
+// const DRONE_1_FRAMES = 150;
+// const DRONE_2_FRAMES = 173;
+
+// const DRONE_1_PATH = "assets/frames/drone1/frame_";
+// const DRONE_2_PATH = "assets/frames/drone2/frame_";
+// const ASPECT_RATIO = 2 / 3; // height / width
+
+// const DRONE_1 = {
+//   frames: 150,
+//   path: "assets/frames/drone1/frame_"
+// };
+
+// const DRONE_2 = {
+//   frames: 173,
+//   path: "assets/frames/drone2/frame_"
+// };
+
+// ================================
+// SETUP FUNCTION
+// ================================
+// function setupDrone(canvasId, wrapperId, frameCount, framePath) {
+
+//   const canvas = document.getElementById(canvasId);
+//   const ctx = canvas.getContext("2d");
+//   const wrapper = document.getElementById(wrapperId);
+//   const nameEl = wrapper.querySelector(".drone-name");
+
+//   function resize() {
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+//   }
+//   resize();
+//   window.addEventListener("resize", resize);
+
+//   const images = [];
+//   for (let i = 1; i <= frameCount; i++) {
+//     const img = new Image();
+//     img.src = `${FRAME_PATH}${String(i).padStart(6, "0")}${FRAME_EXT}`;
+//     images.push(img);
+//   }
+
+//   return { canvas, ctx, images, wrapper, nameEl };
+// }
+// function setupDrone(canvasId, framePath, frameCount) {
+//   const canvas = document.getElementById(canvasId);
+//   const ctx = canvas.getContext("2d");
+
+//   // Resize canvas to viewport
+//   function resize() {
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+//   }
+//   resize();
+//   window.addEventListener("resize", resize);
+
+//   // Load frames
+//   const images = [];
+//   for (let i = 1; i <= frameCount; i++) {
+//     const img = new Image();
+//     img.src = `${framePath}${String(i).padStart(6, "0")}.png`;
+//     images.push(img);
+//   }
+
+//   return {
+//     canvas,
+//     ctx,
+//     images,
+//     frameCount
+//   };
+// }
+
+// function setupDrone(canvasId, config) {
+//   const canvas = document.getElementById(canvasId);
+//   const ctx = canvas.getContext("2d");
+
+//   function resize() {
+//     canvas.width = window.innerWidth;
+//     canvas.height = window.innerHeight;
+//   }
+//   resize();
+//   window.addEventListener("resize", resize);
+
+//   const images = [];
+//   for (let i = 1; i <= config.frames; i++) {
+//     const img = new Image();
+//     img.src = `${config.path}${String(i).padStart(6, "0")}.png`;
+//     images.push(img);
+//   }
+
+//   return {
+//     canvas,
+//     ctx,
+//     images,
+//     frameCount: config.frames
+//   };
+// }
+
+// // ================================
+// // INIT DRONES
+// // ================================
+// // const drone1 = setupDrone("canvasOne", "droneOne");
+// // const drone2 = setupDrone("canvasTwo", "droneTwo");
+
+// const drone1 = setupDrone("canvasOne", DRONE_1);
+// const drone2 = setupDrone("canvasTwo", DRONE_2);
+
+// window.addEventListener("load", () => {
+//   const img1 = drone1.images[0];
+//   const img2 = drone2.images[0];
+
+//   img1.onload = () => {
+//     drone1.ctx.drawImage(
+//       img1,
+//       100,
+//       100,
+//       300,
+//       200
+//     );
+//   };
+
+//   img2.onload = () => {
+//     drone2.ctx.drawImage(
+//       img2,
+//       500,
+//       100,
+//       300,
+//       200
+//     );
+//   };
+// });
+
+
+
+
+// ================================
+// SCROLL HANDLER
+// ================================
+// window.addEventListener("scroll", () => {
+//   const section = document.querySelector(".horizontal-section");
+//   if (!section) return;
+
+//   const scrollY = window.scrollY;
+//   const start = section.offsetTop;
+//   const end = start + section.offsetHeight - window.innerHeight;
+
+//   let progress = (scrollY - start) / (end - start);
+//   progress = Math.max(0, Math.min(1, progress));
+
+//   const vw = window.innerWidth;
+//   const vh = window.innerHeight;
+
+//   const droneWidth = Math.min(vw * 0.5, 700);
+// const droneHeight = droneWidth * ASPECT_RATIO;
+
+
+// //   const verticalOffset =
+// //   window.innerWidth < 768 ? vh * 0.04 : vh * 0.08;
+
+
+// // const y = (canvas.height - droneHeight) / 2 - canvas.height * 0.1;
+
+
+
+//   const centerX = (vw - droneWidth) / 2;
+//   const endX = -droneWidth * 0.9;
+
+//   // -------- DRONE 1 --------
+//   if (progress < 0.5) {
+//     const y = (drone1.canvas.height - droneHeight) / 2 - drone1.canvas.height * 0.04;
+
+//     const p = progress / 0.5;
+//     drone1.ctx.drawImage(drone1.images[frame1], x1, y, w, h);
+
+
+//     drone1.wrapper.style.display = "flex";
+//     drone2.wrapper.style.display = "none";
+
+//     const x = centerX + (endX - centerX) * p;
+
+//     const scale = 1.08;
+// const w = droneWidth * scale;
+// const h = droneHeight * scale;
+
+// const xScaled = x - (w - droneWidth) / 2;
+// const yScaled = y - (h - droneHeight) / 2;
+
+//     drone1.ctx.clearRect(
+//   0,
+//   0,
+//   drone1.canvas.width,
+//   drone1.canvas.height
+// );
+
+// drone1.ctx.save();
+// drone1.ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
+// drone1.ctx.shadowBlur = 50;
+// drone1.ctx.shadowOffsetY = 40;
+
+//     drone1.ctx.drawImage(
+//       drone1.images[frame],
+//       x,
+//       y,
+//       droneWidth,
+//       droneHeight
+//     );
+//   }
+//   drone1.ctx.restore();
+
+//   // -------- DRONE 2 --------
+//   if (progress >= 0.5) {
+//     const y = (drone2.canvas.height - droneHeight) / 2 - drone2.canvas.height * 0.04;
+
+//     const p = (progress - 0.5) / 0.5;
+//     drone2.ctx.drawImage(drone2.images[frame2], x2, y, w, h);
+
+//     drone1.wrapper.style.display = "none";
+//     drone2.wrapper.style.display = "flex";
+
+//     const x = centerX + (endX - centerX) * p;
+
+//     const scale = 1.08;
+// const w = droneWidth * scale;
+// const h = droneHeight * scale;
+
+// const xScaled = x - (w - droneWidth) / 2;
+// const yScaled = y - (h - droneHeight) / 2;
+
+
+//     drone2.ctx.clearRect(
+//   0,
+//   0,
+//   drone2.canvas.width,
+//   drone2.canvas.height
+// );
+
+//     drone2.ctx.save();
+//     drone2.ctx.shadowColor = "rgba(0, 0, 0, 0.35)";
+//     drone2.ctx.shadowBlur = 50;
+//     drone2.ctx.shadowOffsetY = 40;
+
+//     drone2.ctx.drawImage(
+//       drone2.images[frame],
+//       x,
+//       y,
+//       droneWidth,
+//       droneHeight
+//     );
+//     drone2.ctx.restore();
+//   }
+// });
+
+const ASPECT_RATIO = 2 / 3;
+
+// Setup a drone
+function setupDrone(canvasId, framePath, frameCount) {
   const canvas = document.getElementById(canvasId);
   const ctx = canvas.getContext("2d");
-  const wrapper = document.getElementById(wrapperId);
 
-  canvas.width = 600;
-  canvas.height = 400;
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight * 0.65;
+  }
+  resize();
+  window.addEventListener("resize", resize);
 
   const images = [];
   for (let i = 1; i <= frameCount; i++) {
     const img = new Image();
-    img.src = `assets/frames/frame_${String(i).padStart(6, "0")}.png`;
+    img.src = `${framePath}${String(i).padStart(6, "0")}.png`;
     images.push(img);
   }
 
-  return { canvas, ctx, images, wrapper, direction };
+  return { canvas, ctx, images, frameCount };
 }
 
-const drone1 = setupDrone("canvasOne", "droneOne", -1); // LEFT
-const drone2 = setupDrone("canvasTwo", "droneTwo", -1);  // LEFT
+// Init drones
+const drone1 = setupDrone(
+  "canvasOne",
+  "assets/frames/drone1/frame_",
+  150
+);
+
+const drone2 = setupDrone(
+  "canvasTwo",
+  "assets/frames/drone2/frame_",
+  173
+);
+
+// Wrappers
+const wrapper1 = document.getElementById("droneOne");
+const wrapper2 = document.getElementById("droneTwo");
 
 window.addEventListener("scroll", () => {
   const section = document.querySelector(".horizontal-section");
+
   const scrollY = window.scrollY;
   const start = section.offsetTop;
   const end = start + section.offsetHeight - window.innerHeight;
-  const totalProgress = (scrollY - start) / (end - start);
 
-  // ---- DRONE 1 ----
-  if (totalProgress >= 0 && totalProgress < 0.5) {
-    const p = totalProgress / 0.5;
-    drone1.wrapper.style.opacity = 1;
-    drone2.wrapper.style.opacity = 0;
+  // raw progress (do NOT clamp to 1 yet)
+  let rawProgress = (scrollY - start) / (end - start);
+  rawProgress = Math.max(0, rawProgress);
 
-    const frame = Math.floor(p * (frameCount - 1));
-    const x = drone1.direction * p * 250;
+  // normalised progress (0 → 1)
+  let progress = Math.min(rawProgress, 1);
 
-    drone1.ctx.clearRect(0, 0, 600, 400);
-    drone1.ctx.drawImage(drone1.images[frame], x, 0, 600, 400);
+  const vw = window.innerWidth;
+
+  const droneWidth = Math.min(vw * 0.5, 650);
+  const droneHeight = droneWidth * ASPECT_RATIO;
+
+  const NAVBAR_OFFSET = 90;
+
+  // =========================
+  // DRONE 1 (0 → 50%)
+  // =========================
+  if (progress < 0.5) {
+    wrapper1.style.display = "flex";
+    wrapper2.style.display = "none";
+
+    const p = progress / 0.5;
+
+    const x =
+      (vw - droneWidth) / 2 + p * (-vw * 0.8);
+
+    const y =
+      (drone1.canvas.height - droneHeight) / 2 -
+      drone1.canvas.height * 0.04 +
+      NAVBAR_OFFSET;
+
+    const frame = Math.floor(
+      p * (drone1.frameCount - 1)
+    );
+
+    drone1.ctx.clearRect(
+      0,
+      0,
+      drone1.canvas.width,
+      drone1.canvas.height
+    );
+
+    drone1.ctx.save();
+    drone1.ctx.shadowColor = "rgba(0,0,0,0.3)";
+    drone1.ctx.shadowBlur = 40;
+    drone1.ctx.shadowOffsetY = 30;
+
+    drone1.ctx.drawImage(
+      drone1.images[frame],
+      x,
+      y,
+      droneWidth,
+      droneHeight
+    );
+
+    drone1.ctx.restore();
   }
 
-  // ---- DRONE 2 ----
-  if (totalProgress >= 0.5 && totalProgress <= 1) {
-    const p = (totalProgress - 0.5) / 0.5;
-    drone1.wrapper.style.opacity = 0;
-    drone2.wrapper.style.opacity = 1;
+  // =========================
+  // DRONE 2 (50 → END)
+  // =========================
+  else {
+    wrapper1.style.display = "none";
+    wrapper2.style.display = "flex";
 
-    const frame = Math.floor(p * (frameCount - 1));
-    const x = drone2.direction * p * 250;
+    let p = (rawProgress - 0.5) / 0.5;
+p = Math.max(0, Math.min(1, p));
 
-    drone2.ctx.clearRect(0, 0, 600, 400);
-    drone2.ctx.drawImage(drone2.images[frame], x, 0, 600, 400);
+let x =
+  (vw - droneWidth) / 2 + p * (-vw * 0.8);
+
+// 🔥 STOP WHEN DRONE TOUCHES SCREEN WALL
+if (x <= 0 && !horizontalFinished) {
+  horizontalFinished = true;
+
+  // lock drone exactly at wall
+  x = 0;
+  p = p; // keep current frame
+
+  // 🔥 RELEASE STICKY → START VERTICAL SCROLL
+  section.style.height = "200vh";
+}
+
+
+    // 🔥 STOP HORIZONTAL WHEN DRONE-2 EXITS
+    if (x <= 0) {
+      p = 1;              // lock animation
+      x = 0;   // lock position
+    }
+
+    const y =
+      (drone2.canvas.height - droneHeight) / 2 -
+      drone2.canvas.height * 0.04 +
+      NAVBAR_OFFSET;
+
+    const frame = Math.floor(
+      p * (drone2.frameCount - 1)
+    );
+
+    drone2.ctx.clearRect(
+      0,
+      0,
+      drone2.canvas.width,
+      drone2.canvas.height
+    );
+
+    drone2.ctx.save();
+    drone2.ctx.shadowColor = "rgba(0,0,0,0.3)";
+    drone2.ctx.shadowBlur = 40;
+    drone2.ctx.shadowOffsetY = 30;
+
+    drone2.ctx.drawImage(
+      drone2.images[frame],
+      x,
+      y,
+      droneWidth,
+      droneHeight
+    );
+
+    drone2.ctx.restore();
   }
 });
+
+
+
+// window.addEventListener("scroll", () => {
+//   const section = document.querySelector(".horizontal-section");
+
+//   const scrollY = window.scrollY;
+//   const start = section.offsetTop;
+//   const end = start + section.offsetHeight - window.innerHeight;
+
+//   const drone2FullyOut = x <= -droneWidth;
+
+// //   let progress = (scrollY - start) / (end - start);
+// //   progress = Math.max(0, Math.min(1, progress));
+
+// let rawProgress = (scrollY - start) / (end - start);
+// rawProgress = Math.max(0, rawProgress);
+
+
+
+//   const vw = window.innerWidth;
+
+//   const droneWidth = Math.min(vw * 0.5, 650);
+//   const droneHeight = droneWidth * ASPECT_RATIO;
+
+//   const NAVBAR_OFFSET = 90; // adjust if your navbar is taller
+
+
+
+
+//   // =========================
+//   // DRONE 1 (0 → 50%)
+//   // =========================
+//   if (progress < 0.5) {
+//     wrapper1.style.display = "flex";
+//     wrapper2.style.display = "none";
+
+//     const p = progress / 0.5;
+
+//     const x =
+//       (vw - droneWidth) / 2 + p * (-vw * 0.8);
+
+//     const y =
+//   (drone1.canvas.height - droneHeight) / 2 -
+//   drone1.canvas.height * 0.04 +
+//   NAVBAR_OFFSET;
+
+
+//     const frame = Math.floor(
+//       p * (drone1.frameCount - 1)
+//     );
+
+//     drone1.ctx.clearRect(
+//       0,
+//       0,
+//       drone1.canvas.width,
+//       drone1.canvas.height
+//     );
+
+//     drone1.ctx.save();
+//     drone1.ctx.shadowColor = "rgba(0,0,0,0.3)";
+//     drone1.ctx.shadowBlur = 40;
+//     drone1.ctx.shadowOffsetY = 30;
+
+//     drone1.ctx.drawImage(
+//       drone1.images[frame],
+//       x,
+//       y,
+//       droneWidth,
+//       droneHeight
+//     );
+
+//     drone1.ctx.restore();
+//   }
+
+//   // =========================
+//   // DRONE 2 (50 → 100%)
+//   // =========================
+//   else {
+//     wrapper1.style.display = "none";
+//     wrapper2.style.display = "flex";
+
+//     const p = (progress - 0.5) / 0.5;
+
+//     const x =
+//       (vw - droneWidth) / 2 + p * (-vw * 0.8);
+
+//     const y =
+//   (drone2.canvas.height - droneHeight) / 2 -
+//   drone2.canvas.height * 0.04 +
+//   NAVBAR_OFFSET;
+
+
+//     const frame = Math.floor(
+//       p * (drone2.frameCount - 1)
+//     );
+
+//     drone2.ctx.clearRect(
+//       0,
+//       0,
+//       drone2.canvas.width,
+//       drone2.canvas.height
+//     );
+
+//     drone2.ctx.save();
+//     drone2.ctx.shadowColor = "rgba(0,0,0,0.3)";
+//     drone2.ctx.shadowBlur = 40;
+//     drone2.ctx.shadowOffsetY = 30;
+
+//     drone2.ctx.drawImage(
+//       drone2.images[frame],
+//       x,
+//       y,
+//       droneWidth,
+//       droneHeight
+//     );
+
+//     drone2.ctx.restore();
+//   }
+// });
+
+
+// window.addEventListener("scroll", () => {
+//   const section = document.querySelector(".horizontal-section");
+//   if (!section) return;
+
+//   const scrollY = window.scrollY;
+//   const start = section.offsetTop;
+//   const end = start + section.offsetHeight - window.innerHeight;
+
+//   let progress = (scrollY - start) / (end - start);
+//   progress = Math.max(0, Math.min(1, progress));
+
+//   const vw = window.innerWidth;
+
+//   const droneWidth = Math.min(vw * 0.45, 650);
+//   const droneHeight = droneWidth * ASPECT_RATIO;
+
+//   const centerX = (vw - droneWidth) / 2;
+
+//   // --- Y positions (same height)
+//   const y1 =
+//     (drone1.canvas.height - droneHeight) / 2 -
+//     drone1.canvas.height * 0.04;
+
+//   const y2 =
+//     (drone2.canvas.height - droneHeight) / 2 -
+//     drone2.canvas.height * 0.04;
+
+//   // --- Horizontal motion (Rivian style)
+//   const x1 =
+//     -droneWidth * 1.2 + progress * (centerX + droneWidth * 1.1);
+
+//   const x2 =
+//     vw - progress * (centerX + droneWidth * 1.1);
+
+//   // --- Frames (each drone uses its own count)
+//   const frame1 = Math.floor(progress * (drone1.frameCount - 1));
+//   const frame2 = Math.floor(progress * (drone2.frameCount - 1));
+
+//   // --- Clear canvases
+//   drone1.ctx.clearRect(
+//     0,
+//     0,
+//     drone1.canvas.width,
+//     drone1.canvas.height
+//   );
+
+//   drone2.ctx.clearRect(
+//     0,
+//     0,
+//     drone2.canvas.width,
+//     drone2.canvas.height
+//   );
+
+//   // --- Draw Drone 1
+//   drone1.ctx.save();
+//   drone1.ctx.shadowColor = "rgba(0,0,0,0.35)";
+//   drone1.ctx.shadowBlur = 50;
+//   drone1.ctx.shadowOffsetY = 40;
+
+//   drone1.ctx.drawImage(
+//     drone1.images[frame1],
+//     x1,
+//     y1,
+//     droneWidth,
+//     droneHeight
+//   );
+
+//   drone1.ctx.restore();
+
+//   // --- Draw Drone 2
+//   drone2.ctx.save();
+//   drone2.ctx.shadowColor = "rgba(0,0,0,0.35)";
+//   drone2.ctx.shadowBlur = 50;
+//   drone2.ctx.shadowOffsetY = 40;
+
+//   drone2.ctx.drawImage(
+//     drone2.images[frame2],
+//     x2,
+//     y2,
+//     droneWidth,
+//     droneHeight
+//   );
+
+//   drone2.ctx.restore();
+// });
+
 
 
 
