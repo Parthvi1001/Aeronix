@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">AERONIX</a>
-            
+
             <ul class="nav-menu">
                 <li class="nav-item">Products</li>
                 <li class="nav-item">Features</li>
                 <li class="nav-item">About</li>
                 <li class="nav-item">Support</li>
             </ul>
-            
+
             <div class="nav-actions">
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
@@ -68,24 +70,43 @@
     </section>
 
     <!-- HORIZONTAL DRONE SHOWCASE -->
-    <section class="horizontal-section">
+    <!-- <section class="horizontal-section">
         <div class="drone-container">
             <div class="drone-slide" id="drone1">
                 <div class="drone-name">SKYX PRO</div>
-                <!-- <img src="979ab68fd602bd3440fc4fb12f3ea38e.png" alt="SkyX Pro" class="drone-image"> -->
+                <img src="ezgif-2c9b10ecccf55793-jpg/ezgif-frame-001.png" alt="SkyX Pro" class="drone-image">
                  <video class="greenscreen" autoplay muted loop playsinline>
-                    <source src="videoplayback (2) (1).webm" type="video/webm">
-                </video>
-            </div>
+                    <source src="" type="video/webm">
+                </video> -->
+    <!-- </div>
             <div class="drone-slide" id="drone2">
                 <div class="drone-name">Falcon Mini</div>
-                <!-- <img src="979ab68fd602bd3440fc4fb12f3ea38e.png" alt="Falcon Mini" class="drone-image"> -->
-                 <video class="greenscreen" autoplay muted loop playsinline>
+                <img src="979ab68fd602bd3440fc4fb12f3ea38e.png" alt="Falcon Mini" class="drone-image"> -->
+    <!-- <video class="greenscreen" autoplay muted loop playsinline>
                     <source src="videoplayback (2) (1).webm" type="video/webm">
                 </video>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <section class="horizontal-section">
+  <div class="drone-container">
+
+    <!-- DRONE 1 -->
+    <div class="drone-wrapper" id="droneOne">
+      <div class="drone-name">SKYX&nbsp;PRO</div>
+      <canvas id="canvasOne"></canvas>
+    </div>
+
+    <!-- DRONE 2 -->
+    <div class="drone-wrapper" id="droneTwo">
+      <div class="drone-name">FALCON&nbsp;MINI</div>
+      <canvas id="canvasTwo"></canvas>
+    </div>
+
+  </div>
+</section>
+
 
     <!-- SUPERHERO SECTION -->
     <section class="superhero-section">
@@ -114,12 +135,13 @@
         <div class="about-content" id="aboutContent">
             <h2 class="about-title" id="aboutTitle">AERONIX</h2>
             <p class="about-text">
-                We don't just create technology — we craft experiences that elevate human potential. 
-                From the skies to your ears, AERONIX represents the pinnacle of innovation, design, and performance. 
+                We don't just create technology — we craft experiences that elevate human potential.
+                From the skies to your ears, AERONIX represents the pinnacle of innovation, design, and performance.
                 Our mission is to push boundaries and redefine what's possible.
             </p>
             <p class="about-text">
-                Every product is engineered with precision, designed with passion, and built for those who dare to dream bigger.
+                Every product is engineered with precision, designed with passion, and built for those who dare to dream
+                bigger.
             </p>
         </div>
     </section>
@@ -161,4 +183,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
