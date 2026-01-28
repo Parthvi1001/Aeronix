@@ -978,46 +978,158 @@ if (x <= 0 && !horizontalFinished) {
 
 
 
-// Superhero Animation
+// Spiderman Web-Slinging Animation - With Scroll Lock
+let animationComplete = false;
+let scrollLocked = false;
+
 window.addEventListener('scroll', () => {
     const section = document.querySelector('.superhero-section');
     if (!section) return;
 
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const scrollPos = window.scrollY;
+    const sectionBottom = sectionTop + section.offsetHeight;
+    const scrollPos = window.scrollY + window.innerHeight / 2;
 
-    if (scrollPos > sectionTop && scrollPos < sectionTop + sectionHeight) {
-        const progress = (scrollPos - sectionTop) / sectionHeight;
-
-        const superhero = document.getElementById('superhero');
-        const airpod1 = document.getElementById('airpod1');
-        const airpod2 = document.getElementById('airpod2');
-        const heroText = document.getElementById('heroText');
-
-        if (progress > 0.3) {
-            superhero.classList.add('active');
-        }
-
-        if (progress > 0.5) {
-            airpod1.classList.add('animate');
-            airpod2.classList.add('animate');
-
-            const flyProgress = (progress - 0.5) * 2;
-            airpod1.style.left = `${10 + flyProgress * 35}%`;
-            airpod1.style.top = `${20 + flyProgress * 25}%`;
-            airpod1.style.transform = `rotate(${flyProgress * 360}deg) scale(${1 - flyProgress * 0.5})`;
-
-            airpod2.style.right = `${10 - flyProgress * -35}%`;
-            airpod2.style.top = `${20 + flyProgress * 25}%`;
-            airpod2.style.transform = `rotate(${-flyProgress * 360}deg) scale(${1 - flyProgress * 0.5})`;
-        }
-
-        if (progress > 0.7) {
-            heroText.classList.add('active');
+    // Check if we're in the spiderman section
+    if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
+        
+        // If animation not complete, lock scroll and run animation
+        if (!animationComplete) {
+            handleSpidermanAnimation();
         }
     }
 });
+
+// Handle scroll wheel events for smooth control
+let wheelDelta = 0;
+const maxWheelDelta = 100;
+
+window.addEventListener('wheel', (e) => {
+    const section = document.querySelector('.superhero-section');
+    if (!section) return;
+
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
+    const scrollPos = window.scrollY + window.innerHeight / 2;
+
+    // If we're in the section and animation not complete
+    if (scrollPos >= sectionTop && scrollPos <= sectionBottom && !animationComplete) {
+        e.preventDefault();
+        
+        // Accumulate wheel delta
+        if (e.deltaY > 0) {
+            wheelDelta = Math.min(wheelDelta + e.deltaY / 10, maxWheelDelta);
+        }
+        
+        updateAnimation(wheelDelta / maxWheelDelta);
+    }
+}, { passive: false });
+
+function updateAnimation(progress) {
+    const spiderman = document.getElementById('spiderman');
+    const airpod1 = document.getElementById('airpod1');
+    const heroText = document.getElementById('heroText');
+    const webPath1 = document.getElementById('webPath1');
+
+    // Clamp progress between 0 and 1
+    progress = Math.max(0, Math.min(1, progress));
+
+    // Stage 1: Spiderman appears (0-0.15)
+    if (progress > 0.05) {
+        spiderman.classList.add('active');
+    }
+
+    // Stage 2: AirPod appears (0.15-0.25)
+    if (progress > 0.15) {
+        airpod1.classList.add('visible');
+    }
+
+    // Stage 3: Shoot web (0.3-0.4)
+    if (progress > 0.3) {
+        webPath1.classList.add('shooting');
+
+        // Calculate web path from Spiderman (top right) to AirPod (bottom left)
+        const spideyX = 85; // Right side
+        const spideyY = 25; // Top
+        const airpodStartX = 15; // Left side
+        const airpodStartY = 75; // Bottom
+
+        // Create curved path
+        const controlX = (spideyX + airpodStartX) / 2 - 10;
+        const controlY = (spideyY + airpodStartY) / 2;
+        webPath1.setAttribute('d', `M ${spideyX} ${spideyY} Q ${controlX} ${controlY}, ${airpodStartX} ${airpodStartY}`);
+    }
+
+    // Stage 4: Pull AirPod (0.4-0.9)
+    if (progress > 0.4 && progress <= 0.9) {
+        const pullProgress = (progress - 0.4) / 0.5;
+        const easePull = easeInOutCubic(pullProgress);
+
+        // Start position (bottom left)
+        const startX = 10;
+        const startY = 15;
+        
+        // Target position (near Spiderman, top right)
+        const targetX = 70;
+        const targetY = 25;
+
+        // Calculate current position
+        const currentX = startX + (targetX - startX) * easePull;
+        const currentY = startY + (targetY - startY) * easePull;
+
+        airpod1.style.left = `${currentX}%`;
+        airpod1.style.bottom = `${currentY}%`;
+        airpod1.style.transform = `scale(${1 - easePull * 0.4}) rotateZ(${easePull * 720}deg) rotateY(${easePull * 360}deg)`;
+
+        // Update web path during pull
+        const spideyX = 85;
+        const spideyY = 25;
+        const controlX = (spideyX + currentX) / 2 - (1 - easePull) * 10;
+        const controlY = (spideyY + (100 - currentY)) / 2;
+        webPath1.setAttribute('d', `M ${spideyX} ${spideyY} Q ${controlX} ${controlY}, ${currentX} ${100 - currentY}`);
+
+        // Add catch effect at end
+        if (pullProgress > 0.85 && !airpod1.classList.contains('caught')) {
+            airpod1.classList.add('caught');
+        }
+    }
+
+    // Stage 5: Animation complete (0.9+)
+    if (progress >= 0.9) {
+        // Fade out web
+        webPath1.style.opacity = 1 - (progress - 0.9) * 10;
+        
+        // Show text
+        heroText.classList.add('active');
+
+        // Mark animation as complete
+        if (!animationComplete) {
+            animationComplete = true;
+            // Allow normal scrolling after a brief delay
+            setTimeout(() => {
+                document.body.style.overflow = 'auto';
+            }, 500);
+        }
+    }
+}
+
+function handleSpidermanAnimation() {
+    const section = document.querySelector('.superhero-section');
+    const rect = section.getBoundingClientRect();
+    
+    // Calculate progress based on section visibility
+    let progress = 0;
+    if (rect.top <= 0) {
+        progress = Math.min(Math.abs(rect.top) / window.innerHeight, 1);
+    }
+
+    updateAnimation(progress);
+}
+
+// Easing functions
+function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
 
 // About Section Scroll Reveal
 const aboutObserver = new IntersectionObserver((entries) => {

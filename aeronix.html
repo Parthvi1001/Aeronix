@@ -151,17 +151,42 @@
 
 
 
-    <!-- SUPERHERO SECTION -->
-    <section class="superhero-section">
+    <!-- SPIDERMAN SECTION -->
+    <section class="superhero-section" id="spidermanSection">
         <div class="superhero-container">
             <div class="superhero-scene">
-                <div class="flying-airpod" id="airpod1" style="left: 10%; top: 20%;"></div>
-                <div class="flying-airpod" id="airpod2" style="right: 10%; top: 20%;"></div>
-                <div class="superhero" id="superhero">
-                    <i class="fas fa-user-astronaut"></i>
+                <!-- 3D Background Effects -->
+                <div class="bg-particles" id="particles"></div>
+                
+                <!-- Spiderman - Top Right -->
+                <div class="spiderman" id="spiderman">
+                    <img src="assets/Spider-Man-Transparent-Free-PNG.png" alt="Spiderman" class="spiderman-img">
+                    <div class="spiderman-glow"></div>
                 </div>
+
+                <!-- Web Line (SVG for smooth curve) -->
+                <svg class="web-svg" id="webSvg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path id="webPath1" class="web-path" d="" fill="none" stroke="url(#webGradient)" stroke-width="0.4"/>
+                    <defs>
+                        <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:0.9" />
+                            <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#e74c3c;stop-opacity:0.3" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <!-- Single AirPods Case - Bottom Left -->
+                <div class="airpod-case" id="airpod1">
+                    <img src="assets/earbuds-black-case-with-transparent-background_812337-1175.jpg" alt="AirPods" class="airpod-img">
+                    <div class="airpod-shadow"></div>
+                    <div class="airpod-glow"></div>
+                </div>
+
+                <!-- Text -->
                 <div class="superhero-text" id="heroText">
-                    When Technology Becomes a Superpower.
+                    <span class="text-gradient">When Technology Meets</span>
+                    <span class="text-hero">Superhuman Power</span>
                 </div>
             </div>
         </div>
