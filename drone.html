@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerox - Premium Drone Technology</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* General Styles */
+        :root {
+            --primary-yellow: #FFC107;
+            --light-yellow: #FFF9E6;
+            --text-dark: #2C3E50;
+            --text-muted: #6C757D;
+            --border-color: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+        }
+
+        /* Navbar */
+        .navbar {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .navbar-brand {
+            font-size: 1.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-yellow) !important;
+        }
+
+        .btn-warning {
+            background-color: var(--primary-yellow);
+            border: none;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .btn-warning:hover {
+            background-color: #FFB300;
+            color: var(--text-dark);
+        }
+
+        /* Drone Cards */
+        .drone-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .drone-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .card-image-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background-color: #F8F9FA;
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .drone-card:hover .card-image-container img {
+            transform: scale(1.05);
+        }
+
+        .badge-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+
+        .badge-custom {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-consumer {
+            background-color: #9B59B6;
+            color: white;
+        }
+
+        .badge-professional {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+
+        .badge-enterprise {
+            background-color: #E67E22;
+            color: white;
+        }
+
+        .card-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .action-btn i {
+            font-size: 18px;
+            color: var(--text-dark);
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .drone-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .drone-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-yellow);
+            margin-bottom: 8px;
+        }
+
+        .drone-tagline {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .spec-item {
+            text-align: center;
+        }
+
+        .spec-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .spec-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: capitalize;
+        }
+
+        .btn-configure {
+            width: 100%;
+            padding: 14px;
+            background-color: #F8F9FA;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-configure:hover {
+            background-color: var(--light-yellow);
+            border-color: var(--primary-yellow);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Configurator Styles */
+        .configurator-container {
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .config-preview {
+            position: sticky;
+            top: 100px;
+        }
+
+        .preview-image-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-color: #F8F9FA;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .preview-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .price-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .control-btn {
+            flex: 1;
+            padding: 12px;
+            background-color: #F8F9FA;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .control-btn:hover {
+            background-color: white;
+            border-color: var(--primary-yellow);
+        }
+
+        .btn-save-config {
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+
+        .btn-save-config:hover {
+            background-color: #FFB300;
+        }
+
+        /* Configuration Section */
+        .config-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .option-card {
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-yellow);
+            background-color: #FFFBF0;
+        }
+
+        .option-card.selected {
+            border-color: var(--primary-yellow);
+            background-color: var(--light-yellow);
+        }
+
+        .option-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .option-radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .option-card.selected .option-radio {
+            border-color: var(--primary-yellow);
+        }
+
+        .option-card.selected .option-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-yellow);
+            border-radius: 50%;
+        }
+
+        .option-details h6 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .option-details p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .option-price {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .price-included {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .price-add {
+            color: var(--primary-yellow);
+        }
+
+        /* Color Options */
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .color-option {
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .color-option:hover {
+            border-color: var(--primary-yellow);
+        }
+
+        .color-option.selected {
+            border-color: var(--primary-yellow);
+            background-color: var(--light-yellow);
+        }
+
+        .color-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .color-price {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: var(--text-muted);
+        }
+
+        .summary-value {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .summary-total {
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .summary-total .summary-label {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .summary-total .summary-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-yellow);
+        }
+
+        /* Model Selection Grid */
+        .model-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .model-option {
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .model-option:hover {
+            border-color: var(--primary-yellow);
+        }
+
+        .model-option.selected {
+            border-color: var(--primary-yellow);
+            background-color: var(--light-yellow);
+        }
+
+        .model-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .model-price {
+            color: var(--text-muted);
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .specs-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            
+            .spec-value {
+                font-size: 1.25rem;
+            }
+            
+            .model-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .color-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-warning fs-3" href="#" onclick="showPage('home')">Aerox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('home')">Models</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('configure')">Configure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-link text-dark">
+                            <i class="far fa-heart fs-5"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-link text-dark">
+                            <i class="fas fa-random fs-5"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button class="btn btn-warning rounded-pill px-4 fw-semibold" onclick="showPage('configure')">Build Yours</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page-section active">
+        <div class="container py-5">
+            <!-- Results Bar -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <p class="text-muted mb-0">Showing 8 of 8 drones</p>
+            </div>
+
+            <!-- Drones Grid -->
+            <div class="row g-4" id="dronesGrid"></div>
+        </div>
+    </div>
+
+    <!-- Configure Page -->
+    <div id="configurePage" class="page-section">
+        <div class="configurator-container">
+            <div class="container">
+                <div class="row">
+                    <!-- Left Side - Preview -->
+                    <div class="col-lg-5 mb-4">
+                        <div class="config-preview">
+                            <div class="preview-image-container">
+                                <img id="previewImage" src="https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=800&h=600&fit=crop" alt="Drone Preview">
+                                <div class="price-badge" id="previewPrice">$799</div>
+                            </div>
+                            <div class="preview-controls">
+                                <button class="control-btn" onclick="undoConfig()">
+                                    <i class="fas fa-undo"></i> Undo
+                                </button>
+                                <button class="control-btn" onclick="resetConfig()">
+                                    <i class="fas fa-redo"></i> Reset
+                                </button>
+                                <button class="control-btn btn-save-config" onclick="saveConfig()">
+                                    <i class="fas fa-shopping-cart"></i> Save Configuration
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Configuration Options -->
+                    <div class="col-lg-7">
+                        <!-- Select Model Section -->
+                        <div class="config-section">
+                            <h2 class="section-title">Select Model</h2>
+                            <div class="model-grid" id="modelGrid"></div>
+                        </div>
+
+                        <!-- Camera System Section -->
+                        <div class="config-section">
+                            <h2 class="section-title">Camera System</h2>
+                            <div id="cameraOptions"></div>
+                        </div>
+
+                        <!-- Battery Pack Section -->
+                        <div class="config-section">
+                            <h2 class="section-title">Battery Pack</h2>
+                            <div id="batteryOptions"></div>
+                        </div>
+
+                        <!-- Color Section -->
+                        <div class="config-section">
+                            <h2 class="section-title">Color</h2>
+                            <div class="color-options" id="colorOptions"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuration Summary -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="summary-card">
+                            <h3 class="summary-title">Configuration Summary</h3>
+                            <div class="summary-item">
+                                <span class="summary-label">Base Model</span>
+                                <span class="summary-value" id="summaryModel">Aerox X1 - $799</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Camera</span>
+                                <span class="summary-value" id="summaryCamera">Standard 4K</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Battery</span>
+                                <span class="summary-value" id="summaryBattery">Standard (28 min)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">Color</span>
+                                <span class="summary-value" id="summaryColor">Stealth Black</span>
+                            </div>
+                            <div class="summary-total">
+                                <span class="summary-label">Total</span>
+                                <span class="summary-value" id="summaryTotal">$799</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h4 class="text-warning fw-bold mb-3">Aerox</h4>
+                    <p class="text-muted">Redefining aerial excellence with next-generation drone technology.</p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-dark"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-dark"><i class="fab fa-instagram fs-5"></i></a>
+                        <a href="#" class="text-dark"><i class="fab fa-youtube fs-5"></i></a>
+                        <a href="#" class="text-dark"><i class="fab fa-github fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-semibold mb-3">Products</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">All Drones</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Configurator</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Analytics</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-semibold mb-3">Company</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Press</a></li>
+                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-semibold mb-3">Get in Touch</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 text-muted"><i class="fas fa-map-marker-alt text-warning me-2"></i>San Francisco, CA</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-phone text-warning me-2"></i>+1 (555) 123-4567</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-envelope text-warning me-2"></i>hello@Aerox.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Drone Data
+        const drones = [
+            {
+                id: 1,
+                name: "Aerox X1",
+                price: 799,
+                tagline: "The Perfect Start",
+                badge: "CONSUMER",
+                badgeClass: "badge-consumer",
+                image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "45 km/h",
+                    flight: "28 min",
+                    camera: "4K"
+                }
+            },
+            {
+                id: 2,
+                name: "Aerox Pro",
+                price: 1499,
+                tagline: "Professional Grade",
+                badge: "PROFESSIONAL",
+                badgeClass: "badge-professional",
+                image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "68 km/h",
+                    flight: "42 min",
+                    camera: "6K"
+                }
+            },
+            {
+                id: 3,
+                name: "Aerox Ultra",
+                price: 2999,
+                tagline: "Beyond Limits",
+                badge: "PROFESSIONAL",
+                badgeClass: "badge-professional",
+                image: "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "85 km/h",
+                    flight: "55 min",
+                    camera: "8K"
+                }
+            },
+            {
+                id: 4,
+                name: "Aerox Mini",
+                price: 399,
+                tagline: "Compact Adventure",
+                badge: "CONSUMER",
+                badgeClass: "badge-consumer",
+                image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "35 km/h",
+                    flight: "20 min",
+                    camera: "2.7K"
+                }
+            },
+            {
+                id: 5,
+                name: "Aerox Sport",
+                price: 1899,
+                tagline: "Racing Performance",
+                badge: "PROFESSIONAL",
+                badgeClass: "badge-professional",
+                image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "120 km/h",
+                    flight: "18 min",
+                    camera: "4K"
+                }
+            },
+            {
+                id: 6,
+                name: "Aerox Titan",
+                price: 5499,
+                tagline: "Industrial Power",
+                badge: "ENTERPRISE",
+                badgeClass: "badge-enterprise",
+                image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "60 km/h",
+                    flight: "90 min",
+                    camera: "12K"
+                }
+            },
+            {
+                id: 7,
+                name: "Aerox Nano",
+                price: 199,
+                tagline: "Pocket Explorer",
+                badge: "CONSUMER",
+                badgeClass: "badge-consumer",
+                image: "https://images.unsplash.com/photo-1520453803296-c39eabe2dab4?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "25 km/h",
+                    flight: "15 min",
+                    camera: "1080p"
+                }
+            },
+            {
+                id: 8,
+                name: "Aerox Sentinel",
+                price: 8999,
+                tagline: "Security Excellence",
+                badge: "ENTERPRISE",
+                badgeClass: "badge-enterprise",
+                image: "https://images.unsplash.com/photo-1561580125-69d55f8f93cd?w=800&h=600&fit=crop",
+                specs: {
+                    speed: "75 km/h",
+                    flight: "120 min",
+                    camera: "8K+ IR"
+                }
+            }
+        ];
+
+        // Configuration Options
+        const configOptions = {
+            cameras: [
+                { id: 1, name: "Standard 4K", included: true, price: 0 },
+                { id: 2, name: "Pro 6K RAW", included: false, price: 299 },
+                { id: 3, name: "Ultra 8K HDR", included: false, price: 599 }
+            ],
+            batteries: [
+                { id: 1, name: "Standard (28 min)", included: true, price: 0 },
+                { id: 2, name: "Extended (42 min)", included: false, price: 150 },
+                { id: 3, name: "Ultra (55 min)", included: false, price: 300 }
+            ],
+            colors: [
+                { id: 1, name: "Stealth Black", hex: "#1a1a1a", price: 0 },
+                { id: 2, name: "Arctic White", hex: "#f5f5f5", price: 50 },
+                { id: 3, name: "Sunset Orange", hex: "#ff6b35", price: 75 },
+                { id: 4, name: "Ocean Blue", hex: "#00b4d8", price: 75 },
+                { id: 5, name: "Forest Green", hex: "#2d6a4f", price: 75 }
+            ]
+        };
+
+        // Configuration State
+        let currentConfig = {
+            drone: null,
+            camera: null,
+            battery: null,
+            color: null
+        };
+
+        let configHistory = [];
+
+        // Page Navigation
+        function showPage(page) {
+            document.getElementById('homePage').classList.remove('active');
+            document.getElementById('configurePage').classList.remove('active');
+            
+            if (page === 'home') {
+                document.getElementById('homePage').classList.add('active');
+            } else if (page === 'configure') {
+                document.getElementById('configurePage').classList.add('active');
+            }
+        }
+
+        // Load Drones on Page Load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDrones();
+            initializeConfigurator();
+        });
+
+        // Load Drones
+        function loadDrones() {
+            const grid = document.getElementById('dronesGrid');
+            grid.innerHTML = '';
+            
+            drones.forEach(drone => {
+                const card = createDroneCard(drone);
+                grid.innerHTML += card;
+            });
+        }
+
+        // Create Drone Card HTML
+        function createDroneCard(drone) {
+            return `
+                <div class="col-lg-4 col-md-6">
+                    <div class="drone-card">
+                        <div class="card-image-container">
+                            <div class="badge-overlay">
+                                <span class="badge-custom ${drone.badgeClass}">${drone.badge}</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="action-btn" title="Add to Wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="action-btn" title="Compare">
+                                    <i class="fas fa-random"></i>
+                                </button>
+                            </div>
+                            <img src="${drone.image}" alt="${drone.name}">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="drone-name">${drone.name}</h3>
+                            <div class="drone-price">$${drone.price.toLocaleString()}</div>
+                            <p class="drone-tagline">${drone.tagline}</p>
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <span class="spec-value">${drone.specs.speed.split(' ')[0]}</span>
+                                    <span class="spec-label">${drone.specs.speed.split(' ')[1]} Speed</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-value">${drone.specs.flight.split(' ')[0]}</span>
+                                    <span class="spec-label">${drone.specs.flight.split(' ')[1]} Flight</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-value">${drone.specs.camera}</span>
+                                    <span class="spec-label">Camera</span>
+                                </div>
+                            </div>
+                            <button class="btn-configure" onclick="configureDrone(${drone.id})">
+                                Configure <i class="fas fa-arrow-right ms-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Configure Drone
+        function configureDrone(droneId) {
+            const drone = drones.find(d => d.id === droneId);
+            if (drone) {
+                showPage('configure');
+                selectModel(drone);
+                loadModels(droneId);
+            }
+        }
+
+        // Initialize Configurator
+        function initializeConfigurator() {
+            loadModels(1);
+            loadCameraOptions();
+            loadBatteryOptions();
+            loadColorOptions();
+            
+            selectModel(drones[0]);
+            selectCamera(configOptions.cameras[0]);
+            selectBattery(configOptions.batteries[0]);
+            selectColor(configOptions.colors[0]);
+        }
+
+        // Load Models
+        function loadModels(selectedId) {
+            const grid = document.getElementById('modelGrid');
+            grid.innerHTML = '';
+            
+            const modelsToShow = [
+                drones[0], drones[1], drones[2], 
+                drones[5], drones[3], drones[4]
+            ];
+            
+            modelsToShow.forEach(drone => {
+                const isSelected = selectedId == drone.id;
+                const modelCard = `
+                    <div class="model-option ${isSelected ? 'selected' : ''}" onclick="selectModelById(${drone.id})">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="model-name">${drone.name}</div>
+                                <div class="model-price">$${drone.price.toLocaleString()}</div>
+                            </div>
+                            ${isSelected ? '<i class="fas fa-check text-warning fs-4"></i>' : ''}
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += modelCard;
+            });
+        }
+
+        // Load Camera Options
+        function loadCameraOptions() {
+            const container = document.getElementById('cameraOptions');
+            container.innerHTML = '';
+            
+            configOptions.cameras.forEach((camera, index) => {
+                const isSelected = index === 0;
+                const optionCard = `
+                    <div class="option-card ${isSelected ? 'selected' : ''}" onclick="selectCameraById(${camera.id})">
+                        <div class="option-info">
+                            <div class="option-radio"></div>
+                            <div class="option-details">
+                                <h6>${camera.name}</h6>
+                            </div>
+                        </div>
+                        <div class="option-price">
+                            ${camera.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+$' + camera.price + '</span>'}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += optionCard;
+            });
+        }
+
+        // Load Battery Options
+        function loadBatteryOptions() {
+            const container = document.getElementById('batteryOptions');
+            container.innerHTML = '';
+            
+            configOptions.batteries.forEach((battery, index) => {
+                const isSelected = index === 0;
+                const optionCard = `
+                    <div class="option-card ${isSelected ? 'selected' : ''}" onclick="selectBatteryById(${battery.id})">
+                        <div class="option-info">
+                            <div class="option-radio"></div>
+                            <div class="option-details">
+                                <h6>${battery.name}</h6>
+                            </div>
+                        </div>
+                        <div class="option-price">
+                            ${battery.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+$' + battery.price + '</span>'}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += optionCard;
+            });
+        }
+
+        // Load Color Options
+        function loadColorOptions() {
+            const container = document.getElementById('colorOptions');
+            container.innerHTML = '';
+            
+            configOptions.colors.forEach((color, index) => {
+                const isSelected = index === 0;
+                const colorCard = `
+                    <div class="color-option ${isSelected ? 'selected' : ''}" onclick="selectColorById(${color.id})">
+                        <div class="color-circle" style="background-color: ${color.hex};"></div>
+                        <div class="color-name">${color.name}</div>
+                        <div class="color-price">${color.price === 0 ? 'Free' : '+$' + color.price}</div>
+                    </div>
+                `;
+                container.innerHTML += colorCard;
+            });
+        }
+
+        // Select Model by ID
+        function selectModelById(id) {
+            const drone = drones.find(d => d.id === id);
+            if (drone) {
+                selectModel(drone);
+                document.querySelectorAll('.model-option').forEach(el => el.classList.remove('selected'));
+                event.currentTarget.classList.add('selected');
+            }
+        }
+
+        // Select Model
+        function selectModel(drone) {
+            saveToHistory();
+            currentConfig.drone = drone;
+            document.getElementById('previewImage').src = drone.image;
+            document.getElementById('summaryModel').textContent = `${drone.name} - $${drone.price.toLocaleString()}`;
+            updateTotal();
+        }
+
+        // Select Camera by ID
+        function selectCameraById(id) {
+            const camera = configOptions.cameras.find(c => c.id === id);
+            if (camera) {
+                selectCamera(camera);
+                document.querySelectorAll('#cameraOptions .option-card').forEach(el => el.classList.remove('selected'));
+                event.currentTarget.classList.add('selected');
+            }
+        }
+
+        // Select Camera
+        function selectCamera(camera) {
+            saveToHistory();
+            currentConfig.camera = camera;
+            document.getElementById('summaryCamera').textContent = camera.name;
+            updateTotal();
+        }
+
+        // Select Battery by ID
+        function selectBatteryById(id) {
+            const battery = configOptions.batteries.find(b => b.id === id);
+            if (battery) {
+                selectBattery(battery);
+                document.querySelectorAll('#batteryOptions .option-card').forEach(el => el.classList.remove('selected'));
+                event.currentTarget.classList.add('selected');
+            }
+        }
+
+        // Select Battery
+        function selectBattery(battery) {
+            saveToHistory();
+            currentConfig.battery = battery;
+            document.getElementById('summaryBattery').textContent = battery.name;
+            updateTotal();
+        }
+
+        // Select Color by ID
+        function selectColorById(id) {
+            const color = configOptions.colors.find(c => c.id === id);
+            if (color) {
+                selectColor(color);
+                document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
+                event.currentTarget.classList.add('selected');
+            }
+        }
+
+        // Select Color
+        function selectColor(color) {
+            saveToHistory();
+            currentConfig.color = color;
+            document.getElementById('summaryColor').textContent = color.name;
+            updateTotal();
+        }
+
+        // Update Total Price
+        function updateTotal() {
+            let total = 0;
+            
+            if (currentConfig.drone) total += currentConfig.drone.price;
+            if (currentConfig.camera) total += currentConfig.camera.price;
+            if (currentConfig.battery) total += currentConfig.battery.price;
+            if (currentConfig.color) total += currentConfig.color.price;
+            
+            document.getElementById('previewPrice').textContent = '$' + total.toLocaleString();
+            document.getElementById('summaryTotal').textContent = '$' + total.toLocaleString();
+        }
+
+        // Save to History
+        function saveToHistory() {
+            configHistory.push(JSON.parse(JSON.stringify(currentConfig)));
+            if (configHistory.length > 10) {
+                configHistory.shift();
+            }
+        }
+
+        // Undo Configuration
+        function undoConfig() {
+            if (configHistory.length > 0) {
+                currentConfig = configHistory.pop();
+                
+                if (currentConfig.drone) {
+                    document.getElementById('previewImage').src = currentConfig.drone.image;
+                    document.getElementById('summaryModel').textContent = `${currentConfig.drone.name} - $${currentConfig.drone.price.toLocaleString()}`;
+                }
+                
+                if (currentConfig.camera) {
+                    document.getElementById('summaryCamera').textContent = currentConfig.camera.name;
+                }
+                
+                if (currentConfig.battery) {
+                    document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
+                }
+                
+                if (currentConfig.color) {
+                    document.getElementById('summaryColor').textContent = currentConfig.color.name;
+                }
+                
+                updateTotal();
+            }
+        }
+
+        // Reset Configuration
+        function resetConfig() {
+            selectModel(drones[0]);
+            selectCamera(configOptions.cameras[0]);
+            selectBattery(configOptions.batteries[0]);
+            selectColor(configOptions.colors[0]);
+            
+            document.querySelectorAll('.model-option').forEach((el, index) => {
+                el.classList.toggle('selected', index === 0);
+            });
+            
+            document.querySelectorAll('#cameraOptions .option-card').forEach((el, index) => {
+                el.classList.toggle('selected', index === 0);
+            });
+            
+            document.querySelectorAll('#batteryOptions .option-card').forEach((el, index) => {
+                el.classList.toggle('selected', index === 0);
+            });
+            
+            document.querySelectorAll('.color-option').forEach((el, index) => {
+                el.classList.toggle('selected', index === 0);
+            });
+            
+            configHistory = [];
+        }
+
+        // Save Configuration
+        function saveConfig() {
+            const config = {
+                drone: currentConfig.drone,
+                camera: currentConfig.camera,
+                battery: currentConfig.battery,
+                color: currentConfig.color,
+                total: calculateTotal()
+            };
+            
+            alert(`Configuration saved!\n\nDrone: ${config.drone.name}\nCamera: ${config.camera.name}\nBattery: ${config.battery.name}\nColor: ${config.color.name}\n\nTotal: $${config.total.toLocaleString()}`);
+        }
+
+        // Calculate Total
+        function calculateTotal() {
+            let total = 0;
+            if (currentConfig.drone) total += currentConfig.drone.price;
+            if (currentConfig.camera) total += currentConfig.camera.price;
+            if (currentConfig.battery) total += currentConfig.battery.price;
+            if (currentConfig.color) total += currentConfig.color.price;
+            return total;
+        }
+    </script>
+</body>
+</html>

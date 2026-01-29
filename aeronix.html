@@ -8,6 +8,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -16,11 +18,121 @@
         <div class="nav-container">
             <a href="#" class="logo">AERONIX</a>
 
-            <ul class="nav-menu">
-                <li class="nav-item">Products</li>
-                <li class="nav-item">Features</li>
-                <li class="nav-item">About</li>
-                <li class="nav-item">Support</li>
+            <ul class="nav-menu nav-links">
+
+                <!-- PRODUCTS = MEGA MENU -->
+                <li class="nav-item shop">
+                    <div href="#">Airpod</div>
+
+                    <div class="mega-menu">
+                        <div class="left">
+                            <h4>PRODUCTS</h4>
+                            <ul>
+                                <li>All Drones</li>
+                                <li>Fixed-wings</li>
+                                <li>Single-Router</li>
+                                <li>Multi-rotor</li>
+                                <li>HybridVTOL</li>
+                            </ul>
+                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        </div>
+
+                        <div class="right">
+                            <div class="card">
+                                <span class="badge">NEW</span>
+                                <div class="img-box">
+                                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df">
+                                </div>
+                                <p>Pro Drone X</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12">
+                                </div>
+                                <p>Aeronix ANC Headphones</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item shop">
+                    <div href="#">Headphones</div>
+
+                    <div class="mega-menu">
+                        <div class="left">
+                            <h4>PRODUCTS</h4>
+                            <ul>
+                                <li>All Products</li>
+                                <li>Drones</li>
+                                <li>Headphones</li>
+                                <li>Airbeds</li>
+                                <li>Accessories</li>
+                            </ul>
+                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        </div>
+
+                        <div class="right">
+                            <div class="card">
+                                <span class="badge">NEW</span>
+                                <div class="img-box">
+                                    <img src="headPhone.jpg">
+                                </div>
+                                <p>Pro Drone X</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="hhadephone.jpg">
+                                </div>
+                                <p>Aeronix ANC Headphones</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item shop">
+                    <div href="#">Drone</div>
+
+                    <div class="mega-menu">
+                        <div class="left">
+                            <h4>PRODUCTS</h4>
+                            <ul>
+                                <li>All Drones</li>
+                                <li>Fixed-wings</li>
+                                <li>Single-Router</li>
+                                <li>Multi-rotor</li>
+                                <li>HybridVTOL</li>
+                            </ul>
+                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        </div>
+
+                        <div class="right">
+                            <div class="card">
+                                <span class="badge">NEW</span>
+                                <div class="img-box">
+                                    <img src="drone.jfif">
+                                </div>
+                                <p>Pro Drone X</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="hdrone.jpg">
+                                </div>
+                                <p>Aeronix ANC Headphones</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <!-- NORMAL ITEMS -->
+                <li class="nav-item">
+                    <div href="#">About</div>
+                </li>
             </ul>
 
             <div class="nav-actions">
@@ -39,35 +151,52 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
     <section class="hero-section">
-        <div class="video-slider">
-            <!-- Drone Video 1 -->
-            <div class="video-slide active">
-                <video autoplay muted loop playsinline class="hero-video">
-                    <source src="drone.mp4" type="video/mp4">
-                </video>
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+            <!-- INDICATORS (3 DOTS) -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
             </div>
-            <!-- Drone Video 2 -->
-            <!-- Headphones Video 1 -->
-            <div class="video-slide">
-                <video autoplay muted loop playsinline class="hero-video">
-                    <source src="headphone.mp4" type="video/mp4">
-                </video>
-            </div>
-            <!-- TWS Video 1 -->
-            <div class="video-slide">
-                <video autoplay muted loop playsinline class="hero-video">
-                    <source src="earburds.mp4" type="video/mp4">
-                </video>
+
+            <!-- SLIDES -->
+            <div class="carousel-inner">
+
+                <!-- SLIDE 1 -->
+                <div class="carousel-item active">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="drone.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- SLIDE 2 -->
+                <div class="carousel-item">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="headphone.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- SLIDE 3 -->
+                <div class="carousel-item">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="earburds.mp4" type="video/mp4">
+                    </video>
+                </div>
+
             </div>
         </div>
+
+        <!-- YOUR EXISTING HERO TEXT -->
         <div class="hero-content">
             <h1 class="hero-title">Redefining the Future of Sound & Flight</h1>
             <p class="hero-subtitle">Engineered for Humans. Powered by Innovation.</p>
             <button class="hero-cta">Discover Aeronix</button>
         </div>
     </section>
+
 
     <!-- HORIZONTAL DRONE SHOWCASE -->
     <!-- <section class="horizontal-section">
@@ -158,7 +287,7 @@
                 
                 <div class="bg-particles" id="particles"></div>
                 
-                
+                <!-- Spiderman - Top Right -->
                 <div class="spiderman" id="spiderman">
                     <img src="assets/Spider-Man-Transparent-Free-PNG.png" alt="Spiderman" class="spiderman-img">
                     <div class="spiderman-glow"></div>
@@ -166,7 +295,8 @@
 
                
                 <svg class="web-svg" id="webSvg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path id="webPath1" class="web-path" d="" fill="none" stroke="url(#webGradient)" stroke-width="0.4"/>
+                    <path id="webPath1" class="web-path" d="" fill="none" stroke="url(#webGradient)"
+                        stroke-width="0.4" />
                     <defs>
                         <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:0.9" />
@@ -178,7 +308,8 @@
 
                 
                 <div class="airpod-case" id="airpod1">
-                    <img src="assets/earbuds-black-case-with-transparent-background_812337-1175.jpg" alt="AirPods" class="airpod-img">
+                    <img src="assets/earbuds-black-case-with-transparent-background_812337-1175.jpg" alt="AirPods"
+                        class="airpod-img">
                     <div class="airpod-shadow"></div>
                     <div class="airpod-glow"></div>
                 </div>
