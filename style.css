@@ -209,6 +209,12 @@ body.light-mode .theme-toggle:hover {
     background: transparent;
 }
 
+.navbar.hide-logo .logo {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
 /* MAIN BAR */
 .nav-container {
     display: flex;
@@ -1536,8 +1542,9 @@ canvas {
     justify-content: center;
     text-align: center;
     pointer-events: none;
-    z-index: 30;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
 }
 
 .tws-hero-overlay h1 {
@@ -1546,39 +1553,45 @@ canvas {
     font-weight: 900;
     letter-spacing: -0.05em;
     line-height: 0.9;
-    background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff !important;
+    opacity: 0.4;
     margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9),
+                 0 8px 40px rgba(0, 0, 0, 0.7),
+                 0 0 60px rgba(0, 0, 0, 0.5);
 }
 
 .tws-hero-overlay p {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 300;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.2em;
+    color: #ffffff !important;
+    opacity: 0.5;
     text-transform: uppercase;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8),
+                 0 4px 30px rgba(0, 0, 0, 0.6);
 }
 
 body.light-mode .tws-hero-overlay h1 {
-    background: linear-gradient(to bottom, #0d1b2a, rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 0));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff !important;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9),
+                 0 8px 40px rgba(0, 0, 0, 0.7),
+                 0 0 60px rgba(0, 0, 0, 0.5);
 }
 
 body.light-mode .tws-hero-overlay p {
-    color: rgba(13, 27, 42, 0.6);
+    color: #ffffff !important;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8),
+                 0 4px 30px rgba(0, 0, 0, 0.6);
 }
 
 /* Scroll-triggered Text Overlays */
 .tws-text-overlay {
     position: absolute;
     pointer-events: none;
-    z-index: 10;
+    z-index: 5;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 2s ease;
     color: var(--text-primary);
     max-width: 80%;
 }
@@ -1589,12 +1602,23 @@ body.light-mode .tws-hero-overlay p {
     font-weight: 700;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
-    color: var(--text-primary);
+    color: #ffffff !important;
+    opacity: 0.75;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1),
+                 0 4px 20px rgba(0, 0, 0, 0.95),
+                 0 8px 40px rgba(0, 0, 0, 0.9),
+                 0 0 60px rgba(0, 0, 0, 0.7);
 }
 
 .tws-text-overlay p {
     font-size: clamp(1rem, 2vw, 1.5rem);
-    color: var(--text-secondary);
+    color: #ffffff !important;
+    opacity: 0.7;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 1),
+                 0 4px 16px rgba(0, 0, 0, 0.9),
+                 0 6px 30px rgba(0, 0, 0, 0.7),
+                 0 0 50px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
 }
 
 .tws-text-1 {
@@ -1622,23 +1646,14 @@ body.light-mode .tws-hero-overlay p {
 .tws-gradient-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent, transparent);
+    background: transparent;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0;
 }
 
 /* Scroll Indicator */
 .tws-scroll-indicator {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    transition: opacity 0.5s ease;
+    display: none !important;
 }
 
 .tws-scroll-indicator p {
@@ -1676,6 +1691,24 @@ body.light-mode .tws-scroll-arrow {
 
 body.light-mode .tws-scroll-arrow::before {
     background: rgba(13, 27, 42, 0.5);
+}
+
+body.light-mode .tws-text-overlay h2 {
+    color: #ffffff !important;
+    opacity: 0.75;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 1),
+                 0 4px 20px rgba(0, 0, 0, 0.95),
+                 0 8px 40px rgba(0, 0, 0, 0.9),
+                 0 0 60px rgba(0, 0, 0, 0.7);
+}
+
+body.light-mode .tws-text-overlay p {
+    color: #ffffff !important;
+    opacity: 0.7;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 1),
+                 0 4px 16px rgba(0, 0, 0, 0.9),
+                 0 6px 30px rgba(0, 0, 0, 0.7),
+                 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes twsScrollDown {

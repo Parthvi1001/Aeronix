@@ -1289,10 +1289,10 @@ if (twsElements.canvas) {
             return 0;
         } else if (scrollFraction < fadeInEnd) {
             const progress = (scrollFraction - fadeInStart) / (fadeInEnd - fadeInStart);
-            return twsEaseInOut(progress);
+            return twsEaseInOut(progress); // Max 100% opacity
         } else if (scrollFraction < fadeOutEnd) {
             const progress = (scrollFraction - fadeInEnd) / (fadeOutEnd - fadeInEnd);
-            return 1 - twsEaseInOut(progress);
+            return (1 - twsEaseInOut(progress)); // Max 100% opacity
         } else {
             return 0;
         }
@@ -1308,7 +1308,22 @@ if (twsElements.canvas) {
         const viewportHeight = window.innerHeight;
         
         // Check if we're in the TWS section
-        if (scrollTop < sectionTop - viewportHeight || scrollTop > sectionTop + sectionHeight) {
+        const inSection = scrollTop >= sectionTop && scrollTop <= (sectionTop + sectionHeight);
+        
+        if (!inSection) {
+            // Hide all text when outside TWS section
+            if (twsElements.heroOverlay) {
+                twsElements.heroOverlay.style.opacity = 0;
+            }
+            if (twsElements.textOverlay1) {
+                twsElements.textOverlay1.style.opacity = 0;
+            }
+            if (twsElements.textOverlay2) {
+                twsElements.textOverlay2.style.opacity = 0;
+            }
+            if (twsElements.textOverlay3) {
+                twsElements.textOverlay3.style.opacity = 0;
+            }
             return;
         }
 
@@ -1323,12 +1338,22 @@ if (twsElements.canvas) {
             twsRenderFrame(targetFrame);
         }
 
-        // Update Hero Overlay - Start visible, fade out on scroll
-        const heroOpacity = scrollFraction < 0.2 ? 1 : Math.max(0, 1 - ((scrollFraction - 0.2) * 3));
-        const heroScale = 1 - (scrollFraction * 0.05);
+        // Update Hero Overlay - Only show during TWS section, fade out on scroll
+        const heroOpacity = scrollFraction < 0.08 ? 1 : Math.max(0, 1 - ((scrollFraction - 0.08) * 5));
+        const heroScale = 1 - (scrollFraction * 0.015);
         if (twsElements.heroOverlay) {
             twsElements.heroOverlay.style.opacity = heroOpacity;
             twsElements.heroOverlay.style.transform = `scale(${heroScale})`;
+        }
+        
+        // Show/hide navbar logo based on scroll position
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (scrollTop > 300) {
+                navbar.classList.add('hide-logo');
+            } else {
+                navbar.classList.remove('hide-logo');
+            }
         }
 
         // Update Scroll Indicator
@@ -1339,17 +1364,17 @@ if (twsElements.canvas) {
 
         // Update Text Overlays
         if (twsElements.textOverlay1) {
-            const text1Opacity = twsCalculateTextOpacity(scrollFraction, 0.1, 0.2, 0.3);
+            const text1Opacity = twsCalculateTextOpacity(scrollFraction, 0.15, 0.25, 0.4);
             twsElements.textOverlay1.style.opacity = text1Opacity;
         }
 
         if (twsElements.textOverlay2) {
-            const text2Opacity = twsCalculateTextOpacity(scrollFraction, 0.4, 0.5, 0.6);
+            const text2Opacity = twsCalculateTextOpacity(scrollFraction, 0.45, 0.55, 0.7);
             twsElements.textOverlay2.style.opacity = text2Opacity;
         }
 
         if (twsElements.textOverlay3) {
-            const text3Opacity = twsCalculateTextOpacity(scrollFraction, 0.7, 0.8, 0.9);
+            const text3Opacity = twsCalculateTextOpacity(scrollFraction, 0.75, 0.85, 0.95);
             twsElements.textOverlay3.style.opacity = text3Opacity;
         }
     }
