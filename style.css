@@ -826,7 +826,7 @@ canvas {
  */
 
 
-/* SPIDERMAN SECTION - Premium 3D Design */
+/* SPIDERMAN SECTION - Premium 3D Design
 .superhero-section {
     height: 100vh;
     position: relative;
@@ -850,7 +850,7 @@ canvas {
     transform-style: preserve-3d;
 }
 
-/* 3D Particle Background */
+/* 3D Particle Background 
 .bg-particles {
     position: absolute;
     width: 100%;
@@ -875,9 +875,9 @@ canvas {
         background-position: 100% 100%, 0% 100%, 100% 0%, 0% 0%; 
         opacity: 0.5;
     }
-}
+} 
 
-/* Spiderman - Top Right Position */
+/* Spiderman - Top Right Position 
 .spiderman {
     position: absolute;
     right: 8%;
@@ -944,7 +944,7 @@ canvas {
     }
 }
 
-/* Web SVG - Premium 3D Curved Line */
+/* Web SVG - Premium 3D Curved Line 
 .web-svg {
     position: absolute;
     width: 100%;
@@ -984,7 +984,7 @@ canvas {
     }
 }
 
-/* AirPods Case - Bottom Left Position */
+/* AirPods Case - Bottom Left Position 
 .airpod-case {
     position: absolute;
     left: 10%;
@@ -1070,7 +1070,7 @@ canvas {
     }
 }
 
-/* Text - Premium Typography */
+/* Text - Premium Typography 
 .superhero-text {
     position: absolute;
     bottom: 10%;
@@ -1138,7 +1138,246 @@ canvas {
             0 0 60px rgba(102, 126, 234, 0.6),
             0 5px 25px rgba(0, 0, 0, 0.6);
     }
+}*/
+
+/* ============================================
+   TWS SCROLL ANIMATION SECTION
+   Add this CSS to the END of your style.css file
+   ============================================ */
+
+/* TWS Scroll Section */
+.tws-scroll-section {
+    position: relative;
+    height: 300vh;
+    width: 100%;
+    background: #000000 !important;
 }
+
+.tws-canvas-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000000 !important;
+}
+
+#twsCanvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+}
+
+/* TWS Hero Text Overlay */
+.tws-hero-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    z-index: 30;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tws-hero-overlay h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(3rem, 12vw, 9rem);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    background: linear-gradient(to bottom, #ffffff, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.tws-hero-overlay p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+}
+
+body.light-mode .tws-hero-overlay h1 {
+    background: linear-gradient(to bottom, #0d1b2a, rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.light-mode .tws-hero-overlay p {
+    color: rgba(13, 27, 42, 0.6);
+}
+
+/* Scroll-triggered Text Overlays */
+.tws-text-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    color: var(--text-primary);
+    max-width: 80%;
+}
+
+.tws-text-overlay h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.tws-text-overlay p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--text-secondary);
+}
+
+.tws-text-1 {
+    left: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tws-text-2 {
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+}
+
+.tws-text-3 {
+    left: 0;
+    right: 0;
+    top: 75%;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* Gradient Overlay */
+.tws-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent, transparent);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Scroll Indicator */
+.tws-scroll-indicator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: opacity 0.5s ease;
+}
+
+.tws-scroll-indicator p {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    opacity: 0.5;
+    color: var(--text-primary);
+}
+
+.tws-scroll-arrow {
+    width: 24px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    position: relative;
+}
+
+body.light-mode .tws-scroll-arrow {
+    border: 2px solid rgba(13, 27, 42, 0.3);
+}
+
+.tws-scroll-arrow::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    animation: twsScrollDown 2s infinite;
+}
+
+body.light-mode .tws-scroll-arrow::before {
+    background: rgba(13, 27, 42, 0.5);
+}
+
+@keyframes twsScrollDown {
+    0%, 100% {
+        top: 8px;
+        opacity: 1;
+    }
+    50% {
+        top: 20px;
+        opacity: 0.2;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tws-scroll-section {
+        height: 250vh;
+    }
+
+    .tws-text-1,
+    .tws-text-2,
+    .tws-text-3 {
+        padding: 0 1.5rem;
+    }
+
+    .tws-text-1 {
+        left: 1.5rem;
+    }
+
+    .tws-text-2 {
+        right: 1.5rem;
+    }
+
+    .tws-scroll-indicator {
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tws-text-1,
+    .tws-text-2 {
+        padding: 0 1rem;
+    }
+
+    .tws-text-1 {
+        left: 1rem;
+    }
+
+    .tws-text-2 {
+        right: 1rem;
+    }
+}
+
 
 /* Light Mode Adjustments */
 body.light-mode .superhero-section {

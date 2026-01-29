@@ -151,20 +151,20 @@
 
 
 
-    <!-- SPIDERMAN SECTION -->
+    <!-- SPIDERMAN SECTION
     <section class="superhero-section" id="spidermanSection">
         <div class="superhero-container">
             <div class="superhero-scene">
-                <!-- 3D Background Effects -->
+                
                 <div class="bg-particles" id="particles"></div>
                 
-                <!-- Spiderman - Top Right -->
+                
                 <div class="spiderman" id="spiderman">
                     <img src="assets/Spider-Man-Transparent-Free-PNG.png" alt="Spiderman" class="spiderman-img">
                     <div class="spiderman-glow"></div>
                 </div>
 
-                <!-- Web Line (SVG for smooth curve) -->
+               
                 <svg class="web-svg" id="webSvg" viewBox="0 0 100 100" preserveAspectRatio="none">
                     <path id="webPath1" class="web-path" d="" fill="none" stroke="url(#webGradient)" stroke-width="0.4"/>
                     <defs>
@@ -176,21 +176,62 @@
                     </defs>
                 </svg>
 
-                <!-- Single AirPods Case - Bottom Left -->
+                
                 <div class="airpod-case" id="airpod1">
                     <img src="assets/earbuds-black-case-with-transparent-background_812337-1175.jpg" alt="AirPods" class="airpod-img">
                     <div class="airpod-shadow"></div>
                     <div class="airpod-glow"></div>
                 </div>
 
-                <!-- Text -->
+                Text 
                 <div class="superhero-text" id="heroText">
                     <span class="text-gradient">When Technology Meets</span>
                     <span class="text-hero">Superhuman Power</span>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+
+    <!-- ============================================
+     TWS SCROLL ANIMATION SECTION
+     Add this AFTER the horizontal-section (drone section)
+     ============================================ -->
+
+<section class="tws-scroll-section">
+    <div class="tws-canvas-container">
+        <canvas id="twsCanvas"></canvas>
+        
+        <!-- Hero Title Overlay -->
+        <div class="tws-hero-overlay" id="twsHeroOverlay">
+            <h1>SOUND<br>REINVENTED</h1>
+            <p>Experience audio in its purest form.</p>
+        </div>
+
+        <!-- Scroll-triggered Text Overlays -->
+        <div class="tws-text-overlay tws-text-1" id="twsText1">
+            <h2>Precision Engineering.</h2>
+            <p>Every component aligned.</p>
+        </div>
+
+        <div class="tws-text-overlay tws-text-2" id="twsText2">
+            <h2>Titanium Drivers.</h2>
+            <p>11mm of pure power.</p>
+        </div>
+
+        <div class="tws-text-overlay tws-text-3" id="twsText3">
+            <h2>All Day Battery.</h2>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="tws-gradient-overlay"></div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="tws-scroll-indicator" id="twsScrollIndicator">
+        <p>Scroll</p>
+        <div class="tws-scroll-arrow"></div>
+    </div>
+</section>
 
     <!-- PRODUCTS SECTION -->
     <section class="products-section">

@@ -978,152 +978,407 @@ if (x <= 0 && !horizontalFinished) {
 
 
 
-// Spiderman Web-Slinging Animation - With Scroll Lock
-let animationComplete = false;
-let scrollLocked = false;
+// // Spiderman Web-Slinging Animation - With Scroll Lock
+// let animationComplete = false;
+// let scrollLocked = false;
 
-window.addEventListener('scroll', () => {
-    const section = document.querySelector('.superhero-section');
-    if (!section) return;
+// window.addEventListener('scroll', () => {
+//     const section = document.querySelector('.superhero-section');
+//     if (!section) return;
 
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
-    const scrollPos = window.scrollY + window.innerHeight / 2;
+//     const sectionTop = section.offsetTop;
+//     const sectionBottom = sectionTop + section.offsetHeight;
+//     const scrollPos = window.scrollY + window.innerHeight / 2;
 
-    // Check if we're in the spiderman section
-    if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
+//     // Check if we're in the spiderman section
+//     if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
         
-        // If animation not complete, lock scroll and run animation
-        if (!animationComplete) {
-            handleSpidermanAnimation();
-        }
-    }
-});
+//         // If animation not complete, lock scroll and run animation
+//         if (!animationComplete) {
+//             handleSpidermanAnimation();
+//         }
+//     }
+// });
 
-// Handle scroll wheel events for smooth control
-let wheelDelta = 0;
-const maxWheelDelta = 100;
+// // Handle scroll wheel events for smooth control
+// let wheelDelta = 0;
+// const maxWheelDelta = 100;
 
-window.addEventListener('wheel', (e) => {
-    const section = document.querySelector('.superhero-section');
-    if (!section) return;
+// window.addEventListener('wheel', (e) => {
+//     const section = document.querySelector('.superhero-section');
+//     if (!section) return;
 
-    const sectionTop = section.offsetTop;
-    const sectionBottom = sectionTop + section.offsetHeight;
-    const scrollPos = window.scrollY + window.innerHeight / 2;
+//     const sectionTop = section.offsetTop;
+//     const sectionBottom = sectionTop + section.offsetHeight;
+//     const scrollPos = window.scrollY + window.innerHeight / 2;
 
-    // If we're in the section and animation not complete
-    if (scrollPos >= sectionTop && scrollPos <= sectionBottom && !animationComplete) {
-        e.preventDefault();
+//     // If we're in the section and animation not complete
+//     if (scrollPos >= sectionTop && scrollPos <= sectionBottom && !animationComplete) {
+//         e.preventDefault();
         
-        // Accumulate wheel delta
-        if (e.deltaY > 0) {
-            wheelDelta = Math.min(wheelDelta + e.deltaY / 10, maxWheelDelta);
-        }
+//         // Accumulate wheel delta
+//         if (e.deltaY > 0) {
+//             wheelDelta = Math.min(wheelDelta + e.deltaY / 10, maxWheelDelta);
+//         }
         
-        updateAnimation(wheelDelta / maxWheelDelta);
-    }
-}, { passive: false });
+//         updateAnimation(wheelDelta / maxWheelDelta);
+//     }
+// }, { passive: false });
 
-function updateAnimation(progress) {
-    const spiderman = document.getElementById('spiderman');
-    const airpod1 = document.getElementById('airpod1');
-    const heroText = document.getElementById('heroText');
-    const webPath1 = document.getElementById('webPath1');
+// function updateAnimation(progress) {
+//     const spiderman = document.getElementById('spiderman');
+//     const airpod1 = document.getElementById('airpod1');
+//     const heroText = document.getElementById('heroText');
+//     const webPath1 = document.getElementById('webPath1');
 
-    // Clamp progress between 0 and 1
-    progress = Math.max(0, Math.min(1, progress));
+//     // Clamp progress between 0 and 1
+//     progress = Math.max(0, Math.min(1, progress));
 
-    // Stage 1: Spiderman appears (0-0.15)
-    if (progress > 0.05) {
-        spiderman.classList.add('active');
-    }
+//     // Stage 1: Spiderman appears (0-0.15)
+//     if (progress > 0.05) {
+//         spiderman.classList.add('active');
+//     }
 
-    // Stage 2: AirPod appears (0.15-0.25)
-    if (progress > 0.15) {
-        airpod1.classList.add('visible');
-    }
+//     // Stage 2: AirPod appears (0.15-0.25)
+//     if (progress > 0.15) {
+//         airpod1.classList.add('visible');
+//     }
 
-    // Stage 3: Shoot web (0.3-0.4)
-    if (progress > 0.3) {
-        webPath1.classList.add('shooting');
+//     // Stage 3: Shoot web (0.3-0.4)
+//     if (progress > 0.3) {
+//         webPath1.classList.add('shooting');
 
-        // Calculate web path from Spiderman (top right) to AirPod (bottom left)
-        const spideyX = 85; // Right side
-        const spideyY = 25; // Top
-        const airpodStartX = 15; // Left side
-        const airpodStartY = 75; // Bottom
+//         // Calculate web path from Spiderman (top right) to AirPod (bottom left)
+//         const spideyX = 85; // Right side
+//         const spideyY = 25; // Top
+//         const airpodStartX = 15; // Left side
+//         const airpodStartY = 75; // Bottom
 
-        // Create curved path
-        const controlX = (spideyX + airpodStartX) / 2 - 10;
-        const controlY = (spideyY + airpodStartY) / 2;
-        webPath1.setAttribute('d', `M ${spideyX} ${spideyY} Q ${controlX} ${controlY}, ${airpodStartX} ${airpodStartY}`);
-    }
+//         // Create curved path
+//         const controlX = (spideyX + airpodStartX) / 2 - 10;
+//         const controlY = (spideyY + airpodStartY) / 2;
+//         webPath1.setAttribute('d', `M ${spideyX} ${spideyY} Q ${controlX} ${controlY}, ${airpodStartX} ${airpodStartY}`);
+//     }
 
-    // Stage 4: Pull AirPod (0.4-0.9)
-    if (progress > 0.4 && progress <= 0.9) {
-        const pullProgress = (progress - 0.4) / 0.5;
-        const easePull = easeInOutCubic(pullProgress);
+//     // Stage 4: Pull AirPod (0.4-0.9)
+//     if (progress > 0.4 && progress <= 0.9) {
+//         const pullProgress = (progress - 0.4) / 0.5;
+//         const easePull = easeInOutCubic(pullProgress);
 
-        // Start position (bottom left)
-        const startX = 10;
-        const startY = 15;
+//         // Start position (bottom left)
+//         const startX = 10;
+//         const startY = 15;
         
-        // Target position (near Spiderman, top right)
-        const targetX = 70;
-        const targetY = 25;
+//         // Target position (near Spiderman, top right)
+//         const targetX = 70;
+//         const targetY = 25;
 
-        // Calculate current position
-        const currentX = startX + (targetX - startX) * easePull;
-        const currentY = startY + (targetY - startY) * easePull;
+//         // Calculate current position
+//         const currentX = startX + (targetX - startX) * easePull;
+//         const currentY = startY + (targetY - startY) * easePull;
 
-        airpod1.style.left = `${currentX}%`;
-        airpod1.style.bottom = `${currentY}%`;
-        airpod1.style.transform = `scale(${1 - easePull * 0.4}) rotateZ(${easePull * 720}deg) rotateY(${easePull * 360}deg)`;
+//         airpod1.style.left = `${currentX}%`;
+//         airpod1.style.bottom = `${currentY}%`;
+//         airpod1.style.transform = `scale(${1 - easePull * 0.4}) rotateZ(${easePull * 720}deg) rotateY(${easePull * 360}deg)`;
 
-        // Update web path during pull
-        const spideyX = 85;
-        const spideyY = 25;
-        const controlX = (spideyX + currentX) / 2 - (1 - easePull) * 10;
-        const controlY = (spideyY + (100 - currentY)) / 2;
-        webPath1.setAttribute('d', `M ${spideyX} ${spideyY} Q ${controlX} ${controlY}, ${currentX} ${100 - currentY}`);
+//         // Update web path during pull
+//         const spideyX = 85;
+//         const spideyY = 25;
+//         const controlX = (spideyX + currentX) / 2 - (1 - easePull) * 10;
+//         const controlY = (spideyY + (100 - currentY)) / 2;
+//         webPath1.setAttribute('d', `M ${spideyX} ${spideyY} Q ${controlX} ${controlY}, ${currentX} ${100 - currentY}`);
 
-        // Add catch effect at end
-        if (pullProgress > 0.85 && !airpod1.classList.contains('caught')) {
-            airpod1.classList.add('caught');
-        }
-    }
+//         // Add catch effect at end
+//         if (pullProgress > 0.85 && !airpod1.classList.contains('caught')) {
+//             airpod1.classList.add('caught');
+//         }
+//     }
 
-    // Stage 5: Animation complete (0.9+)
-    if (progress >= 0.9) {
-        // Fade out web
-        webPath1.style.opacity = 1 - (progress - 0.9) * 10;
+//     // Stage 5: Animation complete (0.9+)
+//     if (progress >= 0.9) {
+//         // Fade out web
+//         webPath1.style.opacity = 1 - (progress - 0.9) * 10;
         
-        // Show text
-        heroText.classList.add('active');
+//         // Show text
+//         heroText.classList.add('active');
 
-        // Mark animation as complete
-        if (!animationComplete) {
-            animationComplete = true;
-            // Allow normal scrolling after a brief delay
-            setTimeout(() => {
-                document.body.style.overflow = 'auto';
-            }, 500);
-        }
-    }
-}
+//         // Mark animation as complete
+//         if (!animationComplete) {
+//             animationComplete = true;
+//             // Allow normal scrolling after a brief delay
+//             setTimeout(() => {
+//                 document.body.style.overflow = 'auto';
+//             }, 500);
+//         }
+//     }
+// }
 
-function handleSpidermanAnimation() {
-    const section = document.querySelector('.superhero-section');
-    const rect = section.getBoundingClientRect();
+// function handleSpidermanAnimation() {
+//     const section = document.querySelector('.superhero-section');
+//     const rect = section.getBoundingClientRect();
     
-    // Calculate progress based on section visibility
-    let progress = 0;
-    if (rect.top <= 0) {
-        progress = Math.min(Math.abs(rect.top) / window.innerHeight, 1);
+//     // Calculate progress based on section visibility
+//     let progress = 0;
+//     if (rect.top <= 0) {
+//         progress = Math.min(Math.abs(rect.top) / window.innerHeight, 1);
+//     }
+
+//     updateAnimation(progress);
+// }
+
+// ============================================
+// TWS SCROLL ANIMATION
+// Add this JavaScript to the END of your script.js file
+// ============================================
+
+// TWS Configuration
+const TWS_CONFIG = {
+    FRAME_COUNT: 40,
+    IMAGE_PATH: 'assets/frames/tws-pics/',
+    IMAGE_PREFIX: 'ezgif-frame-',
+    IMAGE_EXTENSION: '.jpg',
+    PADDING_SIZE: 3
+};
+
+// TWS DOM Elements
+const twsElements = {
+    canvas: document.getElementById('twsCanvas'),
+    loadingScreen: document.getElementById('twsLoadingScreen'),
+    loadingProgress: document.getElementById('twsLoadingProgress'),
+    heroOverlay: document.getElementById('twsHeroOverlay'),
+    scrollIndicator: document.getElementById('twsScrollIndicator'),
+    textOverlay1: document.getElementById('twsText1'),
+    textOverlay2: document.getElementById('twsText2'),
+    textOverlay3: document.getElementById('twsText3'),
+    section: document.querySelector('.tws-scroll-section')
+};
+
+// Check if canvas exists before initializing
+if (twsElements.canvas) {
+    const twsContext = twsElements.canvas.getContext('2d');
+
+    // TWS State
+    const twsState = {
+        images: [],
+        imagesLoaded: 0,
+        currentFrame: 0
+    };
+
+    // Utility: Pad number with zeros
+    function twsPadNumber(num, size = TWS_CONFIG.PADDING_SIZE) {
+        return String(num).padStart(size, '0');
     }
 
-    updateAnimation(progress);
+    // Utility: Clamp value
+    function twsClamp(value, min, max) {
+        return Math.max(min, Math.min(value, max));
+    }
+
+    // Utility: Ease in-out
+    function twsEaseInOut(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    // Preload TWS Images
+    function twsPreloadImages() {
+        for (let i = 1; i <= TWS_CONFIG.FRAME_COUNT; i++) {
+            const img = new Image();
+            const frameNumber = twsPadNumber(i);
+            img.src = `${TWS_CONFIG.IMAGE_PATH}${TWS_CONFIG.IMAGE_PREFIX}${frameNumber}${TWS_CONFIG.IMAGE_EXTENSION}`;
+            
+            img.onload = () => twsHandleImageLoad(img, i);
+            img.onerror = () => twsHandleImageError(img.src);
+        }
+    }
+
+    // Handle Image Load
+    function twsHandleImageLoad(img, index) {
+        twsState.images[index - 1] = img;
+        twsState.imagesLoaded++;
+        twsUpdateLoadingProgress();
+        
+        if (twsState.imagesLoaded === TWS_CONFIG.FRAME_COUNT) {
+            twsFinishLoading();
+        }
+    }
+
+    // Handle Image Error
+    function twsHandleImageError(src) {
+        console.error(`Failed to load TWS frame: ${src}`);
+        twsState.imagesLoaded++;
+        twsUpdateLoadingProgress();
+        
+        if (twsState.imagesLoaded === TWS_CONFIG.FRAME_COUNT) {
+            twsFinishLoading();
+        }
+    }
+
+    // Update Loading Progress
+    function twsUpdateLoadingProgress() {
+        const progress = Math.round((twsState.imagesLoaded / TWS_CONFIG.FRAME_COUNT) * 100);
+        if (twsElements.loadingProgress) {
+            twsElements.loadingProgress.textContent = `${progress}%`;
+        }
+    }
+
+    // Finish Loading
+    function twsFinishLoading() {
+        twsSetCanvasSize();
+        twsRenderFrame(0);
+    }
+
+    // Set Canvas Size
+    function twsSetCanvasSize() {
+        if (twsElements.canvas) {
+            twsElements.canvas.width = window.innerWidth;
+            twsElements.canvas.height = window.innerHeight;
+            twsRenderFrame(twsState.currentFrame);
+        }
+    }
+
+    // Calculate Cover Dimensions
+    function twsCalculateCoverDimensions(canvasWidth, canvasHeight, imgWidth, imgHeight) {
+        const canvasAspect = canvasWidth / canvasHeight;
+        const imgAspect = imgWidth / imgHeight;
+
+        let drawWidth, drawHeight, offsetX, offsetY;
+
+        if (canvasAspect > imgAspect) {
+            drawWidth = canvasWidth;
+            drawHeight = canvasWidth / imgAspect;
+            offsetX = 0;
+            offsetY = (canvasHeight - drawHeight) / 2;
+        } else {
+            drawWidth = canvasHeight * imgAspect;
+            drawHeight = canvasHeight;
+            offsetX = (canvasWidth - drawWidth) / 2;
+            offsetY = 0;
+        }
+
+        return { drawWidth, drawHeight, offsetX, offsetY };
+    }
+
+    // Render Frame
+    function twsRenderFrame(index) {
+        const safeIndex = twsClamp(Math.floor(index), 0, TWS_CONFIG.FRAME_COUNT - 1);
+        const img = twsState.images[safeIndex];
+        
+        if (!img || !img.complete) return;
+
+        twsContext.clearRect(0, 0, twsElements.canvas.width, twsElements.canvas.height);
+
+        const dimensions = twsCalculateCoverDimensions(
+            twsElements.canvas.width,
+            twsElements.canvas.height,
+            img.width,
+            img.height
+        );
+
+        twsContext.drawImage(
+            img,
+            dimensions.offsetX,
+            dimensions.offsetY,
+            dimensions.drawWidth,
+            dimensions.drawHeight
+        );
+    }
+
+    // Calculate Text Opacity
+    function twsCalculateTextOpacity(scrollFraction, fadeInStart, fadeInEnd, fadeOutEnd) {
+        if (scrollFraction < fadeInStart) {
+            return 0;
+        } else if (scrollFraction < fadeInEnd) {
+            const progress = (scrollFraction - fadeInStart) / (fadeInEnd - fadeInStart);
+            return twsEaseInOut(progress);
+        } else if (scrollFraction < fadeOutEnd) {
+            const progress = (scrollFraction - fadeInEnd) / (fadeOutEnd - fadeInEnd);
+            return 1 - twsEaseInOut(progress);
+        } else {
+            return 0;
+        }
+    }
+
+    // Handle TWS Scroll
+    function twsHandleScroll() {
+        if (!twsElements.section) return;
+
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const sectionTop = twsElements.section.offsetTop;
+        const sectionHeight = twsElements.section.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        
+        // Check if we're in the TWS section
+        if (scrollTop < sectionTop - viewportHeight || scrollTop > sectionTop + sectionHeight) {
+            return;
+        }
+
+        const relativeScroll = scrollTop - sectionTop;
+        const maxScroll = sectionHeight - viewportHeight;
+        const scrollFraction = twsClamp(relativeScroll / maxScroll, 0, 1);
+
+        // Update Frame
+        const targetFrame = Math.floor(scrollFraction * (TWS_CONFIG.FRAME_COUNT - 1));
+        if (targetFrame !== twsState.currentFrame) {
+            twsState.currentFrame = targetFrame;
+            twsRenderFrame(targetFrame);
+        }
+
+        // Update Hero Overlay - Start visible, fade out on scroll
+        const heroOpacity = scrollFraction < 0.2 ? 1 : Math.max(0, 1 - ((scrollFraction - 0.2) * 3));
+        const heroScale = 1 - (scrollFraction * 0.05);
+        if (twsElements.heroOverlay) {
+            twsElements.heroOverlay.style.opacity = heroOpacity;
+            twsElements.heroOverlay.style.transform = `scale(${heroScale})`;
+        }
+
+        // Update Scroll Indicator
+        if (twsElements.scrollIndicator) {
+            const indicatorOpacity = relativeScroll > 100 ? 0 : 1;
+            twsElements.scrollIndicator.style.opacity = indicatorOpacity;
+        }
+
+        // Update Text Overlays
+        if (twsElements.textOverlay1) {
+            const text1Opacity = twsCalculateTextOpacity(scrollFraction, 0.1, 0.2, 0.3);
+            twsElements.textOverlay1.style.opacity = text1Opacity;
+        }
+
+        if (twsElements.textOverlay2) {
+            const text2Opacity = twsCalculateTextOpacity(scrollFraction, 0.4, 0.5, 0.6);
+            twsElements.textOverlay2.style.opacity = text2Opacity;
+        }
+
+        if (twsElements.textOverlay3) {
+            const text3Opacity = twsCalculateTextOpacity(scrollFraction, 0.7, 0.8, 0.9);
+            twsElements.textOverlay3.style.opacity = text3Opacity;
+        }
+    }
+
+    // Optimized Scroll Event
+    let twsTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!twsTicking) {
+            requestAnimationFrame(() => {
+                twsHandleScroll();
+                twsTicking = false;
+            });
+            twsTicking = true;
+        }
+    }, { passive: true });
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+        twsSetCanvasSize();
+    });
+
+    // Initialize TWS Animation
+    function initTWSAnimation() {
+        twsPreloadImages();
+        twsHandleScroll();
+    }
+
+    // Start TWS Animation
+    initTWSAnimation();
 }
 
 // Easing functions
@@ -1202,3 +1457,4 @@ updateCartCount();
 
 // Store recently viewed products in sessionStorage
 sessionStorage.setItem('lastVisited', new Date().toISOString());
+
