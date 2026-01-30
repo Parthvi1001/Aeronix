@@ -1361,7 +1361,7 @@ if (twsElements.canvas) {
             const indicatorOpacity = relativeScroll > 100 ? 0 : 1;
             twsElements.scrollIndicator.style.opacity = indicatorOpacity;
         }
-
+// hello
         // Update Text Overlays
         if (twsElements.textOverlay1) {
             const text1Opacity = twsCalculateTextOpacity(scrollFraction, 0.15, 0.25, 0.4);
