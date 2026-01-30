@@ -1346,15 +1346,16 @@ if (twsElements.canvas) {
             twsElements.heroOverlay.style.transform = `scale(${heroScale})`;
         }
         
-        // Show/hide navbar logo based on scroll position
-        const navbar = document.querySelector('.navbar');
-        if (navbar) {
-            if (scrollTop > 300) {
-                navbar.classList.add('hide-logo');
-            } else {
-                navbar.classList.remove('hide-logo');
-            }
-        }
+        // Previously the navbar logo was hidden after scrolling past a threshold.
+        // Keep the logo visible at all times by not toggling the `hide-logo` class.
+        // const navbar = document.querySelector('.navbar');
+        // if (navbar) {
+        //     if (scrollTop > 300) {
+        //         navbar.classList.add('hide-logo');
+        //     } else {
+        //         navbar.classList.remove('hide-logo');
+        //     }
+        // }
 
         // Update Scroll Indicator
         if (twsElements.scrollIndicator) {

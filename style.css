@@ -210,8 +210,9 @@ body.light-mode .theme-toggle:hover {
 }
 
 .navbar.hide-logo .logo {
-    opacity: 0;
-    pointer-events: none;
+    /* Prevent JS from hiding the logo; keep visible */
+    opacity: 1 !important;
+    pointer-events: auto !important;
     transition: opacity 0.3s ease;
 }
 
@@ -250,8 +251,8 @@ body.light-mode .navbar:hover .nav-container {
 
 .logo {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 800;
     letter-spacing: 3px;
     color: #ffffff;
     text-decoration: none;
@@ -277,23 +278,53 @@ body.light-mode .logo {
 }
 
 .nav-item {
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 1.05rem;
+    font-weight: 700;
     cursor: pointer;
     white-space: nowrap;
 
     background: transparent;
-    color: rgba(255,255,255,0.8);
-    transition: color 0.2s ease;
+    /* color: rgba(255,255,255,0.95); */
+    transition: color 0.18s ease, transform 0.18s ease;
 }
 
 .nav-item:hover {
     color: #ffffff;
 }
 
-body.light-mode .nav-item {
-    color: rgba(13,27,42,0.75);
+/* Enlarge product name inside mega-menu when hovering the parent nav item */
+.nav-item.shop:hover .mega-menu .right .card p {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--accent-strong);
+    transform: translateY(-4px);
+    transition: all 0.22s ease;
 }
+
+.nav-item.shop .mega-menu .right .card p {
+    transition: all 0.22s ease;
+}
+
+/* Ensure mega-menu product names are readable and adjust for light/dark themes */
+.mega-menu .right .card p {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111; /* default for white mega-menu background */
+    margin: 0.6rem 0 0.8rem;
+}
+
+body.light-mode .mega-menu .right .card p {
+    color: #111;
+}
+
+/* If site uses a dark mega-menu in future, allow nav hover color to show */
+body:not(.light-mode) .mega-menu .right .card p {
+    color: #111;
+}
+
+/* body.light-mode .nav-item {
+    color: rgba(13,27,42,0.75);
+} */
 
 body.light-mode .nav-item:hover {
     color: #0d1b2a;
@@ -426,6 +457,52 @@ body.light-mode .nav-btn-primary {
 body.light-mode .nav-btn-primary:hover {
     background: #1a2d42;
 }
+
+/* ================= TEXT COLOR BASED ON BACKGROUND ================= */
+
+/* DEFAULT (DARK BACKGROUND / HERO VIDEO) */
+.logo,
+.nav-item,
+.nav-btn-secondary,
+.theme-toggle {
+    color: #ffffff;
+}
+
+/* DARK MODE HOVER */
+.nav-item:hover,
+.nav-btn-secondary:hover {
+    color: #ffffff;
+}
+
+/* ================= LIGHT MODE ================= */
+
+body.light-mode .logo,
+body.light-mode .nav-item,
+body.light-mode .nav-btn-secondary,
+body.light-mode .theme-toggle {
+    color: #0d1b2a;
+}
+
+/* LIGHT MODE HOVER */
+body.light-mode .nav-item:hover,
+body.light-mode .nav-btn-secondary:hover {
+    color: #000000;
+}
+
+/* ================= PRIMARY BUTTON ================= */
+
+/* DARK MODE */
+.nav-btn-primary {
+    background: #ffffff;
+    color: #0a0e27;
+}
+
+/* LIGHT MODE */
+body.light-mode .nav-btn-primary {
+    background: #0d1b2a;
+    color: #ffffff;
+}
+
 
 /* Mobile menu toggle */
 .mobile-toggle {
