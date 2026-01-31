@@ -6,7 +6,9 @@
     <title>Aerox - Premium Drone Technology</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&display=swap');
         /* General Styles */
         :root {
             --primary-yellow: #FFC107;
@@ -26,28 +28,84 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: #FFFFFF;
             color: var(--text-dark);
+            padding-top: 90px;
         }
 
         /* Navbar */
         .navbar {
             border-bottom: 1px solid var(--border-color);
+            background: #ffffff;
+            box-shadow: none;
+            transition: background 0.3s ease, backdrop-filter 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar:hover {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(14px);
+        }
+
+        .navbar.scrolled {
+            background: transparent;
+            backdrop-filter: none;
         }
 
         .navbar-brand {
-            font-size: 1.75rem;
-            letter-spacing: -0.5px;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            font-family: 'Rajdhani', sans-serif;
+            color: #000000 !important;
         }
 
         .nav-link {
-            color: var(--text-dark) !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem !important;
+            color: #000000 !important;
+            font-weight: 600;
+            margin: 0 1rem;
             transition: color 0.3s ease;
+            font-family: 'Rajdhani', sans-serif;
         }
 
         .nav-link:hover,
         .nav-link.active {
-            color: var(--primary-yellow) !important;
+            color: #000000 !important;
+        }
+
+        .navbar .action-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .navbar .action-btn:hover {
+            background: #f5f5f5;
+            transform: scale(1.1);
+        }
+
+        .btn-build {
+            background: #ffb800;
+            color: white;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-build:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 184, 0, 0.3);
         }
 
         .btn-warning {
@@ -557,20 +615,20 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand fw-bold text-warning fs-3" href="#" onclick="showPage('home')">Aerox</a>
+            <a class="navbar-brand" href="#">AEROXNIX</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="showPage('home')">Home</a>
+                        <a class="nav-link" href="aeronix.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="showPage('home')">Models</a>
+                        <a class="nav-link active" href="#" onclick="showPage('home')">Models</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="showPage('configure')">Configure</a>
@@ -581,20 +639,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
-                    <li class="nav-item ms-3">
-                        <button class="btn btn-link text-dark">
-                            <i class="far fa-heart fs-5"></i>
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="btn btn-link text-dark">
-                            <i class="fas fa-random fs-5"></i>
-                        </button>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <button class="btn btn-warning rounded-pill px-4 fw-semibold" onclick="showPage('configure')">Build Yours</button>
-                    </li>
                 </ul>
+                <div class="d-flex gap-3 align-items-center">
+                    <button class="action-btn">
+                        <i class="bi bi-heart"></i>
+                    </button>
+                    <button class="action-btn">
+                        <i class="bi bi-shuffle"></i>
+                    </button>
+                    <button class="btn-build" onclick="showPage('configure')">Build Yours</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -673,7 +727,7 @@
                             <h3 class="summary-title">Configuration Summary</h3>
                             <div class="summary-item">
                                 <span class="summary-label">Base Model</span>
-                                <span class="summary-value" id="summaryModel">Aerox X1 - $799</span>
+                                <span class="summary-value" id="summaryModel">Aeronix X1 - $799</span>
                             </div>
                             <div class="summary-item">
                                 <span class="summary-label">Camera</span>
@@ -703,7 +757,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 mb-4">
-                    <h4 class="text-warning fw-bold mb-3">Aerox</h4>
+                    <h4 class="text-warning fw-bold mb-3">Aeronix</h4>
                     <p class="text-muted">Redefining aerial excellence with next-generation drone technology.</p>
                     <div class="d-flex gap-3 mt-3">
                         <a href="#" class="text-dark"><i class="fab fa-twitter fs-5"></i></a>
@@ -735,7 +789,7 @@
                     <ul class="list-unstyled">
                         <li class="mb-2 text-muted"><i class="fas fa-map-marker-alt text-warning me-2"></i>San Francisco, CA</li>
                         <li class="mb-2 text-muted"><i class="fas fa-phone text-warning me-2"></i>+1 (555) 123-4567</li>
-                        <li class="mb-2 text-muted"><i class="fas fa-envelope text-warning me-2"></i>hello@Aerox.com</li>
+                        <li class="mb-2 text-muted"><i class="fas fa-envelope text-warning me-2"></i>hello@Aeronix.com</li>
                     </ul>
                 </div>
             </div>
@@ -744,11 +798,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        const droneNavbar = document.querySelector('.navbar');
+        const updateDroneNavbar = () => {
+            if (!droneNavbar) return;
+            droneNavbar.classList.toggle('scrolled', window.scrollY > 0);
+        };
+        window.addEventListener('scroll', updateDroneNavbar, { passive: true });
+        window.addEventListener('load', updateDroneNavbar);
+    </script>
+    <script>
         // Drone Data
         const drones = [
             {
                 id: 1,
-                name: "Aerox X1",
+                name: "Aeronix X1",
                 price: 799,
                 tagline: "The Perfect Start",
                 badge: "CONSUMER",
@@ -762,7 +825,7 @@
             },
             {
                 id: 2,
-                name: "Aerox Pro",
+                name: "Aeronix Pro",
                 price: 1499,
                 tagline: "Professional Grade",
                 badge: "PROFESSIONAL",
@@ -776,7 +839,7 @@
             },
             {
                 id: 3,
-                name: "Aerox Ultra",
+                name: "Aeronix Ultra",
                 price: 2999,
                 tagline: "Beyond Limits",
                 badge: "PROFESSIONAL",
@@ -790,7 +853,7 @@
             },
             {
                 id: 4,
-                name: "Aerox Mini",
+                name: "Aeronix Mini",
                 price: 399,
                 tagline: "Compact Adventure",
                 badge: "CONSUMER",
@@ -804,7 +867,7 @@
             },
             {
                 id: 5,
-                name: "Aerox Sport",
+                name: "Aeronix Sport",
                 price: 1899,
                 tagline: "Racing Performance",
                 badge: "PROFESSIONAL",
@@ -818,7 +881,7 @@
             },
             {
                 id: 6,
-                name: "Aerox Titan",
+                name: "Aeronix Titan",
                 price: 5499,
                 tagline: "Industrial Power",
                 badge: "ENTERPRISE",
@@ -832,7 +895,7 @@
             },
             {
                 id: 7,
-                name: "Aerox Nano",
+                name: "Aeronix Nano",
                 price: 199,
                 tagline: "Pocket Explorer",
                 badge: "CONSUMER",
@@ -846,7 +909,7 @@
             },
             {
                 id: 8,
-                name: "Aerox Sentinel",
+                name: "Aeronix Sentinel",
                 price: 8999,
                 tagline: "Security Excellence",
                 badge: "ENTERPRISE",
