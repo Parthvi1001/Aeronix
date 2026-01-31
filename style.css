@@ -491,11 +491,6 @@ body.light-mode .nav-btn-secondary:hover {
 
 /* ================= PRIMARY BUTTON ================= */
 
-/* DARK MODE */
-.nav-btn-primary {
-    background: #ffffff;
-    color: #0a0e27;
-}
 
 /* LIGHT MODE */
 body.light-mode .nav-btn-primary {
