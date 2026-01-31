@@ -346,30 +346,6 @@ body.light-mode .nav-item:hover {
     flex-shrink: 0;
 }
 
-/* Navbar contrast mode: when .light-nav is present make text dark */
-.navbar.light-nav .nav-item,
-.navbar.light-nav .nav-btn-secondary,
-.navbar.light-nav .nav-btn-primary,
-.navbar.light-nav .theme-toggle,
-.navbar.light-nav .mobile-toggle span,
-.navbar.light-nav .logo {
-    color: #0d1b2a !important;
-}
-
-.navbar.light-nav .nav-btn-primary {
-    background: #0d1b2a;
-    color: #fff;
-}
-
-.navbar.light-nav .theme-toggle {
-    background: rgba(0,0,0,0.05);
-    color: #0d1b2a;
-}
-
-.navbar.light-nav .mobile-toggle {
-    background: rgba(0,0,0,0.04);
-}
-
 /* THEME TOGGLE */
 .theme-toggle {
     width: 36px;
@@ -2354,27 +2330,7 @@ footer {
     }
 }
 
-/* =========================
-   NAVBAR TEXT COLOR – FINAL
-   ========================= */
 
-.navbar .nav-link,
-.navbar .logo,
-.navbar .theme-toggle,
-.navbar .theme-toggle i,
-.navbar .get-started {
-    color: black;
-    transition: color 0.3s ease;
-}
-
-.navbar.light-nav .nav-link,
-.navbar.light-nav .logo,
-.navbar.light-nav .theme-toggle,
-.navbar.light-nav .theme-toggle i,
-.navbar.light-nav .get-started {
-    color: white !important;
-}
-/* ======= */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
 
 * {
@@ -4677,4 +4633,22 @@ footer {
         height: 100%;
     }
 }
-/* >>>>>>> 9bc49d7e982f7c9b005c147bb13171bbeac44263 */
+/* =================================
+   NAVBAR – FINAL, SINGLE SOURCE
+   ================================= */
+
+/* DARK MODE (default) */
+body:not(.light-mode) .navbar,
+body:not(.light-mode) .navbar a,
+body:not(.light-mode) .navbar button,
+body:not(.light-mode) .navbar i {
+    color: #ffffff !important;
+}
+
+/* LIGHT MODE */
+body.light-mode .navbar,
+body.light-mode .navbar a,
+body.light-mode .navbar button,
+body.light-mode .navbar i {
+    color: #000000 !important;
+}
