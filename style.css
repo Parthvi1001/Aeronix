@@ -289,6 +289,12 @@ body.light-mode .logo {
     transition: color 0.18s ease, transform 0.18s ease;
 }
 
+.nav-item a {
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+}
+
 .nav-item:hover {
     color: #ffffff;
 }
