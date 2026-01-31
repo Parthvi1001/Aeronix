@@ -1667,47 +1667,47 @@ sessionStorage.setItem('lastVisited', new Date().toISOString());
 // ================================
 // FINAL NAVBAR COLOR CONTROLLER
 // ================================
-document.addEventListener("DOMContentLoaded", () => {
-    const navbar = document.querySelector(".navbar");
-    const hero = document.querySelector(".hero-section");
-    const horizontal = document.querySelector(".horizontal-section");
-    const tws = document.querySelector(".tws-scroll-section");
+// document.addEventListener("DOMContentLoaded", () => {
+//     const navbar = document.querySelector(".navbar");
+//     const hero = document.querySelector(".hero-section");
+//     const horizontal = document.querySelector(".horizontal-section");
+//     const tws = document.querySelector(".tws-scroll-section");
 
-    if (!navbar || !hero || !horizontal || !tws) return;
+//     if (!navbar || !hero || !horizontal || !tws) return;
 
-    function updateNavbarColor() {
-        const scrollY = window.scrollY + 80;
+//     function updateNavbarColor() {
+//         const scrollY = window.scrollY + 80;
 
-        // DARK MODE → ALWAYS WHITE
-        if (!document.body.classList.contains("light-mode")) {
-            navbar.classList.add("light-nav");
-            return;
-        }
+//         // DARK MODE → ALWAYS WHITE
+//         if (!document.body.classList.contains("light-mode")) {
+//             navbar.classList.add("light-nav");
+//             return;
+//         }
 
-        const heroEnd = hero.offsetTop + hero.offsetHeight;
-        const horizontalStart = horizontal.offsetTop;
-        const twsStart = tws.offsetTop;
-        const twsEnd = tws.offsetTop + tws.offsetHeight;
+//         const heroEnd = hero.offsetTop + hero.offsetHeight;
+//         const horizontalStart = horizontal.offsetTop;
+//         const twsStart = tws.offsetTop;
+//         const twsEnd = tws.offsetTop + tws.offsetHeight;
 
-        // HERO → WHITE
-        if (scrollY < heroEnd) {
-            navbar.classList.add("light-nav");
-        }
-        // HORIZONTAL → BLACK
-        else if (scrollY >= horizontalStart && scrollY < twsStart) {
-            navbar.classList.remove("light-nav");
-        }
-        // TWS → WHITE
-        else if (scrollY >= twsStart && scrollY < twsEnd) {
-            navbar.classList.add("light-nav");
-        }
-        // AFTER TWS → BLACK
-        else {
-            navbar.classList.remove("light-nav");
-        }
-    }
+//         // HERO → WHITE
+//         if (scrollY < heroEnd) {
+//             navbar.classList.add("light-nav");
+//         }
+//         // HORIZONTAL → BLACK
+//         else if (scrollY >= horizontalStart && scrollY < twsStart) {
+//             navbar.classList.remove("light-nav");
+//         }
+//         // TWS → WHITE
+//         else if (scrollY >= twsStart && scrollY < twsEnd) {
+//             navbar.classList.add("light-nav");
+//         }
+//         // AFTER TWS → BLACK
+//         else {
+//             navbar.classList.remove("light-nav");
+//         }
+//     }
 
-    window.addEventListener("scroll", updateNavbarColor, { passive: true });
-    window.addEventListener("resize", updateNavbarColor);
-    updateNavbarColor();
-});
+//     window.addEventListener("scroll", updateNavbarColor, { passive: true });
+//     window.addEventListener("resize", updateNavbarColor);
+//     updateNavbarColor();
+// });
