@@ -3271,6 +3271,24 @@ body.light-mode .video-slide::before {
     }
 }
 
+
+.hero {
+  position: relative;
+}
+
+.hero-bottom-text {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  opacity: 0.65;
+  letter-spacing: 0.5px;
+  text-align: center;
+  pointer-events: none;
+}
+
+
 /* HORIZONTAL DRONE SHOWCASE */
 /* .horizontal-section {
     height: 300vh;
