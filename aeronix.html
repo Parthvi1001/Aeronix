@@ -22,17 +22,18 @@
 
                 <!-- PRODUCTS = MEGA MENU -->
                 <li class="nav-item shop">
-                    <div href="#">Airpod</div>
+                    <div href="#">Earburds</div>
 
                     <div class="mega-menu">
                         <div class="left">
                             <h4>PRODUCTS</h4>
                             <ul>
-                                <li>All Drones</li>
-                                <li>Fixed-wings</li>
-                                <li>Single-Router</li>
-                                <li>Multi-rotor</li>
-                                <li>HybridVTOL</li>
+                                <br>
+                                <li>Aeronix Buds 4v ANC </li><br>
+                                <li>Aeronix Nord Burds 2r True</li><br>
+                                <li>Aeronix Buds 3 pro</li><br>
+                                <li>Aeronix Wireless Buds 3 TWS</li><br>
+                                <li>Aeronix Dual mic Z2</li><br>
                             </ul>
                             <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
                         </div>
@@ -64,11 +65,12 @@
                         <div class="left">
                             <h4>PRODUCTS</h4>
                             <ul>
-                                <li>All Products</li>
-                                <li>Drones</li>
-                                <li>Headphones</li>
-                                <li>Airbeds</li>
-                                <li>Accessories</li>
+                                <br>
+                                <li>Aeronix Rockerz 450</li><br>
+                                <li>Aeronix Tune 770NC</li><br>
+                                <li>Headphones</li><br>
+                                <li>Aeronix Studio H1</li><br>
+                                <li>Aeronix Thunder</li><br>
                             </ul>
                             <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
                         </div>
@@ -100,11 +102,12 @@
                         <div class="left">
                             <h4>PRODUCTS</h4>
                             <ul>
-                                <li>All Drones</li>
-                                <li>Fixed-wings</li>
-                                <li>Single-Router</li>
-                                <li>Multi-rotor</li>
-                                <li>HybridVTOL</li>
+                                <br>
+                                <li>All Drones</li><br>
+                                <li>Fixed-wings</li><br>
+                                <li>Single-Router</li><br>
+                                <li>Multi-rotor</li><br>
+                                <li>HybridVTOL</li><br>
                             </ul>
                             <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
                         </div>
@@ -131,8 +134,9 @@
 
                 <!-- NORMAL ITEMS -->
                 <li class="nav-item">
-                    <div href="#">About</div>
+                    <a href="#about" class="nav-link">About</a>
                 </li>
+
             </ul>
 
             <div class="nav-actions">
@@ -160,6 +164,7 @@
                     aria-current="true"></button>
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
                 <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
             </div>
 
             <!-- SLIDES -->
@@ -175,14 +180,21 @@
                 <!-- SLIDE 2 -->
                 <div class="carousel-item">
                     <video class="hero-video" autoplay muted loop playsinline>
-                        <source src="headphone.mp4" type="video/mp4">
+                        <source src="HP2.mp4" type="video/mp4">
                     </video>
                 </div>
 
                 <!-- SLIDE 3 -->
                 <div class="carousel-item">
                     <video class="hero-video" autoplay muted loop playsinline>
-                        <source src="earburds.mp4" type="video/mp4">
+                        <source src="EB.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- SLIDE 4 -->
+                <div class="carousel-item">
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="HP1.mp4" type="video/mp4">
                     </video>
                 </div>
 
@@ -328,50 +340,50 @@
      Add this AFTER the horizontal-section (drone section)
      ============================================ -->
 
-<section class="tws-scroll-section">
-    <div class="tws-canvas-container">
-        <canvas id="twsCanvas"></canvas>
-        
-        <!-- Hero Title Overlay -->
-        <div class="tws-hero-overlay" id="twsHeroOverlay">
-            <h1>SOUND<br>REINVENTED</h1>
-            <p>Experience audio in its purest form.</p>
-        </div>
+    <section class="tws-scroll-section">
+        <div class="tws-canvas-container">
+            <canvas id="twsCanvas"></canvas>
 
-        <!-- Scroll-triggered Text Overlays -->
-        <div class="tws-text-overlay tws-text-1" id="twsText1">
-            <h2>Precision Engineering.</h2>
-            <p>Every component aligned.</p>
-        </div>
+            <!-- Hero Title Overlay -->
+            <div class="tws-hero-overlay" id="twsHeroOverlay">
+                <h1>SOUND<br>REINVENTED</h1>
+                <p>Experience audio in its purest form.</p>
+            </div>
+
+            <!-- Scroll-triggered Text Overlays -->
+            <div class="tws-text-overlay tws-text-1" id="twsText1">
+                <h2>Precision Engineering.</h2>
+                <p>Every component aligned.</p>
+            </div>
             <!-- <hello></hello> -->
-        <div class="tws-text-overlay tws-text-2" id="twsText2">
-            <h2>Titanium Drivers.</h2>
-            <p>11mm of pure power.</p>
+            <div class="tws-text-overlay tws-text-2" id="twsText2">
+                <h2>Titanium Drivers.</h2>
+                <p>11mm of pure power.</p>
+            </div>
+
+            <div class="tws-text-overlay tws-text-3" id="twsText3">
+                <h2>All Day Battery.</h2>
+            </div>
+
+            <!-- Gradient Overlay -->
+            <div class="tws-gradient-overlay"></div>
         </div>
 
-        <div class="tws-text-overlay tws-text-3" id="twsText3">
-            <h2>All Day Battery.</h2>
+        <!-- Scroll Indicator -->
+        <div class="tws-scroll-indicator" id="twsScrollIndicator">
+            <p>Scroll</p>
+            <div class="tws-scroll-arrow"></div>
         </div>
-
-        <!-- Gradient Overlay -->
-        <div class="tws-gradient-overlay"></div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="tws-scroll-indicator" id="twsScrollIndicator">
-        <p>Scroll</p>
-        <div class="tws-scroll-arrow"></div>
-    </div>
-</section>
+    </section>
 
     <!-- PRODUCTS SECTION -->
     <section class="products-section">
-        <h2 class="section-title">Our Products</h2> 
+        <h2 class="section-title">Our Products</h2>
         <div class="product-grid" id="productGrid"></div>
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="about-section">
+    <section class="about-section" id="about">
         <div class="about-content" id="aboutContent">
             <h2 class="about-title" id="aboutTitle">AERONIX</h2>
             <p class="about-text">

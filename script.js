@@ -1,3 +1,192 @@
+
+// NAVBAR CONTRAST DETECTION
+function getUnderlyingElement(x, y) {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return document.elementFromPoint(x, y);
+    const prev = navbar.style.pointerEvents;
+    navbar.style.pointerEvents = 'none';
+    const el = document.elementFromPoint(x, y);
+    navbar.style.pointerEvents = prev;
+    return el;
+}
+
+function rgbToLuminance(r, g, b) {
+    // convert sRGB to linear
+    const srgb = [r, g, b].map((v) => {
+        v = v / 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * srgb[0] + 0.7152 * srgb[1] + 0.0722 * srgb[2];
+}
+
+function resolveBackgroundColor(el) {
+    while (el && el !== document.documentElement) {
+        const style = getComputedStyle(el);
+        const bg = style.backgroundColor;
+        if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') return bg;
+        el = el.parentElement;
+    }
+    return getComputedStyle(document.body).backgroundColor || 'rgb(255,255,255)';
+}
+
+function parseRGB(colorStr) {
+    const m = colorStr.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (!m) return [255,255,255];
+    return [parseInt(m[1],10), parseInt(m[2],10), parseInt(m[3],10)];
+}
+
+function updateNavbarContrast() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    // ================================
+    // FORCE RULE-BASED NAVBAR COLORS
+    // ================================
+
+    // DARK MODE → always white
+    if (!document.body.classList.contains('light-mode')) {
+        navbar.classList.add('light-nav');
+        return;
+    }
+
+    const hero = document.querySelector('.hero-section');
+    const horizontal = document.querySelector('.horizontal-section');
+    const tws = document.querySelector('.tws-scroll-section');
+
+    if (hero && horizontal && tws) {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        const horizontalTop = horizontal.getBoundingClientRect().top;
+        const twsTop = tws.getBoundingClientRect().top;
+        const twsBottom = tws.getBoundingClientRect().bottom;
+
+        // HERO → WHITE
+        if (heroBottom > 80) {
+            navbar.classList.add('light-nav');
+            return;
+        }
+
+        // HORIZONTAL → BLACK
+        if (horizontalTop <= 80 && twsTop > 80) {
+            navbar.classList.remove('light-nav');
+            return;
+        }
+
+        // TWS → WHITE
+        if (twsTop <= 80 && twsBottom > 80) {
+            navbar.classList.add('light-nav');
+            return;
+        }
+
+        // AFTER TWS → BLACK
+        navbar.classList.remove('light-nav');
+        return;
+    }
+
+    // ================================
+    // FALLBACK: AUTO CONTRAST DETECTION
+    // ================================
+
+    const mega = document.querySelector('.mega-menu');
+    if (mega) {
+        const megaStyle = getComputedStyle(mega);
+        if (megaStyle.visibility === 'visible' || megaStyle.opacity > 0.1) {
+            navbar.classList.add('light-nav');
+            return;
+        }
+    }
+
+    const rect = navbar.getBoundingClientRect();
+    const x = Math.floor(window.innerWidth / 2);
+    const y = Math.min(Math.floor(rect.bottom + 8), window.innerHeight - 1);
+
+    const underlying = getUnderlyingElement(x, y) || document.body;
+    const bg = resolveBackgroundColor(underlying);
+    const [r, g, b] = parseRGB(bg);
+    const lum = rgbToLuminance(r, g, b);
+
+    if (lum > 0.5) {
+        navbar.classList.add('light-nav');
+    } else {
+        navbar.classList.remove('light-nav');
+    }
+}
+
+
+// Run on load, scroll, resize, and theme toggle
+// window.addEventListener('load', updateNavbarContrast);
+// window.addEventListener('scroll', updateNavbarContrast, { passive: true });
+// window.addEventListener('resize', updateNavbarContrast);
+
+// If theme toggle exists, run after toggling
+const themeBtn = document.getElementById('themeToggle');
+if (themeBtn) themeBtn.addEventListener('click', () => setTimeout(updateNavbarContrast, 120));
+
+// --- HERO TEXT CONTRAST FOR CAROUSEL SLIDES AND SECTIONS ---
+function setHeroMode(mode) {
+    const hero = document.querySelector('.hero-content');
+    if (!hero) return;
+    hero.classList.remove('on-dark-bg', 'on-light-bg');
+    if (mode === 'dark') hero.classList.add('on-dark-bg');
+    if (mode === 'light') hero.classList.add('on-light-bg');
+}
+
+// Listen to Bootstrap carousel events (uses slid.bs.carousel)
+const heroCarousel = document.getElementById('heroCarousel');
+if (heroCarousel) {
+    heroCarousel.addEventListener('slid.bs.carousel', (e) => {
+        // Determine the active index
+        const items = heroCarousel.querySelectorAll('.carousel-item');
+        let activeIndex = 0;
+        items.forEach((it, i) => { if (it.classList.contains('active')) activeIndex = i; });
+
+        // third slide (index 2) -> dark background -> white text
+        if (activeIndex === 2) {
+            setHeroMode('dark');
+        } else {
+            // otherwise let section observer decide; default to light mode for readability
+            setHeroMode('light');
+        }
+    });
+}
+
+// IntersectionObserver for sections below hero — detects background luminance
+const sections = document.querySelectorAll('section');
+if (sections.length) {
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            // compute resolved bg color for this section
+            const bg = resolveBackgroundColor(el);
+            const [r,g,b] = parseRGB(bg);
+            const lum = rgbToLuminance(r,g,b);
+            // if section is light, ensure hero text becomes dark (for contrast)
+            if (lum > 0.5) {
+                setHeroMode('light');
+            } else {
+                setHeroMode('dark');
+            }
+        });
+    }, { root: null, threshold: 0.45 });
+
+    // Observe only sections after the hero to avoid immediate override
+    let startObserving = false;
+    sections.forEach((sec) => {
+        if (startObserving) obs.observe(sec);
+        if (sec.classList.contains('hero-section')) startObserving = true;
+    });
+}
+
+// run once to initialize hero mode
+window.addEventListener('load', () => {
+    // set initial based on active slide
+    if (heroCarousel) {
+        const items = heroCarousel.querySelectorAll('.carousel-item');
+        let activeIndex = 0;
+        items.forEach((it, i) => { if (it.classList.contains('active')) activeIndex = i; });
+        if (activeIndex === 2) setHeroMode('dark'); else setHeroMode('light');
+    }
+});
 // PRODUCT DATA (JSON)
 const productsData = [
     {
@@ -108,11 +297,12 @@ themeToggleBtn.addEventListener('click', () => {
 let cart = JSON.parse(localStorage.getItem('aeronixCart')) || [];
 
 // Update cart count
-function updateCartCount(count) {
+function updateCartCount() {
   const el = document.getElementById("cart-count");
   if (!el) return; // 🔥 prevents crash
-  el.textContent = count;
+  el.textContent = cart.length;
 }
+
 
 
 // Render Products
@@ -1467,16 +1657,6 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.target.reset();
 });
 
-// Navbar Scroll Effect
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
 // Initialize
 renderProducts();
 updateCartCount();
@@ -1484,3 +1664,50 @@ updateCartCount();
 // Store recently viewed products in sessionStorage
 sessionStorage.setItem('lastVisited', new Date().toISOString());
 
+// ================================
+// FINAL NAVBAR COLOR CONTROLLER
+// ================================
+document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.querySelector(".navbar");
+    const hero = document.querySelector(".hero-section");
+    const horizontal = document.querySelector(".horizontal-section");
+    const tws = document.querySelector(".tws-scroll-section");
+
+    if (!navbar || !hero || !horizontal || !tws) return;
+
+    function updateNavbarColor() {
+        const scrollY = window.scrollY + 80;
+
+        // DARK MODE → ALWAYS WHITE
+        if (!document.body.classList.contains("light-mode")) {
+            navbar.classList.add("light-nav");
+            return;
+        }
+
+        const heroEnd = hero.offsetTop + hero.offsetHeight;
+        const horizontalStart = horizontal.offsetTop;
+        const twsStart = tws.offsetTop;
+        const twsEnd = tws.offsetTop + tws.offsetHeight;
+
+        // HERO → WHITE
+        if (scrollY < heroEnd) {
+            navbar.classList.add("light-nav");
+        }
+        // HORIZONTAL → BLACK
+        else if (scrollY >= horizontalStart && scrollY < twsStart) {
+            navbar.classList.remove("light-nav");
+        }
+        // TWS → WHITE
+        else if (scrollY >= twsStart && scrollY < twsEnd) {
+            navbar.classList.add("light-nav");
+        }
+        // AFTER TWS → BLACK
+        else {
+            navbar.classList.remove("light-nav");
+        }
+    }
+
+    window.addEventListener("scroll", updateNavbarColor, { passive: true });
+    window.addEventListener("resize", updateNavbarColor);
+    updateNavbarColor();
+});

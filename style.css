@@ -339,6 +339,30 @@ body.light-mode .nav-item:hover {
     flex-shrink: 0;
 }
 
+/* Navbar contrast mode: when .light-nav is present make text dark */
+.navbar.light-nav .nav-item,
+.navbar.light-nav .nav-btn-secondary,
+.navbar.light-nav .nav-btn-primary,
+.navbar.light-nav .theme-toggle,
+.navbar.light-nav .mobile-toggle span,
+.navbar.light-nav .logo {
+    color: #0d1b2a !important;
+}
+
+.navbar.light-nav .nav-btn-primary {
+    background: #0d1b2a;
+    color: #fff;
+}
+
+.navbar.light-nav .theme-toggle {
+    background: rgba(0,0,0,0.05);
+    color: #0d1b2a;
+}
+
+.navbar.light-nav .mobile-toggle {
+    background: rgba(0,0,0,0.04);
+}
+
 /* THEME TOGGLE */
 .theme-toggle {
     width: 36px;
@@ -390,10 +414,62 @@ body.light-mode .nav-btn-secondary:hover {
     color: #0d1b2a;
 }
 
+/* GET STARTED BUTTON – FORCE WHITE TEXT */
+
+/* ===================================== */
+/* GET STARTED BUTTON – FINAL LOGIC */
+/* ===================================== */
+
+/* PAGE LOAD – DARK MODE */
 .nav-btn-primary {
-    background: #ffffff;
-    color: #0a0e27;
+    background: transparent;
+    color: #0d1b2a !important;        /* 🔥 DARK text */
+    border: 1px solid rgba(255,255,255,0.5);
+    transition: all 0.3s ease;
 }
+
+/* HOVER ON DARK BACKGROUND */
+.nav-btn-primary:hover,
+.navbar:hover .nav-btn-primary {
+    background: rgba(255,255,255,0.15);
+    color: #ffffff !important;        /* 🔥 WHITE on hover */
+}
+
+/* PAGE LOAD – LIGHT MODE */
+body.light-mode .nav-btn-primary {
+    background: transparent;
+    color: #ffffff !important;        /* 🔥 WHITE text */
+    border: 1px solid rgba(13,27,42,0.5);
+}
+
+/* HOVER ON LIGHT BACKGROUND */
+body.light-mode .nav-btn-primary:hover,
+body.light-mode .navbar:hover .nav-btn-primary {
+    background: rgba(13,27,42,0.12);
+    color: #0d1b2a !important;        /* 🔥 DARK on hover */
+}
+
+
+/* LIGHT MODE HOVER */
+body.light-mode .nav-btn-primary:hover,
+body.light-mode .navbar:hover .nav-btn-primary {
+    background: rgba(13,27,42,0.12);
+    color: #0d1b2a !important;
+}
+
+
+
+/* Dark navbar hover */
+.navbar:hover .nav-btn-primary {
+    color: #ffffff;
+}
+
+/* Light mode */
+body.light-mode .nav-btn-primary {
+    background: #0d1b2a;
+    color: #ffffff;   /* ✅ white text */
+}
+
 
 .nav-btn-primary:hover {
     background: rgba(255,255,255,0.9);
@@ -491,6 +567,11 @@ body.light-mode .nav-btn-secondary:hover {
 
 /* ================= PRIMARY BUTTON ================= */
 
+/* DARK MODE */
+.nav-btn-primary {
+    background: #ffffff;
+    color: #0a0e27;
+}
 
 /* LIGHT MODE */
 body.light-mode .nav-btn-primary {
@@ -618,6 +699,24 @@ body.light-mode .mobile-toggle span {
     height: 16px;
 }
 
+.navbar-nav .nav-link {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/* Hero text modes for contrast with slide/section backgrounds */
+.hero-content.on-dark-bg .hero-title,
+.hero-content.on-dark-bg .hero-subtitle,
+.hero-content.on-dark-bg .hero-cta {
+    color: #ffffff;
+}
+
+.hero-content.on-light-bg .hero-title,
+.hero-content.on-light-bg .hero-subtitle,
+.hero-content.on-light-bg .hero-cta {
+    color: #0d1b2a;
+}
 .shop {
     position: relative;
 }
@@ -2246,4 +2345,25 @@ footer {
     .about-title {
         font-size: 2.5rem;
     }
+}
+
+/* =========================
+   NAVBAR TEXT COLOR – FINAL
+   ========================= */
+
+.navbar .nav-link,
+.navbar .logo,
+.navbar .theme-toggle,
+.navbar .theme-toggle i,
+.navbar .get-started {
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.navbar.light-nav .nav-link,
+.navbar.light-nav .logo,
+.navbar.light-nav .theme-toggle,
+.navbar.light-nav .theme-toggle i,
+.navbar.light-nav .get-started {
+    color: white !important;
 }
