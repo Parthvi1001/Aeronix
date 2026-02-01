@@ -90,7 +90,7 @@
 
         .spec-icon {
             font-size: 40px;
-            color: #124751;
+            color: #00d4ff;
             margin-bottom: 15px;
             text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
         }
@@ -107,7 +107,7 @@
         .spec-value {
             font-size: 56px;
             font-weight: 900;
-            background: linear-gradient(135deg, #ffffff, #165460);
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -463,6 +463,12 @@
                 </video>
             </div>
 
+            <!-- Title at top -->
+            <div class="specs-title-wrapper">
+                <span class="specs-badge">FLAGSHIP MODEL</span>
+                <h2 class="specs-title">FALCON MINI</h2>
+            </div>
+
             <!-- Specifications in horizontal line at bottom -->
             <div class="specs-overlay">
                 <div class="specs-horizontal-grid">
@@ -473,7 +479,7 @@
                         </div>
                         <div class="spec-label">Max Speed</div>
                         <div class="spec-value">
-                            85<span class="spec-unit">km/h</span>
+                            68<span class="spec-unit">km/h</span>
                         </div>
                     </div>
 
@@ -485,7 +491,7 @@
                         </div>
                         <div class="spec-label">Flight Time</div>
                         <div class="spec-value">
-                            55<span class="spec-unit">min</span>
+                            46<span class="spec-unit">min</span>
                         </div>
                     </div>
 
@@ -497,7 +503,7 @@
                         </div>
                         <div class="spec-label">Max Range</div>
                         <div class="spec-value">
-                            20<span class="spec-unit">km</span>
+                            18<span class="spec-unit">km</span>
                         </div>
                     </div>
 
@@ -509,7 +515,7 @@
                         </div>
                         <div class="spec-label">Resolution</div>
                         <div class="spec-value">
-                            8K<span class="spec-unit">60fps</span>
+                            4K<span class="spec-unit">60fps</span>
                         </div>
                     </div>
 
@@ -559,68 +565,47 @@
     </section>
 
     <!-- FULL SCREEN PRODUCTS SECTION -->
-    <section class="fullscreen-products-section">
-        <div class="container-fluid">
-            <div class="fullscreen-header">
-                <span class="fullscreen-kicker">OUR COLLECTION</span>
-                <h2>Explore Our Products</h2>
-                <p>Hover to discover the future of technology</p>
+    <section class="engineered-section" id="engineered">
+        <div class="engineered-container">
+            <div class="engineered-header">
+                <span class="engineered-kicker">INNOVATION</span>
+                <h2>Engineered for Excellence</h2>
+                <p>Precision design across flight and sound—built to elevate every moment.</p>
             </div>
 
-            <div class="fullscreen-grid">
-                <!-- Card 1: Drones -->
-                <div class="fullscreen-card split-layout" data-category="drones">
-                    <div class="fullscreen-card-content-left">
-                        <span class="card-badge">FEATURED</span>
-                        <h3>Professional Drones</h3>
-                        <p>Next-generation flight systems with 8K cinematic capture and AI precision control</p>
-                        <ul class="card-specs">
-                            <li><i class="fas fa-check"></i> 55 Min Flight Time</li>
-                            <li><i class="fas fa-check"></i> 8K Video Recording</li>
-                            <li><i class="fas fa-check"></i> AI Obstacle Avoidance</li>
-                        </ul>
-                        <a href="drone.html" class="card-btn">Explore Drones <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="fullscreen-card-bg-right">
+            <div class="engineered-grid">
+                <a class="engineered-card engineered-row reverse" href="drone.html">
+                    <div class="engineered-media">
                         <img src="drone.jfif" alt="Aeronix Drones">
                     </div>
-                </div>
+                    <div class="engineered-body">
+                        <h3>Drones</h3>
+                        <p>Next‑gen aerodynamics, stabilized control, and cinematic capture.</p>
+                        <span class="engineered-link">Explore Drones <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
 
-                <!-- Card 2: Headphones -->
-                <div class="fullscreen-card split-layout reverse" data-category="headphones">
-                    <div class="fullscreen-card-bg-right">
+                <a class="engineered-card engineered-row" href="headphones.html">
+                    <div class="engineered-media">
                         <img src="headPhone.jpg" alt="Aeronix Headphones">
                     </div>
-                    <div class="fullscreen-card-content-left">
-                        <span class="card-badge">PREMIUM</span>
-                        <h3>Studio Headphones</h3>
-                        <p>Immersive audio experience with adaptive noise cancellation and premium comfort</p>
-                        <ul class="card-specs">
-                            <li><i class="fas fa-check"></i> Active Noise Cancellation</li>
-                            <li><i class="fas fa-check"></i> 40 Hour Battery</li>
-                            <li><i class="fas fa-check"></i> Studio-Grade Sound</li>
-                        </ul>
-                        <a href="headphones.html" class="card-btn">Explore Headphones <i class="fas fa-arrow-right"></i></a>
+                    <div class="engineered-body">
+                        <h3>Headphones</h3>
+                        <p>Studio‑grade clarity, deep bass, and premium craftsmanship.</p>
+                        <span class="engineered-link">Explore Headphones <i class="fas fa-arrow-right"></i></span>
                     </div>
-                </div>
+                </a>
 
-                <!-- Card 3: Airburds -->
-                <div class="fullscreen-card split-layout" data-category="airburds">
-                    <div class="fullscreen-card-content-left">
-                        <span class="card-badge">NEW</span>
-                        <h3>True Wireless Airburds</h3>
-                        <p>Ultimate portability with powerful sound and intelligent adaptive audio technology</p>
-                        <ul class="card-specs">
-                            <li><i class="fas fa-check"></i> Adaptive ANC</li>
-                            <li><i class="fas fa-check"></i> 30 Hour Total Playback</li>
-                            <li><i class="fas fa-check"></i> IPX7 Water Resistant</li>
-                        </ul>
-                        <a href="airburds.html" class="card-btn">Explore Airburds <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="fullscreen-card-bg-right">
+                <a class="engineered-card engineered-row reverse" href="airburds.html">
+                    <div class="engineered-media">
                         <img src="a2.jpg" alt="Aeronix Airburds">
                     </div>
-                </div>
+                    <div class="engineered-body">
+                        <h3>Airburds</h3>
+                        <p>Pure sound, adaptive ANC, and all‑day comfort for every rhythm.</p>
+                        <span class="engineered-link">Explore Airburds <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -722,10 +707,10 @@
                     
                     // Define target values for each spec
                     const specValues = [
-                        { value: 85, suffix: 'km/h' },      // Max Speed
-                        { value: 55, suffix: 'min' },       // Flight Time
-                        { value: 20, suffix: 'km' },        // Max Range
-                        { value: 8, suffix: 'K 60fps' }     // Resolution (4K)
+                        { value: 68, suffix: 'km/h' },      // Max Speed
+                        { value: 46, suffix: 'min' },       // Flight Time
+                        { value: 18, suffix: 'km' },        // Max Range
+                        { value: 4, suffix: 'K 60fps' }     // Resolution (4K)
                     ];
                     
                     specItems.forEach((item, index) => {

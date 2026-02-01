@@ -4809,3 +4809,39 @@ footer {
     }
 }
 /* >>>>>>> 9bc49d7e982f7c9b005c147bb13171bbeac44263 */
+
+/* FULLSCREEN PRODUCTS SECTION */
+.fullscreen-products-section {
+    padding: 80px 5%;
+    background: var(--bg-main);
+}
+
+.fullscreen-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.fullscreen-header .fullscreen-kicker {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--accent-strong);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.fullscreen-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.fullscreen-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
