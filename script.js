@@ -308,6 +308,7 @@ function updateCartCount() {
 // Render Products
 function renderProducts() {
     const grid = document.getElementById('productGrid');
+    if (!grid) return; // safeguard: avoid breaking subsequent scripts
     grid.innerHTML = productsData.map(product => `
                 <div class="product-card">
                     <img src="${product.image}" alt="${product.name}" class="product-image">
@@ -1256,6 +1257,61 @@ updateCartCount();
 // Store recently viewed products in sessionStorage
 sessionStorage.setItem('lastVisited', new Date().toISOString());
 
+// // ================================
+// // DRONE SHOWCASE COUNTER ANIMATION
+// // ================================
+// // Animated counter function for drone showcase
+// function animateDroneCounter(element, start, end, duration) {
+//     let startTimestamp = null;
+    
+//     const step = (timestamp) => {
+//         if (!startTimestamp) startTimestamp = timestamp;
+//         const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        
+//         // Easing function for smooth animation
+//         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+//         const currentValue = Math.floor(easeOutQuart * (end - start) + start);
+        
+//         element.textContent = currentValue;
+        
+//         if (progress < 1) {
+//             window.requestAnimationFrame(step);
+//         }
+//     };
+    
+//     window.requestAnimationFrame(step);
+// }
+
+// // Observe drone showcase section and trigger animations
+// const droneShowcaseSection = document.querySelector('.drone-showcase-section');
+// let droneAnimated = false;
+
+// const droneObserver = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//         if (entry.isIntersecting && !droneAnimated) {
+//             droneAnimated = true;
+            
+//             const counters = document.querySelectorAll('.drone-counter');
+            
+//             counters.forEach((counter, index) => {
+//                 const target = parseInt(counter.getAttribute('data-counter'));
+                
+//                 // Stagger the animation start for each counter
+//                 setTimeout(() => {
+//                     animateDroneCounter(counter, 0, target, 2000);
+//                 }, index * 150);
+//             });
+//         }
+//     });
+// }, { threshold: 0.3 });
+
+// if (droneShowcaseSection) {
+//     droneObserver.observe(droneShowcaseSection);
+// }
+
+// ================================
+// DRONE SHOWCASE COUNTER ANIMATION
+// ================================
 // ================================
 // FINAL NAVBAR COLOR CONTROLLER
 // ================================
@@ -1304,4 +1360,44 @@ sessionStorage.setItem('lastVisited', new Date().toISOString());
 //     updateNavbarColor();
 // });
 
+// ===================================
+// DRONE SHOWCASE COUNTER ANIMATION
+// ===================================
+function animateDroneCounters() {
+    const counters = document.querySelectorAll('.drone-counter');
+    console.log('Found counters:', counters.length);
+    
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-counter')) || 0;
+        let current = 0;
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        // Ensure counters visibly start at 0
+        counter.textContent = '0';
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                counter.textContent = target;
+                clearInterval(timer);
+            } else {
+                counter.textContent = Math.floor(current);
+            }
+        }, 16);
+    });
+}
 
+// Start counters only when the drone showcase section enters viewport
+let droneCountersAnimated = false;
+const droneSection = document.querySelector('.drone-showcase-section');
+if (droneSection) {
+    const countersObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !droneCountersAnimated) {
+                droneCountersAnimated = true;
+                animateDroneCounters();
+            }
+        });
+    }, { threshold: 0.3 });
+    countersObserver.observe(droneSection);
+}
