@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600;700&display=swap');
+
         :root {
-            --primary-gold: #FFB800;
+            --primary-gold: #010101;
             --dark-gray: #2C2C2C;
             --light-gray: #F8F9FA;
         }
@@ -68,7 +70,7 @@
 
         .nav-link:hover,
         .nav-link.active {
-            color: #FFB800 !important;
+            color: #070707 !important;
         }
 
         .navbar:hover .nav-link.active {
@@ -87,7 +89,7 @@
 
         .btn-build:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 184, 0, 0.3);
+            box-shadow: 0 5px 15px rgb(79, 78, 75);
         }
 
         /* Product Grid */
@@ -107,7 +109,7 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -116,7 +118,7 @@
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         .product-card:hover .hover-info-box {
@@ -200,7 +202,7 @@
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 1.2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
@@ -310,7 +312,7 @@
         .config-header {
             background: white;
             padding: 1.5rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             margin-bottom: 2rem;
         }
 
@@ -491,7 +493,7 @@
 
         .btn-save:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 184, 0, 0.3);
+            box-shadow: 0 5px 15px rgb(82, 81, 80);
         }
 
         /* Footer */
@@ -499,7 +501,7 @@
             background: white;
             padding: 4rem 0 2rem;
             margin-top: 5rem;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
         }
 
         .footer-brand {
@@ -579,6 +581,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
@@ -605,10 +608,11 @@
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
+
                 <div class="d-flex gap-3 align-items-center">
                     <button class="action-btn">
                         <i class="bi bi-heart"></i>
-                    </button>
+                     </button>
                     <button class="action-btn">
                         <i class="bi bi-shuffle"></i>
                     </button>
@@ -622,7 +626,7 @@
     <section class="products-section" id="productsSection">
         <div class="container">
             <p class="section-header">Showing 8 of 8 wireless earbuds</p>
-            
+
             <div class="row" id="productsGrid">
                 <!-- Products will be loaded here by JavaScript -->
             </div>
@@ -646,34 +650,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <div style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: sticky; top: 20px;">
-                        <div class="product-image-container" style="height: 450px; border-radius: 15px; margin-bottom: 2rem;">
+                    <div
+                        style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08); position: sticky; top: 20px;">
+                        <div class="product-image-container"
+                            style="height: 450px; border-radius: 15px; margin-bottom: 2rem;">
                             <img id="configProductImage" src="" alt="" class="product-image">
                         </div>
-                        
+
                         <div class="summary-box">
                             <h5 style="margin-bottom: 1.5rem; font-weight: 700;">Configuration Summary</h5>
-                            
+
                             <div class="summary-row">
                                 <span class="summary-label">Base Model</span>
                                 <span class="summary-value" id="summaryModel"></span>
                             </div>
-                            
+
                             <div class="summary-row">
                                 <span class="summary-label">Audio Quality</span>
                                 <span class="summary-value" id="summaryAudio"></span>
                             </div>
-                            
+
                             <div class="summary-row">
                                 <span class="summary-label">Battery Life</span>
                                 <span class="summary-value" id="summaryBattery"></span>
                             </div>
-                            
+
                             <div class="summary-row">
                                 <span class="summary-label">Color</span>
                                 <span class="summary-value" id="summaryColor"></span>
                             </div>
-                            
+
                             <div class="summary-total">
                                 <span>Total</span>
                                 <span class="total-price" id="summaryTotal">$0</span>
@@ -690,9 +696,10 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6">
-                    <div style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div
+                        style="background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
                         <!-- Model Selection -->
                         <div class="config-section">
                             <h6 class="config-title">Select Model</h6>
@@ -727,8 +734,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <div class="footer-brand">SONICBUDS</div>
-                    <p class="footer-description">Redefining wireless audio with premium true wireless earbuds featuring advanced noise cancellation and studio-quality sound.</p>
+                    <div class="footer-brand">AERONIX</div>
+                    <p class="footer-description">Redefining wireless audio with premium true wireless earbuds featuring
+                        advanced noise cancellation and studio-quality sound.</p>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
@@ -736,7 +744,7 @@
                         <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-4 mb-4">
                     <h6 class="footer-title">Products</h6>
                     <ul class="footer-links">
@@ -746,7 +754,7 @@
                         <li><a href="#">Accessories</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-4 mb-4">
                     <h6 class="footer-title">Company</h6>
                     <ul class="footer-links">
@@ -756,7 +764,7 @@
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-4 mb-4">
                     <h6 class="footer-title">Get in Touch</h6>
                     <div class="contact-item">
@@ -769,7 +777,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="bi bi-envelope contact-icon"></i>
-                        <span>hello@sonicbuds.com</span>
+                        <span>hello@AERONIX.com</span>
                     </div>
                 </div>
             </div>
@@ -791,7 +799,7 @@
         const products = [
             {
                 id: 1,
-                name: "SONICBUDS Air",
+                name: "AERONIX Air",
                 subtitle: "Everyday Essential",
                 price: 149,
                 badge: "CONSUMER",
@@ -805,7 +813,7 @@
             },
             {
                 id: 2,
-                name: "SONICBUDS Pro",
+                name: "AERONIX Pro",
                 subtitle: "Premium Sound",
                 price: 249,
                 badge: "PRO",
@@ -820,7 +828,7 @@
             },
             {
                 id: 3,
-                name: "SONICBUDS Ultra",
+                name: "AERONIX Ultra",
                 subtitle: "Flagship Edition",
                 price: 349,
                 badge: "PRO",
@@ -835,7 +843,7 @@
             },
             {
                 id: 4,
-                name: "SONICBUDS Elite",
+                name: "AERONIX Elite",
                 subtitle: "Audiophile Choice",
                 price: 449,
                 badge: "PRO",
@@ -850,7 +858,7 @@
             },
             {
                 id: 5,
-                name: "SONICBUDS Sport",
+                name: "AERONIX Sport",
                 subtitle: "Active Lifestyle",
                 price: 179,
                 badge: "CONSUMER",
@@ -864,7 +872,7 @@
             },
             {
                 id: 6,
-                name: "SONICBUDS Mini",
+                name: "AERONIX Mini",
                 subtitle: "Compact Power",
                 price: 129,
                 badge: "CONSUMER",
@@ -878,7 +886,7 @@
             },
             {
                 id: 7,
-                name: "SONICBUDS Gaming",
+                name: "AERONIX Gaming",
                 subtitle: "Low Latency Pro",
                 price: 199,
                 badge: "CONSUMER",
@@ -892,7 +900,7 @@
             },
             {
                 id: 8,
-                name: "SONICBUDS Studio",
+                name: "AERONIX Studio",
                 subtitle: "Producer Edition",
                 price: 299,
                 badge: "PRO",
@@ -908,14 +916,14 @@
         ];
 
         const models = [
-            { name: "SONICBUDS Air", price: 149 },
-            { name: "SONICBUDS Pro", price: 249 },
-            { name: "SONICBUDS Ultra", price: 349 },
-            { name: "SONICBUDS Elite", price: 449 },
-            { name: "SONICBUDS Sport", price: 179 },
-            { name: "SONICBUDS Mini", price: 129 },
-            { name: "SONICBUDS Gaming", price: 199 },
-            { name: "SONICBUDS Studio", price: 299 }
+            { name: "AERONIX Air", price: 149 },
+            { name: "AERONIX Pro", price: 249 },
+            { name: "AERONIX Ultra", price: 349 },
+            { name: "AERONIX Elite", price: 449 },
+            { name: "AERONIX Sport", price: 179 },
+            { name: "AERONIX Mini", price: 129 },
+            { name: "AERONIX Gaming", price: 199 },
+            { name: "AERONIX Studio", price: 299 }
         ];
 
         const audioOptions = [
@@ -997,16 +1005,16 @@
         function openConfigurator(productId) {
             const product = products.find(p => p.id === productId);
             const modelIndex = productId - 1;
-            
+
             currentConfig.model = models[modelIndex];
-            
+
             document.getElementById('configProductName').textContent = product.name;
             document.getElementById('configProductImage').src = product.image;
-            
+
             // Hide products section and show configurator page
             document.getElementById('productsSection').classList.add('hidden');
             document.getElementById('configuratorPage').classList.add('active');
-            
+
             // Highlight Configure in navbar
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
@@ -1016,10 +1024,10 @@
                     link.classList.add('active');
                 }
             });
-            
+
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
+
             loadConfigOptions();
             updateSummary();
         }
@@ -1028,7 +1036,7 @@
             // Hide configurator page and show products section
             document.getElementById('configuratorPage').classList.remove('active');
             document.getElementById('productsSection').classList.remove('hidden');
-            
+
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1110,18 +1118,18 @@
         }
 
         function updateSummary() {
-            document.getElementById('summaryModel').textContent = 
+            document.getElementById('summaryModel').textContent =
                 `${currentConfig.model.name} - $${currentConfig.model.price}`;
-            
+
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
             document.getElementById('summaryColor').textContent = currentConfig.color.name;
-            
-            const total = currentConfig.model.price + 
-                         currentConfig.audio.price + 
-                         currentConfig.battery.price + 
-                         currentConfig.color.price;
-            
+
+            const total = currentConfig.model.price +
+                currentConfig.audio.price +
+                currentConfig.battery.price +
+                currentConfig.color.price;
+
             document.getElementById('summaryTotal').textContent = `$${total}`;
         }
 
@@ -1137,9 +1145,9 @@
         }
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadProducts();
-            
+
             // Highlight Models in navbar on page load
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
@@ -1149,5 +1157,7 @@
             });
         });
     </script>
+
 </body>
+
 </html>
