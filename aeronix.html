@@ -13,22 +13,25 @@
     <style>
         /* DRONE SPECS SECTION STYLES - HORIZONTAL LAYOUT */
         .drone-specs-section {
-            min-height: 100vh;
-            background: #000000;
+            min-height: 0;
+            background: #f6f1f1;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0;
+            margin: 0;
+            margin-bottom: 60px;
         }
 
         .drone-specs-container {
             width: 100%;
-            height: 100vh;
+            height: auto;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
             z-index: 2;
         }
@@ -50,11 +53,9 @@
         }
 
         .specs-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+            position: relative;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
             padding: 80px 40px 40px;
             z-index: 2;
         }
@@ -448,26 +449,8 @@
 
         </div>
     </section>
-
-    <!-- ============================================
-     DRONE SPECIFICATIONS SECTION - HORIZONTAL LAYOUT
-     Add this AFTER the horizontal-section (Falcon Mini)
-     ============================================ -->
-    <section class="drone-specs-section">
+    <!-- <section class="drone-specs-section"> -->
         <div class="drone-specs-container">
-            <!-- Full screen background video -->
-            <div class="drone-video-wrapper">
-                <video class="drone-specs-video" autoplay muted loop playsinline>
-                    <source src="WhatsApp_Video_2026-01-30_at_10_12_53_PM.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-
-            <!-- Title at top -->
-            <div class="specs-title-wrapper">
-                <span class="specs-badge">FLAGSHIP MODEL</span>
-                <h2 class="specs-title">FALCON MINI</h2>
-            </div>
 
             <!-- Specifications in horizontal line at bottom -->
             <div class="specs-overlay">
@@ -479,7 +462,7 @@
                         </div>
                         <div class="spec-label">Max Speed</div>
                         <div class="spec-value">
-                            68<span class="spec-unit">km/h</span>
+                            85<span class="spec-unit">km/h</span>
                         </div>
                     </div>
 
@@ -491,7 +474,7 @@
                         </div>
                         <div class="spec-label">Flight Time</div>
                         <div class="spec-value">
-                            46<span class="spec-unit">min</span>
+                            55<span class="spec-unit">min</span>
                         </div>
                     </div>
 
@@ -503,7 +486,7 @@
                         </div>
                         <div class="spec-label">Max Range</div>
                         <div class="spec-value">
-                            18<span class="spec-unit">km</span>
+                            20<span class="spec-unit">km</span>
                         </div>
                     </div>
 
@@ -515,7 +498,7 @@
                         </div>
                         <div class="spec-label">Resolution</div>
                         <div class="spec-value">
-                            4K<span class="spec-unit">60fps</span>
+                            8K<span class="spec-unit">60fps</span>
                         </div>
                     </div>
 
@@ -707,10 +690,10 @@
                     
                     // Define target values for each spec
                     const specValues = [
-                        { value: 68, suffix: 'km/h' },      // Max Speed
-                        { value: 46, suffix: 'min' },       // Flight Time
-                        { value: 18, suffix: 'km' },        // Max Range
-                        { value: 4, suffix: 'K 60fps' }     // Resolution (4K)
+                        { value: 85, suffix: 'km/h' },      // Max Speed
+                        { value: 55, suffix: 'min' },       // Flight Time
+                        { value: 20, suffix: 'km' },        // Max Range
+                        { value: 8, suffix: 'K 60fps' }     // Resolution (4K)
                     ];
                     
                     specItems.forEach((item, index) => {
