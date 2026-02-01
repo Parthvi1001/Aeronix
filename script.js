@@ -1303,3 +1303,33 @@ sessionStorage.setItem('lastVisited', new Date().toISOString());
 //     window.addEventListener("resize", updateNavbarColor);
 //     updateNavbarColor();
 // });
+
+// =========================================
+// FINAL NAVBAR THEME CONTROLLER
+// =========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.querySelector(".navbar");
+    const themeToggle = document.getElementById("themeToggle");
+
+    if (!navbar) return;
+
+    function syncNavbarTheme() {
+        const isLightMode = document.body.classList.contains("light-mode");
+
+        // Light mode → dark text
+        navbar.classList.toggle("dark-nav", isLightMode);
+
+        // Dark mode → white text
+        navbar.classList.toggle("light-nav", !isLightMode);
+    }
+
+    // Run once on page load
+    syncNavbarTheme();
+
+    // Run after theme toggle
+    if (themeToggle) {
+        themeToggle.addEventListener("click", () => {
+            setTimeout(syncNavbarTheme, 50);
+        });
+    }
+});
