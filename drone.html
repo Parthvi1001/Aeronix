@@ -72,7 +72,11 @@
 
         .nav-link:hover,
         .nav-link.active {
-            color: #000000 !important;
+            color: #FFB800 !important;
+        }
+
+        .navbar:hover .nav-link.active {
+            color: #ffffff !important;
         }
 
         .navbar .action-btn {
@@ -970,6 +974,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadDrones();
             initializeConfigurator();
+            
+            // Highlight Models in navbar on page load
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.textContent.trim() === 'Models') {
+                    link.classList.add('active');
+                }
+            });
         });
 
         // Load Drones
@@ -1036,6 +1048,16 @@
                 showPage('configure');
                 selectModel(drone);
                 loadModels(droneId);
+                
+                // Highlight Configure in navbar
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.textContent.trim() === 'Configure') {
+                        link.classList.add('active');
+                    }
+                });
             }
         }
 
