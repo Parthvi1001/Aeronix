@@ -9,6 +9,226 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+        /* DRONE SPECS SECTION STYLES - HORIZONTAL LAYOUT */
+        .drone-specs-section {
+            min-height: 100vh;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .drone-specs-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .drone-video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .drone-specs-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .specs-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+            padding: 80px 40px 40px;
+            z-index: 2;
+        }
+
+        .specs-horizontal-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .spec-item {
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .spec-item:nth-child(1) { animation-delay: 0.2s; }
+        .spec-item:nth-child(2) { animation-delay: 0.4s; }
+        .spec-item:nth-child(3) { animation-delay: 0.6s; }
+        .spec-item:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .spec-icon {
+            font-size: 40px;
+            color: #124751;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .spec-label {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .spec-value {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff, #165460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 5px;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .spec-unit {
+            font-size: 18px;
+            color: #00d4ff;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+
+        .spec-divider {
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #00d4ff, transparent);
+            opacity: 0.5;
+        }
+
+        /* Title at top */
+        .specs-title-wrapper {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 3;
+        }
+
+        .specs-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            border: 1px solid #00d4ff;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: #00d4ff;
+        }
+
+        .specs-title {
+            font-size: 64px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .specs-horizontal-grid {
+                gap: 50px;
+            }
+
+            .spec-value {
+                font-size: 44px;
+            }
+
+            .specs-title {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .specs-horizontal-grid {
+                gap: 30px;
+                flex-wrap: wrap;
+                padding: 0 20px;
+            }
+
+            .spec-divider {
+                display: none;
+            }
+
+            .spec-value {
+                font-size: 36px;
+            }
+
+            .spec-label {
+                font-size: 11px;
+            }
+
+            .specs-title {
+                font-size: 32px;
+            }
+
+            .specs-overlay {
+                padding: 60px 20px 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .specs-horizontal-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .spec-value {
+                font-size: 28px;
+            }
+
+            .specs-title-wrapper {
+                top: 30px;
+            }
+
+            .specs-title {
+                font-size: 24px;
+            }
+        }
+    </style>
 
 </head>
 
@@ -213,56 +433,6 @@
     </section>
 
 
-    <!-- HORIZONTAL DRONE SHOWCASE -->
-    <!-- <section class="horizontal-section">
-        <div class="drone-container">
-            <div class="drone-slide" id="drone1">
-                <div class="drone-name">SKYX PRO</div>
-                <img src="ezgif-2c9b10ecccf55793-jpg/ezgif-frame-001.png" alt="SkyX Pro" class="drone-image">
-                 <video class="greenscreen" autoplay muted loop playsinline>
-                    <source src="" type="video/webm">
-                </video> -->
-    <!-- </div>
-            <div class="drone-slide" id="drone2">
-                <div class="drone-name">Falcon Mini</div>
-                <img src="979ab68fd602bd3440fc4fb12f3ea38e.png" alt="Falcon Mini" class="drone-image"> -->
-    <!-- <video class="greenscreen" autoplay muted loop playsinline>
-                    <source src="videoplayback (2) (1).webm" type="video/webm">
-                </video>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- <section class="horizontal-section">
-  <div class="drone-container"> -->
-
-    <!-- DRONE 1 -->
-    <!-- <div class="drone-wrapper" id="droneOne">
-      <div class="drone-name">SKYX&nbsp;PRO</div>
-      <canvas id="canvasOne" class="drone-canvas"></canvas>
-    </div>
-
-    DRONE 2 -->
-    <!-- <div class="drone-wrapper" id="droneTwo">
-      <div class="drone-name">FALCON&nbsp;MINI</div>
-      <canvas id="canvasTwo" class="drone-canvas"></canvas>
-    </div> -->
-
-    <!-- <div class="drone-wrapper" id="droneOne">
-  <canvas id="canvasOne" class="drone-canvas"></canvas>
-
-   NAME BELOW DRONE
-  <div class="drone-label">SKYX PRO</div>
-</div>
-
-<div class="drone-wrapper" id="droneTwo">
-  <canvas id="canvasTwo" class="drone-canvas"></canvas>
-  <div class="drone-label">FALCON MINI</div>
-</div>
-
-  </div>
-</section> -->
-
     <section class="horizontal-section">
         <div class="drone-container">
 
@@ -279,68 +449,77 @@
         </div>
     </section>
 
-    <!-- <section class="horizontal-section">
-  <div class="drone-stage">
+    <!-- ============================================
+     DRONE SPECIFICATIONS SECTION - HORIZONTAL LAYOUT
+     Add this AFTER the horizontal-section (Falcon Mini)
+     ============================================ -->
+    <section class="drone-specs-section">
+        <div class="drone-specs-container">
+            <!-- Full screen background video -->
+            <div class="drone-video-wrapper">
+                <video class="drone-specs-video" autoplay muted loop playsinline>
+                    <source src="WhatsApp_Video_2026-01-30_at_10_12_53_PM.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
 
-    <canvas id="droneCanvas"></canvas>
+            <!-- Specifications in horizontal line at bottom -->
+            <div class="specs-overlay">
+                <div class="specs-horizontal-grid">
+                    
+                    <div class="spec-item">
+                        <div class="spec-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="spec-label">Max Speed</div>
+                        <div class="spec-value">
+                            85<span class="spec-unit">km/h</span>
+                        </div>
+                    </div>
 
-    <div class="drone-names">
-      <div class="drone-name left">SKYX PRO</div>
-      <div class="drone-name right">FALCON MINI</div>
-    </div>
+                    <div class="spec-divider"></div>
 
-  </div>
-</section> -->
+                    <div class="spec-item">
+                        <div class="spec-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="spec-label">Flight Time</div>
+                        <div class="spec-value">
+                            55<span class="spec-unit">min</span>
+                        </div>
+                    </div>
 
+                    <div class="spec-divider"></div>
 
+                    <div class="spec-item">
+                        <div class="spec-icon">
+                            <i class="fas fa-broadcast-tower"></i>
+                        </div>
+                        <div class="spec-label">Max Range</div>
+                        <div class="spec-value">
+                            20<span class="spec-unit">km</span>
+                        </div>
+                    </div>
 
+                    <div class="spec-divider"></div>
 
-    <!-- SPIDERMAN SECTION
-    <section class="superhero-section" id="spidermanSection">
-        <div class="superhero-container">
-            <div class="superhero-scene">
-                
-                <div class="bg-particles" id="particles"></div>
-                
-                 Spiderman - Top Right
-                <div class="spiderman" id="spiderman">
-                    <img src="assets/Spider-Man-Transparent-Free-PNG.png" alt="Spiderman" class="spiderman-img">
-                    <div class="spiderman-glow"></div>
-                </div>
+                    <div class="spec-item">
+                        <div class="spec-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <div class="spec-label">Resolution</div>
+                        <div class="spec-value">
+                            8K<span class="spec-unit">60fps</span>
+                        </div>
+                    </div>
 
-               
-                <svg class="web-svg" id="webSvg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path id="webPath1" class="web-path" d="" fill="none" stroke="url(#webGradient)"
-                        stroke-width="0.4" />
-                    <defs>
-                        <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:0.9" />
-                            <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.6" />
-                            <stop offset="100%" style="stop-color:#e74c3c;stop-opacity:0.3" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-
-                
-                <div class="airpod-case" id="airpod1">
-                    <img src="assets/earbuds-black-case-with-transparent-background_812337-1175.jpg" alt="AirPods"
-                        class="airpod-img">
-                    <div class="airpod-shadow"></div>
-                    <div class="airpod-glow"></div>
-                </div>
-
-                Text 
-                <div class="superhero-text" id="heroText">
-                    <span class="text-gradient">When Technology Meets</span>
-                    <span class="text-hero">Superhuman Power</span>
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <!-- ============================================
      TWS SCROLL ANIMATION SECTION
-     Add this AFTER the horizontal-section (drone section)
      ============================================ -->
 
     <section class="tws-scroll-section">
@@ -358,7 +537,7 @@
                 <h2>Precision Engineering.</h2>
                 <p>Every component aligned.</p>
             </div>
-            <!-- <hello></hello> -->
+            
             <div class="tws-text-overlay tws-text-2" id="twsText2">
                 <h2>Titanium Drivers.</h2>
                 <p>11mm of pure power.</p>
@@ -379,48 +558,69 @@
         </div>
     </section>
 
-    <!-- ENGINEERED FOR EXCELLENCE -->
-    <section class="engineered-section" id="engineered">
-        <div class="engineered-container">
-            <div class="engineered-header">
-                <span class="engineered-kicker">INNOVATION</span>
-                <h2>Engineered for Excellence</h2>
-                <p>Precision design across flight and sound—built to elevate every moment.</p>
+    <!-- FULL SCREEN PRODUCTS SECTION -->
+    <section class="fullscreen-products-section">
+        <div class="container-fluid">
+            <div class="fullscreen-header">
+                <span class="fullscreen-kicker">OUR COLLECTION</span>
+                <h2>Explore Our Products</h2>
+                <p>Hover to discover the future of technology</p>
             </div>
 
-            <div class="engineered-grid">
-                <a class="engineered-card engineered-row reverse" href="drone.html">
-                    <div class="engineered-media">
+            <div class="fullscreen-grid">
+                <!-- Card 1: Drones -->
+                <div class="fullscreen-card split-layout" data-category="drones">
+                    <div class="fullscreen-card-content-left">
+                        <span class="card-badge">FEATURED</span>
+                        <h3>Professional Drones</h3>
+                        <p>Next-generation flight systems with 8K cinematic capture and AI precision control</p>
+                        <ul class="card-specs">
+                            <li><i class="fas fa-check"></i> 55 Min Flight Time</li>
+                            <li><i class="fas fa-check"></i> 8K Video Recording</li>
+                            <li><i class="fas fa-check"></i> AI Obstacle Avoidance</li>
+                        </ul>
+                        <a href="drone.html" class="card-btn">Explore Drones <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="fullscreen-card-bg-right">
                         <img src="drone.jfif" alt="Aeronix Drones">
                     </div>
-                    <div class="engineered-body">
-                        <h3>Drones</h3>
-                        <p>Next‑gen aerodynamics, stabilized control, and cinematic capture.</p>
-                        <span class="engineered-link">Explore Drones <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
+                </div>
 
-                <a class="engineered-card engineered-row" href="headphones.html">
-                    <div class="engineered-media">
+                <!-- Card 2: Headphones -->
+                <div class="fullscreen-card split-layout reverse" data-category="headphones">
+                    <div class="fullscreen-card-bg-right">
                         <img src="headPhone.jpg" alt="Aeronix Headphones">
                     </div>
-                    <div class="engineered-body">
-                        <h3>Headphones</h3>
-                        <p>Studio‑grade clarity, deep bass, and premium craftsmanship.</p>
-                        <span class="engineered-link">Explore Headphones <i class="fas fa-arrow-right"></i></span>
+                    <div class="fullscreen-card-content-left">
+                        <span class="card-badge">PREMIUM</span>
+                        <h3>Studio Headphones</h3>
+                        <p>Immersive audio experience with adaptive noise cancellation and premium comfort</p>
+                        <ul class="card-specs">
+                            <li><i class="fas fa-check"></i> Active Noise Cancellation</li>
+                            <li><i class="fas fa-check"></i> 40 Hour Battery</li>
+                            <li><i class="fas fa-check"></i> Studio-Grade Sound</li>
+                        </ul>
+                        <a href="headphones.html" class="card-btn">Explore Headphones <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </a>
+                </div>
 
-                <a class="engineered-card engineered-row reverse" href="airburds.html">
-                    <div class="engineered-media">
-                        <img src="assets/earbuds-black-case-with-transparent-background_812337-1175.jpg" alt="Aeronix Airburds">
+                <!-- Card 3: Airburds -->
+                <div class="fullscreen-card split-layout" data-category="airburds">
+                    <div class="fullscreen-card-content-left">
+                        <span class="card-badge">NEW</span>
+                        <h3>True Wireless Airburds</h3>
+                        <p>Ultimate portability with powerful sound and intelligent adaptive audio technology</p>
+                        <ul class="card-specs">
+                            <li><i class="fas fa-check"></i> Adaptive ANC</li>
+                            <li><i class="fas fa-check"></i> 30 Hour Total Playback</li>
+                            <li><i class="fas fa-check"></i> IPX7 Water Resistant</li>
+                        </ul>
+                        <a href="airburds.html" class="card-btn">Explore Airburds <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="engineered-body">
-                        <h3>Airburds</h3>
-                        <p>Pure sound, adaptive ANC, and all‑day comfort for every rhythm.</p>
-                        <span class="engineered-link">Explore Airburds <i class="fas fa-arrow-right"></i></span>
+                    <div class="fullscreen-card-bg-right">
+                        <img src="a2.jpg" alt="Aeronix Airburds">
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
@@ -477,6 +677,85 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <!-- Scroll Animation for Specs Section with Counter Animation -->
+    <script>
+        // Animated counter function
+        function animateCounter(element, start, end, duration, suffix = '') {
+            let startTimestamp = null;
+            const isDecimal = end.toString().includes('.');
+            
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                
+                // Easing function for smooth animation
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                
+                let currentValue;
+                if (isDecimal) {
+                    currentValue = (easeOutQuart * (end - start) + start).toFixed(1);
+                } else {
+                    currentValue = Math.floor(easeOutQuart * (end - start) + start);
+                }
+                
+                element.innerHTML = currentValue + '<span class="spec-unit">' + suffix + '</span>';
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            
+            window.requestAnimationFrame(step);
+        }
+
+        // Observe specs section and trigger animations
+        const specsSection = document.querySelector('.drone-specs-section');
+        let hasAnimated = false;
+
+        const specsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    
+                    const specItems = document.querySelectorAll('.drone-specs-section .spec-item');
+                    
+                    // Define target values for each spec
+                    const specValues = [
+                        { value: 85, suffix: 'km/h' },      // Max Speed
+                        { value: 55, suffix: 'min' },       // Flight Time
+                        { value: 20, suffix: 'km' },        // Max Range
+                        { value: 8, suffix: 'K 60fps' }     // Resolution (4K)
+                    ];
+                    
+                    specItems.forEach((item, index) => {
+                        // Fade in the item
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                            
+                            // Start counter animation
+                            const valueElement = item.querySelector('.spec-value');
+                            const target = specValues[index];
+                            
+                            // Set initial value to 0
+                            valueElement.innerHTML = '0<span class="spec-unit">' + target.suffix + '</span>';
+                            
+                            // Animate from 0 to target value
+                            setTimeout(() => {
+                                animateCounter(valueElement, 0, target.value, 2000, target.suffix);
+                            }, 100);
+                            
+                        }, index * 150);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (specsSection) {
+            specsObserver.observe(specsSection);
+        }
+    </script>
 </body>
 
 </html>

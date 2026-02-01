@@ -1303,3 +1303,5 @@ sessionStorage.setItem('lastVisited', new Date().toISOString());
 //     window.addEventListener("resize", updateNavbarColor);
 //     updateNavbarColor();
 // });
+
+
