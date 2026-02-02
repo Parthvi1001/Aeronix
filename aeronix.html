@@ -229,11 +229,11 @@
 ====================================== */
 .drone-showcase-section {
     width: 100%;
-    min-height: 100vh;
+    min-height: auto;
     background: linear-gradient(180deg, #0a0a0f 0%, #0d1117 50%, #161b22 100%);
     position: relative;
     overflow: hidden;
-    padding: 100px 0 60px;
+    padding: 60px 0 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -256,12 +256,12 @@
 }
 
 .drone-showcase-container {
-    max-width: 1400px;
+    max-width: 1200px;
     width: 100%;
-    padding: 0 60px;
+    padding: 0 40px;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 40px;
     position: relative;
     z-index: 1;
 }
@@ -270,7 +270,7 @@
 .drone-main-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 50px;
     align-items: center;
 }
 
@@ -284,7 +284,7 @@
 .drone-image-container {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 380px;
     animation: droneFloat 6s ease-in-out infinite;
 }
 
@@ -342,8 +342,8 @@
     /* Make text readable on light backgrounds */
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 16px;
-    padding: 24px 24px;
+    border-radius: 14px;
+    padding: 20px 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(8px);
 }
@@ -351,15 +351,15 @@
 .drone-top-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(100, 80, 255, 0.15));
     border: 1px solid rgba(0, 150, 255, 0.4);
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-size: 12px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 24px;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
     text-transform: uppercase;
     color: #00b4ff;
     width: fit-content;
@@ -367,31 +367,31 @@
 }
 
 .drone-main-heading {
-    font-size: 64px;
+    font-size: 42px;
     font-weight: 900;
     color: #0a1e3d; /* dark heading for visibility */
     line-height: 1.05;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     letter-spacing: -1px;
     animation: headingFade 0.8s ease 0.1s forwards;
 }
 
 .drone-subtitle {
-    font-size: 18px;
+    font-size: 14px;
     color: #0a1e3d;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     animation: subtitleFade 0.8s ease 0.2s forwards;
 }
 
 .drone-description-text {
-    font-size: 16px;
+    font-size: 13px;
     color: rgba(10, 30, 61, 0.88); /* dark readable body */
-    line-height: 1.8;
-    margin-bottom: 32px;
-    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 480px;
     animation: descFade 0.8s ease 0.3s forwards;
 }
 
@@ -720,6 +720,257 @@
         }
 
         /* ======================================
+           AIRBUDS IMMERSIVE EXPERIENCE SECTION
+           ====================================== */
+        .airbuds-immersive-section {
+            width: 100%;
+            height: 100vh;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+            overflow: hidden;
+        }
+
+        .airbuds-immersive-container {
+            max-width: 1300px;
+            width: 100%;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .airbuds-immersive-image {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .airbuds-immersive-img-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .airbuds-immersive-img-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .airbuds-waveform {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110%;
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 3px;
+            z-index: 1;
+        }
+
+        .wave-bar {
+            width: 3px;
+            background: linear-gradient(to top, #000, #333);
+            border-radius: 2px;
+            animation: waveAnimation 1.2s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(1) { height: 12px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 22px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 32px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 45px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 55px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 45px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 32px; animation-delay: 0.6s; }
+        .wave-bar:nth-child(8) { height: 22px; animation-delay: 0.7s; }
+        .wave-bar:nth-child(9) { height: 35px; animation-delay: 0.8s; }
+        .wave-bar:nth-child(10) { height: 48px; animation-delay: 0.9s; }
+        .wave-bar:nth-child(11) { height: 38px; animation-delay: 1s; }
+        .wave-bar:nth-child(12) { height: 25px; animation-delay: 1.1s; }
+        .wave-bar:nth-child(13) { height: 15px; animation-delay: 0.15s; }
+        .wave-bar:nth-child(14) { height: 28px; animation-delay: 0.25s; }
+        .wave-bar:nth-child(15) { height: 42px; animation-delay: 0.35s; }
+
+        @keyframes waveAnimation {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.5); }
+        }
+
+        .airbuds-immersive-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .airbuds-immersive-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #000;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .airbuds-immersive-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: #000;
+            line-height: 1.1;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .airbuds-immersive-title span {
+            display: block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .airbuds-immersive-desc {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            max-width: 480px;
+        }
+
+        .airbuds-immersive-features {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .immersive-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 18px;
+            background: #f8f9fa;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .immersive-feature-item:hover {
+            background: #f0f0f0;
+            transform: translateX(10px);
+        }
+
+        .immersive-feature-icon {
+            width: 44px;
+            height: 44px;
+            background: #000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .immersive-feature-icon i {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .immersive-feature-text h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 3px;
+        }
+
+        .immersive-feature-text p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+        }
+
+        .airbuds-immersive-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #000;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: fit-content;
+            margin-top: 12px;
+        }
+
+        .airbuds-immersive-cta:hover {
+            background: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
+        @media (max-width: 1024px) {
+            .airbuds-immersive-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 0 40px;
+            }
+
+            .airbuds-immersive-image {
+                order: 1;
+            }
+
+            .airbuds-immersive-content {
+                order: 2;
+                align-items: center;
+                text-align: center;
+            }
+
+            .airbuds-immersive-title {
+                font-size: 42px;
+            }
+
+            .airbuds-immersive-desc {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .airbuds-immersive-section {
+                padding: 80px 0;
+            }
+
+            .airbuds-immersive-container {
+                padding: 0 20px;
+            }
+
+            .airbuds-immersive-title {
+                font-size: 32px;
+            }
+
+            .immersive-feature-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        /* ======================================
            HEADPHONE FULLSCREEN SHOWCASE
            ====================================== */
         .headphone-fullscreen-section {
@@ -742,6 +993,210 @@
 
         .headphone-fullscreen-section:hover .headphone-showcase-img {
             transform: scale(1.05);
+        }
+
+        /* ======================================
+           HEADPHONE USE CASES SECTION
+           ====================================== */
+        .headphone-usecases-section {
+            width: 100%;
+            background: #ffffff;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .headphone-usecases-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .headphone-usecases-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .headphone-usecases-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .headphone-usecases-header h2 {
+            font-size: 48px;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 14px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .headphone-usecases-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .usecases-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .usecase-card {
+            background: linear-gradient(145deg, #f8f9fa, #ffffff);
+            border-radius: 20px;
+            padding: 32px 26px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .usecase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #000, #333);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .usecase-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .usecase-card:hover {
+            background: #fff;
+            border-color: #e0e0e0;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .usecase-icon {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: all 0.4s ease;
+        }
+
+        .usecase-card:hover .usecase-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .usecase-icon i {
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .usecase-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 14px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .usecase-card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .usecase-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .usecase-tag {
+            background: #f0f0f0;
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .usecase-card:hover .usecase-tag {
+            background: #000;
+            color: #fff;
+        }
+
+        .headphone-usecases-cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .headphone-usecases-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #000;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .headphone-usecases-btn:hover {
+            background: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
+        @media (max-width: 992px) {
+            .usecases-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .headphone-usecases-section {
+                padding: 60px 0;
+            }
+
+            .headphone-usecases-container {
+                padding: 0 20px;
+            }
+
+            .headphone-usecases-header h2 {
+                font-size: 32px;
+            }
+
+            .usecases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .usecase-card {
+                padding: 24px 20px;
+            }
         }
     </style>
 
@@ -1192,12 +1647,180 @@
     </section>
 
     <!-- ============================================
+     AIRBUDS IMMERSIVE EXPERIENCE SECTION
+     ============================================ -->
+    <section class="airbuds-immersive-section">
+        <div class="airbuds-immersive-container">
+            <!-- Left Side: Image with Waveform -->
+            <div class="airbuds-immersive-image">
+                <div class="airbuds-immersive-img-wrapper">
+                    <img src="a2.jpg" alt="AirBuds Pro">
+                    <div class="airbuds-waveform">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Content -->
+            <div class="airbuds-immersive-content">
+                <div class="airbuds-immersive-badge">
+                    <i class="fas fa-headphones-alt"></i>
+                    HYBRID ANC TECHNOLOGY
+                </div>
+                
+                <h2 class="airbuds-immersive-title">
+                    Silence The World.
+                    <span>Feel The Music.</span>
+                </h2>
+                
+                <p class="airbuds-immersive-desc">
+                    Our advanced Hybrid Active Noise Cancellation technology uses dual microphones 
+                    to detect and neutralize ambient noise up to -42dB, creating your personal 
+                    sound sanctuary anywhere you go.
+                </p>
+
+                <div class="airbuds-immersive-features">
+                    <div class="immersive-feature-item">
+                        <div class="immersive-feature-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="immersive-feature-text">
+                            <h4>Dual-Mic System</h4>
+                            <p>Feedforward + feedback microphones for precise noise detection</p>
+                        </div>
+                    </div>
+
+                    <div class="immersive-feature-item">
+                        <div class="immersive-feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div class="immersive-feature-text">
+                            <h4>Adaptive Modes</h4>
+                            <p>Switch between ANC, Transparency, and Off modes seamlessly</p>
+                        </div>
+                    </div>
+
+                    <div class="immersive-feature-item">
+                        <div class="immersive-feature-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="immersive-feature-text">
+                            <h4>Wind Noise Reduction</h4>
+                            <p>AI-powered algorithm filters out wind for clear calls outdoors</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="airburds.html" class="airbuds-immersive-cta">
+                    Experience AirBuds Pro
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
      HEADPHONE FULLSCREEN SHOWCASE
      ============================================ -->
     <section class="headphone-fullscreen-section" onclick="window.location.href='headphones.html'">
         <img src="assets/IMG-20260130-WA0042~2.jpg.jpeg" 
              alt="Premium Headphones" 
              class="headphone-showcase-img">
+    </section>
+
+    <!-- ============================================
+     HEADPHONE USE CASE SCENARIOS SECTION
+     ============================================ -->
+    <section class="headphone-usecases-section">
+        <div class="headphone-usecases-container">
+            <div class="headphone-usecases-header">
+                <span class="headphone-usecases-badge">
+                    <i class="fas fa-th-large"></i>
+                    VERSATILE DESIGN
+                </span>
+                <h2>One Headphone, Every Scenario</h2>
+                <p>Engineered to excel in any environment, from studio sessions to daily commutes</p>
+            </div>
+
+            <div class="usecases-grid">
+                <!-- Use Case 1: Studio Recording -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <h3>For Studio Recording</h3>
+                    <p>Professional-grade audio with accurate sound reproduction for mixing and mastering</p>
+                    <div class="usecase-tags">
+                        <span class="usecase-tag">Flat Response</span>
+                        <span class="usecase-tag">Hi-Res Audio</span>
+                        <span class="usecase-tag">Studio Monitor</span>
+                    </div>
+                </div>
+
+                <!-- Use Case 2: Travel -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>For Travel</h3>
+                    <p>Block out airplane noise and enjoy endless entertainment on long journeys</p>
+                    <div class="usecase-tags">
+                        <span class="usecase-tag">Foldable</span>
+                        <span class="usecase-tag">40hr ANC</span>
+                        <span class="usecase-tag">Compact Case</span>
+                    </div>
+                </div>
+
+                <!-- Use Case 3: Gaming -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>For Gaming</h3>
+                    <p>Gain competitive advantage with ultra-low latency audio and immersive soundstage</p>
+                    <div class="usecase-tags">
+                        <span class="usecase-tag">Low Latency</span>
+                        <span class="usecase-tag">40ms Delay</span>
+                        <span class="usecase-tag">Spatial Audio</span>
+                    </div>
+                </div>
+
+                <!-- Use Case 4: Work Calls -->
+                <div class="usecase-card">
+                    <div class="usecase-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>For Work Calls</h3>
+                    <p>Crystal clear communication with AI-enhanced voice pickup and background noise isolation</p>
+                    <div class="usecase-tags">
+                        <span class="usecase-tag">Clear Mic</span>
+                        <span class="usecase-tag">AI Noise Filter</span>
+                        <span class="usecase-tag">All-Day Comfort</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="headphone-usecases-cta">
+                <a href="headphones.html" class="headphone-usecases-btn">
+                    Find Your Perfect Fit
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
     </section>
 
     <!-- FULL SCREEN PRODUCTS SECTION -->
