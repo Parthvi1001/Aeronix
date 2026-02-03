@@ -1,0 +1,16 @@
+{
+  "name": "signin-app",
+  "version": "1.0.0",
+  "description": "Sign in application with MySQL database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["authentication", "signin", "mysql-database"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+  }
+}

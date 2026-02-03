@@ -743,6 +743,217 @@
         .headphone-fullscreen-section:hover .headphone-showcase-img {
             transform: scale(1.05);
         }
+
+        /* Professional Contact Section */
+        .contact-section {
+            padding: 100px 20px 80px;
+            background: var(--bg-section);
+            border-top: 1px solid var(--card-border);
+        }
+
+        .contact-shell {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3.5rem;
+            align-items: stretch;
+        }
+
+        .contact-panel {
+            background: linear-gradient(160deg, var(--card-bg) 0%, rgba(102, 126, 234, 0.08) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 22px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-kicker {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-strong);
+            display: block;
+        }
+
+        .contact-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--text-primary);
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+        }
+
+        .contact-lead {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.2rem 1.4rem;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .contact-item i {
+            font-size: 1.4rem;
+            color: var(--accent-strong);
+            margin-top: 0.2rem;
+        }
+
+        .contact-item h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-form-wrap {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 22px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        .contact-form-head {
+            margin-bottom: 2rem;
+        }
+
+        .contact-form-head h3 {
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-form-head p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .contact-field {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .contact-field label {
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .contact-input,
+        .contact-textarea {
+            width: 100%;
+            padding: 1rem 1.1rem;
+            border-radius: 12px;
+            border: 1.5px solid var(--card-border);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-input:focus,
+        .contact-textarea:focus {
+            outline: none;
+            border-color: var(--accent-strong);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .contact-meta {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .contact-btn {
+            padding: 0.9rem 2.2rem;
+            border-radius: 999px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-strong), #6d5bff);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.4px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.35);
+        }
+
+        @media (max-width: 900px) {
+            .contact-shell {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Get Started Button Theme Colors */
+        #getStartedBtn {
+            color: #fff;
+        }
+
+        body.light-mode #getStartedBtn {
+            color: #fff;
+        }
+
+        body.dark-mode #getStartedBtn {
+            color: #111827;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 
 </head>
@@ -878,8 +1089,7 @@
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="nav-btn nav-btn-secondary">Sign In</button>
-                <button class="nav-btn nav-btn-primary">Get Started</button>
+                <a href="index.html" class="nav-btn nav-btn-secondary">Sign In</a>
             </div>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -1269,39 +1479,127 @@
 
     <!-- ABOUT SECTION -->
     <section class="about-section" id="about">
-        <div class="about-content" id="aboutContent">
-            <h2 class="about-title" id="aboutTitle">AERONIX</h2>
-            <p class="about-text">
-                We don't just create technology — we craft experiences that elevate human potential.
-                From the skies to your ears, AERONIX represents the pinnacle of innovation, design, and performance.
-                Our mission is to push boundaries and redefine what's possible.
-            </p>
-            <p class="about-text">
-                Every product is engineered with precision, designed with passion, and built for those who dare to dream
-                bigger.
-            </p>
+        <div class="about-shell">
+            <div class="about-content" id="aboutContent">
+                <span class="about-kicker">About Aeronix</span>
+                <h2 class="about-title" id="aboutTitle">AERONIX</h2>
+                <p class="about-text">
+                    We don't just create technology — we craft experiences that elevate human potential.
+                    From the skies to your ears, AERONIX represents the pinnacle of innovation, design, and performance.
+                    Our mission is to push boundaries and redefine what's possible.
+                </p>
+                <p class="about-text">
+                    Every product is engineered with precision, designed with passion, and built for those who dare to dream
+                    bigger.
+                </p>
+                <div class="about-highlights">
+                    <div class="about-highlight">
+                        <h3>12+</h3>
+                        <p>Years of R&amp;D</p>
+                    </div>
+                    <div class="about-highlight">
+                        <h3>48K</h3>
+                        <p>Active Pilots</p>
+                    </div>
+                    <div class="about-highlight">
+                        <h3>99.9%</h3>
+                        <p>Flight Reliability</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-cards">
+                <div class="about-card">
+                    <h4>Precision Design</h4>
+                    <p>Every frame, rotor, and sensor is engineered for stability, speed, and safety at any altitude.</p>
+                </div>
+                <div class="about-card">
+                    <h4>Smart Autonomy</h4>
+                    <p>AI-driven navigation delivers accurate tracking, obstacle avoidance, and reliable return-to-home.</p>
+                </div>
+                <div class="about-card">
+                    <h4>Premium Support</h4>
+                    <p>Dedicated experts and global service partners keep your fleet mission-ready at all times.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT US SECTION -->
     <section class="contact-section" id="contactSection">
-        <div class="contact-container">
-            <h2 class="section-title">Get In Touch</h2>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" required>
+        <div class="contact-shell">
+            <div class="contact-panel">
+                <div>
+                    <span class="contact-kicker">CONTACT US</span>
+                    <h2 class="contact-title">Let’s build your next experience together.</h2>
+                    <p class="contact-lead">Share your goals, and our specialists will craft a tailored solution for your team. We respond within one business day.</p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" required>
+
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Headquarters</h4>
+                            <p>123 Innovation Drive, Tech Hub, CA 94025</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567 • Mon–Fri, 9AM–6PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@aeronix.com • partnerships@aeronix.com</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" class="form-control" required></textarea>
+            </div>
+
+            <div class="contact-form-wrap">
+                <div class="contact-form-head">
+                    <h3>Send a message</h3>
+                    <p>Tell us about your project and we’ll follow up with the right expert.</p>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+
+                <form id="contactForm">
+                    <div class="contact-grid">
+                        <div class="contact-field">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" class="contact-input" placeholder="Your name" required>
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactEmail">Business Email</label>
+                            <input type="email" id="contactEmail" class="contact-input" placeholder="you@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-field">
+                            <label for="contactCompany">Company</label>
+                            <input type="text" id="contactCompany" class="contact-input" placeholder="Company name">
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactTopic">Topic</label>
+                            <input type="text" id="contactTopic" class="contact-input" placeholder="Product inquiry">
+                        </div>
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" class="contact-textarea" placeholder="Tell us more about what you need" required></textarea>
+                    </div>
+
+                    <div class="contact-actions">
+                        <span class="contact-meta">We’ll reply within 24 hours.</span>
+                        <button type="submit" class="contact-btn">Send Message</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -1400,3 +1698,7 @@
     </script>
 
     <!-- Inline drone counter script removed; animation handled in script.js -->
+
+</body>
+
+</html>

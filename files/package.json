@@ -1,0 +1,15 @@
+{
+  "name": "signin-app",
+  "version": "1.0.0",
+  "description": "Sign in application with JSON database",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["authentication", "signin", "json-database"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
