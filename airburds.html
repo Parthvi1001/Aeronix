@@ -1221,7 +1221,7 @@
 
                             <div class="summary-total">
                                 <span>Total</span>
-                                <span class="total-price" id="summaryTotal">$0</span>
+                                <span class="total-price" id="summaryTotal">₹0</span>
                             </div>
                         </div>
 
@@ -1338,9 +1338,9 @@
         const products = [
             {
                 id: 1,
-                name: "AERONIX Air",
+                name: "boAt Airdopes Pro",
                 subtitle: "Everyday Essential",
-                price: 149,
+                price: 1299,
                 badge: "CONSUMER",
                 specs: {
                     battery: "24h",
@@ -1352,9 +1352,9 @@
             },
             {
                 id: 2,
-                name: "AERONIX Pro",
+                name: "Galaxy Buds Pro",
                 subtitle: "Premium Sound",
-                price: 249,
+                price: 2499,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1367,9 +1367,9 @@
             },
             {
                 id: 3,
-                name: "AERONIX Ultra",
+                name: "Sony WF Ultra",
                 subtitle: "Flagship Edition",
-                price: 349,
+                price: 3499,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1382,9 +1382,9 @@
             },
             {
                 id: 4,
-                name: "AERONIX Elite",
+                name: "Bose QuietComfort",
                 subtitle: "Audiophile Choice",
-                price: 449,
+                price: 4499,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1397,9 +1397,9 @@
             },
             {
                 id: 5,
-                name: "AERONIX Sport",
+                name: "Beats Fit Pro",
                 subtitle: "Active Lifestyle",
-                price: 179,
+                price: 1799,
                 badge: "CONSUMER",
                 specs: {
                     battery: "28h",
@@ -1411,9 +1411,9 @@
             },
             {
                 id: 6,
-                name: "AERONIX Mini",
+                name: "OnePlus Buds Mini",
                 subtitle: "Compact Power",
-                price: 129,
+                price: 999,
                 badge: "CONSUMER",
                 specs: {
                     battery: "20h",
@@ -1425,9 +1425,9 @@
             },
             {
                 id: 7,
-                name: "AERONIX Gaming",
+                name: "Hammer TWS Earbuds",
                 subtitle: "Low Latency Pro",
-                price: 199,
+                price: 1999,
                 badge: "CONSUMER",
                 specs: {
                     battery: "32h",
@@ -1439,9 +1439,9 @@
             },
             {
                 id: 8,
-                name: "AERONIX Studio",
+                name: "boAt Airdopes",
                 subtitle: "Producer Edition",
-                price: 299,
+                price: 2999,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1455,34 +1455,34 @@
         ];
 
         const models = [
-            { name: "AERONIX Air", price: 149 },
-            { name: "AERONIX Pro", price: 249 },
-            { name: "AERONIX Ultra", price: 349 },
-            { name: "AERONIX Elite", price: 449 },
-            { name: "AERONIX Sport", price: 179 },
-            { name: "AERONIX Mini", price: 129 },
-            { name: "AERONIX Gaming", price: 199 },
-            { name: "AERONIX Studio", price: 299 }
+            { name: "AirPods Lite", price: 1299 },
+            { name: "Galaxy Buds Pro", price: 2499 },
+            { name: "Sony WF Ultra", price: 3499 },
+            { name: "Bose QuietComfort", price: 4499 },
+            { name: "Beats Fit Pro", price: 1799 },
+            { name: "Pixel Buds Mini", price: 999 },
+            { name: "Razer Hammerhead", price: 1999 },
+            { name: "Sennheiser Momentum", price: 2999 }
         ];
 
         const audioOptions = [
             { name: "Standard AAC", detail: "High-quality wireless audio", price: 0, included: true },
-            { name: "LDAC Codec", detail: "3x higher quality streaming", price: 50 },
-            { name: "Hi-Res Audio", detail: "Lossless wireless transmission", price: 100 }
+            { name: "LDAC Codec", detail: "3x higher quality streaming", price: 299 },
+            { name: "Hi-Res Audio", detail: "Lossless wireless transmission", price: 599 }
         ];
 
         const batteryOptions = [
             { name: "Standard (24h)", price: 0, included: true },
-            { name: "Extended (36h)", price: 60 },
-            { name: "Ultra (48h)", price: 100 }
+            { name: "Extended (36h)", price: 349 },
+            { name: "Ultra (48h)", price: 599 }
         ];
 
         const colorOptions = [
             { name: "Midnight Black", color: "#1a1a1a", price: 0, free: true },
-            { name: "Pearl White", color: "#f5f5f5", price: 30 },
-            { name: "Sunset Orange", color: "#FF6B35", price: 40 },
-            { name: "Ocean Blue", color: "#4A90E2", price: 40 },
-            { name: "Forest Green", color: "#00D084", price: 40 }
+            { name: "Pearl White", color: "#f5f5f5", price: 149 },
+            { name: "Sunset Orange", color: "#FF6B35", price: 199 },
+            { name: "Ocean Blue", color: "#4A90E2", price: 199 },
+            { name: "Forest Green", color: "#00D084", price: 199 }
         ];
 
         let currentConfig = {
@@ -1516,7 +1516,7 @@
                                     <h5 class="product-title">${product.name}</h5>
                                     <p class="product-subtitle">${product.subtitle}</p>
                                 </div>
-                                <div class="product-price">$${product.price}</div>
+                                <div class="product-price">₹${product.price.toLocaleString('en-IN')}</div>
                             </div>
                             <div class="product-specs">
                                 <div class="spec-item">
@@ -1589,7 +1589,7 @@
                         <div>
                             <div class="option-name">${model.name}</div>
                         </div>
-                        <div class="option-price">$${model.price}</div>
+                        <div class="option-price">₹${model.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
             `).join('');
@@ -1603,7 +1603,7 @@
                             <div class="option-name">${option.name}</div>
                             <div class="option-included">${option.detail}</div>
                         </div>
-                        <div class="option-price">${option.included ? 'Included' : '+$' + option.price}</div>
+                        <div class="option-price">${option.included ? 'Included' : '+₹' + option.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
             `).join('');
@@ -1616,7 +1616,7 @@
                         <div>
                             <div class="option-name">${option.name}</div>
                         </div>
-                        <div class="option-price">${option.included ? 'Included' : '+$' + option.price}</div>
+                        <div class="option-price">${option.included ? 'Included' : '+₹' + option.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
             `).join('');
@@ -1627,7 +1627,7 @@
                      onclick="selectColor(${index})">
                     <div class="color-circle" style="background-color: ${option.color}"></div>
                     <div class="color-name">${option.name}</div>
-                    <div class="color-price">${option.free ? 'Free' : '+$' + option.price}</div>
+                    <div class="color-price">${option.free ? 'Free' : '+₹' + option.price.toLocaleString('en-IN')}</div>
                 </div>
             `).join('');
         }
@@ -1658,7 +1658,7 @@
 
         function updateSummary() {
             document.getElementById('summaryModel').textContent =
-                `${currentConfig.model.name} - $${currentConfig.model.price}`;
+                `${currentConfig.model.name} - ₹${currentConfig.model.price.toLocaleString('en-IN')}`;
 
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
@@ -1669,7 +1669,7 @@
                 currentConfig.battery.price +
                 currentConfig.color.price;
 
-            document.getElementById('summaryTotal').textContent = `$${total}`;
+            document.getElementById('summaryTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
         }
 
         function resetConfiguration() {

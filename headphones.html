@@ -1182,7 +1182,7 @@
                             
                             <div class="summary-total">
                                 <span>Total</span>
-                                <span class="total-price" id="summaryTotal">$0</span>
+                                <span class="total-price" id="summaryTotal">₹0</span>
                             </div>
                         </div>
 
@@ -1297,9 +1297,9 @@
         const products = [
             {
                 id: 1,
-                name: "AERONIX X1",
+                name: "Sony WH-1000XM5",
                 subtitle: "The Perfect Start",
-                price: 299,
+                price: 2499,
                 badge: "CONSUMER",
                 specs: {
                     battery: "20h",
@@ -1310,9 +1310,9 @@
             },
             {
                 id: 2,
-                name: "AERONIX Pro",
+                name: "Bose 700",
                 subtitle: "Professional Grade",
-                price: 549,
+                price: 4599,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1324,9 +1324,9 @@
             },
             {
                 id: 3,
-                name: "AERONIX Ultra",
+                name: "AirPods Max",
                 subtitle: "Beyond Limits",
-                price: 899,
+                price: 7499,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1339,9 +1339,9 @@
             },
             {
                 id: 4,
-                name: "AERONIX Enterprise",
+                name: "Sennheiser HD 800S",
                 subtitle: "Business Class",
-                price: 1299,
+                price: 10999,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1353,9 +1353,9 @@
             },
             {
                 id: 5,
-                name: "AERONIX Mini",
+                name: "boAt Rockerz 450",
                 subtitle: "Compact Power",
-                price: 199,
+                price: 1699,
                 badge: "CONSUMER",
                 specs: {
                     battery: "15h",
@@ -1366,9 +1366,9 @@
             },
             {
                 id: 6,
-                name: "AERONIX Gaming",
+                name: "HyperX Cloud III",
                 subtitle: "Victory Sound",
-                price: 399,
+                price: 3299,
                 badge: "CONSUMER",
                 specs: {
                     battery: "25h",
@@ -1379,9 +1379,9 @@
             },
             {
                 id: 7,
-                name: "AERONIX Sport",
+                name: "JBL Tune 510BT",
                 subtitle: "Active Lifestyle",
-                price: 249,
+                price: 1999,
                 badge: "CONSUMER",
                 specs: {
                     battery: "18h",
@@ -1392,9 +1392,9 @@
             },
             {
                 id: 8,
-                name: "AERONIX Studio",
+                name: "Audio-Technica ATH-M50x",
                 subtitle: "Producer Edition",
-                price: 699,
+                price: 5999,
                 badge: "PRO",
                 badgeClass: "pro",
                 specs: {
@@ -1407,34 +1407,34 @@
         ];
 
         const models = [
-            { name: "AERONIX X1", price: 299 },
-            { name: "AERONIX Pro", price: 549 },
-            { name: "AERONIX Ultra", price: 899 },
-            { name: "AERONIX Enterprise", price: 1299 },
-            { name: "AERONIX Mini", price: 199 },
-            { name: "AERONIX Gaming", price: 399 },
-            { name: "AERONIX Sport", price: 249 },
-            { name: "AERONIX Studio", price: 699 }
+            { name: "Sony WH-1000XM5", price: 2499 },
+            { name: "Bose 700", price: 4599 },
+            { name: "AirPods Max", price: 7499 },
+            { name: "Sennheiser HD 800S", price: 10999 },
+            { name: "JBL Tune 510BT", price: 1699 },
+            { name: "HyperX Cloud III", price: 3299 },
+            { name: "Beats Solo 4", price: 1999 },
+            { name: "Audio-Technica ATH-M50x", price: 5999 }
         ];
 
         const audioOptions = [
             { name: "Standard HD", detail: "16-bit/44.1kHz", price: 0, included: true },
-            { name: "Hi-Res Audio", detail: "24-bit/96kHz", price: 100 },
-            { name: "Studio Master", detail: "24-bit/192kHz", price: 200 }
+            { name: "Hi-Res Audio", detail: "24-bit/96kHz", price: 499 },
+            { name: "Studio Master", detail: "24-bit/192kHz", price: 999 }
         ];
 
         const batteryOptions = [
             { name: "Standard (20h)", price: 0, included: true },
-            { name: "Extended (35h)", price: 80 },
-            { name: "Ultra (50h)", price: 150 }
+            { name: "Extended (35h)", price: 399 },
+            { name: "Ultra (50h)", price: 799 }
         ];
 
         const colorOptions = [
             { name: "Midnight Black", color: "#1a1a1a", price: 0, free: true },
-            { name: "Pearl White", color: "#f5f5f5", price: 40 },
-            { name: "Sunset Orange", color: "#FF6B35", price: 50 },
-            { name: "Ocean Blue", color: "#4A90E2", price: 50 },
-            { name: "Forest Green", color: "#00D084", price: 50 }
+            { name: "Pearl White", color: "#f5f5f5", price: 199 },
+            { name: "Sunset Orange", color: "#FF6B35", price: 299 },
+            { name: "Ocean Blue", color: "#4A90E2", price: 299 },
+            { name: "Forest Green", color: "#00D084", price: 299 }
         ];
 
         let currentConfig = {
@@ -1464,7 +1464,7 @@
                                     <h5 class="product-title">${product.name}</h5>
                                     <p class="product-subtitle">${product.subtitle}</p>
                                 </div>
-                                <div class="product-price">$${product.price}</div>
+                                <div class="product-price">₹${product.price.toLocaleString('en-IN')}</div>
                             </div>
                             <div class="product-specs">
                                 <div class="spec-item">
@@ -1537,7 +1537,7 @@
                         <div>
                             <div class="option-name">${model.name}</div>
                         </div>
-                        <div class="option-price">$${model.price}</div>
+                        <div class="option-price">₹${model.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
             `).join('');
@@ -1551,7 +1551,7 @@
                             <div class="option-name">${option.name}</div>
                             <div class="option-included">${option.detail}</div>
                         </div>
-                        <div class="option-price">${option.included ? 'Included' : '+$' + option.price}</div>
+                        <div class="option-price">${option.included ? 'Included' : '+₹' + option.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
             `).join('');
@@ -1564,7 +1564,7 @@
                         <div>
                             <div class="option-name">${option.name}</div>
                         </div>
-                        <div class="option-price">${option.included ? 'Included' : '+$' + option.price}</div>
+                        <div class="option-price">${option.included ? 'Included' : '+₹' + option.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
             `).join('');
@@ -1575,7 +1575,7 @@
                      onclick="selectColor(${index})">
                     <div class="color-circle" style="background-color: ${option.color}"></div>
                     <div class="color-name">${option.name}</div>
-                    <div class="color-price">${option.free ? 'Free' : '+$' + option.price}</div>
+                    <div class="color-price">${option.free ? 'Free' : '+₹' + option.price.toLocaleString('en-IN')}</div>
                 </div>
             `).join('');
         }
@@ -1606,7 +1606,7 @@
 
         function updateSummary() {
             document.getElementById('summaryModel').textContent = 
-                `${currentConfig.model.name} - $${currentConfig.model.price}`;
+                `${currentConfig.model.name} - ₹${currentConfig.model.price.toLocaleString('en-IN')}`;
             
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
@@ -1617,7 +1617,7 @@
                          currentConfig.battery.price + 
                          currentConfig.color.price;
             
-            document.getElementById('summaryTotal').textContent = `$${total}`;
+            document.getElementById('summaryTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
         }
 
         function resetConfiguration() {

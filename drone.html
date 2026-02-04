@@ -1489,7 +1489,7 @@
                         <div class="config-preview">
                             <div class="preview-image-container">
                                 <img id="previewImage" src="https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=800&h=600&fit=crop" alt="Drone Preview">
-                                <div class="price-badge" id="previewPrice">$799</div>
+                                <div class="price-badge" id="previewPrice">₹6,999</div>
                             </div>
                             <div class="preview-controls">
                                 <button class="control-btn" onclick="undoConfig()">
@@ -1540,7 +1540,7 @@
                             <h3 class="summary-title">Configuration Summary</h3>
                             <div class="summary-item">
                                 <span class="summary-label">Base Model</span>
-                                <span class="summary-value" id="summaryModel">Aeronix X1 - $799</span>
+                                <span class="summary-value" id="summaryModel">Aeronix X1 - ₹6,999</span>
                             </div>
                             <div class="summary-item">
                                 <span class="summary-label">Camera</span>
@@ -1556,7 +1556,7 @@
                             </div>
                             <div class="summary-total">
                                 <span class="summary-label">Total</span>
-                                <span class="summary-value" id="summaryTotal">$799</span>
+                                <span class="summary-value" id="summaryTotal">₹6,999</span>
                             </div>
                         </div>
                     </div>
@@ -1624,8 +1624,8 @@
         const drones = [
             {
                 id: 1,
-                name: "Aeronix X1",
-                price: 799,
+                name: "SkyHawk X1",
+                price: 6999,
                 tagline: "The Perfect Start",
                 badge: "CONSUMER",
                 badgeClass: "badge-consumer",
@@ -1638,8 +1638,8 @@
             },
             {
                 id: 2,
-                name: "Aeronix Pro",
-                price: 1499,
+                name: "Phantom Pro",
+                price: 12999,
                 tagline: "Professional Grade",
                 badge: "PROFESSIONAL",
                 badgeClass: "badge-professional",
@@ -1652,8 +1652,8 @@
             },
             {
                 id: 3,
-                name: "Aeronix Ultra",
-                price: 2999,
+                name: "Mavic Ultra",
+                price: 24999,
                 tagline: "Beyond Limits",
                 badge: "PROFESSIONAL",
                 badgeClass: "badge-professional",
@@ -1666,8 +1666,8 @@
             },
             {
                 id: 4,
-                name: "Aeronix Mini",
-                price: 399,
+                name: "Spark Mini",
+                price: 3499,
                 tagline: "Compact Adventure",
                 badge: "CONSUMER",
                 badgeClass: "badge-consumer",
@@ -1680,8 +1680,8 @@
             },
             {
                 id: 5,
-                name: "Aeronix Sport",
-                price: 1899,
+                name: "FPV Racer",
+                price: 15999,
                 tagline: "Racing Performance",
                 badge: "PROFESSIONAL",
                 badgeClass: "badge-professional",
@@ -1694,12 +1694,12 @@
             },
             {
                 id: 6,
-                name: "Aeronix Titan",
-                price: 5499,
+                name: "Inspire Titan",
+                price: 45999,
                 tagline: "Industrial Power",
                 badge: "ENTERPRISE",
                 badgeClass: "badge-enterprise",
-                image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=800&h=600&fit=crop",
+                image: "drone1.jfif",
                 specs: {
                     speed: "60 km/h",
                     flight: "90 min",
@@ -1708,12 +1708,12 @@
             },
             {
                 id: 7,
-                name: "Aeronix Nano",
-                price: 199,
+                name: "Tello Nano",
+                price: 1999,
                 tagline: "Pocket Explorer",
                 badge: "CONSUMER",
                 badgeClass: "badge-consumer",
-                image: "https://images.unsplash.com/photo-1520453803296-c39eabe2dab4?w=800&h=600&fit=crop",
+                image: "drone2.jpg",
                 specs: {
                     speed: "25 km/h",
                     flight: "15 min",
@@ -1722,12 +1722,12 @@
             },
             {
                 id: 8,
-                name: "Aeronix Sentinel",
-                price: 8999,
+                name: "Matrice Sentinel",
+                price: 74999,
                 tagline: "Security Excellence",
                 badge: "ENTERPRISE",
                 badgeClass: "badge-enterprise",
-                image: "https://images.unsplash.com/photo-1561580125-69d55f8f93cd?w=800&h=600&fit=crop",
+                image: "drone3.jpeg",
                 specs: {
                     speed: "75 km/h",
                     flight: "120 min",
@@ -1740,20 +1740,20 @@
         const configOptions = {
             cameras: [
                 { id: 1, name: "Standard 4K", included: true, price: 0 },
-                { id: 2, name: "Pro 6K RAW", included: false, price: 299 },
-                { id: 3, name: "Ultra 8K HDR", included: false, price: 599 }
+                { id: 2, name: "Pro 6K RAW", included: false, price: 2499 },
+                { id: 3, name: "Ultra 8K HDR", included: false, price: 4999 }
             ],
             batteries: [
                 { id: 1, name: "Standard (28 min)", included: true, price: 0 },
-                { id: 2, name: "Extended (42 min)", included: false, price: 150 },
-                { id: 3, name: "Ultra (55 min)", included: false, price: 300 }
+                { id: 2, name: "Extended (42 min)", included: false, price: 1299 },
+                { id: 3, name: "Ultra (55 min)", included: false, price: 2499 }
             ],
             colors: [
                 { id: 1, name: "Stealth Black", hex: "#1a1a1a", price: 0 },
-                { id: 2, name: "Arctic White", hex: "#f5f5f5", price: 50 },
-                { id: 3, name: "Sunset Orange", hex: "#ff6b35", price: 75 },
-                { id: 4, name: "Ocean Blue", hex: "#00b4d8", price: 75 },
-                { id: 5, name: "Forest Green", hex: "#2d6a4f", price: 75 }
+                { id: 2, name: "Arctic White", hex: "#f5f5f5", price: 399 },
+                { id: 3, name: "Sunset Orange", hex: "#ff6b35", price: 599 },
+                { id: 4, name: "Ocean Blue", hex: "#00b4d8", price: 599 },
+                { id: 5, name: "Forest Green", hex: "#2d6a4f", price: 599 }
             ]
         };
 
@@ -1825,7 +1825,7 @@
                         </div>
                         <div class="card-body">
                             <h3 class="drone-name">${drone.name}</h3>
-                            <div class="drone-price">$${drone.price.toLocaleString()}</div>
+                            <div class="drone-price">₹${drone.price.toLocaleString('en-IN')}</div>
                             <p class="drone-tagline">${drone.tagline}</p>
                             <div class="specs-grid">
                                 <div class="spec-item">
@@ -1900,7 +1900,7 @@
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
                                 <div class="model-name">${drone.name}</div>
-                                <div class="model-price">$${drone.price.toLocaleString()}</div>
+                                <div class="model-price">₹${drone.price.toLocaleString('en-IN')}</div>
                             </div>
                             ${isSelected ? '<i class="fas fa-check text-warning fs-4"></i>' : ''}
                         </div>
@@ -1926,7 +1926,7 @@
                             </div>
                         </div>
                         <div class="option-price">
-                            ${camera.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+$' + camera.price + '</span>'}
+                            ${camera.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+₹' + camera.price.toLocaleString('en-IN') + '</span>'}
                         </div>
                     </div>
                 `;
@@ -1950,7 +1950,7 @@
                             </div>
                         </div>
                         <div class="option-price">
-                            ${battery.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+$' + battery.price + '</span>'}
+                            ${battery.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+₹' + battery.price.toLocaleString('en-IN') + '</span>'}
                         </div>
                     </div>
                 `;
@@ -1969,7 +1969,7 @@
                     <div class="color-option ${isSelected ? 'selected' : ''}" onclick="selectColorById(${color.id})">
                         <div class="color-circle" style="background-color: ${color.hex};"></div>
                         <div class="color-name">${color.name}</div>
-                        <div class="color-price">${color.price === 0 ? 'Free' : '+$' + color.price}</div>
+                        <div class="color-price">${color.price === 0 ? 'Free' : '+₹' + color.price.toLocaleString('en-IN')}</div>
                     </div>
                 `;
                 container.innerHTML += colorCard;
@@ -1991,7 +1991,7 @@
             saveToHistory();
             currentConfig.drone = drone;
             document.getElementById('previewImage').src = drone.image;
-            document.getElementById('summaryModel').textContent = `${drone.name} - $${drone.price.toLocaleString()}`;
+            document.getElementById('summaryModel').textContent = `${drone.name} - ₹${drone.price.toLocaleString('en-IN')}`;
             updateTotal();
         }
 
@@ -2058,8 +2058,8 @@
             if (currentConfig.battery) total += currentConfig.battery.price;
             if (currentConfig.color) total += currentConfig.color.price;
             
-            document.getElementById('previewPrice').textContent = '$' + total.toLocaleString();
-            document.getElementById('summaryTotal').textContent = '$' + total.toLocaleString();
+            document.getElementById('previewPrice').textContent = '₹' + total.toLocaleString('en-IN');
+            document.getElementById('summaryTotal').textContent = '₹' + total.toLocaleString('en-IN');
         }
 
         // Save to History
@@ -2077,7 +2077,7 @@
                 
                 if (currentConfig.drone) {
                     document.getElementById('previewImage').src = currentConfig.drone.image;
-                    document.getElementById('summaryModel').textContent = `${currentConfig.drone.name} - $${currentConfig.drone.price.toLocaleString()}`;
+                    document.getElementById('summaryModel').textContent = `${currentConfig.drone.name} - ₹${currentConfig.drone.price.toLocaleString('en-IN')}`;
                 }
                 
                 if (currentConfig.camera) {
@@ -2132,7 +2132,7 @@
                 total: calculateTotal()
             };
             
-            alert(`Configuration saved!\n\nDrone: ${config.drone.name}\nCamera: ${config.camera.name}\nBattery: ${config.battery.name}\nColor: ${config.color.name}\n\nTotal: $${config.total.toLocaleString()}`);
+            alert(`Configuration saved!\n\nDrone: ${config.drone.name}\nCamera: ${config.camera.name}\nBattery: ${config.battery.name}\nColor: ${config.color.name}\n\nTotal: ₹${config.total.toLocaleString('en-IN')}`);
         }
 
         // Calculate Total
