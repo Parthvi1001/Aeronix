@@ -194,7 +194,7 @@ const productsData = [
         name: "SkyX Pro Drone",
         category: "drone",
         feature: "8K Cinematic Camera",
-        price: "$1299",
+        price: "₹1,07,817",
         tags: ["8K HDR", "GPS Lock", "Carbon Build"],
         image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=400"
     },
@@ -203,7 +203,7 @@ const productsData = [
         name: "Falcon Mini",
         category: "drone",
         feature: "Ultra Portable Design",
-        price: "$799",
+        price: "₹66,317",
         tags: ["Foldable", "45min Flight", "Smart Return"],
         image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=400"
     },
@@ -212,7 +212,7 @@ const productsData = [
         name: "Sound Pro Headphones",
         category: "headphones",
         feature: "Active Noise Cancellation",
-        price: "$349",
+        price: "₹28,967",
         tags: ["ANC", "Studio Tuned", "USB-C"],
         image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
     },
@@ -221,7 +221,7 @@ const productsData = [
         name: "Bass X Headphones",
         category: "headphones",
         feature: "Deep Bass Technology",
-        price: "$279",
+        price: "₹23,157",
         tags: ["Deep Bass", "40H Play", "Comfort Fit"],
         image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400"
     },
@@ -230,7 +230,7 @@ const productsData = [
         name: "AirFlow TWS",
         category: "tws",
         feature: "30Hr Battery Life",
-        price: "$199",
+        price: "₹16,517",
         tags: ["30H Battery", "IPX4", "Transparency"],
         image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400"
     },
@@ -239,7 +239,7 @@ const productsData = [
         name: "Sonic Buds Pro",
         category: "tws",
         feature: "Spatial Audio",
-        price: "$249",
+        price: "₹20,667",
         tags: ["Spatial", "Wireless Charge", "Wind Guard"],
         image: "https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=400"
     },
@@ -248,7 +248,7 @@ const productsData = [
         name: "Storm Racer Drone",
         category: "drone",
         feature: "120 kph Sport Mode",
-        price: "$999",
+        price: "₹82,917",
         tags: ["Sport", "Obstacle Avoid", "4K/120"],
         image: "https://images.unsplash.com/photo-1523966211575-eb4a6b8e0f6b?w=400"
     },
@@ -257,7 +257,7 @@ const productsData = [
         name: "Arc Pulse Headphones",
         category: "headphones",
         feature: "Adaptive EQ + LDAC",
-        price: "$399",
+        price: "₹33,117",
         tags: ["Hi-Res", "Adaptive EQ", "LDAC"],
         image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400"
     },
@@ -266,7 +266,7 @@ const productsData = [
         name: "Nova Air TWS",
         category: "tws",
         feature: "Featherweight Fit",
-        price: "$179",
+        price: "₹14,857",
         tags: ["Feather", "Dual Pair", "Low Latency"],
         image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400"
     }

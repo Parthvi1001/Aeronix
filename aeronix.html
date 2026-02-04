@@ -9,8 +9,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-    
     <style>
         /* FIX Z-INDEX CONFLICTS */
         .tws-scroll-section {
@@ -1333,8 +1331,7 @@
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
-                <button class="nav-btn nav-btn-secondary">Sign In</button>
-                <button class="nav-btn nav-btn-primary">Get Started</button>
+                <a href="index.html" class="nav-btn nav-btn-secondary">Sign In</a>
             </div>
 
             <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
@@ -1892,39 +1889,127 @@
 
     <!-- ABOUT SECTION -->
     <section class="about-section" id="about">
-        <div class="about-content" id="aboutContent">
-            <h2 class="about-title" id="aboutTitle">AERONIX</h2>
-            <p class="about-text">
-                We don't just create technology — we craft experiences that elevate human potential.
-                From the skies to your ears, AERONIX represents the pinnacle of innovation, design, and performance.
-                Our mission is to push boundaries and redefine what's possible.
-            </p>
-            <p class="about-text">
-                Every product is engineered with precision, designed with passion, and built for those who dare to dream
-                bigger.
-            </p>
+        <div class="about-shell">
+            <div class="about-content" id="aboutContent">
+                <span class="about-kicker">About Aeronix</span>
+                <h2 class="about-title" id="aboutTitle">AERONIX</h2>
+                <p class="about-text">
+                    We don't just create technology — we craft experiences that elevate human potential.
+                    From the skies to your ears, AERONIX represents the pinnacle of innovation, design, and performance.
+                    Our mission is to push boundaries and redefine what's possible.
+                </p>
+                <p class="about-text">
+                    Every product is engineered with precision, designed with passion, and built for those who dare to dream
+                    bigger.
+                </p>
+                <div class="about-highlights">
+                    <div class="about-highlight">
+                        <h3>12+</h3>
+                        <p>Years of R&amp;D</p>
+                    </div>
+                    <div class="about-highlight">
+                        <h3>48K</h3>
+                        <p>Active Pilots</p>
+                    </div>
+                    <div class="about-highlight">
+                        <h3>99.9%</h3>
+                        <p>Flight Reliability</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-cards">
+                <div class="about-card">
+                    <h4>Precision Design</h4>
+                    <p>Every frame, rotor, and sensor is engineered for stability, speed, and safety at any altitude.</p>
+                </div>
+                <div class="about-card">
+                    <h4>Smart Autonomy</h4>
+                    <p>AI-driven navigation delivers accurate tracking, obstacle avoidance, and reliable return-to-home.</p>
+                </div>
+                <div class="about-card">
+                    <h4>Premium Support</h4>
+                    <p>Dedicated experts and global service partners keep your fleet mission-ready at all times.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT US SECTION -->
     <section class="contact-section" id="contactSection">
-        <div class="contact-container">
-            <h2 class="section-title">Get In Touch</h2>
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" required>
+        <div class="contact-shell">
+            <div class="contact-panel">
+                <div>
+                    <span class="contact-kicker">CONTACT US</span>
+                    <h2 class="contact-title">Let’s build your next experience together.</h2>
+                    <p class="contact-lead">Share your goals, and our specialists will craft a tailored solution for your team. We respond within one business day.</p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" required>
+
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Headquarters</h4>
+                            <p>123 Innovation Drive, Tech Hub, CA 94025</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567 • Mon–Fri, 9AM–6PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@aeronix.com • partnerships@aeronix.com</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" class="form-control" required></textarea>
+            </div>
+
+            <div class="contact-form-wrap">
+                <div class="contact-form-head">
+                    <h3>Send a message</h3>
+                    <p>Tell us about your project and we’ll follow up with the right expert.</p>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+
+                <form id="contactForm">
+                    <div class="contact-grid">
+                        <div class="contact-field">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" class="contact-input" placeholder="Your name" required>
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactEmail">Business Email</label>
+                            <input type="email" id="contactEmail" class="contact-input" placeholder="you@company.com" required>
+                        </div>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-field">
+                            <label for="contactCompany">Company</label>
+                            <input type="text" id="contactCompany" class="contact-input" placeholder="Company name">
+                        </div>
+                        <div class="contact-field">
+                            <label for="contactTopic">Topic</label>
+                            <input type="text" id="contactTopic" class="contact-input" placeholder="Product inquiry">
+                        </div>
+                    </div>
+
+                    <div class="contact-field">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" class="contact-textarea" placeholder="Tell us more about what you need" required></textarea>
+                    </div>
+
+                    <div class="contact-actions">
+                        <span class="contact-meta">We’ll reply within 24 hours.</span>
+                        <button type="submit" class="contact-btn">Send Message</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -2022,4 +2107,12 @@
         }
     </script>
 
+<<<<<<< HEAD
     <!-- Inline drone counter script removed; animation handled in script.js -->
+
+</body>
+
+</html>
+=======
+    <!-- Inline drone counter script removed; animation handled in script.js -->
+>>>>>>> 18ccea22c81438e27c98e31b6167d8321cbecbfd

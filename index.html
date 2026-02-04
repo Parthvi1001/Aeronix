@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: var(--signin-gradient);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px 40px;
+        }
+
+        .container {
+            background: var(--form-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--form-shadow);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: var(--text-input);
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-input);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--input-border);
+            border-radius: 10px;
+            font-size: 15px;
+            background: var(--input-bg);
+            color: var(--input-text);
+            transition: all 0.3s ease;
+        }
+
+        input:hover {
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--button-bg);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        input.error {
+            border-color: #ff4444;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .forgot-password a {
+            color: var(--button-bg);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 13px;
+            background: var(--signin-gradient);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 12px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .divider {
+            margin: 28px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: var(--input-border);
+        }
+
+        .divider span {
+            background: var(--form-bg);
+            padding: 0 12px;
+            color: var(--text-muted);
+            font-size: 12px;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 13px;
+            border: 1.5px solid var(--input-border);
+            border-radius: 10px;
+            background: var(--input-bg);
+            color: var(--text-input);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-btn:hover {
+            border-color: var(--button-bg);
+            background: var(--form-bg);
+            color: var(--button-bg);
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: var(--button-bg);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-weight: 400;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .message {
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+            border-left: 4px solid;
+        }
+
+        .message.success {
+            background: rgba(76, 175, 80, 0.1);
+            color: #4caf50;
+            border-left-color: #4caf50;
+        }
+
+        .message.error {
+            background: rgba(244, 67, 54, 0.1);
+            color: #f44336;
+            border-left-color: #f44336;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* Auth Shell Styling */
+        .auth-shell {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .auth-brand {
+            color: var(--text-primary);
+            padding-right: 20px;
+        }
+
+        .auth-kicker {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-strong);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .auth-brand h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 16px;
+            line-height: 1.2;
+            color: var(--text-primary);
+        }
+
+        .auth-brand > p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .auth-features {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .auth-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .auth-feature i {
+            color: var(--accent-strong);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .auth-card {
+            background: var(--form-bg);
+            border: 1px solid var(--input-border);
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .auth-card h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .auth-card .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1000px) {
+            .auth-shell {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .auth-brand {
+                padding-right: 0;
+            }
+
+            .auth-card {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .auth-brand {
+                text-align: center;
+            }
+
+            .auth-brand h1 {
+                font-size: 1.6rem;
+            }
+
+            .auth-features {
+                justify-content: center;
+            }
+
+            .auth-card {
+                padding: 24px;
+            }
+
+            .main-content {
+                padding: 80px 20px 20px;
+            }
+        }
+
+        /* Background Carousel Styles */
+        .bg-carousel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--bg-main);
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 0.15;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Carousel -->
+    <div class="bg-carousel" id="bgCarousel">
+        <div class="carousel-slide active" style="background-image: url('headphone.jpg');"></div>
+        <div class="carousel-slide" style="background-image: url('hdrone.jpg');"></div>
+        <div class="carousel-slide" style="background-image: url('drone.jfif');"></div>
+        <div class="carousel-slide" style="background-image: url('979ab68fd602bd3440fc4fb12f3ea38e.png');"></div>
+        <div class="carousel-slide" style="background-image: url('hhadephone.jpg');"></div>
+        <div class="carousel-overlay"></div>
+    </div>
+    
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="aeronix.html" class="logo">AERONIX</a>
+
+            <ul class="nav-menu nav-links">
+
+                <!-- PRODUCTS = MEGA MENU -->
+                <li class="nav-item shop">
+                    <a href="airburds.html">Earburds</a>
+
+                    <div class="mega-menu">
+                        <div class="left">
+                            <h4>PRODUCTS</h4>
+                            <ul>
+                                <br>
+                                <li>Aeronix Buds 4v ANC </li><br>
+                                <li>Aeronix Nord Burds 2r True</li><br>
+                                <li>Aeronix Buds 3 pro</li><br>
+                                <li>Aeronix Wireless Buds 3 TWS</li><br>
+                                <li>Aeronix Dual mic Z2</li><br>
+                            </ul>
+                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        </div>
+
+                        <div class="right">
+                            <div class="card">
+                                <span class="badge">NEW</span>
+                                <div class="img-box">
+                                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df">
+                                </div>
+                                <p>Pro Drone X</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12">
+                                </div>
+                                <p>Aeronix ANC Headphones</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item shop">
+                    <a href="headphones.html">Headphones</a>
+
+                    <div class="mega-menu">
+                        <div class="left">
+                            <h4>PRODUCTS</h4>
+                            <ul>
+                                <br>
+                                <li>Aeronix Rockerz 450</li><br>
+                                <li>Aeronix Tune 770NC</li><br>
+                                <li>Headphones</li><br>
+                                <li>Aeronix Studio H1</li><br>
+                                <li>Aeronix Thunder</li><br>
+                            </ul>
+                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        </div>
+
+                        <div class="right">
+                            <div class="card">
+                                <span class="badge">NEW</span>
+                                <div class="img-box">
+                                    <img src="headPhone.jpg">
+                                </div>
+                                <p>Aeronix ANC Headphones</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="hhadephone.jpg">
+                                </div>
+                                <p>Aeronix Studio Headphones</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <li class="nav-item shop">
+                    <a href="drone.html">Drone</a>
+
+                    <div class="mega-menu">
+                        <div class="left">
+                            <h4>PRODUCTS</h4>
+                            <ul>
+                                <br>
+                                <li>All Drones</li><br>
+                                <li>Fixed-wings</li><br>
+                                <li>Single-Router</li><br>
+                                <li>Multi-rotor</li><br>
+                                <li>HybridVTOL</li><br>
+                            </ul>
+                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        </div>
+
+                        <div class="right">
+                            <div class="card">
+                                <span class="badge">NEW</span>
+                                <div class="img-box">
+                                    <img src="drone.jfif">
+                                </div>
+                                <p>Pro Drone X</p>
+                            </div>
+
+                            <div class="card">
+                                <div class="img-box">
+                                    <img src="hdrone.jpg">
+                                </div>
+                                <p>Aeronix ANC Headphones</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                <!-- NORMAL ITEMS -->
+                <li class="nav-item">
+                    <a href="aeronix.html#about" class="nav-link">About</a>
+                </li>
+
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="index.html" class="nav-btn nav-btn-secondary">Sign In</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="auth-shell">
+            <div class="auth-brand">
+                <span class="auth-kicker">AERONIX ACCESS</span>
+                <h1>Command your fleet with confidence.</h1>
+                <p>Secure access to pilots, devices, analytics, and updates in one place.</p>
+                <div class="auth-features">
+                    <div class="auth-feature"><i class="fas fa-shield-alt"></i><span>Enterprise-grade security</span></div>
+                    <div class="auth-feature"><i class="fas fa-satellite-dish"></i><span>Live telemetry &amp; fleet health</span></div>
+                    <div class="auth-feature"><i class="fas fa-cloud-upload-alt"></i><span>Firmware &amp; profile sync</span></div>
+                </div>
+            </div>
+            <div class="auth-card">
+                <!-- Sign In Form -->
+        <div id="signinForm">
+            <h1>Welcome back</h1>
+            <p class="subtitle">Sign in to continue to your account</p>
+            
+            <div id="message" class="message"></div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <div class="forgot-password">
+                    <a href="#" onclick="alert('Password reset functionality coming soon'); return false;">Forgot password?</a>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+            </div>
+
+            <button class="btn" id="signinBtn" onclick="handleSignIn()">Sign In</button>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="social-buttons">
+                <button class="social-btn" onclick="alert('Google sign-in would happen here')">
+                    <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/><path fill="#FBBC05" d="M3.964 10.707c-.18-.54-.282-1.117-.282-1.707 0-.593.102-1.17.282-1.709V4.958H.957C.347 6.173 0 7.548 0 9c0 1.452.348 2.827.957 4.042l3.007-2.335z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
+                    Google
+                </button>
+                <button class="social-btn" onclick="alert('GitHub sign-in would happen here')">
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="#333"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    GitHub
+                </button>
+            </div>
+
+            <div class="signup-link">
+                Don't have an account? <a onclick="showSignup()">Sign up</a>
+            </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signupForm" class="hidden">
+            <h1>Create account</h1>
+            <p class="subtitle">Sign up to get started</p>
+            
+            <div id="signupMessage" class="message"></div>
+
+            <div class="form-group">
+                <label for="signupName">Name (optional)</label>
+                <input type="text" id="signupName" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input type="email" id="signupEmail" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" id="signupPassword" placeholder="Create a password" required>
+            </div>
+
+            <button class="btn" id="signupBtn" onclick="handleSignUp()">Sign Up</button>
+
+            <div class="signup-link">
+                Already have an account? <a onclick="showSignin()">Sign in</a>
+            </div>
+        </div>
+
+        <!-- Success Screen -->
+        <div id="successScreen" class="hidden">
+            <h1>Welcome! 🎉</h1>
+            <p class="subtitle" id="welcomeMessage"></p>
+            
+            <div style="background: #f8f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <p style="color: #333; margin-bottom: 10px;"><strong>Your account details:</strong></p>
+                <p style="color: #666; font-size: 14px; margin: 5px 0;" id="userEmail"></p>
+                <p style="color: #666; font-size: 14px; margin: 5px 0;" id="userCreated"></p>
+                <p style="color: #666; font-size: 14px; margin: 5px 0;" id="userLastLogin"></p>
+            </div>
+
+            <button class="btn" onclick="handleLogout()">Sign Out</button>
+        </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showMessage(elementId, message, type) {
+            const messageEl = document.getElementById(elementId);
+            messageEl.textContent = message;
+            messageEl.className = `message ${type} show`;
+            setTimeout(() => {
+                messageEl.classList.remove('show');
+            }, 5000);
+        }
+
+        function showSignup() {
+            document.getElementById('signinForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.remove('hidden');
+        }
+
+        function showSignin() {
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('signinForm').classList.remove('hidden');
+        }
+
+        function showSuccess(user) {
+            document.getElementById('signinForm').classList.add('hidden');
+            document.getElementById('signupForm').classList.add('hidden');
+            document.getElementById('successScreen').classList.remove('hidden');
+
+            document.getElementById('welcomeMessage').textContent = 
+                user.name ? `Good to see you, ${user.name}!` : 'You are now signed in';
+            document.getElementById('userEmail').textContent = `Email: ${user.email}`;
+            document.getElementById('userCreated').textContent = 
+                `Account created: ${new Date(user.createdAt).toLocaleString()}`;
+            document.getElementById('userLastLogin').textContent = 
+                user.lastLogin ? `Last login: ${new Date(user.lastLogin).toLocaleString()}` : 'First login';
+        }
+
+        function handleLogout() {
+            document.getElementById('successScreen').classList.add('hidden');
+            document.getElementById('signinForm').classList.remove('hidden');
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        async function handleSignIn() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            if (!email || !password) {
+                showMessage('message', 'Please fill in all fields', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('signinBtn');
+            btn.disabled = true;
+            btn.textContent = 'Signing in...';
+            
+            try {
+                const response = await fetch('/api/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password, remember })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showSuccess(data.user);
+                } else {
+                    showMessage('message', data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('message', 'Connection error. Please make sure the server is running.', 'error');
+                console.error('Error:', error);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+            }
+        }
+
+        async function handleSignUp() {
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            
+            if (!email || !password) {
+                showMessage('signupMessage', 'Email and password are required', 'error');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('signupMessage', 'Password must be at least 6 characters', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('signupBtn');
+            btn.disabled = true;
+            btn.textContent = 'Creating account...';
+            
+            try {
+                const response = await fetch('/api/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password, name })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage('signupMessage', 'Account created successfully! Signing you in...', 'success');
+                    setTimeout(() => {
+                        showSuccess(data.user);
+                    }, 1000);
+                } else {
+                    showMessage('signupMessage', data.message, 'error');
+                }
+            } catch (error) {
+                showMessage('signupMessage', 'Connection error. Please make sure the server is running.', 'error');
+                console.error('Error:', error);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Sign Up';
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSignIn();
+            }
+        });
+
+        document.getElementById('signupPassword').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSignUp();
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Background Carousel Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function initCarousel() {
+            if (slides.length > 0) {
+                slides[0].classList.add('active');
+                setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            }
+        }
+
+        // Start carousel when page loads
+        document.addEventListener('DOMContentLoaded', initCarousel);
+        
+        // Also initialize immediately in case DOM is already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCarousel);
+        } else {
+            initCarousel();
+        }
+    </script>
+    <script src="script.js"></script>
+
+</body>
+</html>
