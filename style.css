@@ -479,8 +479,8 @@ body.light-mode .logo {
 }
 
 .nav-item {
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 900;
     cursor: pointer;
     white-space: nowrap;
 
@@ -497,6 +497,23 @@ body.light-mode .logo {
 
 .nav-item:hover {
     color: #ffffff;
+}
+
+/* NAVBAR FONT SIZE OVERRIDE */
+.navbar .logo {
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+
+.navbar .nav-item,
+.navbar .nav-link {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.navbar .nav-btn {
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 /* Enlarge product name inside mega-menu when hovering the parent nav item */
@@ -883,8 +900,13 @@ body.light-mode .mobile-toggle span {
 }
 
 .navbar-nav .nav-link {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-link {
+    font-size: 24px !important;
+    font-weight: 700 !important;
 }
 
 
