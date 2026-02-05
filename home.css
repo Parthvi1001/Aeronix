@@ -1,0 +1,1435 @@
+/* Home page specific styles (Aeronix landing) */
+/* FIX Z-INDEX CONFLICTS */
+.tws-scroll-section {
+    z-index: 10 !important;
+}
+
+.drone-showcase-fullscreen {
+    z-index: 1 !important;
+    position: relative;
+}
+
+.drone-showcase-section {
+    padding-top: 100px;
+}
+
+/* DRONE SPECS SECTION STYLES - HORIZONTAL LAYOUT */
+.drone-specs-section {
+    min-height: 100vh;
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.drone-specs-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.drone-video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.drone-specs-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.specs-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    padding: 80px 40px 40px;
+    z-index: 2;
+}
+
+.specs-horizontal-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.spec-item {
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.spec-item:nth-child(1) { animation-delay: 0.2s; }
+.spec-item:nth-child(2) { animation-delay: 0.4s; }
+.spec-item:nth-child(3) { animation-delay: 0.6s; }
+.spec-item:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.spec-icon {
+    font-size: 40px;
+    color: #124751;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.spec-label {
+    font-size: 14px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.spec-value {
+    font-size: 56px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffffff, #165460);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 5px;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.spec-unit {
+    font-size: 18px;
+    color: #00d4ff;
+    margin-left: 8px;
+    font-weight: 700;
+}
+
+.spec-divider {
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #00d4ff, transparent);
+    opacity: 0.5;
+}
+
+/* Title at top */
+.specs-title-wrapper {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 3;
+}
+
+.specs-badge {
+    display: inline-block;
+    background: rgba(0, 212, 255, 0.2);
+    border: 1px solid #00d4ff;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #00d4ff;
+}
+
+.specs-title {
+    font-size: 64px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ffffff, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .specs-horizontal-grid {
+        gap: 50px;
+    }
+
+    .spec-value {
+        font-size: 44px;
+    }
+
+    .specs-title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 768px) {
+    .specs-horizontal-grid {
+        gap: 30px;
+        flex-wrap: wrap;
+        padding: 0 20px;
+    }
+
+    .spec-divider {
+        display: none;
+    }
+
+    .spec-value {
+        font-size: 36px;
+    }
+
+    .spec-label {
+        font-size: 11px;
+    }
+
+    .specs-title {
+        font-size: 32px;
+    }
+
+    .specs-overlay {
+        padding: 60px 20px 30px;
+    }
+}
+
+/* ======================================
+   DRONE SHOWCASE SECTION - NEW HORIZONTAL STATS LAYOUT
+====================================== */
+.drone-showcase-section {
+    width: 100%;
+    min-height: auto;
+    background: linear-gradient(180deg, #0a0a0f 0%, #0d1117 50%, #161b22 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    z-index: 5;
+}
+
+.drone-showcase-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 30% 20%, rgba(0, 150, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(100, 80, 255, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.drone-showcase-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+/* TOP: Main Content Area */
+.drone-main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* LEFT: Image Side */
+.drone-image-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drone-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    animation: droneFloat 6s ease-in-out infinite;
+}
+
+@keyframes droneFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+}
+
+.drone-image-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 
+        0 30px 80px rgba(0, 150, 255, 0.2),
+        0 15px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.drone-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.drone-image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+.drone-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%;
+    height: 140%;
+    background: radial-gradient(circle, rgba(0, 150, 255, 0.25) 0%, transparent 60%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* RIGHT: Content Side */
+.drone-content-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Make text readable on light backgrounds */
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 14px;
+    padding: 20px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+.drone-top-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(100, 80, 255, 0.15));
+    border: 1px solid rgba(0, 150, 255, 0.4);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    color: #00b4ff;
+    width: fit-content;
+    animation: badgeFade 0.8s ease forwards;
+}
+
+.drone-main-heading {
+    font-size: 42px;
+    font-weight: 900;
+    color: #0a1e3d; /* dark heading for visibility */
+    line-height: 1.05;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+    animation: headingFade 0.8s ease 0.1s forwards;
+}
+
+.drone-subtitle {
+    font-size: 14px;
+    color: #0a1e3d;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: subtitleFade 0.8s ease 0.2s forwards;
+}
+
+.drone-description-text {
+    font-size: 13px;
+    color: rgba(10, 30, 61, 0.88); /* dark readable body */
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 480px;
+    animation: descFade 0.8s ease 0.3s forwards;
+}
+
+/* Feature Tags */
+.drone-features-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+    animation: tagsFade 0.8s ease 0.4s forwards;
+    opacity: 0;
+}
+
+.feature-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(10,30,61,0.1);
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0a1e3d;
+    transition: all 0.3s ease;
+}
+
+.feature-tag:hover {
+    background: rgba(0, 150, 255, 0.15);
+    border-color: rgba(0, 150, 255, 0.4);
+    color: #0a1e3d;
+}
+
+.feature-tag i {
+    font-size: 14px;
+    color: #00b4ff;
+}
+
+/* CTA Button */
+.drone-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #0096ff, #0066cc);
+    color: #ffffff;
+    padding: 16px 32px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: fit-content;
+    animation: ctaFade 0.8s ease 0.5s forwards;
+    opacity: 0;
+    box-shadow: 0 10px 30px rgba(0, 150, 255, 0.3);
+}
+
+.drone-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 150, 255, 0.4);
+    background: linear-gradient(135deg, #00a8ff, #0077ee);
+    color: #ffffff;
+}
+
+.drone-cta-btn i {
+    transition: transform 0.3s ease;
+}
+
+.drone-cta-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes badgeFade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes headingFade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtitleFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes descFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tagsFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ctaFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* BOTTOM: Horizontal Stats Bar */
+.drone-stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 40px 60px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 50px;
+    position: relative;
+}
+
+.stat-icon {
+    font-size: 28px;
+    color: #00b4ff;
+    margin-bottom: 16px;
+}
+
+.stat-number-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+}
+
+.stat-value {
+    font-size: 52px;
+    font-weight: 900;
+    color: #00d4ff;
+    line-height: 1;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.stat-unit {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00b4ff;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #b0c4e5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .drone-showcase-container {
+        padding: 0 40px;
+    }
+
+    .drone-main-content {
+        gap: 50px;
+    }
+
+    .drone-main-heading {
+        font-size: 52px;
+    }
+
+    .stat-item {
+        padding: 0 35px;
+    }
+
+    .stat-value {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 992px) {
+    .drone-showcase-section {
+        padding: 80px 0 50px;
+    }
+
+    .drone-main-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .drone-image-side {
+        order: 1;
+    }
+
+    .drone-content-side {
+        order: 2;
+        align-items: center;
+    }
+
+    .drone-top-badge {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .drone-description-text {
+        max-width: 100%;
+    }
+
+    .drone-features-row {
+        justify-content: center;
+    }
+
+    .drone-cta-btn {
+        margin: 0 auto;
+    }
+
+    .drone-main-heading {
+        font-size: 44px;
+    }
+
+    .stat-item {
+        padding: 0 25px;
+    }
+
+    .stat-value {
+        font-size: 40px;
+    }
+
+    .stat-unit {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .drone-showcase-container {
+        padding: 0 20px;
+        gap: 40px;
+    }
+
+    .drone-main-heading {
+        font-size: 36px;
+    }
+
+    .drone-stats-bar {
+        flex-wrap: wrap;
+        padding: 30px 20px;
+        gap: 20px;
+    }
+
+    .stat-item {
+        flex: 1 1 40%;
+        padding: 15px 10px;
+    }
+
+    .stat-divider {
+        display: none;
+    }
+
+    .stat-value {
+        font-size: 36px;
+    }
+
+    .stat-unit {
+        font-size: 16px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .drone-main-heading {
+        font-size: 32px;
+    }
+
+    .drone-subtitle {
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+
+    .feature-tag {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .stat-value {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 576px) {
+    .specs-horizontal-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .spec-value {
+        font-size: 28px;
+    }
+
+    .specs-title-wrapper {
+        top: 30px;
+    }
+
+    .specs-title {
+        font-size: 24px;
+    }
+}
+
+/* ======================================
+   AIRBUDS IMMERSIVE EXPERIENCE SECTION - PREMIUM LIGHT MODE REDESIGN
+   ====================================== */
+.airbuds-immersive-section {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f5f7fa 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    overflow: hidden;
+}
+
+.airbuds-immersive-container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.airbuds-immersive-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.airbuds-immersive-image::before {
+    content: '';
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.05) 50%, transparent 70%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+.airbuds-immersive-img-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    z-index: 2;
+}
+
+.airbuds-immersive-img-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.12)) 
+            drop-shadow(0 10px 30px rgba(102, 126, 234, 0.15));
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.airbuds-immersive-img-wrapper img:hover {
+    transform: translateY(-8px) scale(1.02);
+    filter: drop-shadow(0 30px 80px rgba(0, 0, 0, 0.15)) 
+            drop-shadow(0 15px 40px rgba(102, 126, 234, 0.2));
+}
+
+.airbuds-waveform {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110%;
+    height: 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    z-index: 1;
+}
+
+.wave-bar {
+    width: 3px;
+    background: linear-gradient(to top, rgba(102, 126, 234, 0.3), rgba(102, 126, 234, 0.6));
+    border-radius: 2px;
+    animation: waveAnimation 1.2s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { height: 12px; animation-delay: 0s; }
+.wave-bar:nth-child(2) { height: 22px; animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { height: 32px; animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { height: 45px; animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { height: 55px; animation-delay: 0.4s; }
+.wave-bar:nth-child(6) { height: 45px; animation-delay: 0.5s; }
+.wave-bar:nth-child(7) { height: 32px; animation-delay: 0.6s; }
+.wave-bar:nth-child(8) { height: 22px; animation-delay: 0.7s; }
+.wave-bar:nth-child(9) { height: 35px; animation-delay: 0.8s; }
+.wave-bar:nth-child(10) { height: 48px; animation-delay: 0.9s; }
+.wave-bar:nth-child(11) { height: 38px; animation-delay: 1s; }
+.wave-bar:nth-child(12) { height: 25px; animation-delay: 1.1s; }
+.wave-bar:nth-child(13) { height: 15px; animation-delay: 0.15s; }
+.wave-bar:nth-child(14) { height: 28px; animation-delay: 0.25s; }
+.wave-bar:nth-child(15) { height: 42px; animation-delay: 0.35s; }
+
+@keyframes waveAnimation {
+    0%, 100% { transform: scaleY(1); opacity: 0.6; }
+    50% { transform: scaleY(0.5); opacity: 1; }
+}
+
+.airbuds-immersive-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+.airbuds-immersive-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: fit-content;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.airbuds-immersive-badge i {
+    font-size: 12px;
+}
+
+.airbuds-immersive-title {
+    font-size: 52px;
+    font-weight: 300;
+    color: #1a1a1a;
+    line-height: 1.1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+}
+
+.airbuds-immersive-title span {
+    display: block;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 2px;
+}
+
+.airbuds-immersive-desc {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    max-width: 520px;
+    font-weight: 400;
+}
+
+.airbuds-immersive-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.immersive-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.immersive-feature-item:hover {
+    background: #ffffff;
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+.immersive-feature-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.immersive-feature-icon i {
+    font-size: 16px;
+    color: #fff;
+}
+
+.immersive-feature-text h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+}
+
+.immersive-feature-text p {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.airbuds-immersive-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 15px 36px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: fit-content;
+    margin-top: 12px;
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.airbuds-immersive-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.airbuds-immersive-cta:hover::before {
+    left: 100%;
+}
+
+.airbuds-immersive-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+    color: #fff;
+}
+
+.airbuds-immersive-cta i {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.airbuds-immersive-cta:hover i {
+    transform: translateX(4px);
+}
+
+@media (max-width: 1024px) {
+    .airbuds-immersive-container {
+        grid-template-columns: 1fr;
+        gap: 70px;
+        padding: 0 40px;
+    }
+
+    .airbuds-immersive-image {
+        order: 1;
+    }
+
+    .airbuds-immersive-content {
+        order: 2;
+        align-items: center;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .airbuds-immersive-title {
+        font-size: 52px;
+    }
+
+    .airbuds-immersive-desc {
+        max-width: 100%;
+    }
+
+    .airbuds-immersive-features {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .airbuds-immersive-section {
+        padding: 80px 0;
+        min-height: auto;
+    }
+
+    .airbuds-immersive-container {
+        padding: 0 20px;
+        gap: 50px;
+    }
+
+    .airbuds-immersive-title {
+        font-size: 42px;
+    }
+
+    .airbuds-immersive-desc {
+        font-size: 16px;
+    }
+
+    .immersive-feature-item {
+        padding: 18px 20px;
+    }
+
+    .airbuds-immersive-image::before {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .airbuds-immersive-title {
+        font-size: 36px;
+    }
+
+    .airbuds-immersive-badge {
+        font-size: 10px;
+        padding: 10px 20px;
+    }
+
+    .immersive-feature-item {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .airbuds-immersive-cta {
+        padding: 16px 32px;
+        font-size: 15px;
+    }
+}
+
+
+/* ======================================
+   HEADPHONE FULLSCREEN SHOWCASE
+   ====================================== */
+.headphone-fullscreen-section {
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.headphone-showcase-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.headphone-fullscreen-section:hover .headphone-showcase-img {
+    transform: scale(1.05);
+}
+
+/* Hero corner label */
+.hero-corner-text {
+    position: absolute;
+    left: 32px;
+    bottom: 28px;
+    z-index: 6;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 600px) {
+    .hero-corner-text {
+        left: 18px;
+        bottom: 18px;
+        font-size: 0.9rem;
+        padding: 0;
+    }
+}
+
+/* =========================
+   MAIN PAGE WOW OVERRIDES
+   ========================= */
+.hero-section {
+    background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(249, 115, 22, 0.14), transparent 45%),
+        linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-video {
+    filter: saturate(1.05) contrast(1.05);
+}
+
+.hero-corner-text {
+    font-size: clamp(1.1rem, 2.2vw, 1.7rem);
+    color: #0f172a;
+    text-shadow: 0 16px 30px rgba(15, 23, 42, 0.25);
+}
+
+.horizontal-section {
+    background: #f8fafc;
+}
+
+.drone-showcase-section {
+    background: linear-gradient(140deg, rgba(37, 99, 235, 0.08), rgba(255, 255, 255, 0.95) 45%, rgba(249, 115, 22, 0.08));
+    padding: 100px 0 70px;
+}
+
+.drone-content-side {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+    border-radius: 20px;
+    padding: 28px;
+}
+
+.drone-image-wrapper {
+    border-radius: 28px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 30px 70px rgba(15, 23, 42, 0.14);
+}
+
+.drone-stats-bar {
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 22px 50px rgba(15, 23, 42, 0.08);
+}
+
+.stat-label {
+    color: var(--text-secondary);
+}
+
+.tws-scroll-section {
+    background: #0f172a;
+}
+
+.airbuds-immersive-section {
+    background: linear-gradient(140deg, rgba(249, 115, 22, 0.08), rgba(255, 255, 255, 0.95) 50%, rgba(37, 99, 235, 0.08));
+    height: auto;
+    padding: 100px 0;
+}
+
+.airbuds-immersive-img-wrapper img {
+    border-radius: 26px;
+    box-shadow: 0 28px 60px rgba(15, 23, 42, 0.14);
+}
+
+.airbuds-immersive-badge {
+    background: #0f172a;
+}
+
+.airbuds-immersive-cta {
+    background: var(--button-bg);
+}
+
+.airbuds-immersive-cta:hover {
+    background: var(--button-hover);
+}
+
+.headphone-fullscreen-section {
+    background: #f8fafc;
+}
+
+.headphone-showcase-img {
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 28px 60px rgba(15, 23, 42, 0.16);
+}
+
+.headphone-usecases-section {
+    background: #ffffff;
+}
+
+.usecase-card {
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+.fullscreen-products-section {
+    background: #f8fafc;
+}
+
+/* ======================================
+   HEADPHONE USE CASES SECTION
+   ====================================== */
+.headphone-usecases-section {
+    width: 100%;
+    background: #ffffff;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+.headphone-usecases-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.headphone-usecases-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.headphone-usecases-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.headphone-usecases-header h2 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 14px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.headphone-usecases-header p {
+    font-size: 18px;
+    color: #666;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.usecase-card {
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+    border-radius: 20px;
+    padding: 32px 26px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.usecase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #000, #333);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.usecase-card:hover::before {
+    transform: scaleX(1);
+}
+
+.usecase-card:hover {
+    background: #fff;
+    border-color: #e0e0e0;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+}
+
+.usecase-icon {
+    width: 80px;
+    height: 80px;
+    background: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    transition: all 0.4s ease;
+}
+
+.usecase-card:hover .usecase-icon {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.usecase-icon i {
+    font-size: 32px;
+    color: #fff;
+}
+
+.usecase-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 14px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.usecase-card p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.usecase-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.usecase-tag {
+    background: #f0f0f0;
+    color: #333;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.usecase-card:hover .usecase-tag {
+    background: #000;
+    color: #fff;
+}
+
+.headphone-usecases-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.headphone-usecases-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #000;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.headphone-usecases-btn:hover {
+    background: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+@media (max-width: 992px) {
+    .usecases-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .headphone-usecases-section {
+        padding: 60px 0;
+    }
+
+    .headphone-usecases-container {
+        padding: 0 20px;
+    }
+
+    .headphone-usecases-header h2 {
+        font-size: 32px;
+    }
+
+    .usecases-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .usecase-card {
+        padding: 24px 20px;
+    }
+}

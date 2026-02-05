@@ -285,7 +285,7 @@ function applyTheme(theme) {
     localStorage.setItem('aeronixTheme', theme);
 }
 
-const savedTheme = localStorage.getItem('aeronixTheme') || 'dark';
+const savedTheme = localStorage.getItem('aeronixTheme') || 'light';
 applyTheme(savedTheme);
 
 themeToggleBtn.addEventListener('click', () => {
