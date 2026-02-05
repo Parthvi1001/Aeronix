@@ -1,0 +1,46 @@
+Date : 2026-02-05 14:15:39
+Directory : e:\project_s3\project_sem3
+Total : 16 files,  15503 codes, 2290 comments, 2610 blanks, all 20403 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| HTML       |          6 |      9,320 |        198 |      1,427 |     10,945 |
+| PostCSS    |          2 |      4,001 |      1,608 |        819 |      6,428 |
+| JSON       |          3 |        976 |          0 |          3 |        979 |
+| JavaScript |          3 |        970 |        484 |        291 |      1,745 |
+| Markdown   |          2 |        236 |          0 |         70 |        306 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                             | files      | code       | comment    | blank      | total      |
++--------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                |         16 |     15,503 |      2,290 |      2,610 |     20,403 |
+| . (Files)                                        |         12 |     14,879 |      2,272 |      2,477 |     19,628 |
+| files                                            |          4 |        624 |         18 |        133 |        775 |
++--------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                         | language   | code       | comment    | blank      | total      |
++--------------------------------------------------+------------+------------+------------+------------+------------+
+| e:\project_s3\project_sem3\README.md             | Markdown   |        118 |          0 |         35 |        153 |
+| e:\project_s3\project_sem3\aeronix.html          | HTML       |      1,708 |        136 |        275 |      2,119 |
+| e:\project_s3\project_sem3\airburds.html         | HTML       |      2,065 |         16 |        299 |      2,380 |
+| e:\project_s3\project_sem3\drone-description.css | PostCSS    |        360 |          8 |         68 |        436 |
+| e:\project_s3\project_sem3\drone.html            | HTML       |      2,430 |         20 |        359 |      2,809 |
+| e:\project_s3\project_sem3\files\README.md       | Markdown   |        118 |          0 |         35 |        153 |
+| e:\project_s3\project_sem3\files\index.html      | HTML       |        393 |          3 |         73 |        469 |
+| e:\project_s3\project_sem3\files\package.json    | JSON       |         15 |          0 |          1 |         16 |
+| e:\project_s3\project_sem3\files\server.js       | JavaScript |         98 |         15 |         24 |        137 |
+| e:\project_s3\project_sem3\headphones.html       | HTML       |      2,015 |         16 |        295 |      2,326 |
+| e:\project_s3\project_sem3\index.html            | HTML       |        709 |          7 |        126 |        842 |
+| e:\project_s3\project_sem3\package-lock.json     | JSON       |        945 |          0 |          1 |        946 |
+| e:\project_s3\project_sem3\package.json          | JSON       |         16 |          0 |          1 |         17 |
+| e:\project_s3\project_sem3\script.js             | JavaScript |        708 |        456 |        239 |      1,403 |
+| e:\project_s3\project_sem3\server.js             | JavaScript |        164 |         13 |         28 |        205 |
+| e:\project_s3\project_sem3\style.css             | PostCSS    |      3,641 |      1,600 |        751 |      5,992 |
+| Total                                            |            |     15,503 |      2,290 |      2,610 |     20,403 |
++--------------------------------------------------+------------+------------+------------+------------+------------+

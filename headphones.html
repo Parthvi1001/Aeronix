@@ -825,6 +825,35 @@
             margin-top: 0.3rem;
         }
 
+        /* Color Overlay Effect for Product Image */
+        .product-image-container {
+            position: relative;
+        }
+
+        .product-image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--selected-color, transparent);
+            mix-blend-mode: multiply;
+            opacity: 0.35;
+            pointer-events: none;
+            transition: background-color 0.4s ease, opacity 0.4s ease;
+            border-radius: inherit;
+        }
+
+        .product-image-container.color-black::after {
+            opacity: 0.15;
+        }
+
+        .product-image-container.color-white::after {
+            mix-blend-mode: soft-light;
+            opacity: 0.5;
+        }
+
         .summary-box {
             background: #f8f9fa;
             border-radius: 15px;
@@ -895,6 +924,366 @@
         .btn-save:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(73, 72, 70, 0.3);
+        }
+
+        /* Shopping Cart Sidebar */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            max-width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h4 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-config {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-price {
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+
+        .cart-item-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .cart-empty i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            background: #f9f9f9;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cart-total-price {
+            color: var(--primary-gold);
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-checkout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(73, 72, 70, 0.3);
+        }
+
+        .btn-clear-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            color: #666;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-clear-cart:hover {
+            background: #f5f5f5;
+        }
+
+        /* Cart Icon Badge */
+        .cart-icon-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 9997;
+            transition: all 0.3s;
+        }
+
+        .cart-icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4444;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Bill Modal */
+        .bill-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .bill-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .bill-content {
+            background: white;
+            width: 500px;
+            max-width: 95%;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .bill-modal.active .bill-content {
+            transform: scale(1);
+        }
+
+        .bill-header {
+            background: linear-gradient(135deg, var(--primary-gold), #8B7355);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .bill-header h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .bill-header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .bill-body {
+            padding: 1.5rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .bill-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .bill-item:last-child {
+            border-bottom: none;
+        }
+
+        .bill-item-name {
+            font-weight: 600;
+        }
+
+        .bill-item-details {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .bill-item-price {
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+
+        .bill-summary {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-top: 2px solid var(--primary-gold);
+        }
+
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .bill-row.total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .bill-row.total .bill-amount {
+            color: var(--primary-gold);
+        }
+
+        .bill-footer {
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-print {
+            flex: 1;
+            padding: 1rem;
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-close-bill {
+            flex: 1;
+            padding: 1rem;
+            background: #f5f5f5;
+            color: #666;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
         /* Footer */
@@ -1190,8 +1579,8 @@
                             <button class="btn-reset" onclick="resetConfiguration()">
                                 <i class="bi bi-arrow-counterclockwise"></i> Reset
                             </button>
-                            <button class="btn-save">
-                                <i class="bi bi-cart-plus"></i> Save Configuration
+                            <button class="btn-save" onclick="addToCart()">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
                             </button>
                         </div>
                     </div>
@@ -1602,6 +1991,23 @@
             currentConfig.color = colorOptions[index];
             loadConfigOptions();
             updateSummary();
+            
+            // Apply color overlay to product image
+            const imageContainer = document.querySelector('#configuratorPage .product-image-container');
+            if (imageContainer) {
+                const selectedColor = colorOptions[index].color;
+                imageContainer.style.setProperty('--selected-color', selectedColor);
+                
+                // Remove all color classes
+                imageContainer.classList.remove('color-black', 'color-white');
+                
+                // Add specific class for black/white colors for better effect
+                if (colorOptions[index].name.toLowerCase().includes('black')) {
+                    imageContainer.classList.add('color-black');
+                } else if (colorOptions[index].name.toLowerCase().includes('white')) {
+                    imageContainer.classList.add('color-white');
+                }
+            }
         }
 
         function updateSummary() {
@@ -1629,11 +2035,21 @@
             };
             loadConfigOptions();
             updateSummary();
+            
+            // Reset color overlay to default (first color - Midnight Black)
+            const imageContainer = document.querySelector('#configuratorPage .product-image-container');
+            if (imageContainer) {
+                imageContainer.style.setProperty('--selected-color', colorOptions[0].color);
+                imageContainer.classList.remove('color-white');
+                imageContainer.classList.add('color-black');
+            }
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadProducts();
+            loadCartFromStorage();
+            updateCartUI();
             
             // Highlight Models in navbar on page load
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -1643,8 +2059,268 @@
                 }
             });
         });
+
+        // Shopping Cart Functionality
+        let cart = [];
+
+        function loadCartFromStorage() {
+            const savedCart = localStorage.getItem('aeronixCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+            }
+        }
+
+        function saveCartToStorage() {
+            localStorage.setItem('aeronixCart', JSON.stringify(cart));
+        }
+
+        function addToCart() {
+            const item = {
+                id: Date.now(),
+                type: 'Headphones',
+                name: currentConfig.model.name,
+                image: document.getElementById('configProductImage').src,
+                config: {
+                    model: currentConfig.model.name,
+                    audio: currentConfig.audio.name,
+                    battery: currentConfig.battery.name,
+                    color: currentConfig.color.name
+                },
+                price: currentConfig.model.price + currentConfig.audio.price + currentConfig.battery.price + currentConfig.color.price
+            };
+            
+            cart.push(item);
+            saveCartToStorage();
+            updateCartUI();
+            
+            // Show success animation
+            showAddedToCartNotification(item.name);
+            openCart();
+        }
+
+        function showAddedToCartNotification(name) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 30px;
+                background: #4CAF50;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                z-index: 10001;
+                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2s forwards;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            `;
+            notification.innerHTML = `<i class="bi bi-check-circle"></i> ${name} added to cart!`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 2500);
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            saveCartToStorage();
+            updateCartUI();
+        }
+
+        function clearCart() {
+            cart = [];
+            saveCartToStorage();
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartBadge = document.getElementById('cartBadge');
+            const cartTotal = document.getElementById('cartTotalPrice');
+            
+            // Update badge
+            cartBadge.textContent = cart.length;
+            cartBadge.style.display = cart.length > 0 ? 'flex' : 'none';
+            
+            // Update cart items
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="bi bi-cart-x"></i>
+                        <p>Your cart is empty</p>
+                    </div>
+                `;
+            } else {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <span class="cart-item-type" style="background: ${item.type === 'Drone' ? '#9B59B6' : item.type === 'Headphones' ? '#3498db' : '#27ae60'}; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; margin-bottom: 4px; display: inline-block;">${item.type}</span>
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-config">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                            <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+            
+            // Update total
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
+        }
+
+        function openCart() {
+            document.getElementById('cartSidebar').classList.add('active');
+            document.getElementById('cartOverlay').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.remove('active');
+            document.getElementById('cartOverlay').classList.remove('active');
+        }
+
+        function generateBill() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            const billItemsContainer = document.getElementById('billItems');
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const tax = Math.round(subtotal * 0.18);
+            const total = subtotal + tax;
+            
+            billItemsContainer.innerHTML = cart.map(item => `
+                <div class="bill-item">
+                    <div>
+                        <span style="background: ${item.type === 'Drone' ? '#9B59B6' : item.type === 'Headphones' ? '#3498db' : '#27ae60'}; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; margin-right: 8px;">${item.type}</span>
+                        <div class="bill-item-name">${item.name}</div>
+                        <div class="bill-item-details">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                    </div>
+                    <div class="bill-item-price">₹${item.price.toLocaleString('en-IN')}</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('billSubtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+            document.getElementById('billTax').textContent = `₹${tax.toLocaleString('en-IN')}`;
+            document.getElementById('billTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
+            document.getElementById('billDate').textContent = new Date().toLocaleDateString('en-IN', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            document.getElementById('billNumber').textContent = `#INV-${Date.now().toString().slice(-8)}`;
+            
+            closeCart();
+            document.getElementById('billModal').classList.add('active');
+            
+            // Clear cart after generating bill
+            cart = [];
+            saveCartToStorage();
+            updateCartUI();
+        }
+
+        function closeBill() {
+            document.getElementById('billModal').classList.remove('active');
+        }
+
+        function printBill() {
+            window.print();
+        }
     </script>
     <script src="script.js"></script>
+
+    <!-- Cart Floating Button -->
+    <button class="cart-icon-btn" onclick="openCart()">
+        <i class="bi bi-cart3"></i>
+        <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+    </button>
+
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h4><i class="bi bi-cart3"></i> Shopping Cart</h4>
+            <button class="cart-close" onclick="closeCart()">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="bi bi-cart-x"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-price" id="cartTotalPrice">₹0</span>
+            </div>
+            <button class="btn-checkout" onclick="generateBill()">
+                <i class="bi bi-receipt"></i> Generate Bill
+            </button>
+            <button class="btn-clear-cart" onclick="clearCart()">
+                <i class="bi bi-trash"></i> Clear Cart
+            </button>
+        </div>
+    </div>
+
+    <!-- Bill Modal -->
+    <div class="bill-modal" id="billModal">
+        <div class="bill-content">
+            <div class="bill-header">
+                <h3>AERONIX</h3>
+                <p>Invoice <span id="billNumber"></span></p>
+                <p id="billDate"></p>
+            </div>
+            <div class="bill-body" id="billItems">
+                <!-- Bill items will be inserted here -->
+            </div>
+            <div class="bill-summary">
+                <div class="bill-row">
+                    <span>Subtotal</span>
+                    <span id="billSubtotal">₹0</span>
+                </div>
+                <div class="bill-row">
+                    <span>GST (18%)</span>
+                    <span id="billTax">₹0</span>
+                </div>
+                <div class="bill-row total">
+                    <span>Total</span>
+                    <span class="bill-amount" id="billTotal">₹0</span>
+                </div>
+            </div>
+            <div class="bill-footer">
+                <button class="btn-print" onclick="printBill()">
+                    <i class="bi bi-printer"></i> Print
+                </button>
+                <button class="btn-close-bill" onclick="closeBill()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        @media print {
+            body * { visibility: hidden; }
+            .bill-modal, .bill-modal * { visibility: visible; }
+            .bill-modal { position: absolute; left: 0; top: 0; }
+            .bill-footer { display: none; }
+        }
+    </style>
 
 </body>
 </html>
