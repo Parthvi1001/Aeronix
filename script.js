@@ -1250,6 +1250,24 @@ document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.target.reset();
 });
 
+
+// Smooth scroll and reveal About section on About nav click
+document.addEventListener('DOMContentLoaded', function() {
+    var aboutLink = document.querySelector('a[href="#about"]');
+    var aboutSection = document.getElementById('about');
+    if (aboutLink && aboutSection) {
+        aboutLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            aboutSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Optionally, add a class to highlight or reveal the section
+            aboutSection.classList.add('visible');
+            setTimeout(function() {
+                aboutSection.classList.remove('visible');
+            }, 1200);
+        });
+    }
+});
+
 // Initialize
 renderProducts();
 updateCartCount();
