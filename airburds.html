@@ -153,16 +153,18 @@
         </div>
     </nav>
 
-    <!-- Products Section -->
-    <section class="products-section" id="productsSection">
-        <div class="container">
-            <p class="section-header">Showing 8 of 8 wireless earbuds</p>
-
-            <div class="row g-4" id="productsGrid">
-                <!-- Products will be loaded here by JavaScript -->
+    <!-- Home Page -->
+    <div id="homePage" class="page-section active">
+        <div class="container py-5">
+            <!-- Results Bar -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <p class="text-muted mb-0">Showing 8 of 8 wireless earbuds</p>
             </div>
+
+            <!-- Earbuds Grid -->
+            <div class="row g-4" id="earbudsGrid"></div>
         </div>
-    </section>
+    </div>
 
     <!-- Configurator Page -->
     <div class="configurator-page" id="configuratorPage">
@@ -227,12 +229,6 @@
 
                 <div class="col-lg-6">
                     <div class="config-options-card">
-                        <!-- Model Selection -->
-                        <div class="config-section">
-                            <h6 class="config-title">Select Model</h6>
-                            <div id="modelOptions"></div>
-                        </div>
-
                         <!-- Audio Quality -->
                         <div class="config-section">
                             <h6 class="config-title">Audio Quality</h6>
@@ -243,12 +239,6 @@
                         <div class="config-section">
                             <h6 class="config-title">Battery Life</h6>
                             <div id="batteryOptions"></div>
-                        </div>
-
-                        <!-- Color -->
-                        <div class="config-section">
-                            <h6 class="config-title">Color</h6>
-                            <div class="color-options" id="colorOptions"></div>
                         </div>
                     </div>
                 </div>

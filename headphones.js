@@ -160,42 +160,44 @@ const headphonesNavbar = document.querySelector('.navbar');
 
         // Load Products
         function loadProducts() {
-            const grid = document.getElementById('productsGrid');
+            const grid = document.getElementById('headphonesGrid');
             grid.innerHTML = products.map(product => `
                 <div class="col-lg-4 col-md-6">
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <span class="product-badge ${product.badgeClass || ''}">${product.badge}</span>
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="bi bi-heart"></i></button>
-                                <button class="action-btn"><i class="bi bi-shuffle"></i></button>
+                    <div class="drone-card">
+                        <div class="card-image-container">
+                            <div class="badge-overlay">
+                                <span class="badge-custom ${product.badgeClass || ''}">${product.badge}</span>
                             </div>
-                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                            <div class="card-actions">
+                                <button class="action-btn" title="Add to Wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="action-btn" title="Compare">
+                                    <i class="fas fa-random"></i>
+                                </button>
+                            </div>
+                            <img src="${product.image}" alt="${product.name}">
                         </div>
-                        <div class="product-info">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <div>
-                                    <h5 class="product-title">${product.name}</h5>
-                                    <p class="product-subtitle">${product.subtitle}</p>
-                                </div>
-                                <div class="product-price">₹${product.price.toLocaleString('en-IN')}</div>
-                            </div>
-                            <div class="product-specs">
+                        <div class="card-body">
+                            <h3 class="drone-name">${product.name}</h3>
+                            <div class="drone-price">₹${product.price.toLocaleString('en-IN')}</div>
+                            <p class="drone-tagline">${product.subtitle}</p>
+                            <div class="specs-grid">
                                 <div class="spec-item">
                                     <span class="spec-value">${product.specs.battery}</span>
-                                    <div class="spec-label">Battery</div>
+                                    <span class="spec-label">Battery</span>
                                 </div>
                                 <div class="spec-item">
                                     <span class="spec-value">${product.specs.audio}</span>
-                                    <div class="spec-label">Audio</div>
+                                    <span class="spec-label">Audio</span>
                                 </div>
                                 <div class="spec-item">
                                     <span class="spec-value">${product.specs.anc}</span>
-                                    <div class="spec-label">ANC</div>
+                                    <span class="spec-label">ANC</span>
                                 </div>
                             </div>
                             <button class="btn-configure" onclick="openConfigurator(${product.id})">
-                                Configure <i class="bi bi-arrow-right"></i>
+                                Configure <i class="fas fa-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </div>
