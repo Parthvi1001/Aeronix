@@ -150,19 +150,12 @@ const airburdsNavbar = document.querySelector('.navbar');
             { name: "Ultra (48h)", price: 599 }
         ];
 
-        const colorOptions = [
-            { name: "Midnight Black", color: "#1a1a1a", price: 0, free: true },
-            { name: "Pearl White", color: "#f5f5f5", price: 149 },
-            { name: "Sunset Orange", color: "#FF6B35", price: 199 },
-            { name: "Ocean Blue", color: "#4A90E2", price: 199 },
-            { name: "Forest Green", color: "#00D084", price: 199 }
-        ];
+
 
         let currentConfig = {
             model: models[0],
             audio: audioOptions[0],
-            battery: batteryOptions[0],
-            color: colorOptions[0]
+            battery: batteryOptions[0]
         };
 
         // Load Products
@@ -283,7 +276,7 @@ const airburdsNavbar = document.querySelector('.navbar');
 
             // Battery
             document.getElementById('batteryOptions').innerHTML = batteryOptions.map((option, index) => `
-                <div class="option-card ${currentConfig.battery.name === option.name ? 'selected' : ''}" 
+                <div class="option-card ${currentConfig.battery.name === option.name ? 'selected' : ''}"
                      onclick="selectBattery(${index})">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
@@ -293,24 +286,6 @@ const airburdsNavbar = document.querySelector('.navbar');
                     </div>
                 </div>
             `).join('');
-
-            // Colors
-            const colorOptionsEl = document.getElementById('colorOptions');
-            colorOptionsEl.innerHTML = colorOptions.map((option, index) => `
-                <div class="color-option ${currentConfig.color.name === option.name ? 'selected' : ''}" 
-                     onclick="selectColor(${index})">
-                    <div class="color-circle" data-color="${option.color}"></div>
-                    <div class="color-name">${option.name}</div>
-                    <div class="color-price">${option.free ? 'Free' : '+₹' + option.price.toLocaleString('en-IN')}</div>
-                </div>
-            `).join('');
-            applyColorSwatches(colorOptionsEl);
-        }
-
-        function applyColorSwatches(scope) {
-            scope.querySelectorAll('.color-circle[data-color]').forEach((el) => {
-                el.style.backgroundColor = el.dataset.color;
-            });
         }
 
         function selectModel(index) {
@@ -331,41 +306,16 @@ const airburdsNavbar = document.querySelector('.navbar');
             updateSummary();
         }
 
-        function selectColor(index) {
-            currentConfig.color = colorOptions[index];
-            loadConfigOptions();
-            updateSummary();
-            
-            // Apply color overlay to product image
-            const imageContainer = document.querySelector('#configuratorPage .product-image-container');
-            if (imageContainer) {
-                const selectedColor = colorOptions[index].color;
-                imageContainer.style.setProperty('--selected-color', selectedColor);
-                
-                // Remove all color classes
-                imageContainer.classList.remove('color-black', 'color-white');
-                
-                // Add specific class for black/white colors for better effect
-                if (colorOptions[index].name.toLowerCase().includes('black')) {
-                    imageContainer.classList.add('color-black');
-                } else if (colorOptions[index].name.toLowerCase().includes('white')) {
-                    imageContainer.classList.add('color-white');
-                }
-            }
-        }
-
         function updateSummary() {
             document.getElementById('summaryModel').textContent =
                 `${currentConfig.model.name} - ₹${currentConfig.model.price.toLocaleString('en-IN')}`;
 
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
-            document.getElementById('summaryColor').textContent = currentConfig.color.name;
 
             const total = currentConfig.model.price +
                 currentConfig.audio.price +
-                currentConfig.battery.price +
-                currentConfig.color.price;
+                currentConfig.battery.price;
 
             document.getElementById('summaryTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
         }
@@ -374,19 +324,10 @@ const airburdsNavbar = document.querySelector('.navbar');
             currentConfig = {
                 model: models[0],
                 audio: audioOptions[0],
-                battery: batteryOptions[0],
-                color: colorOptions[0]
+                battery: batteryOptions[0]
             };
             loadConfigOptions();
             updateSummary();
-            
-            // Reset color overlay to default (first color - Midnight Black)
-            const imageContainer = document.querySelector('#configuratorPage .product-image-container');
-            if (imageContainer) {
-                imageContainer.style.setProperty('--selected-color', colorOptions[0].color);
-                imageContainer.classList.remove('color-white');
-                imageContainer.classList.add('color-black');
-            }
         }
 
         // Initialize
@@ -427,16 +368,15 @@ const airburdsNavbar = document.querySelector('.navbar');
                 config: {
                     model: currentConfig.model.name,
                     audio: currentConfig.audio.name,
-                    battery: currentConfig.battery.name,
-                    color: currentConfig.color.name
+                    battery: currentConfig.battery.name
                 },
-                price: currentConfig.model.price + currentConfig.audio.price + currentConfig.battery.price + currentConfig.color.price
+                price: currentConfig.model.price + currentConfig.audio.price + currentConfig.battery.price
             };
-            
+
             cart.push(item);
             saveCartToStorage();
             updateCartUI();
-            
+
             // Show success animation
             showAddedToCartNotification(item.name);
             openCart();
@@ -502,7 +442,7 @@ const airburdsNavbar = document.querySelector('.navbar');
                         <div class="cart-item-details">
                             <span class="cart-item-type ${getTypeClass(item.type)}">${item.type}</span>
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-config">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                            <div class="cart-item-config">${item.config.audio || item.config.camera} • ${item.config.battery}</div>
                             <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
                         </div>
                         <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
