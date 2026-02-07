@@ -165,16 +165,7 @@ const airburdsNavbar = document.querySelector('.navbar');
                 <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <span class="product-badge ${product.badgeClass || ''}">${product.badge}</span>
-                            <div class="product-actions">
-                                <button class="action-btn"><i class="bi bi-heart"></i></button>
-                                <button class="action-btn"><i class="bi bi-shuffle"></i></button>
-                            </div>
                             <img src="${product.image}" alt="${product.name}" class="product-image">
-                            <div class="hover-info-box">
-                                <div class="hover-info-title">About ${product.name}</div>
-                                <div class="hover-info-text">${product.info}</div>
-                            </div>
                         </div>
                         <div class="product-info">
                             <div class="d-flex justify-content-between align-items-start mb-3">

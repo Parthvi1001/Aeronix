@@ -197,17 +197,6 @@ const droneNavbar = document.querySelector('.navbar');
                 <div class="col-lg-4 col-md-6">
                     <div class="drone-card">
                         <div class="card-image-container">
-                            <div class="badge-overlay">
-                                <span class="badge-custom ${drone.badgeClass}">${drone.badge}</span>
-                            </div>
-                            <div class="card-actions">
-                                <button class="action-btn" title="Add to Wishlist">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="action-btn" title="Compare">
-                                    <i class="fas fa-random"></i>
-                                </button>
-                            </div>
                             <img src="${drone.image}" alt="${drone.name}">
                         </div>
                         <div class="card-body">
