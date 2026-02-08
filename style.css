@@ -225,7 +225,7 @@
         width: 260px;
         height: 340px;
     }
-}
+
 @media (max-width: 800px) {
     .explore-category-grid {
         flex-direction: column;
@@ -3068,7 +3068,7 @@ body.light-mode .text-hero {
     font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-}
+
 
      padding: clamp(5rem, 8vw, 8.5rem) 5%;
      background: var(--bg-main);
@@ -3083,7 +3083,7 @@ body.light-mode .text-hero {
     text-align: center;
     scroll-margin-top: 150px;
     border-top: 1px solid var(--card-border);
-}
+
 
 .footer-content {
     max-width: 1400px;
