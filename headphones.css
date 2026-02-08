@@ -270,8 +270,7 @@
             font-size: 0.9rem;
         }
 
-        .color-options {
-        }
+
 
         /* Product Section */
         .btn-build {
@@ -442,18 +441,20 @@
         .btn-configure {
             width: 100%;
             padding: 1rem;
-            background: #f5f5f5;
+            color: #ffffff;
             border: none;
             border-radius: 50px;
             font-weight: 600;
             color: var(--dark-gray);
             transition: all 0.3s;
             margin-top: auto;
+            background-color: #2563EB;
         }
 
         .btn-configure:hover {
             background: var(--primary-gold);
             color: white;
+            
         }
 
         /* Configurator Page */

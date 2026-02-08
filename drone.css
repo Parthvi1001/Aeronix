@@ -193,28 +193,6 @@
             cursor: pointer;
         }
 
-        .btn-configure:hover {
-            background-color: var(--button-bg);
-            color: white;
-            border-color: var(--button-bg);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--input-border);
-        }
-
-        /* Configurator Styles */
-        .configurator-container {
-            min-height: 100vh;
-            padding: 40px 0;
-        }
-
-        .config-preview {
-            position: sticky;
-            top: 100px;
-        }
-
         .preview-image-container {
             position: relative;
             width: 100%;
