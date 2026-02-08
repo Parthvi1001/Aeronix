@@ -118,8 +118,7 @@ function updateNavbarContrast() {
 // window.addEventListener('resize', updateNavbarContrast);
 
 // If theme toggle exists, run after toggling
-const themeBtn = document.getElementById('themeToggle');
-if (themeBtn) themeBtn.addEventListener('click', () => setTimeout(updateNavbarContrast, 120));
+// Theme toggle removed; navbar contrast updates rely on scroll/resize only.
 
 // --- HERO TEXT CONTRAST FOR CAROUSEL SLIDES AND SECTIONS ---
 function setHeroMode(mode) {
@@ -274,24 +273,7 @@ const productsData = [
 
 let horizontalFinished = false;
 
-// THEME TOGGLE
-const themeToggleBtn = document.getElementById('themeToggle');
-const bodyElement = document.body;
-
-function applyTheme(theme) {
-    const isLight = theme === 'light';
-    bodyElement.classList.toggle('light-mode', isLight);
-    themeToggleBtn.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    localStorage.setItem('aeronixTheme', theme);
-}
-
-const savedTheme = localStorage.getItem('aeronixTheme') || 'light';
-applyTheme(savedTheme);
-
-themeToggleBtn.addEventListener('click', () => {
-    const nextTheme = bodyElement.classList.contains('light-mode') ? 'dark' : 'light';
-    applyTheme(nextTheme);
-});
+document.body.classList.add('light-mode');
 
 // Cart Array
 let cart = JSON.parse(localStorage.getItem('aeronixCart')) || [];
@@ -1258,7 +1240,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (aboutLink && aboutSection) {
         aboutLink.addEventListener('click', function(e) {
             e.preventDefault();
-            aboutSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             // Optionally, add a class to highlight or reveal the section
             aboutSection.classList.add('visible');
             setTimeout(function() {

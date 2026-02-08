@@ -1095,10 +1095,12 @@
 }
 
 /* Hero corner label */
+
 .hero-corner-text {
     position: absolute;
-    left: 32px;
-    bottom: 28px;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
     z-index: 6;
     padding: 0;
     border-radius: 0;
@@ -1107,15 +1109,15 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    font-size: clamp(1rem, 1.6vw, 1.4rem);
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    text-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 600px) {
     .hero-corner-text {
-        left: 18px;
-        bottom: 18px;
-        font-size: 0.9rem;
+        bottom: 16px;
+        transform: translateX(-50%);
+        font-size: 0.92rem;
         padding: 0;
     }
 }
@@ -1123,29 +1125,10 @@
 /* =========================
    MAIN PAGE WOW OVERRIDES
    ========================= */
-.hero-section {
-    background: radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.18), transparent 45%),
-        radial-gradient(circle at 85% 20%, rgba(249, 115, 22, 0.14), transparent 45%),
-        linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-}
-
-.hero-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.9) 100%);
-    z-index: 1;
-    pointer-events: none;
-}
-
-.hero-video {
-    filter: saturate(1.05) contrast(1.05);
-}
-
 .hero-corner-text {
-    font-size: clamp(1.1rem, 2.2vw, 1.7rem);
-    color: #0f172a;
-    text-shadow: 0 16px 30px rgba(15, 23, 42, 0.25);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    color: #ffffff;
+    text-shadow: 0 20px 45px rgba(15, 23, 42, 0.55);
 }
 
 .horizontal-section {
