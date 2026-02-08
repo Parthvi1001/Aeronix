@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="signin.css">
+    <script src="navbar.js" defer></script>
 </head>
 <body class="light-mode">
     <!-- Background Carousel -->
@@ -20,143 +21,7 @@
         <div class="carousel-overlay"></div>
     </div>
     
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="aeronix.html" class="logo">AERONIX</a>
-
-            <ul class="nav-menu nav-links">
-
-                <!-- PRODUCTS = MEGA MENU -->
-                <li class="nav-item shop">
-                    <a href="airburds.html">Earburds</a>
-
-                    <div class="mega-menu">
-                        <div class="left">
-                            <h4>PRODUCTS</h4>
-                            <ul>
-                                <br>
-                                <li>Aeronix Buds 4v ANC </li><br>
-                                <li>Aeronix Nord Burds 2r True</li><br>
-                                <li>Aeronix Buds 3 pro</li><br>
-                                <li>Aeronix Wireless Buds 3 TWS</li><br>
-                                <li>Aeronix Dual mic Z2</li><br>
-                            </ul>
-                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
-                        </div>
-
-                        <div class="right">
-                            <div class="card">
-                                <span class="badge">NEW</span>
-                                <div class="img-box">
-                                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df">
-                                </div>
-                                <p>Pro Drone X</p>
-                            </div>
-
-                            <div class="card">
-                                <div class="img-box">
-                                    <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12">
-                                </div>
-                                <p>Aeronix ANC Headphones</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-
-                <li class="nav-item shop">
-                    <a href="headphones.html">Headphones</a>
-
-                    <div class="mega-menu">
-                        <div class="left">
-                            <h4>PRODUCTS</h4>
-                            <ul>
-                                <br>
-                                <li>Aeronix Rockerz 450</li><br>
-                                <li>Aeronix Tune 770NC</li><br>
-                                <li>Headphones</li><br>
-                                <li>Aeronix Studio H1</li><br>
-                                <li>Aeronix Thunder</li><br>
-                            </ul>
-                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
-                        </div>
-
-                        <div class="right">
-                            <div class="card">
-                                <span class="badge">NEW</span>
-                                <div class="img-box">
-                                    <img src="headPhone.jpg">
-                                </div>
-                                <p>Aeronix ANC Headphones</p>
-                            </div>
-
-                            <div class="card">
-                                <div class="img-box">
-                                    <img src="hhadephone.jpg">
-                                </div>
-                                <p>Aeronix Studio Headphones</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-
-                <li class="nav-item shop">
-                    <a href="drone.html">Drone</a>
-
-                    <div class="mega-menu">
-                        <div class="left">
-                            <h4>PRODUCTS</h4>
-                            <ul>
-                                <br>
-                                <li>All Drones</li><br>
-                                <li>Fixed-wings</li><br>
-                                <li>Single-Router</li><br>
-                                <li>Multi-rotor</li><br>
-                                <li>HybridVTOL</li><br>
-                            </ul>
-                            <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
-                        </div>
-
-                        <div class="right">
-                            <div class="card">
-                                <span class="badge">NEW</span>
-                                <div class="img-box">
-                                    <img src="drone.jfif">
-                                </div>
-                                <p>Pro Drone X</p>
-                            </div>
-
-                            <div class="card">
-                                <div class="img-box">
-                                    <img src="hdrone.jpg">
-                                </div>
-                                <p>Aeronix ANC Headphones</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-
-                <!-- NORMAL ITEMS -->
-                <li class="nav-item">
-                    <a href="aeronix.html#about" class="nav-link">About</a>
-                </li>
-
-            </ul>
-
-            <div class="nav-actions">
-                <a href="index.html" class="nav-btn nav-btn-secondary">Sign In</a>
-            </div>
-
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+    <div id="nav-root"></div>
 
     <div class="main-content">
         <div class="auth-shell">
@@ -265,8 +130,8 @@
         </div>
     </div>
 
-    <script src="auth.js"></script>
-    <script src="script.js"></script>
+    <script src="auth.js" defer></script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>
