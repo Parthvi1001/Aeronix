@@ -259,31 +259,26 @@ const droneNavbar = document.querySelector('.navbar');
             selectColor(configOptions.colors[0]);
         }
 
-        // Load Models
+        // Load Models - Show only the current selected model
         function loadModels(selectedId) {
             const grid = document.getElementById('modelGrid');
             grid.innerHTML = '';
-            
-            const modelsToShow = [
-                drones[0], drones[1], drones[2], 
-                drones[5], drones[3], drones[4]
-            ];
-            
-            modelsToShow.forEach(drone => {
-                const isSelected = selectedId == drone.id;
+
+            const selectedDrone = drones.find(d => d.id === selectedId);
+            if (selectedDrone) {
                 const modelCard = `
-                    <div class="model-option ${isSelected ? 'selected' : ''}" onclick="selectModelById(${drone.id})">
+                    <div class="model-option selected">
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <div class="model-name">${drone.name}</div>
-                                <div class="model-price">₹${drone.price.toLocaleString('en-IN')}</div>
+                                <div class="model-name">${selectedDrone.name}</div>
+                                <div class="model-price">₹${selectedDrone.price.toLocaleString('en-IN')}</div>
                             </div>
-                            ${isSelected ? '<i class="fas fa-check text-warning fs-4"></i>' : ''}
+                            <i class="fas fa-check text-warning fs-4"></i>
                         </div>
                     </div>
                 `;
-                grid.innerHTML += modelCard;
-            });
+                grid.innerHTML = modelCard;
+            }
         }
 
         // Load Camera Options
