@@ -3068,22 +3068,7 @@ body.light-mode .text-hero {
     font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-
-
-     padding: clamp(5rem, 8vw, 8.5rem) 5%;
-     background: var(--bg-main);
-     scroll-margin-top: 150px;
-     max-width: 1200px;
-     margin: 0 auto;
-     display: grid;
-     grid-template-columns: minmax(280px, 1.15fr) minmax(280px, 1fr);
-     gap: clamp(2.5rem, 6vw, 4.5rem);
-     align-items: start;
-    padding: 3rem 5%;
-    text-align: center;
-    scroll-margin-top: 150px;
-    border-top: 1px solid var(--card-border);
-
+}
 
 .footer-content {
     max-width: 1400px;
@@ -6828,170 +6813,169 @@ body.light-mode .stat-number {
     box-shadow: 0 14px 28px rgba(37, 99, 235, 0.2);
 }
 
- /* Best Selling Brands Section */
-        .brands-section {
-            padding: 80px 20px;
-            margin-top: 0;
-            background: #fff;
-            overflow: hidden;
-        }
-        
-        .brands-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .brands-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 50px;
-            letter-spacing: 0.5px;
-        }
-        
-        .brands-scroll-wrapper {
-            overflow: hidden;
-            position: relative;
-            padding: 30px 0;
-        }
-        
-        .brands-scroll-wrapper::before,
-        .brands-scroll-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 150px;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
-        }
-        
-        .brands-scroll-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, rgba(245, 247, 250, 1) 0%, rgba(245, 247, 250, 0) 100%);
-        }
-        
-        .brands-scroll-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, rgba(245, 247, 250, 1) 0%, rgba(245, 247, 250, 0) 100%);
-        }
-        
-        .brands-scroll {
-            display: flex;
-            gap: 60px;
-            animation: scroll 6s linear infinite;
-            width: fit-content;
-        }
-        
-        .brands-scroll:hover {
-            animation-play-state: paused;
-        }
-        
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        
-        .brand-item {
-            flex-shrink: 0;
-            width: auto;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border-radius: 0;
-            padding: 0 32px;
-            box-shadow: none;
-            transition: none;
-        }
-        
-        .brand-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-        
-        .brand-item img {
-            max-width: 260px;
-            max-height: 120px;
-            object-fit: contain;
-            filter: grayscale(20%);
-            transition: filter 0.3s ease;
-        }
-        
-        .brand-item:hover img {
-            filter: grayscale(0%) brightness(1.1);
-        }
-        
-        /* Nykaa brand styling */
-        .nykaa-brand {
-            background: linear-gradient(135deg, #fc5c9c 0%, #ed145b 100%);
-        }
-        
-        .nykaa-text {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: white;
-            letter-spacing: 4px;
-            font-style: italic;
-        }
-        
-        /* Dark mode support */
-        .dark-mode .brands-section {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        }
-        
-        .dark-mode .brands-title {
-            color: white;
-        }
-        
-        .dark-mode .brand-item {
-            background: #2a2a3e;
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
-        }
-        
-        .dark-mode .brand-item:hover {
-            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
-        }
-        
-        .dark-mode .brands-scroll-wrapper::before {
-            background: linear-gradient(to right, rgba(26, 26, 46, 1) 0%, rgba(26, 26, 46, 0) 100%);
-        }
-        
-        .dark-mode .brands-scroll-wrapper::after {
-            background: linear-gradient(to left, rgba(26, 26, 46, 1) 0%, rgba(26, 26, 46, 0) 100%);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .brands-section {
-                padding: 60px 15px;
-            }
-            
-            .brands-title {
-                font-size: 1.8rem;
-                margin-bottom: 40px;
-            }
-            
-            .brands-scroll {
-                gap: 40px;
-                animation: scroll 20s linear infinite;
-            }
-            
-            .brand-item {
-                width: 160px;
-                height: 80px;
-                padding: 20px;
-            }
-            
-            .nykaa-text {
-                font-size: 1.8rem;
-                letter-spacing: 3px;
-            }
-        }
+/* Best Selling Brands Section */
+.brands-section {
+    padding: 80px 20px;
+    margin-top: 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+.brands-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.brands-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 50px;
+    letter-spacing: 0.5px;
+}
+
+.brands-scroll-wrapper {
+    overflow: hidden;
+    position: relative;
+    padding: 30px 0;
+}
+
+.brands-scroll-wrapper::before,
+.brands-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.brands-scroll-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(245, 247, 250, 1) 0%, rgba(245, 247, 250, 0) 100%);
+}
+
+.brands-scroll-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(245, 247, 250, 1) 0%, rgba(245, 247, 250, 0) 100%);
+}
+
+.brands-scroll {
+    display: flex;
+    gap: 60px;
+    animation: scroll 6s linear infinite;
+    width: fit-content;
+}
+
+.brands-scroll:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
     }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.brand-item {
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 0;
+    padding: 0 32px;
+    box-shadow: none;
+    transition: none;
+}
+
+.brand-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.brand-item img {
+    max-width: 260px;
+    max-height: 120px;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.brand-item:hover img {
+    filter: grayscale(0%) brightness(1.1);
+}
+
+/* Nykaa brand styling */
+.nykaa-brand {
+    background: linear-gradient(135deg, #fc5c9c 0%, #ed145b 100%);
+}
+
+.nykaa-text {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 4px;
+    font-style: italic;
+}
+
+/* Dark mode support */
+.dark-mode .brands-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.dark-mode .brands-title {
+    color: white;
+}
+
+.dark-mode .brand-item {
+    background: #2a2a3e;
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .brand-item:hover {
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .brands-scroll-wrapper::before {
+    background: linear-gradient(to right, rgba(26, 26, 46, 1) 0%, rgba(26, 26, 46, 0) 100%);
+}
+
+.dark-mode .brands-scroll-wrapper::after {
+    background: linear-gradient(to left, rgba(26, 26, 46, 1) 0%, rgba(26, 26, 46, 0) 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .brands-section {
+        padding: 60px 15px;
+    }
+
+    .brands-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    .brands-scroll {
+        gap: 40px;
+        animation: scroll 20s linear infinite;
+    }
+
+    .brand-item {
+        width: 160px;
+        height: 80px;
+        padding: 20px;
+    }
+
+    .nykaa-text {
+        font-size: 1.8rem;
+        letter-spacing: 3px;
+    }
+}
