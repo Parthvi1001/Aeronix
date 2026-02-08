@@ -53,33 +53,31 @@ function updateNavbarContrast() {
     const horizontal = document.querySelector('.horizontal-section');
     const tws = document.querySelector('.tws-scroll-section');
 
-    if (hero && horizontal && tws) {
+    if (hero && horizontal) {
         const heroBottom = hero.getBoundingClientRect().bottom;
         const horizontalTop = horizontal.getBoundingClientRect().top;
-        const twsTop = tws.getBoundingClientRect().top;
-        const twsBottom = tws.getBoundingClientRect().bottom;
 
-        // HERO → WHITE
+        // HERO → keep light background
         if (heroBottom > 80) {
             navbar.classList.add('light-nav');
             return;
         }
 
-        // HORIZONTAL → BLACK
-        if (horizontalTop <= 80 && twsTop > 80) {
-            navbar.classList.remove('light-nav');
+        // FROM HORIZONTAL SECTION ONWARD → keep light background static
+        if (horizontalTop <= 80) {
+            navbar.classList.add('light-nav');
             return;
         }
+    }
 
-        // TWS → WHITE
+    if (tws) {
+        const twsTop = tws.getBoundingClientRect().top;
+        const twsBottom = tws.getBoundingClientRect().bottom;
+
         if (twsTop <= 80 && twsBottom > 80) {
             navbar.classList.add('light-nav');
             return;
         }
-
-        // AFTER TWS → BLACK
-        navbar.classList.remove('light-nav');
-        return;
     }
 
     // ================================
