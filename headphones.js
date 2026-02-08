@@ -125,9 +125,9 @@ const headphonesNavbar = document.querySelector('.navbar');
             { name: "Bose 700", price: 4599 },
             { name: "AirPods Max", price: 7499 },
             { name: "Sennheiser HD 800S", price: 10999 },
-            { name: "JBL Tune 510BT", price: 1699 },
+            { name: "boAt Rockerz 450", price: 1699 },
             { name: "HyperX Cloud III", price: 3299 },
-            { name: "Beats Solo 4", price: 1999 },
+            { name: "JBL Tune 510BT", price: 1999 },
             { name: "Audio-Technica ATH-M50x", price: 5999 }
         ];
 
@@ -242,18 +242,17 @@ const headphonesNavbar = document.querySelector('.navbar');
         }
 
         function loadConfigOptions() {
-            // Models
-            document.getElementById('modelOptions').innerHTML = models.map((model, index) => `
-                <div class="option-card ${currentConfig.model.name === model.name ? 'selected' : ''}" 
-                     onclick="selectModel(${index})">
+            // Models - Show only the current selected model
+            document.getElementById('modelOptions').innerHTML = `
+                <div class="option-card selected">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <div class="option-name">${model.name}</div>
+                            <div class="option-name">${currentConfig.model.name}</div>
                         </div>
-                        <div class="option-price">₹${model.price.toLocaleString('en-IN')}</div>
+                        <div class="option-price">₹${currentConfig.model.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
-            `).join('');
+            `;
 
             // Audio
             document.getElementById('audioOptions').innerHTML = audioOptions.map((option, index) => `
@@ -343,18 +342,17 @@ const headphonesNavbar = document.querySelector('.navbar');
         }
 
         function updateSummary() {
-            document.getElementById('summaryModel').textContent = 
+            document.getElementById('summaryModel').textContent =
                 `${currentConfig.model.name} - ₹${currentConfig.model.price.toLocaleString('en-IN')}`;
-            
+
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
-            document.getElementById('summaryColor').textContent = currentConfig.color.name;
-            
-            const total = currentConfig.model.price + 
-                         currentConfig.audio.price + 
-                         currentConfig.battery.price + 
+
+            const total = currentConfig.model.price +
+                         currentConfig.audio.price +
+                         currentConfig.battery.price +
                          currentConfig.color.price;
-            
+
             document.getElementById('summaryTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
         }
 

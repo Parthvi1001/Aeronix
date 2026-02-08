@@ -932,6 +932,7 @@ body.light-mode .logo {
 }
 
 /* Enlarge product name inside mega-menu when hovering the parent nav item */
+
 .nav-item.shop:hover .mega-menu .right .card p {
     font-size: 1.06rem;
     font-weight: 700;
@@ -945,6 +946,7 @@ body.light-mode .logo {
 }
 
 /* Ensure mega-menu product names are readable and adjust for light/dark themes */
+
 .mega-menu .right .card p {
     font-size: 0.95rem;
     font-weight: 600;

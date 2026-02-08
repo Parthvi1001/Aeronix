@@ -165,6 +165,10 @@ const airburdsNavbar = document.querySelector('.navbar');
                 <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="product-image-container">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="bi bi-heart"></i></button>
+                                <button class="action-btn"><i class="bi bi-shuffle"></i></button>
+                            </div>
                             <img src="${product.image}" alt="${product.name}" class="product-image">
                         </div>
                         <div class="product-info">
@@ -238,18 +242,17 @@ const airburdsNavbar = document.querySelector('.navbar');
         }
 
         function loadConfigOptions() {
-            // Models
-            document.getElementById('modelOptions').innerHTML = models.map((model, index) => `
-                <div class="option-card ${currentConfig.model.name === model.name ? 'selected' : ''}" 
-                     onclick="selectModel(${index})">
+            // Models - Show only the current selected model
+            document.getElementById('modelOptions').innerHTML = `
+                <div class="option-card selected">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <div class="option-name">${model.name}</div>
+                            <div class="option-name">${currentConfig.model.name}</div>
                         </div>
-                        <div class="option-price">₹${model.price.toLocaleString('en-IN')}</div>
+                        <div class="option-price">₹${currentConfig.model.price.toLocaleString('en-IN')}</div>
                     </div>
                 </div>
-            `).join('');
+            `;
 
             // Audio
             document.getElementById('audioOptions').innerHTML = audioOptions.map((option, index) => `
