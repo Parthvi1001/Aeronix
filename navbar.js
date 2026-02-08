@@ -22,13 +22,13 @@ const NAVBAR_TEMPLATE = `
                             <div class="img-box">
                                 <img src="earbuds.jpg" alt="Aeronix Earbuds">
                             </div>
-                            <p>Pro Drone X</p>
+                            <p>Aeronix Buds 4v ANC</p>
                         </div>
                         <div class="card">
                             <div class="img-box">
-                                <img src="hearbuds.jpg" alt="Aeronix ANC Headphones">
+                                <img src="hearbuds.jpg" alt="Aeronix Nord Buds 2r True">
                             </div>
-                            <p>Aeronix ANC Headphones</p>
+                            <p>Aeronix Nord Buds 2r True</p>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ const NAVBAR_TEMPLATE = `
                             <li>Aeronix Studio H1</li>
                             <li>Aeronix Thunder</li>
                         </ul><br><hr>
-                        <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        <p class="guarantee">🛡 60-Day Guarantee | 6-Months Warranty</p>
                     </div>
                     <div class="right">
                         <div class="card">
@@ -75,20 +75,20 @@ const NAVBAR_TEMPLATE = `
                             <li>Multi-Rotor</li>
                             <li>Hybrid VTOL</li>
                         </ul><br><hr>
-                        <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
+                        <p class="guarantee">🛡 120-Day Guarantee | 2-Years Warranty</p>
                     </div>
                     <div class="right">
                         <div class="card">
                             <div class="img-box">
-                                <img src="drone1.jpg" alt="Pro Drone X">
+                                <img src="drone1.jpg" alt="Aeronix Fixed-Wing Drone">
                             </div>
-                            <p>Pro Drone X</p>
+                            <p>Aeronix Fixed-Wing Drone</p>
                         </div>
                         <div class="card">
                             <div class="img-box">
-                                <img src="hdrone.jpg" alt="Aeronix ANC Headphones">
+                                <img src="hdrone.jpg" alt="Aeronix Multi-Rotor Drone">
                             </div>
-                            <p>Aeronix ANC Headphones</p>
+                            <p>Aeronix Multi-Rotor Drone</p>
                         </div>
                     </div>
                 </div>
