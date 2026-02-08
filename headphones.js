@@ -165,7 +165,6 @@ const headphonesNavbar = document.querySelector('.navbar');
                 <div class="col-lg-4 col-md-6">
                     <div class="product-card">
                         <div class="product-image-container">
-                            <span class="product-badge ${product.badgeClass || ''}">${product.badge}</span>
                             <div class="product-actions">
                                 <button class="action-btn"><i class="bi bi-heart"></i></button>
                                 <button class="action-btn"><i class="bi bi-shuffle"></i></button>
