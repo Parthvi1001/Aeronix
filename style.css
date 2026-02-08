@@ -191,35 +191,35 @@
 .explore-category-overlay {
     position: absolute;
     left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 32px 0 24px 0;
-    background: linear-gradient(0deg, rgba(0,0,0,0.62) 60%, rgba(0,0,0,0.12) 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.explore-category-shop {
-    color: #fff;
-    font-size: 1.1rem;
-    letter-spacing: 0.15em;
-    font-weight: 400;
-    margin-bottom: 6px;
-    opacity: 0.85;
-}
-.explore-category-title {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
-    font-family: 'Orbitron', sans-serif;
-}
-@media (max-width: 1100px) {
-    .explore-category-grid {
-        gap: 18px;
+    .about-text {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: var(--text-secondary);
+        margin-bottom: 1.75rem;
     }
-    .explore-category-card {
+    .about-highlights {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+        margin-top: 32px;
+    }
+    .about-highlight {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 18px;
+        padding: 20px;
+    }
+    .about-cards {
+        display: grid;
+        gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    .about-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 26px;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    }
         width: 260px;
         height: 340px;
     }
@@ -487,27 +487,7 @@ body {
     transition: background 0.35s ease, color 0.35s ease;
 }
 
-h1, h2, h3, h4, h5, h6,
-.section-title,
-.product-title,
-.product-name,
-.hero-title,
-.card {
-    position: relative;
-    /* width: 320px; */
-     width: 300px;
-    background: #f4f5f6;
-    border-radius: 20px;
-    overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-}
-    padding: 140px 0;
-    background: var(--bg-contrast);
-    display: flex;
-    align-items: center;
-}
+
 
 .engineered-container {
     width: 100%;
@@ -2752,9 +2732,9 @@ body.light-mode .text-hero {
 
 /* ABOUT SECTION */
 .about-section {
-    padding: 7rem 5%;
+    padding: clamp(5rem, 8vw, 8.5rem) 5%;
     background: var(--bg-main);
-    scroll-margin-top: 110px;
+    scroll-margin-top: 150px;
 }
 
 .about-shell {
@@ -2762,8 +2742,8 @@ body.light-mode .text-hero {
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(280px, 1.15fr) minmax(280px, 1fr);
-    gap: 48px;
-    align-items: center;
+    gap: clamp(2.5rem, 6vw, 4.5rem);
+    align-items: start;
 }
 
 
@@ -2802,21 +2782,21 @@ body.light-mode .text-hero {
     font-size: 1.1rem;
     line-height: 1.9;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
 }
 
 .about-highlights {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 28px;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    margin-top: 32px;
 }
 
 .about-highlight {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 16px;
+    border-radius: 18px;
+    padding: 20px;
 }
 
 .about-highlight h3 {
@@ -2833,15 +2813,15 @@ body.light-mode .text-hero {
 
 .about-cards {
     display: grid;
-    gap: 18px;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .about-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
-    padding: 22px;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+    padding: 26px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
 }
 
 .about-card h4 {
@@ -2872,7 +2852,7 @@ body.light-mode .text-hero {
 
 /* CONTACT SECTION */
 .contact-section {
-    padding: 100px 5% 80px;
+    padding: clamp(5rem, 9vw, 7rem) 5% clamp(4rem, 8vw, 6rem);
     background: var(--bg-section);
     border-top: 1px solid var(--card-border);
 }
@@ -3071,17 +3051,18 @@ body.light-mode .text-hero {
     transition: all 0.3s ease;
 }
 
-.submit-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
-}
-
-/* FOOTER */
-footer {
-    background: var(--bg-contrast);
+     padding: clamp(5rem, 8vw, 8.5rem) 5%;
+     background: var(--bg-main);
+     scroll-margin-top: 150px;
+     max-width: 1200px;
+     margin: 0 auto;
+     display: grid;
+     grid-template-columns: minmax(280px, 1.15fr) minmax(280px, 1fr);
+     gap: clamp(2.5rem, 6vw, 4.5rem);
+     align-items: start;
     padding: 3rem 5%;
     text-align: center;
-    scroll-margin-top: 110px;
+    scroll-margin-top: 150px;
     border-top: 1px solid var(--card-border);
 }
 
@@ -5245,7 +5226,7 @@ body.light-mode .text-hero {
 .about-section {
     padding: 7rem 5%;
     background: var(--bg-main);
-    scroll-margin-top: 110px;
+    scroll-margin-top: 150px;
 }
 
 .about-shell {
@@ -5292,18 +5273,19 @@ body.light-mode .text-hero {
     margin-bottom: 1.5rem;
 }
 
+
 .about-highlights {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 28px;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    margin-top: 32px;
 }
 
 .about-highlight {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 16px;
-    padding: 16px;
+    border-radius: 18px;
+    padding: 20px;
 }
 
 .about-highlight h3 {
@@ -5320,15 +5302,15 @@ body.light-mode .text-hero {
 
 .about-cards {
     display: grid;
-    gap: 18px;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .about-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
-    padding: 22px;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+    padding: 26px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
 }
 
 .about-card h4 {
@@ -5358,8 +5340,9 @@ body.light-mode .text-hero {
 }
 
 /* CONTACT SECTION */
+
 .contact-section {
-    padding: 8rem 5%;
+    padding: clamp(5rem, 9vw, 7rem) 5% clamp(4rem, 8vw, 6rem);
     background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-contrast) 100%);
     opacity: 0;
     transform: translateY(50px);
@@ -6531,31 +6514,31 @@ body.light-mode .stat-number {
 }
 
 .about-highlights {
-    gap: 16px;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .about-highlight {
     background: #f8fafc;
-    border: 1px solid rgba(15, 23, 42, 0.06);
-    border-radius: 16px;
-    padding: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 18px;
+    padding: 20px;
 }
 
 .about-cards {
-    gap: 16px;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 .about-card {
     background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(15, 23, 42, 0.1);
     border-radius: 18px;
-    padding: 22px;
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    padding: 26px;
+    box-shadow: 0 18px 38px rgba(15, 23, 42, 0.12);
 }
 
 .contact-section {
     background: #f8fafc;
-    padding: 110px 0;
+    padding: clamp(5rem, 9vw, 7rem) 0 clamp(4rem, 8vw, 6rem);
 }
 
 .contact-shell {
