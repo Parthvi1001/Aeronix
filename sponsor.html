@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AERONIX - Our Sponsors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="signin.css">
+    <script src="navbar.js" defer></script>
+    <style>
+        .sponsor-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .sponsor-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .sponsor-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .sponsor-tier {
+            padding: 60px 0;
+            background: var(--bg-main);
+        }
+        .tier-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .tier-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .tier-icon {
+            font-size: 3rem;
+            color: var(--accent-strong);
+            margin-bottom: 20px;
+        }
+        .tier-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .tier-price {
+            font-size: 1.5rem;
+            color: var(--accent-strong);
+            margin-bottom: 1rem;
+        }
+        .tier-features {
+            list-style: none;
+            padding: 0;
+        }
+        .tier-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .tier-features li:last-child {
+            border-bottom: none;
+        }
+        .btn-sponsor {
+            background: var(--accent-strong);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-sponsor:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05);
+        }
+        .current-sponsors {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        .sponsor-logo {
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        .sponsor-logo:hover {
+            filter: grayscale(0%);
+        }
+        .sponsor-stats {
+            padding: 60px 0;
+            background: white;
+        }
+        .stat-item {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-strong);
+            display: block;
+        }
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .contact-sponsor {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .contact-sponsor h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .contact-sponsor p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn-contact {
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-contact:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div id="nav-root"></div>
+
+    <section class="sponsor-hero">
+        <div class="container">
+            <h1 class="fade-in-up">Our Sponsors</h1>
+            <p class="fade-in-up">Partner with AERONIX and be part of the future of wireless technology</p>
+        </div>
+    </section>
+
+    <section class="sponsor-stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item fade-in-up">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Happy Partners</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item fade-in-up">
+                        <span class="stat-number">50M+</span>
+                        <span class="stat-label">Products Sold</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item fade-in-up">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Countries Reached</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item fade-in-up">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sponsor-tier">
+        <div class="container">
+            <h2 class="text-center mb-5 fade-in-up" style="font-size: 2.5rem; font-weight: 700;">Sponsorship Tiers</h2>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="tier-card fade-in-up">
+                        <div class="tier-icon"><i class="fas fa-star"></i></div>
+                        <h3 class="tier-name">Bronze</h3>
+                        <div class="tier-price">₹50,000</div>
+                        <ul class="tier-features">
+                            <li>Logo on website</li>
+                            <li>Social media mention</li>
+                            <li>Event participation</li>
+                            <li>Basic analytics report</li>
+                        </ul>
+                        <a href="#contact" class="btn-sponsor">Become Bronze Sponsor</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tier-card fade-in-up">
+                        <div class="tier-icon"><i class="fas fa-crown"></i></div>
+                        <h3 class="tier-name">Silver</h3>
+                        <div class="tier-price">₹1,50,000</div>
+                        <ul class="tier-features">
+                            <li>All Bronze benefits</li>
+                            <li>Featured in newsletters</li>
+                            <li>Product co-branding</li>
+                            <li>Priority support</li>
+                            <li>Quarterly meetings</li>
+                        </ul>
+                        <a href="#contact" class="btn-sponsor">Become Silver Sponsor</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="tier-card fade-in-up">
+                        <div class="tier-icon"><i class="fas fa-gem"></i></div>
+                        <h3 class="tier-name">Gold</h3>
+                        <div class="tier-price">₹5,00,000</div>
+                        <ul class="tier-features">
+                            <li>All Silver benefits</li>
+                            <li>Exclusive partnerships</li>
+                            <li>Custom product development</li>
+                            <li>VIP event access</li>
+                            <li>Dedicated account manager</li>
+                            <li>Annual strategy sessions</li>
+                        </ul>
+                        <a href="#contact" class="btn-sponsor">Become Gold Sponsor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="current-sponsors">
+        <div class="container">
+            <h2 class="text-center mb-5 fade-in-up" style="font-size: 2.5rem; font-weight: 700;">Our Current Sponsors</h2>
+            <div class="sponsor-grid">
+                <img src="amazon.png" alt="Amazon" class="sponsor-logo fade-in-up">
+                <img src="meesho.png" alt="Meesho" class="sponsor-logo fade-in-up">
+                <img src="flipcart.png" alt="Flipkart" class="sponsor-logo fade-in-up">
+                <!-- Add more sponsor logos as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-sponsor" id="contact">
+        <div class="container">
+            <h2 class="fade-in-up">Ready to Partner?</h2>
+            <p class="fade-in-up">Join our network of innovative sponsors and help shape the future of wireless technology</p>
+            <a href="mailto:sponsors@aeronix.com" class="btn-contact fade-in-up">Contact Our Team</a>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-shell">
+            <div class="footer-brand-block">
+                <div class="footer-brand">AERONIX</div>
+                <p class="footer-description">Immersive true wireless audio, engineered for seamless daily performance.</p>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="footer-social"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="footer-social"><i class="bi bi-youtube"></i></a>
+                    <a href="#" class="footer-social"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h6 class="footer-title">Products</h6>
+                    <ul class="footer-links">
+                        <li><a href="airburds.html">Earbuds</a></li>
+                        <li><a href="headphones.html">Headphones</a></li>
+                        <li><a href="drone.html">Drones</a></li>
+                        <li><a href="aeronix.html#about">Why Aeronix</a></li>
+                        <li><a href="index.html">Customer Portal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h6 class="footer-title">Company</h6>
+                    <ul class="footer-links">
+                        <li><a href="aeronix.html#about">Our Mission</a></li>
+                        <li><a href="aeronix.html#contactSection">Support Team</a></li>
+                        <li><a href="mailto:partners@aeronix.com">Partner With Us</a></li>
+                        <li><a href="mailto:careers@aeronix.com">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h6 class="footer-title">Get in Touch</h6>
+                    <div class="footer-contact">
+                        <span><i class="bi bi-geo-alt"></i> San Francisco, CA</span>
+                        <a href="tel:+15551234567"><i class="bi bi-telephone"></i> +1 (555) 123-4567</a>
+                        <a href="mailto:support@aeronix.com"><i class="bi bi-envelope"></i> support@aeronix.com</a>
+                        <span><i class="bi bi-clock"></i> Mon–Fri · 9am–6pm PT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 AERONIX. All rights reserved.</span>
+            <div class="footer-legal">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js" defer></script>
+
+    <script>
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

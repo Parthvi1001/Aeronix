@@ -477,7 +477,7 @@ const airburdsNavbar = document.querySelector('.navbar');
                     <div>
                         <span class="bill-item-type ${getTypeClass(item.type)}">${item.type}</span>
                         <div class="bill-item-name">${item.name}</div>
-                        <div class="bill-item-details">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                        <div class="bill-item-details">${item.config.audio || item.config.camera} • ${item.config.battery}</div>
                     </div>
                     <div class="bill-item-price">₹${item.price.toLocaleString('en-IN')}</div>
                 </div>
