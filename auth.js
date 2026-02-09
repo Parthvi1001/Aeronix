@@ -54,6 +54,9 @@
         const password = document.getElementById('password');
         if (email) email.value = '';
         if (password) password.value = '';
+        if (window.AeronixSession) {
+            window.AeronixSession.clearActiveUser();
+        }
     };
 
     window.handleSignIn = async function handleSignIn() {
@@ -82,6 +85,21 @@
             const data = await response.json();
 
             if (data.success) {
+                if (window.AeronixSession) {
+                    window.AeronixSession.storeActiveUser(data.user, { remember });
+                    const pendingFavorite = window.AeronixSession.consumePendingFavorite();
+                    if (pendingFavorite) {
+                        if (window.AeronixSession.addFavorite(pendingFavorite)) {
+                            window.AeronixSession.showToast('Added to favorites', 'info');
+                        }
+                    }
+                    const pendingRedirect = window.AeronixSession.consumePendingRedirect();
+                    if (pendingRedirect) {
+                        setTimeout(() => {
+                            window.location.href = pendingRedirect;
+                        }, 1200);
+                    }
+                }
                 window.showSuccess(data.user);
             } else {
                 window.showMessage('message', data.message, 'error');
@@ -99,6 +117,11 @@
         const name = document.getElementById('signupName').value.trim();
         const email = document.getElementById('signupEmail').value.trim();
         const password = document.getElementById('signupPassword').value;
+
+        if (!name) {
+            window.showMessage('signupMessage', 'Name is required', 'error');
+            return;
+        }
 
         if (!email || !password) {
             window.showMessage('signupMessage', 'Email and password are required', 'error');
@@ -126,6 +149,21 @@
             const data = await response.json();
 
             if (data.success) {
+                if (window.AeronixSession) {
+                    window.AeronixSession.storeActiveUser(data.user);
+                    const pendingFavorite = window.AeronixSession.consumePendingFavorite();
+                    if (pendingFavorite) {
+                        if (window.AeronixSession.addFavorite(pendingFavorite)) {
+                            window.AeronixSession.showToast('Added to favorites', 'info');
+                        }
+                    }
+                    const pendingRedirect = window.AeronixSession.consumePendingRedirect();
+                    if (pendingRedirect) {
+                        setTimeout(() => {
+                            window.location.href = pendingRedirect;
+                        }, 1200);
+                    }
+                }
                 window.showMessage('signupMessage', 'Account created successfully! Signing you in...', 'success');
                 setTimeout(() => {
                     window.showSuccess(data.user);

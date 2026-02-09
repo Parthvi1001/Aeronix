@@ -189,6 +189,8 @@ const droneNavbar = document.querySelector('.navbar');
                 const card = createDroneCard(drone);
                 grid.innerHTML += card;
             });
+
+            wireFavoriteButtons();
         }
 
         // Create Drone Card HTML
@@ -197,6 +199,11 @@ const droneNavbar = document.querySelector('.navbar');
                 <div class="col-lg-4 col-md-6">
                     <div class="drone-card">
                         <div class="card-image-container">
+                            <div class="card-actions">
+                                <button class="action-btn favorite-btn" data-product-type="drone" data-product-id="${drone.id}" aria-label="Toggle favorite">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
                             <img src="${drone.image}" alt="${drone.name}">
                         </div>
                         <div class="card-body">
@@ -224,6 +231,28 @@ const droneNavbar = document.querySelector('.navbar');
                     </div>
                 </div>
             `;
+        }
+
+        function wireFavoriteButtons() {
+            if (!window.AeronixSession) {
+                return;
+            }
+
+            document.querySelectorAll('.favorite-btn[data-product-type="drone"]').forEach((button) => {
+                const droneId = Number(button.dataset.productId);
+                window.AeronixSession.registerFavoriteButton(button, () => {
+                    const drone = drones.find(d => d.id === droneId);
+                    if (!drone) return null;
+                    return {
+                        id: drone.id,
+                        type: 'drone',
+                        name: drone.name,
+                        price: drone.price,
+                        image: drone.image,
+                        subtitle: drone.tagline
+                    };
+                });
+            });
         }
 
         // Configure Drone

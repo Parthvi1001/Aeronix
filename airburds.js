@@ -166,7 +166,7 @@ const airburdsNavbar = document.querySelector('.navbar');
                     <div class="product-card">
                         <div class="product-image-container">
                             <div class="product-actions">
-                                <button class="action-btn"><i class="bi bi-heart"></i></button>
+                                <button class="action-btn favorite-btn" data-product-type="earbud" data-product-id="${product.id}" aria-label="Toggle favorite"><i class="bi bi-heart"></i></button>
                                 <button class="action-btn"><i class="bi bi-shuffle"></i></button>
                             </div>
                             <img src="${product.image}" alt="${product.name}" class="product-image">
@@ -200,6 +200,8 @@ const airburdsNavbar = document.querySelector('.navbar');
                     </div>
                 </div>
             `).join('');
+
+            wireFavoriteButtons();
         }
 
         function openConfigurator(productId) {
@@ -341,6 +343,28 @@ const airburdsNavbar = document.querySelector('.navbar');
 
         // Shopping Cart Functionality
         let cart = [];
+
+        function wireFavoriteButtons() {
+            if (!window.AeronixSession) {
+                return;
+            }
+
+            document.querySelectorAll('.favorite-btn[data-product-type="earbud"]').forEach((button) => {
+                const productId = Number(button.dataset.productId);
+                window.AeronixSession.registerFavoriteButton(button, () => {
+                    const product = products.find(p => p.id === productId);
+                    if (!product) return null;
+                    return {
+                        id: product.id,
+                        type: 'earbud',
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        subtitle: product.subtitle
+                    };
+                });
+            });
+        }
 
         function loadCartFromStorage() {
             const savedCart = localStorage.getItem('aeronixCart');

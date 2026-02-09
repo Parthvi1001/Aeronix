@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "0d3702af-f07b-4d95-9728-04f88ca0bc6c",
+      "email": "abc@gmail.com",
+      "name": "abc",
+      "password": "a62f992ffb88280f1da22a9e49ada05ddc44c76ac3b7d54b1e7d5a3dcb6d4ffe",
+      "createdAt": "2026-02-09T08:42:02.982Z",
+      "lastLogin": "2026-02-09T08:42:02.982Z"
+    }
+  ]
+}
