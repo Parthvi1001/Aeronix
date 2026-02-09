@@ -6,6 +6,38 @@
 
     if (!signinForm || !signupForm || !successScreen) return;
 
+    const USERS_STORAGE_KEY = 'aeronixUsers';
+
+    function readUsers() {
+        try {
+            const raw = localStorage.getItem(USERS_STORAGE_KEY);
+            const parsed = raw ? JSON.parse(raw) : [];
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+            console.warn('Auth: failed to read stored users', error);
+            return [];
+        }
+    }
+
+    function writeUsers(users) {
+        try {
+            localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+        } catch (error) {
+            console.warn('Auth: failed to persist users', error);
+        }
+    }
+
+    function findUser(users, email) {
+        return users.find((user) => user.email.toLowerCase() === email.toLowerCase());
+    }
+
+    function generateId() {
+        if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+            return window.crypto.randomUUID();
+        }
+        return `user-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+    }
+
     window.showMessage = function showMessage(elementId, message, type) {
         const messageEl = document.getElementById(elementId);
         if (!messageEl) return;
@@ -59,7 +91,7 @@
         }
     };
 
-    window.handleSignIn = async function handleSignIn() {
+    window.handleSignIn = function handleSignIn() {
         const email = document.getElementById('email').value.trim();
         const password = document.getElementById('password').value;
         const remember = document.getElementById('remember').checked;
@@ -73,47 +105,42 @@
         btn.disabled = true;
         btn.textContent = 'Signing in...';
 
-        try {
-            const response = await fetch('/api/signin', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password, remember })
-            });
+        const users = readUsers();
+        const user = findUser(users, email);
 
-            const data = await response.json();
-
-            if (data.success) {
-                if (window.AeronixSession) {
-                    window.AeronixSession.storeActiveUser(data.user, { remember });
-                    const pendingFavorite = window.AeronixSession.consumePendingFavorite();
-                    if (pendingFavorite) {
-                        if (window.AeronixSession.addFavorite(pendingFavorite)) {
-                            window.AeronixSession.showToast('Added to favorites', 'info');
-                        }
-                    }
-                    const pendingRedirect = window.AeronixSession.consumePendingRedirect();
-                    if (pendingRedirect) {
-                        setTimeout(() => {
-                            window.location.href = pendingRedirect;
-                        }, 1200);
-                    }
-                }
-                window.showSuccess(data.user);
-            } else {
-                window.showMessage('message', data.message, 'error');
-            }
-        } catch (error) {
-            window.showMessage('message', 'Connection error. Please make sure the server is running.', 'error');
-            console.error('Error:', error);
-        } finally {
+        if (!user || user.password !== password) {
+            window.showMessage('message', 'Invalid email or password', 'error');
             btn.disabled = false;
             btn.textContent = 'Sign In';
+            return;
         }
+
+        user.lastLogin = new Date().toISOString();
+        writeUsers(users);
+
+        if (window.AeronixSession) {
+            window.AeronixSession.storeActiveUser(user, { remember });
+            const pendingFavorite = window.AeronixSession.consumePendingFavorite();
+            if (pendingFavorite) {
+                if (window.AeronixSession.addFavorite(pendingFavorite)) {
+                    window.AeronixSession.showToast('Added to favorites', 'info');
+                }
+            }
+            const pendingRedirect = window.AeronixSession.consumePendingRedirect();
+            if (pendingRedirect) {
+                setTimeout(() => {
+                    window.location.href = pendingRedirect;
+                }, 1200);
+            }
+        }
+
+        window.showSuccess(user);
+
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
     };
 
-    window.handleSignUp = async function handleSignUp() {
+    window.handleSignUp = function handleSignUp() {
         const name = document.getElementById('signupName').value.trim();
         const email = document.getElementById('signupEmail').value.trim();
         const password = document.getElementById('signupPassword').value;
@@ -137,47 +164,51 @@
         btn.disabled = true;
         btn.textContent = 'Creating account...';
 
-        try {
-            const response = await fetch('/api/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password, name })
-            });
+        const users = readUsers();
 
-            const data = await response.json();
-
-            if (data.success) {
-                if (window.AeronixSession) {
-                    window.AeronixSession.storeActiveUser(data.user);
-                    const pendingFavorite = window.AeronixSession.consumePendingFavorite();
-                    if (pendingFavorite) {
-                        if (window.AeronixSession.addFavorite(pendingFavorite)) {
-                            window.AeronixSession.showToast('Added to favorites', 'info');
-                        }
-                    }
-                    const pendingRedirect = window.AeronixSession.consumePendingRedirect();
-                    if (pendingRedirect) {
-                        setTimeout(() => {
-                            window.location.href = pendingRedirect;
-                        }, 1200);
-                    }
-                }
-                window.showMessage('signupMessage', 'Account created successfully! Signing you in...', 'success');
-                setTimeout(() => {
-                    window.showSuccess(data.user);
-                }, 1000);
-            } else {
-                window.showMessage('signupMessage', data.message, 'error');
-            }
-        } catch (error) {
-            window.showMessage('signupMessage', 'Connection error. Please make sure the server is running.', 'error');
-            console.error('Error:', error);
-        } finally {
+        if (findUser(users, email)) {
+            window.showMessage('signupMessage', 'User already exists', 'error');
             btn.disabled = false;
             btn.textContent = 'Sign Up';
+            return;
         }
+
+        const now = new Date().toISOString();
+        const user = {
+            id: generateId(),
+            email,
+            name,
+            password,
+            createdAt: now,
+            lastLogin: now
+        };
+
+        users.push(user);
+        writeUsers(users);
+
+        if (window.AeronixSession) {
+            window.AeronixSession.storeActiveUser(user);
+            const pendingFavorite = window.AeronixSession.consumePendingFavorite();
+            if (pendingFavorite) {
+                if (window.AeronixSession.addFavorite(pendingFavorite)) {
+                    window.AeronixSession.showToast('Added to favorites', 'info');
+                }
+            }
+            const pendingRedirect = window.AeronixSession.consumePendingRedirect();
+            if (pendingRedirect) {
+                setTimeout(() => {
+                    window.location.href = pendingRedirect;
+                }, 1200);
+            }
+        }
+
+        window.showMessage('signupMessage', 'Account created successfully! Signing you in...', 'success');
+        setTimeout(() => {
+            window.showSuccess(user);
+        }, 1000);
+
+        btn.disabled = false;
+        btn.textContent = 'Sign Up';
     };
 
     // Allow Enter key to submit
