@@ -1,151 +1,43 @@
-# Sign In Application with JSON Database
+# Aeronix Front-End Suite
 
-A complete authentication system that stores user data in a JSON file.
+A collection of Aeronix product pages plus a lightweight client-side sign-in experience. The entire project now runs without any server-side API calls.
 
 ## Features
 
-✅ User sign up and sign in
-✅ Password hashing (SHA-256)
-✅ JSON file database
-✅ Remember me functionality
-✅ Responsive design
-✅ Form validation
-✅ Success messages
+✅ Local sign up and sign in stored in `localStorage`
+✅ Remember me session support
+✅ Favorites, cart, and configuration flows across product pages
+✅ Responsive layouts for earbuds, headphones, and drones
+✅ Animated landing page with scroll-driven experiences
 
-## Files Included
+## Files Overview
 
-- `index.html` - Frontend sign-in/sign-up page
-- `server.js` - Backend Node.js server with Express
-- `package.json` - Node.js dependencies
-- `users.json` - Auto-created database file (stores user data)
+- `index.html` – Sign-in/sign-up UI with success screen
+- `auth.js` – Client-side auth logic (no API calls)
+- `session.js` – Shared session helpers and favorites manager
+- `aeronix.html` – Marketing landing page with animations powered by `script.js`
+- `airburds.html`, `headphones.html`, `drone.html` – Product catalog and configurator pages
 
-## Setup Instructions
+## Getting Started
 
-### 1. Install Node.js
-Make sure you have Node.js installed on your computer. Download from: https://nodejs.org/
+1. Open `index.html` (or any page) directly in your browser.
+2. Use the sign-up form to create a user. Accounts are stored locally in `localStorage` under the `aeronixUsers` key.
+3. Sign in with the same credentials; the session layer keeps you signed in per tab or persistently if you tick **Remember me**.
 
-### 2. Install Dependencies
-Open terminal/command prompt in the project folder and run:
-```bash
-npm install
-```
+No build step or backend server is required. Simply open the HTML files in a modern browser.
 
-### 3. Start the Server
-```bash
-npm start
-```
+## Local Storage Keys
 
-You should see:
-```
-Server running on http://localhost:3000
-Database file: /path/to/users.json
-```
+- `aeronixUsers` – Array of registered users (email, name, password, timestamps)
+- `aeronixUser` – Active user session (stored in `sessionStorage` or `localStorage` depending on **Remember me**)
+- `aeronixFavorites` – Favorites per user
+- `aeronixCart` – Shared cart for product configurators
 
-### 4. Open the Application
-Open your browser and go to: http://localhost:3000
+## Notes
 
-## How to Use
-
-### Sign Up
-1. Click "Sign up" link
-2. Enter your email and password (name is optional)
-3. Click "Sign Up" button
-4. You'll be automatically signed in
-
-### Sign In
-1. Enter your email and password
-2. Check "Remember me" if desired
-3. Click "Sign In" button
-4. You'll see a welcome screen with your account details
-
-### Sign Out
-Click the "Sign Out" button on the success screen
-
-## Database Structure
-
-The `users.json` file stores data in this format:
-
-```json
-{
-  "users": [
-    {
-      "id": "unique-uuid",
-      "email": "user@example.com",
-      "name": "John Doe",
-      "password": "hashed-password",
-      "createdAt": "2024-01-01T12:00:00.000Z",
-      "lastLogin": "2024-01-02T12:00:00.000Z"
-    }
-  ]
-}
-```
-
-## API Endpoints
-
-### POST /api/signup
-Create a new user account
-```json
-{
-  "email": "user@example.com",
-  "password": "your-password",
-  "name": "Your Name"
-}
-```
-
-### POST /api/signin
-Sign in an existing user
-```json
-{
-  "email": "user@example.com",
-  "password": "your-password",
-  "remember": true
-}
-```
-
-### GET /api/users
-Get all users (for debugging - remove in production)
-
-## Security Notes
-
-⚠️ **This is a demonstration project. For production use:**
-
-1. Use bcrypt instead of SHA-256 for password hashing
-2. Implement JWT tokens for authentication
-3. Add HTTPS/SSL encryption
-4. Use a real database (MongoDB, PostgreSQL, etc.)
-5. Add rate limiting
-6. Implement CSRF protection
-7. Add email verification
-8. Use environment variables for sensitive data
-9. Remove the `/api/users` endpoint
-
-## Troubleshooting
-
-**Server won't start:**
-- Make sure port 3000 is not already in use
-- Check that Node.js is installed: `node --version`
-
-**Can't connect to server:**
-- Verify the server is running
-- Check that you're accessing http://localhost:3000
-
-**Data not saving:**
-- Check file permissions in the directory
-- Make sure the server has write access
-
-## Customization
-
-**Change the port:**
-Edit `server.js` and change:
-```javascript
-const PORT = 3000; // Change to your desired port
-```
-
-**Change database file location:**
-Edit `server.js` and change:
-```javascript
-const DB_FILE = path.join(__dirname, 'users.json'); // Change path
-```
+- Passwords are stored in plain text for simplicity. For production usage, introduce a secure backend with hashing and proper authentication.
+- Clearing browser storage (or using private mode) resets stored users and cart data.
+- Favorites and sign-in flows rely on `window.AeronixSession`; make sure `session.js` is included before any page-specific scripts.
 
 ## License
 
