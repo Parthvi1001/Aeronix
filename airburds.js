@@ -11,8 +11,8 @@ const airburdsNavbar = document.querySelector('.navbar');
         const products = [
             {
                 id: 1,
-                name: "boAt Airdopes Pro",
-                subtitle: "Everyday Essential",
+                name: "Aeronix Buds 4v ANC",
+                subtitle: "Hybrid ANC Daily Driver",
                 price: 1299,
                 badge: "CONSUMER",
                 specs: {
@@ -21,12 +21,12 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Basic"
                 },
                 info: "Perfect for daily use with comfortable fit and reliable connectivity. Features clear sound and decent battery life for all-day listening.",
-                image: "a1.jpg"
+                image: "assets/earbuds-1.jpeg"
             },
             {
                 id: 2,
-                name: "Galaxy Buds Pro",
-                subtitle: "Premium Sound",
+                name: "Aeronix Nord Buds 2r True",
+                subtitle: "Balanced Soundstage",
                 price: 2499,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -36,12 +36,12 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Active"
                 },
                 info: "Professional-grade audio with adaptive ANC and transparency mode. Spatial audio support and premium drivers deliver exceptional sound quality.",
-                image: "a2.jpg"
+                image: "assets/earbuds-2.jpg.jpeg"
             },
             {
                 id: 3,
-                name: "Sony WF Ultra",
-                subtitle: "Flagship Edition",
+                name: "Aeronix Buds 3 Pro",
+                subtitle: "Flagship Spatial Audio",
                 price: 3499,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -51,12 +51,12 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Adaptive"
                 },
                 info: "Flagship model with adaptive ANC, lossless audio codec support, and premium materials. Features personalized sound profiles and multi-device connectivity.",
-                image: "a3.jpg"
+                image: "assets/earbuds-3.jpg.jpeg"
             },
             {
                 id: 4,
-                name: "Bose QuietComfort",
-                subtitle: "Audiophile Choice",
+                name: "Aeronix Wireless Buds 3 TWS",
+                subtitle: "Ultra-Low Latency",
                 price: 4499,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -66,12 +66,12 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Premium"
                 },
                 info: "Ultimate audio experience with custom-tuned drivers and professional-grade components. Perfect for audiophiles demanding studio-quality wireless audio.",
-                image: "a4.jpg"
+                image: "assets/earbuds-4.jpg.jpeg"
             },
             {
                 id: 5,
-                name: "Beats Fit Pro",
-                subtitle: "Active Lifestyle",
+                name: "Aeronix Dual Mic Z2",
+                subtitle: "Clear Call Control",
                 price: 1799,
                 badge: "CONSUMER",
                 specs: {
@@ -80,12 +80,12 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Wind"
                 },
                 info: "IPX7 waterproof rating with secure fit wings for intense workouts. Enhanced bass response and ambient sound mode keep you aware during outdoor activities.",
-                image: "a5.jpg"
+                image: "assets/earbuds-5.jpg.jpeg"
             },
             {
                 id: 6,
-                name: "OnePlus Buds Mini",
-                subtitle: "Compact Power",
+                name: "Aeronix Echo Pods X",
+                subtitle: "Featherlight Essentials",
                 price: 999,
                 badge: "CONSUMER",
                 specs: {
@@ -94,12 +94,12 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Passive"
                 },
                 info: "Ultra-lightweight and compact design fits perfectly in any ear. Great for commuting with reliable Bluetooth 5.3 connectivity and quick charging support.",
-                image: "a6.jpg"
+                image: "assets/earbuds-6.jpg.jpeg"
             },
             {
                 id: 7,
-                name: "Hammer TWS Earbuds",
-                subtitle: "Low Latency Pro",
+                name: "Aeronix Pulse Air S",
+                subtitle: "Fitness Secure Fit",
                 price: 1999,
                 badge: "CONSUMER",
                 specs: {
@@ -108,12 +108,12 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Game"
                 },
                 info: "Ultra-low latency mode (60ms) for competitive gaming. Dual connection support lets you use both PC and mobile simultaneously with no lag.",
-                image: "a7.jpg"
+                image: "assets/earbuds-7.jpg.jpeg"
             },
             {
                 id: 8,
-                name: "boAt Airdopes",
-                subtitle: "Producer Edition",
+                name: "Aeronix Quantum Beat",
+                subtitle: "Studio Reference",
                 price: 2999,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -123,19 +123,19 @@ const airburdsNavbar = document.querySelector('.navbar');
                     anc: "Studio"
                 },
                 info: "Flat frequency response for accurate mixing and monitoring. Used by audio professionals for critical listening with exceptional detail and clarity.",
-                image: "a8.jpg"
+                image: "assets/earbuds-8.jpg.jpeg"
             }
         ];
 
         const models = [
-            { name: "AirPods Lite", price: 1299 },
-            { name: "Galaxy Buds Pro", price: 2499 },
-            { name: "Sony WF Ultra", price: 3499 },
-            { name: "Bose QuietComfort", price: 4499 },
-            { name: "Beats Fit Pro", price: 1799 },
-            { name: "Pixel Buds Mini", price: 999 },
-            { name: "Razer Hammerhead", price: 1999 },
-            { name: "Sennheiser Momentum", price: 2999 }
+            { name: "Aeronix Buds 4v ANC", price: 1299 },
+            { name: "Aeronix Nord Buds 2r True", price: 2499 },
+            { name: "Aeronix Buds 3 Pro", price: 3499 },
+            { name: "Aeronix Wireless Buds 3 TWS", price: 4499 },
+            { name: "Aeronix Dual Mic Z2", price: 1799 },
+            { name: "Aeronix Echo Pods X", price: 999 },
+            { name: "Aeronix Pulse Air S", price: 1999 },
+            { name: "Aeronix Quantum Beat", price: 2999 }
         ];
 
         const audioOptions = [
@@ -166,7 +166,7 @@ const airburdsNavbar = document.querySelector('.navbar');
                     <div class="product-card">
                         <div class="product-image-container">
                             <div class="product-actions">
-                                <button class="action-btn"><i class="bi bi-heart"></i></button>
+                                <button class="action-btn favorite-btn" data-product-type="earbud" data-product-id="${product.id}" aria-label="Toggle favorite"><i class="bi bi-heart"></i></button>
                                 <button class="action-btn"><i class="bi bi-shuffle"></i></button>
                             </div>
                             <img src="${product.image}" alt="${product.name}" class="product-image">
@@ -200,6 +200,8 @@ const airburdsNavbar = document.querySelector('.navbar');
                     </div>
                 </div>
             `).join('');
+
+            wireFavoriteButtons();
         }
 
         function openConfigurator(productId) {
@@ -341,6 +343,28 @@ const airburdsNavbar = document.querySelector('.navbar');
 
         // Shopping Cart Functionality
         let cart = [];
+
+        function wireFavoriteButtons() {
+            if (!window.AeronixSession) {
+                return;
+            }
+
+            document.querySelectorAll('.favorite-btn[data-product-type="earbud"]').forEach((button) => {
+                const productId = Number(button.dataset.productId);
+                window.AeronixSession.registerFavoriteButton(button, () => {
+                    const product = products.find(p => p.id === productId);
+                    if (!product) return null;
+                    return {
+                        id: product.id,
+                        type: 'earbud',
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        subtitle: product.subtitle
+                    };
+                });
+            });
+        }
 
         function loadCartFromStorage() {
             const savedCart = localStorage.getItem('aeronixCart');

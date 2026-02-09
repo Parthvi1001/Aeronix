@@ -11,8 +11,8 @@ const headphonesNavbar = document.querySelector('.navbar');
         const products = [
             {
                 id: 1,
-                name: "Sony WH-1000XM5",
-                subtitle: "The Perfect Start",
+                name: "Aeronix Rockerz 450",
+                subtitle: "Adaptive ANC Commuter",
                 price: 2499,
                 badge: "CONSUMER",
                 specs: {
@@ -20,12 +20,12 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "HD",
                     anc: "Basic"
                 },
-                image: "h1.jpg"
+                image: "assets/headphones-1.jpg.jpeg"
             },
             {
                 id: 2,
-                name: "Bose 700",
-                subtitle: "Professional Grade",
+                name: "Aeronix Tune 770NC",
+                subtitle: "Studio Tuned Precision",
                 price: 4599,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -34,12 +34,12 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "Hi-Res",
                     anc: "Advanced"
                 },
-                image: "h2.jpg"
+                image: "assets/headphones-2.jpg.jpeg"
             },
             {
                 id: 3,
-                name: "AirPods Max",
-                subtitle: "Beyond Limits",
+                name: "Aeronix Horizon X",
+                subtitle: "Flagship Wireless Suite",
                 price: 7499,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -48,13 +48,13 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "Studio",
                     anc: "Adaptive"
                 },
-                image: "h3.jpg"
+                image: "assets/headphones-3.jpg.jpeg"
 
             },
             {
                 id: 4,
-                name: "Sennheiser HD 800S",
-                subtitle: "Business Class",
+                name: "Aeronix Studio H1",
+                subtitle: "Mastering Reference",
                 price: 10999,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -63,12 +63,12 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "Master",
                     anc: "Premium"
                 },
-                image: "h4.jpg"
+                image: "assets/headphones-4.jpg.jpeg"
             },
             {
                 id: 5,
-                name: "boAt Rockerz 450",
-                subtitle: "Compact Power",
+                name: "Aeronix Thunder",
+                subtitle: "Immersive Gaming",
                 price: 1699,
                 badge: "CONSUMER",
                 specs: {
@@ -76,12 +76,12 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "Clear",
                     anc: "Passive"
                 },
-                image: "h5.jpg"
+                image: "assets/headphones-5.jpg.jpeg"
             },
             {
                 id: 6,
-                name: "HyperX Cloud III",
-                subtitle: "Victory Sound",
+                name: "Aeronix Nova Wave",
+                subtitle: "Lifestyle Wireless",
                 price: 3299,
                 badge: "CONSUMER",
                 specs: {
@@ -89,12 +89,12 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "7.1",
                     anc: "Game"
                 },
-                image: "h6.jpg"
+                image: "assets/headphones-6.jpg.jpeg"
             },
             {
                 id: 7,
-                name: "JBL Tune 510BT",
-                subtitle: "Active Lifestyle",
+                name: "Aeronix Sonic Lux",
+                subtitle: "Premium Noise Shield",
                 price: 1999,
                 badge: "CONSUMER",
                 specs: {
@@ -102,12 +102,12 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "Bass+",
                     anc: "Wind"
                 },
-                image: "h7.jpg"
+                image: "assets/headphones-7.jpg.jpeg"
             },
             {
                 id: 8,
-                name: "Audio-Technica ATH-M50x",
-                subtitle: "Producer Edition",
+                name: "Aeronix Quantum Pro",
+                subtitle: "Producer's Choice",
                 price: 5999,
                 badge: "PRO",
                 badgeClass: "pro",
@@ -116,19 +116,19 @@ const headphonesNavbar = document.querySelector('.navbar');
                     audio: "Ref",
                     anc: "Studio"
                 },
-                image: "h8.jpg"
+                image: "assets/headphones-8.jpg.jpeg"
             }
         ];
 
         const models = [
-            { name: "Sony WH-1000XM5", price: 2499 },
-            { name: "Bose 700", price: 4599 },
-            { name: "AirPods Max", price: 7499 },
-            { name: "Sennheiser HD 800S", price: 10999 },
-            { name: "boAt Rockerz 450", price: 1699 },
-            { name: "HyperX Cloud III", price: 3299 },
-            { name: "JBL Tune 510BT", price: 1999 },
-            { name: "Audio-Technica ATH-M50x", price: 5999 }
+            { name: "Aeronix Rockerz 450", price: 2499 },
+            { name: "Aeronix Tune 770NC", price: 4599 },
+            { name: "Aeronix Horizon X", price: 7499 },
+            { name: "Aeronix Studio H1", price: 10999 },
+            { name: "Aeronix Thunder", price: 1699 },
+            { name: "Aeronix Nova Wave", price: 3299 },
+            { name: "Aeronix Sonic Lux", price: 1999 },
+            { name: "Aeronix Quantum Pro", price: 5999 }
         ];
 
         const audioOptions = [
@@ -166,7 +166,7 @@ const headphonesNavbar = document.querySelector('.navbar');
                     <div class="product-card">
                         <div class="product-image-container">
                             <div class="product-actions">
-                                <button class="action-btn"><i class="bi bi-heart"></i></button>
+                                <button class="action-btn favorite-btn" data-product-type="headphone" data-product-id="${product.id}" aria-label="Toggle favorite"><i class="bi bi-heart"></i></button>
                                 <button class="action-btn"><i class="bi bi-shuffle"></i></button>
                             </div>
                             <img src="${product.image}" alt="${product.name}" class="product-image">
@@ -200,6 +200,8 @@ const headphonesNavbar = document.querySelector('.navbar');
                     </div>
                 </div>
             `).join('');
+
+            wireFavoriteButtons();
         }
 
         function openConfigurator(productId) {
@@ -393,6 +395,28 @@ const headphonesNavbar = document.querySelector('.navbar');
 
         // Shopping Cart Functionality
         let cart = [];
+
+        function wireFavoriteButtons() {
+            if (!window.AeronixSession) {
+                return;
+            }
+
+            document.querySelectorAll('.favorite-btn[data-product-type="headphone"]').forEach((button) => {
+                const productId = Number(button.dataset.productId);
+                window.AeronixSession.registerFavoriteButton(button, () => {
+                    const product = products.find(p => p.id === productId);
+                    if (!product) return null;
+                    return {
+                        id: product.id,
+                        type: 'headphone',
+                        name: product.name,
+                        price: product.price,
+                        image: product.image,
+                        subtitle: product.subtitle
+                    };
+                });
+            });
+        }
 
         function loadCartFromStorage() {
             const savedCart = localStorage.getItem('aeronixCart');

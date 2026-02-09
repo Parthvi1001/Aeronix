@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Modern Aeronix website with static deployment",
   "scripts": {
-    "dev": "echo 'Static site - no dev server needed'",
+    "start": "node server.js",
+    "dev": "node server.js",
     "build": "echo 'Static site - no build needed'",
     "preview": "echo 'Use Vercel preview or local server'"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
   },
   "keywords": ["aeronix", "website", "static", "vercel"],
   "author": "",

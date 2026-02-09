@@ -11,7 +11,7 @@ const droneNavbar = document.querySelector('.navbar');
         const drones = [
             {
                 id: 1,
-                name: "SkyHawk X1",
+                name: "Aeronix SkyHawk X1",
                 price: 6999,
                 tagline: "The Perfect Start",
                 badge: "CONSUMER",
@@ -25,7 +25,7 @@ const droneNavbar = document.querySelector('.navbar');
             },
             {
                 id: 2,
-                name: "Phantom Pro",
+                name: "Aeronix Phantom Pro",
                 price: 12999,
                 tagline: "Professional Grade",
                 badge: "PROFESSIONAL",
@@ -39,7 +39,7 @@ const droneNavbar = document.querySelector('.navbar');
             },
             {
                 id: 3,
-                name: "Mavic Ultra",
+                name: "Aeronix Mavic Ultra",
                 price: 24999,
                 tagline: "Beyond Limits",
                 badge: "PROFESSIONAL",
@@ -53,7 +53,7 @@ const droneNavbar = document.querySelector('.navbar');
             },
             {
                 id: 4,
-                name: "Spark Mini",
+                name: "Aeronix Spark Mini",
                 price: 3499,
                 tagline: "Compact Adventure",
                 badge: "CONSUMER",
@@ -67,7 +67,7 @@ const droneNavbar = document.querySelector('.navbar');
             },
             {
                 id: 5,
-                name: "FPV Racer",
+                name: "Aeronix FPV Racer",
                 price: 15999,
                 tagline: "Racing Performance",
                 badge: "PROFESSIONAL",
@@ -81,7 +81,7 @@ const droneNavbar = document.querySelector('.navbar');
             },
             {
                 id: 6,
-                name: "Inspire Titan",
+                name: "Aeronix Inspire Titan",
                 price: 45999,
                 tagline: "Industrial Power",
                 badge: "ENTERPRISE",
@@ -95,7 +95,7 @@ const droneNavbar = document.querySelector('.navbar');
             },
             {
                 id: 7,
-                name: "Tello Nano",
+                name: "Aeronix Tello Nano",
                 price: 1999,
                 tagline: "Pocket Explorer",
                 badge: "CONSUMER",
@@ -109,7 +109,7 @@ const droneNavbar = document.querySelector('.navbar');
             },
             {
                 id: 8,
-                name: "Matrice Sentinel",
+                name: "Aeronix Matrice Sentinel",
                 price: 74999,
                 tagline: "Security Excellence",
                 badge: "ENTERPRISE",
@@ -189,6 +189,8 @@ const droneNavbar = document.querySelector('.navbar');
                 const card = createDroneCard(drone);
                 grid.innerHTML += card;
             });
+
+            wireFavoriteButtons();
         }
 
         // Create Drone Card HTML
@@ -197,6 +199,11 @@ const droneNavbar = document.querySelector('.navbar');
                 <div class="col-lg-4 col-md-6">
                     <div class="drone-card">
                         <div class="card-image-container">
+                            <div class="card-actions">
+                                <button class="action-btn favorite-btn" data-product-type="drone" data-product-id="${drone.id}" aria-label="Toggle favorite">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
                             <img src="${drone.image}" alt="${drone.name}">
                         </div>
                         <div class="card-body">
@@ -224,6 +231,28 @@ const droneNavbar = document.querySelector('.navbar');
                     </div>
                 </div>
             `;
+        }
+
+        function wireFavoriteButtons() {
+            if (!window.AeronixSession) {
+                return;
+            }
+
+            document.querySelectorAll('.favorite-btn[data-product-type="drone"]').forEach((button) => {
+                const droneId = Number(button.dataset.productId);
+                window.AeronixSession.registerFavoriteButton(button, () => {
+                    const drone = drones.find(d => d.id === droneId);
+                    if (!drone) return null;
+                    return {
+                        id: drone.id,
+                        type: 'drone',
+                        name: drone.name,
+                        price: drone.price,
+                        image: drone.image,
+                        subtitle: drone.tagline
+                    };
+                });
+            });
         }
 
         // Configure Drone
