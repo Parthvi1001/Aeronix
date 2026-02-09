@@ -484,16 +484,16 @@ if (x <= 0 && !horizontalFinished) {
 
   // lock drone exactly at wall
   x = 0;
-  p = p; // keep current frame
+  // p remains current to keep frame
 
   // 🔥 RELEASE STICKY → START VERTICAL SCROLL
   section.style.height = "200vh";
 }
 
 
-    // 🔥 STOP HORIZONTAL WHEN DRONE-2 EXITS
+// 🔥 STOP HORIZONTAL WHEN DRONE-2 EXITS
     if (x <= 0) {
-      p = 1;              // lock animation
+      // p remains current to lock animation
       x = 0;   // lock position
     }
 

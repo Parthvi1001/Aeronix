@@ -1,16 +1,13 @@
 {
-  "name": "signin-app",
+  "name": "aeronix-website",
   "version": "1.0.0",
-  "description": "Sign in application with MySQL database",
-  "main": "server.js",
+  "description": "Modern Aeronix website with static deployment",
   "scripts": {
-    "start": "node server.js"
+    "dev": "echo 'Static site - no dev server needed'",
+    "build": "echo 'Static site - no build needed'",
+    "preview": "echo 'Use Vercel preview or local server'"
   },
-  "keywords": ["authentication", "signin", "mysql-database"],
+  "keywords": ["aeronix", "website", "static", "vercel"],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2",
-    "mysql2": "^3.6.0"
-  }
+  "license": "ISC"
 }

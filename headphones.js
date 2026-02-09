@@ -347,6 +347,7 @@ const headphonesNavbar = document.querySelector('.navbar');
 
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
+            document.getElementById('summaryColor').textContent = currentConfig.color.name;
 
             const total = currentConfig.model.price +
                          currentConfig.audio.price +
