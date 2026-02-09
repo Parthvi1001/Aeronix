@@ -9,11 +9,11 @@ const NAVBAR_TEMPLATE = `
                     <div class="left"><br>
                         <h4>PRODUCTS</h4><br>
                         <ul>
-                            <li>Aeronix Buds 4v ANC </li>
-                            <li>Aeronix Nord Buds 2r True</li>
-                            <li>Aeronix Buds 3 Pro</li>
-                            <li>Aeronix Wireless Buds 3 TWS</li>
-                            <li>Aeronix Dual Mic Z2</li>
+                            <li>Aeronix SkyHawk X1</li>
+                            <li>Aeronix Phantom Pro</li>
+                            <li>Aeronix Mavic Ultra</li>
+                            <li>Aeronix Spark Mini</li>
+                            <li>Aeronix FPV Racer</li>
                         </ul><br><hr>
                         <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
                     </div>
@@ -39,11 +39,11 @@ const NAVBAR_TEMPLATE = `
                     <div class="left"><br>
                         <h4>PRODUCTS</h4><br>
                         <ul>
-                            <li>Aeronix Rockerz 450</li>
-                            <li>Aeronix Tune 770NC</li>
-                            <li>Headphones</li>
-                            <li>Aeronix Studio H1</li>
-                            <li>Aeronix Thunder</li>
+                            <li>Aeronix SkyHawk X1</li>
+                            <li>Aeronix Phantom Pro</li>
+                            <li>Aeronix Mavic Ultra</li>
+                            <li>Aeronix Spark Mini</li>
+                            <li>Aeronix FPV Racer</li>
                         </ul><br><hr>
                         <p class="guarantee">🛡 60-Day Guarantee | 6-Months Warranty</p>
                     </div>
@@ -69,26 +69,26 @@ const NAVBAR_TEMPLATE = `
                     <div class="left"><br>
                         <h4>PRODUCTS</h4><br>
                         <ul>
-                            <li>All Drones</li>
-                            <li>Fixed-Wings</li>
-                            <li>Single-Rotor</li>
-                            <li>Multi-Rotor</li>
-                            <li>Hybrid VTOL</li>
+                            <li>Aeronix SkyHawk X1</li>
+                            <li>Aeronix Phantom Pro</li>
+                            <li>Aeronix Mavic Ultra</li>
+                            <li>Aeronix Spark Mini</li>
+                            <li>Aeronix FPV Racer</li>
                         </ul><br><hr>
                         <p class="guarantee">🛡 120-Day Guarantee | 2-Years Warranty</p>
                     </div>
                     <div class="right">
                         <div class="card">
                             <div class="img-box">
-                                <img src="drone1.jpg" alt="Aeronix Fixed-Wing Drone">
+                                <img src="drone1.jpg" alt="Aeronix SkyHawk X1">
                             </div>
-                            <p>Aeronix Fixed-Wing Drone</p>
+                            <p>Aeronix SkyHawk X1</p>
                         </div>
                         <div class="card">
                             <div class="img-box">
-                                <img src="hdrone.jpg" alt="Aeronix Multi-Rotor Drone">
+                                <img src="hdrone.jpg" alt="Aeronix Phantom Pro">
                             </div>
-                            <p>Aeronix Multi-Rotor Drone</p>
+                            <p>Aeronix Phantom Pro</p>
                         </div>
                     </div>
                 </div>
