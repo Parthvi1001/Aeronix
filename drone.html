@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AERONIX - Premium Drone Technology</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>AERONIX - Premium Drones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="drone.css">
     <script src="navbar.js" defer></script>
@@ -14,95 +14,99 @@
 <body class="light-mode page-fixed-nav">
     <div id="nav-root"></div>
 
-    <!-- Home Page -->
-    <div id="homePage" class="page-section active">
-        <div class="container py-5">
-            <!-- Results Bar -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="text-muted mb-0">Showing 8 of 8 drones</p>
+    <!-- Products Section -->
+    <section class="products-section" id="productsSection">
+        <div class="container">
+            <p class="section-header">Showing 8 of 8 drones</p>
+            
+            <div class="row g-4" id="productsGrid">
+                <!-- Products will be loaded here by JavaScript -->
             </div>
-
-            <!-- Drones Grid -->
-            <div class="row g-4" id="dronesGrid"></div>
         </div>
-    </div>
+    </section>
 
-    <!-- Configure Page -->
-    <div id="configurePage" class="page-section">
-        <div class="configurator-container">
+    <!-- Configurator Page -->
+    <div class="configurator-page" id="configuratorPage">
+        <div class="config-header">
             <div class="container">
-                <div class="row">
-                    <!-- Left Side - Preview -->
-                    <div class="col-lg-5 mb-4">
-                        <div class="config-preview">
-                            <div class="preview-image-container">
-                                <img id="previewImage" src="https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=800&h=600&fit=crop" alt="Drone Preview">
-                                <div class="price-badge" id="previewPrice">₹6,999</div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <button class="btn-back" onclick="closeConfigurator()">
+                        <i class="bi bi-arrow-left"></i> Back to Models
+                    </button>
+                    <h4 class="mb-0 config-product-name" id="configProductName"></h4>
+                    <div class="config-spacer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="config-summary-card">
+                        <div class="product-image-container config-image-container">
+                            <img id="configProductImage" src="" alt="" class="product-image">
+                        </div>
+
+                        <div class="summary-box">
+                            <h5 class="config-summary-title">Configuration Summary</h5>
+
+                            <div class="summary-row">
+                                <span class="summary-label">Base Model</span>
+                                <span class="summary-value" id="summaryModel">SkyX Pro Drone - ₹6,999</span>
                             </div>
-                            <div class="preview-controls">
-                                <button class="control-btn" onclick="undoConfig()">
-                                    <i class="fas fa-undo"></i> Undo
-                                </button>
-                                <button class="control-btn" onclick="resetConfig()">
-                                    <i class="fas fa-redo"></i> Reset
-                                </button>
-                                <button class="cta-btn" onclick="openConfigurator(1)">
-                                    <i class="bi bi-arrow-right"></i> Configure
-                                </button>
+
+                            <div class="summary-row">
+                                <span class="summary-label">Camera System</span>
+                                <span class="summary-value" id="summaryCamera">Standard 4K</span>
                             </div>
+
+                            <div class="summary-row">
+                                <span class="summary-label">Battery Pack</span>
+                                <span class="summary-value" id="summaryBattery">Standard (30 min)</span>
+                            </div>
+
+
+                            <div class="summary-total">
+                                <span>Total</span>
+                                <span class="total-price" id="summaryTotal">₹2,499</span>
+                            </div>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button class="btn-reset" onclick="resetConfiguration()">
+                                <i class="bi bi-arrow-counterclockwise"></i> Reset
+                            </button>
+                            <button class="btn-save" onclick="addToCart()">
+                                <i class="bi bi-cart-plus"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Right Side - Configuration Options -->
-                    <div class="col-lg-7">
-                        <!-- Select Model Section -->
+                <div class="col-lg-6">
+                    <div class="config-options-card">
+                        <!-- Model Selection -->
                         <div class="config-section">
-                            <h2 class="section-title">Select Model</h2>
-                            <div class="model-grid" id="modelGrid"></div>
+                            <h6 class="config-title">Select Model</h6>
+                            <div id="modelOptions"></div>
                         </div>
 
-                        <!-- Camera System Section -->
+                        <!-- Camera System -->
                         <div class="config-section">
-                            <h2 class="section-title">Camera System</h2>
+                            <h6 class="config-title">Camera System</h6>
                             <div id="cameraOptions"></div>
                         </div>
 
-                        <!-- Battery Pack Section -->
+                        <!-- Battery Pack -->
                         <div class="config-section">
-                            <h2 class="section-title">Battery Pack</h2>
+                            <h6 class="config-title">Battery Pack</h6>
                             <div id="batteryOptions"></div>
                         </div>
 
 
-                    </div>
-                </div>
 
-                <!-- Configuration Summary -->
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <div class="summary-card">
-                            <h3 class="summary-title">Configuration Summary</h3>
-                            <div class="summary-item">
-                                <span class="summary-label">Base Model</span>
-                                <span class="summary-value" id="summaryModel">Aeronix X1 - ₹6,999</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-label">Camera</span>
-                                <span class="summary-value" id="summaryCamera">Standard 4K</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-label">Battery</span>
-                                <span class="summary-value" id="summaryBattery">Standard (28 min)</span>
-                            </div>
-                            <div class="summary-item">
-                                <span class="summary-label">Color</span>
-                                <span class="summary-value" id="summaryColor">Stealth Black</span>
-                            </div>
-                            <div class="summary-total">
-                                <span class="summary-label">Total</span>
-                                <span class="summary-value" id="summaryTotal">₹6,999</span>
-                            </div>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -114,12 +118,12 @@
         <div class="footer-shell">
             <div class="footer-brand-block">
                 <div class="footer-brand">AERONIX</div>
-                <p class="footer-description">Redefining aerial excellence with next-generation drone technology.</p>
+                <p class="footer-description">Redefining audio excellence with studio-grade tuning and precision comfort.</p>
                 <div class="footer-socials">
-                    <a href="#" class="footer-social"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="footer-social"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="footer-social"><i class="fab fa-youtube"></i></a>
-                    <a href="#" class="footer-social"><i class="fab fa-github"></i></a>
+                    <a href="#" class="footer-social"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="footer-social"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="footer-social"><i class="bi bi-youtube"></i></a>
+                    <a href="#" class="footer-social"><i class="bi bi-github"></i></a>
                 </div>
             </div>
 
@@ -127,9 +131,9 @@
                 <div class="footer-col">
                     <h6 class="footer-title">Products</h6>
                     <ul class="footer-links">
-                        <li><a href="drone.html">Drones</a></li>
                         <li><a href="headphones.html">Headphones</a></li>
                         <li><a href="airburds.html">Earbuds</a></li>
+                        <li><a href="drone.html">Drones</a></li>
                         <li><a href="aeronix.html#about">Why Aeronix</a></li>
                         <li><a href="index.html">Customer Portal</a></li>
                     </ul>
@@ -146,16 +150,16 @@
                 <div class="footer-col">
                     <h6 class="footer-title">Get in Touch</h6>
                     <div class="footer-contact">
-                        <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
-                        <a href="tel:+15551234567"><i class="fas fa-phone"></i> +1 (555) 123-4567</a>
-                        <a href="mailto:support@aeronix.com"><i class="fas fa-envelope"></i> support@aeronix.com</a>
-                        <span><i class="fas fa-clock"></i> Mon–Fri · 9am–6pm PT</span>
+                        <span><i class="bi bi-geo-alt"></i> San Francisco, CA</span>
+                        <a href="tel:+15551234567"><i class="bi bi-telephone"></i> +1 (555) 123-4567</a>
+                        <a href="mailto:support@aeronix.com"><i class="bi bi-envelope"></i> support@aeronix.com</a>
+                        <span><i class="bi bi-clock"></i> Monâ€“Fri Â· 9amâ€“6pm PT</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 AERONIX. All rights reserved.</span>
+            <span>Â© 2026 AERONIX. All rights reserved.</span>
             <div class="footer-legal">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>
@@ -163,14 +167,14 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="drone.js" defer></script>
     <script src="script.js" defer></script>
 
     <!-- Cart Floating Button -->
     <button class="cart-icon-btn" onclick="openCart()">
-        <i class="fas fa-shopping-cart"></i>
+        <i class="bi bi-cart3"></i>
         <span class="cart-badge" id="cartBadge">0</span>
     </button>
 
@@ -180,14 +184,14 @@
     <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
-            <h4><i class="fas fa-shopping-cart"></i> Shopping Cart</h4>
+            <h4><i class="bi bi-cart3"></i> Shopping Cart</h4>
             <button class="cart-close" onclick="closeCart()">
-                <i class="fas fa-times"></i>
+                <i class="bi bi-x-lg"></i>
             </button>
         </div>
         <div class="cart-items" id="cartItems">
             <div class="cart-empty">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="bi bi-cart-x"></i>
                 <p>Your cart is empty</p>
             </div>
         </div>
@@ -197,10 +201,10 @@
                 <span class="cart-total-price" id="cartTotalPrice">₹0</span>
             </div>
             <button class="btn-checkout" onclick="generateBill()">
-                <i class="fas fa-receipt"></i> Generate Bill
+                <i class="bi bi-receipt"></i> Generate Bill
             </button>
             <button class="btn-clear-cart" onclick="clearCart()">
-                <i class="fas fa-trash"></i> Clear Cart
+                <i class="bi bi-trash"></i> Clear Cart
             </button>
         </div>
     </div>
@@ -232,7 +236,7 @@
             </div>
             <div class="bill-footer">
                 <button class="btn-print" onclick="printBill()">
-                    <i class="fas fa-print"></i> Print
+                    <i class="bi bi-printer"></i> Print
                 </button>
                 <button class="btn-close-bill" onclick="closeBill()">
                     Close

@@ -1,175 +1,326 @@
-// Drone page logic
-const droneNavbar = document.querySelector('.navbar');
-        const updateDroneNavbar = () => {
-            if (!droneNavbar) return;
-            droneNavbar.classList.toggle('scrolled', window.scrollY > 0);
+﻿// Headphones page specific styles logic
+const headphonesNavbar = document.querySelector('.navbar');
+        const updateHeadphonesNavbar = () => {
+            if (!headphonesNavbar) return;
+            headphonesNavbar.classList.toggle('scrolled', window.scrollY > 0);
         };
-        window.addEventListener('scroll', updateDroneNavbar, { passive: true });
-        window.addEventListener('load', updateDroneNavbar);
+        window.addEventListener('scroll', updateHeadphonesNavbar, { passive: true });
+        window.addEventListener('load', updateHeadphonesNavbar);
 
-// Drone Data
-        const drones = [
+// Product Data
+        const products = [
             {
                 id: 1,
-                name: "SkyHawk X1",
+                name: "SkyX Pro Drone",
+                subtitle: "Cinematic Flagship",
                 price: 6999,
-                tagline: "The Perfect Start",
-                badge: "CONSUMER",
-                badgeClass: "badge-consumer",
-                image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=800&h=600&fit=crop",
+                badge: "PRO",
+                badgeClass: "pro",
                 specs: {
-                    speed: "45 km/h",
-                    flight: "28 min",
-                    camera: "4K"
-                }
+                    battery: "45 min",
+                    camera: "8K",
+                    range: "12 km"
+                },
+                image: "drone1.jpg"
             },
             {
                 id: 2,
-                name: "Phantom Pro",
-                price: 12999,
-                tagline: "Professional Grade",
-                badge: "PROFESSIONAL",
-                badgeClass: "badge-professional",
-                image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
+                name: "Falcon Mini",
+                subtitle: "Ultra Portable",
+                price: 4699,
+                badge: "CONSUMER",
                 specs: {
-                    speed: "68 km/h",
-                    flight: "42 min",
-                    camera: "6K"
-                }
+                    battery: "35 min",
+                    camera: "4K",
+                    range: "8 km"
+                },
+                image: "drone2.jpg"
             },
             {
                 id: 3,
-                name: "Mavic Ultra",
-                price: 24999,
-                tagline: "Beyond Limits",
-                badge: "PROFESSIONAL",
-                badgeClass: "badge-professional",
-                image: "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?w=800&h=600&fit=crop",
+                name: "Storm Racer",
+                subtitle: "Sport Performance",
+                price: 5799,
+                badge: "PRO",
+                badgeClass: "pro",
                 specs: {
-                    speed: "85 km/h",
-                    flight: "55 min",
-                    camera: "8K"
-                }
+                    battery: "30 min",
+                    camera: "4K/120",
+                    range: "6 km"
+                },
+                image: "drone3.jpeg"
             },
             {
                 id: 4,
-                name: "Spark Mini",
-                price: 3499,
-                tagline: "Compact Adventure",
-                badge: "CONSUMER",
-                badgeClass: "badge-consumer",
-                image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&h=600&fit=crop",
+                name: "Atlas Mapper",
+                subtitle: "Survey Grade",
+                price: 8999,
+                badge: "PRO",
+                badgeClass: "pro",
                 specs: {
-                    speed: "35 km/h",
-                    flight: "20 min",
-                    camera: "2.7K"
-                }
+                    battery: "55 min",
+                    camera: "6K",
+                    range: "15 km"
+                },
+                image: "hdrone.jpg"
             },
             {
                 id: 5,
-                name: "FPV Racer",
-                price: 15999,
-                tagline: "Racing Performance",
-                badge: "PROFESSIONAL",
-                badgeClass: "badge-professional",
-                image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&h=600&fit=crop",
+                name: "Nimbus Air",
+                subtitle: "Everyday Pilot",
+                price: 3199,
+                badge: "CONSUMER",
                 specs: {
-                    speed: "120 km/h",
-                    flight: "18 min",
-                    camera: "4K"
-                }
+                    battery: "28 min",
+                    camera: "2.7K",
+                    range: "5 km"
+                },
+                image: "drone.jfif"
             },
             {
                 id: 6,
-                name: "Inspire Titan",
-                price: 45999,
-                tagline: "Industrial Power",
-                badge: "ENTERPRISE",
-                badgeClass: "badge-enterprise",
-                image: "drone1.jfif",
+                name: "Terra Scout",
+                subtitle: "Explorer Edition",
+                price: 6399,
+                badge: "PRO",
+                badgeClass: "pro",
                 specs: {
-                    speed: "60 km/h",
-                    flight: "90 min",
-                    camera: "12K"
-                }
+                    battery: "40 min",
+                    camera: "5K",
+                    range: "10 km"
+                },
+                image: "drone1.jfif"
             },
             {
                 id: 7,
-                name: "Tello Nano",
-                price: 1999,
-                tagline: "Pocket Explorer",
+                name: "Pulse FPV",
+                subtitle: "Agile + Fast",
+                price: 4299,
                 badge: "CONSUMER",
-                badgeClass: "badge-consumer",
-                image: "drone2.jpg",
                 specs: {
-                    speed: "25 km/h",
-                    flight: "15 min",
-                    camera: "1080p"
-                }
+                    battery: "25 min",
+                    camera: "4K",
+                    range: "4 km"
+                },
+                image: "droneWear.jpg"
             },
             {
                 id: 8,
-                name: "Matrice Sentinel",
-                price: 74999,
-                tagline: "Security Excellence",
-                badge: "ENTERPRISE",
-                badgeClass: "badge-enterprise",
-                image: "drone3.jpeg",
+                name: "Horizon X8",
+                subtitle: "Long Range",
+                price: 7599,
+                badge: "PRO",
+                badgeClass: "pro",
                 specs: {
-                    speed: "75 km/h",
-                    flight: "120 min",
-                    camera: "8K+ IR"
-                }
+                    battery: "50 min",
+                    camera: "6K",
+                    range: "14 km"
+                },
+                image: "drone1.jpg"
             }
         ];
 
-        // Configuration Options
-        const configOptions = {
-            cameras: [
-                { id: 1, name: "Standard 4K", included: true, price: 0 },
-                { id: 2, name: "Pro 6K RAW", included: false, price: 2499 },
-                { id: 3, name: "Ultra 8K HDR", included: false, price: 4999 }
-            ],
-            batteries: [
-                { id: 1, name: "Standard (28 min)", included: true, price: 0 },
-                { id: 2, name: "Extended (42 min)", included: false, price: 1299 },
-                { id: 3, name: "Ultra (55 min)", included: false, price: 2499 }
-            ],
-            colors: [
-                { id: 1, name: "Stealth Black", hex: "#1a1a1a", price: 0 },
-                { id: 2, name: "Arctic White", hex: "#f5f5f5", price: 399 },
-                { id: 3, name: "Sunset Orange", hex: "#ff6b35", price: 599 },
-                { id: 4, name: "Ocean Blue", hex: "#00b4d8", price: 599 },
-                { id: 5, name: "Forest Green", hex: "#2d6a4f", price: 599 }
-            ]
-        };
+        const models = [
+            { name: "SkyX Pro Drone", price: 6999 },
+            { name: "Falcon Mini", price: 4699 },
+            { name: "Storm Racer", price: 5799 },
+            { name: "Atlas Mapper", price: 8999 },
+            { name: "Nimbus Air", price: 3199 },
+            { name: "Terra Scout", price: 6399 },
+            { name: "Pulse FPV", price: 4299 },
+            { name: "Horizon X8", price: 7599 }
+        ];
 
-        // Configuration State
+        const cameraOptions = [
+            { name: "Standard 4K", detail: "4K/60fps", price: 0, included: true },
+            { name: "Pro 6K", detail: "6K/60fps", price: 499 },
+            { name: "Cinematic 8K", detail: "8K/30fps", price: 999 }
+        ];
+
+        const batteryOptions = [
+            { name: "Standard (30 min)", price: 0, included: true },
+            { name: "Extended (45 min)", price: 399 },
+            { name: "Endurance (60 min)", price: 799 }
+        ];
+
         let currentConfig = {
-            drone: null,
-            camera: null,
-            battery: null,
-            color: null
+            model: models[0],
+            camera: cameraOptions[0],
+            battery: batteryOptions[0]
         };
 
-        let configHistory = [];
-
-        // Page Navigation
-        function showPage(page) {
-            document.getElementById('homePage').classList.remove('active');
-            document.getElementById('configurePage').classList.remove('active');
-            
-            if (page === 'home') {
-                document.getElementById('homePage').classList.add('active');
-            } else if (page === 'configure') {
-                document.getElementById('configurePage').classList.add('active');
-            }
+        // Load Products
+        function loadProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <div class="product-actions">
+                                <button class="action-btn"><i class="bi bi-heart"></i></button>
+                                <button class="action-btn"><i class="bi bi-shuffle"></i></button>
+                            </div>
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h5 class="product-title">${product.name}</h5>
+                                    <p class="product-subtitle">${product.subtitle}</p>
+                                </div>
+                                <div class="product-price">₹${product.price.toLocaleString('en-IN')}</div>
+                            </div>
+                            <div class="product-specs">
+                                <div class="spec-item">
+                                    <span class="spec-value">${product.specs.battery}</span>
+                                    <div class="spec-label">Battery</div>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-value">${product.specs.camera}</span>
+                                    <div class="spec-label">Camera</div>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-value">${product.specs.range}</span>
+                                    <div class="spec-label">Range</div>
+                                </div>
+                            </div>
+                            <button class="btn-configure" onclick="openConfigurator(${product.id})">
+                                Configure <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        // Load Drones on Page Load
+        function openConfigurator(productId) {
+            const product = products.find(p => p.id === productId);
+            const modelIndex = productId - 1;
+            
+            currentConfig.model = models[modelIndex];
+            
+            document.getElementById('configProductName').textContent = product.name;
+            document.getElementById('configProductImage').src = product.image;
+            
+            // Hide products section and show configurator page
+            document.getElementById('productsSection').classList.add('hidden');
+            document.getElementById('configuratorPage').classList.add('active');
+            
+            // Highlight Configure in navbar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.textContent.trim() === 'Configure') {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            loadConfigOptions();
+            updateSummary();
+        }
+
+        function closeConfigurator() {
+            // Hide configurator page and show products section
+            document.getElementById('configuratorPage').classList.remove('active');
+            document.getElementById('productsSection').classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function loadConfigOptions() {
+            // Models - Show only the current selected model
+            document.getElementById('modelOptions').innerHTML = `
+                <div class="option-card selected">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="option-name">${currentConfig.model.name}</div>
+                        </div>
+                        <div class="option-price">₹${currentConfig.model.price.toLocaleString('en-IN')}</div>
+                    </div>
+                </div>
+            `;
+
+            // Audio
+            document.getElementById('cameraOptions').innerHTML = cameraOptions.map((option, index) => `
+                <div class="option-card ${currentConfig.camera.name === option.name ? 'selected' : ''}" 
+                     onclick="selectCamera(${index})">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="option-name">${option.name}</div>
+                            <div class="option-included">${option.detail}</div>
+                        </div>
+                        <div class="option-price">${option.included ? 'Included' : '+₹' + option.price.toLocaleString('en-IN')}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Battery
+            document.getElementById('batteryOptions').innerHTML = batteryOptions.map((option, index) => `
+                <div class="option-card ${currentConfig.battery.name === option.name ? 'selected' : ''}" 
+                     onclick="selectBattery(${index})">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="option-name">${option.name}</div>
+                        </div>
+                        <div class="option-price">${option.included ? 'Included' : '+₹' + option.price.toLocaleString('en-IN')}</div>
+                    </div>
+                </div>
+            `).join('');
+
+        }
+
+        function selectModel(index) {
+            currentConfig.model = models[index];
+            loadConfigOptions();
+            updateSummary();
+        }
+
+        function selectCamera(index) {
+            currentConfig.camera = cameraOptions[index];
+            loadConfigOptions();
+            updateSummary();
+        }
+
+        function selectBattery(index) {
+            currentConfig.battery = batteryOptions[index];
+            loadConfigOptions();
+            updateSummary();
+        }
+
+        function updateSummary() {
+            document.getElementById('summaryModel').textContent =
+                `${currentConfig.model.name} - ₹${currentConfig.model.price.toLocaleString('en-IN')}`;
+
+            document.getElementById('summaryCamera').textContent = currentConfig.camera.name;
+            document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
+
+            const total = currentConfig.model.price +
+                         currentConfig.camera.price +
+                         currentConfig.battery.price;
+
+            document.getElementById('summaryTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
+        }
+
+        function resetConfiguration() {
+            currentConfig = {
+                model: models[0],
+                camera: cameraOptions[0],
+                battery: batteryOptions[0]
+            };
+            loadConfigOptions();
+            updateSummary();
+        }
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            loadDrones();
-            initializeConfigurator();
+            loadProducts();
+            loadCartFromStorage();
+            updateCartUI();
             
             // Highlight Models in navbar on page load
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -179,348 +330,6 @@ const droneNavbar = document.querySelector('.navbar');
                 }
             });
         });
-
-        // Load Drones
-        function loadDrones() {
-            const grid = document.getElementById('dronesGrid');
-            grid.innerHTML = '';
-            
-            drones.forEach(drone => {
-                const card = createDroneCard(drone);
-                grid.innerHTML += card;
-            });
-        }
-
-        // Create Drone Card HTML
-        function createDroneCard(drone) {
-            return `
-                <div class="col-lg-4 col-md-6">
-                    <div class="drone-card">
-                        <div class="card-image-container">
-                            <img src="${drone.image}" alt="${drone.name}">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="drone-name">${drone.name}</h3>
-                            <div class="drone-price">₹${drone.price.toLocaleString('en-IN')}</div>
-                            <p class="drone-tagline">${drone.tagline}</p>
-                            <div class="specs-grid">
-                                <div class="spec-item">
-                                    <span class="spec-value">${drone.specs.speed.split(' ')[0]}</span>
-                                    <span class="spec-label">${drone.specs.speed.split(' ')[1]} Speed</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-value">${drone.specs.flight.split(' ')[0]}</span>
-                                    <span class="spec-label">${drone.specs.flight.split(' ')[1]} Flight</span>
-                                </div>
-                                <div class="spec-item">
-                                    <span class="spec-value">${drone.specs.camera}</span>
-                                    <span class="spec-label">Camera</span>
-                                </div>
-                            </div>
-                            <button class="btn-configure" onclick="configureDrone(${drone.id})">
-                                Configure <i class="fas fa-arrow-right ms-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Configure Drone
-        function configureDrone(droneId) {
-            const drone = drones.find(d => d.id === droneId);
-            if (drone) {
-                showPage('configure');
-                selectModel(drone);
-                loadModels(droneId);
-                
-                // Highlight Configure in navbar
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.classList.remove('active');
-                });
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    if (link.textContent.trim() === 'Configure') {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        }
-
-        // Initialize Configurator
-        function initializeConfigurator() {
-            loadModels(1);
-            loadCameraOptions();
-            loadBatteryOptions();
-            loadColorOptions();
-            
-            selectModel(drones[0]);
-            selectCamera(configOptions.cameras[0]);
-            selectBattery(configOptions.batteries[0]);
-            selectColor(configOptions.colors[0]);
-        }
-
-        // Load Models - Show only the current selected model
-        function loadModels(selectedId) {
-            const grid = document.getElementById('modelGrid');
-            grid.innerHTML = '';
-
-            const selectedDrone = drones.find(d => d.id === selectedId);
-            if (selectedDrone) {
-                const modelCard = `
-                    <div class="model-option selected">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <div class="model-name">${selectedDrone.name}</div>
-                                <div class="model-price">₹${selectedDrone.price.toLocaleString('en-IN')}</div>
-                            </div>
-                            <i class="fas fa-check text-warning fs-4"></i>
-                        </div>
-                    </div>
-                `;
-                grid.innerHTML = modelCard;
-            }
-        }
-
-        // Load Camera Options
-        function loadCameraOptions() {
-            const container = document.getElementById('cameraOptions');
-            container.innerHTML = '';
-            
-            configOptions.cameras.forEach((camera, index) => {
-                const isSelected = index === 0;
-                const optionCard = `
-                    <div class="option-card ${isSelected ? 'selected' : ''}" onclick="selectCameraById(${camera.id})">
-                        <div class="option-info">
-                            <div class="option-radio"></div>
-                            <div class="option-details">
-                                <h6>${camera.name}</h6>
-                            </div>
-                        </div>
-                        <div class="option-price">
-                            ${camera.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+₹' + camera.price.toLocaleString('en-IN') + '</span>'}
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += optionCard;
-            });
-        }
-
-        // Load Battery Options
-        function loadBatteryOptions() {
-            const container = document.getElementById('batteryOptions');
-            container.innerHTML = '';
-            
-            configOptions.batteries.forEach((battery, index) => {
-                const isSelected = index === 0;
-                const optionCard = `
-                    <div class="option-card ${isSelected ? 'selected' : ''}" onclick="selectBatteryById(${battery.id})">
-                        <div class="option-info">
-                            <div class="option-radio"></div>
-                            <div class="option-details">
-                                <h6>${battery.name}</h6>
-                            </div>
-                        </div>
-                        <div class="option-price">
-                            ${battery.included ? '<span class="price-included">Included</span>' : '<span class="price-add">+₹' + battery.price.toLocaleString('en-IN') + '</span>'}
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += optionCard;
-            });
-        }
-
-        // Load Color Options
-        function loadColorOptions() {
-            const container = document.getElementById('colorOptions');
-            container.innerHTML = '';
-            
-            configOptions.colors.forEach((color, index) => {
-                const isSelected = index === 0;
-                const colorCard = `
-                    <div class="color-option ${isSelected ? 'selected' : ''}" onclick="selectColorById(${color.id})">
-                        <div class="color-circle" data-color="${color.hex}"></div>
-                        <div class="color-name">${color.name}</div>
-                        <div class="color-price">${color.price === 0 ? 'Free' : '+₹' + color.price.toLocaleString('en-IN')}</div>
-                    </div>
-                `;
-                container.innerHTML += colorCard;
-            });
-
-            applyColorSwatches(container);
-        }
-
-        function applyColorSwatches(scope) {
-            scope.querySelectorAll('.color-circle[data-color]').forEach((el) => {
-                el.style.backgroundColor = el.dataset.color;
-            });
-        }
-
-        // Select Model by ID
-        function selectModelById(id) {
-            const drone = drones.find(d => d.id === id);
-            if (drone) {
-                selectModel(drone);
-                document.querySelectorAll('.model-option').forEach(el => el.classList.remove('selected'));
-                event.currentTarget.classList.add('selected');
-            }
-        }
-
-        // Select Model
-        function selectModel(drone) {
-            saveToHistory();
-            currentConfig.drone = drone;
-            document.getElementById('previewImage').src = drone.image;
-            document.getElementById('summaryModel').textContent = `${drone.name} - ₹${drone.price.toLocaleString('en-IN')}`;
-            updateTotal();
-        }
-
-        // Select Camera by ID
-        function selectCameraById(id) {
-            const camera = configOptions.cameras.find(c => c.id === id);
-            if (camera) {
-                selectCamera(camera);
-                document.querySelectorAll('#cameraOptions .option-card').forEach(el => el.classList.remove('selected'));
-                event.currentTarget.classList.add('selected');
-            }
-        }
-
-        // Select Camera
-        function selectCamera(camera) {
-            saveToHistory();
-            currentConfig.camera = camera;
-            document.getElementById('summaryCamera').textContent = camera.name;
-            updateTotal();
-        }
-
-        // Select Battery by ID
-        function selectBatteryById(id) {
-            const battery = configOptions.batteries.find(b => b.id === id);
-            if (battery) {
-                selectBattery(battery);
-                document.querySelectorAll('#batteryOptions .option-card').forEach(el => el.classList.remove('selected'));
-                event.currentTarget.classList.add('selected');
-            }
-        }
-
-        // Select Battery
-        function selectBattery(battery) {
-            saveToHistory();
-            currentConfig.battery = battery;
-            document.getElementById('summaryBattery').textContent = battery.name;
-            updateTotal();
-        }
-
-        // Select Color by ID
-        function selectColorById(id) {
-            const color = configOptions.colors.find(c => c.id === id);
-            if (color) {
-                selectColor(color);
-                document.querySelectorAll('.color-option').forEach(el => el.classList.remove('selected'));
-                event.currentTarget.classList.add('selected');
-            }
-        }
-
-        // Select Color
-        function selectColor(color) {
-            saveToHistory();
-            currentConfig.color = color;
-            document.getElementById('summaryColor').textContent = color.name;
-            updateTotal();
-            
-            // Apply color overlay to preview image
-            const imageContainer = document.querySelector('.preview-image-container');
-            if (imageContainer) {
-                imageContainer.style.setProperty('--selected-color', color.hex);
-                
-                // Remove all color classes
-                imageContainer.classList.remove('color-black', 'color-white');
-                
-                // Add specific class for black/white colors for better effect
-                if (color.name.toLowerCase().includes('black')) {
-                    imageContainer.classList.add('color-black');
-                } else if (color.name.toLowerCase().includes('white')) {
-                    imageContainer.classList.add('color-white');
-                }
-            }
-        }
-
-        // Update Total Price
-        function updateTotal() {
-            let total = 0;
-            
-            if (currentConfig.drone) total += currentConfig.drone.price;
-            if (currentConfig.camera) total += currentConfig.camera.price;
-            if (currentConfig.battery) total += currentConfig.battery.price;
-            if (currentConfig.color) total += currentConfig.color.price;
-            
-            document.getElementById('previewPrice').textContent = '₹' + total.toLocaleString('en-IN');
-            document.getElementById('summaryTotal').textContent = '₹' + total.toLocaleString('en-IN');
-        }
-
-        // Save to History
-        function saveToHistory() {
-            configHistory.push(JSON.parse(JSON.stringify(currentConfig)));
-            if (configHistory.length > 10) {
-                configHistory.shift();
-            }
-        }
-
-        // Undo Configuration
-        function undoConfig() {
-            if (configHistory.length > 0) {
-                currentConfig = configHistory.pop();
-                
-                if (currentConfig.drone) {
-                    document.getElementById('previewImage').src = currentConfig.drone.image;
-                    document.getElementById('summaryModel').textContent = `${currentConfig.drone.name} - ₹${currentConfig.drone.price.toLocaleString('en-IN')}`;
-                }
-                
-                if (currentConfig.camera) {
-                    document.getElementById('summaryCamera').textContent = currentConfig.camera.name;
-                }
-                
-                if (currentConfig.battery) {
-                    document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
-                }
-                
-                if (currentConfig.color) {
-                    document.getElementById('summaryColor').textContent = currentConfig.color.name;
-                }
-                
-                updateTotal();
-            }
-        }
-
-        // Reset Configuration
-        function resetConfig() {
-            selectModel(drones[0]);
-            selectCamera(configOptions.cameras[0]);
-            selectBattery(configOptions.batteries[0]);
-            selectColor(configOptions.colors[0]);
-            
-            document.querySelectorAll('.model-option').forEach((el, index) => {
-                el.classList.toggle('selected', index === 0);
-            });
-            
-            document.querySelectorAll('#cameraOptions .option-card').forEach((el, index) => {
-                el.classList.toggle('selected', index === 0);
-            });
-            
-            document.querySelectorAll('#batteryOptions .option-card').forEach((el, index) => {
-                el.classList.toggle('selected', index === 0);
-            });
-            
-            document.querySelectorAll('.color-option').forEach((el, index) => {
-                el.classList.toggle('selected', index === 0);
-            });
-            
-            configHistory = [];
-        }
-
-        // Save Configuration
-        function saveConfig() {
-            addToCart();
-        }
 
         // Shopping Cart Functionality
         let cart = [];
@@ -540,15 +349,14 @@ const droneNavbar = document.querySelector('.navbar');
             const item = {
                 id: Date.now(),
                 type: 'Drone',
-                name: currentConfig.drone.name,
-                image: currentConfig.drone.image,
+                name: currentConfig.model.name,
+                image: document.getElementById('configProductImage').src,
                 config: {
-                    model: currentConfig.drone.name,
+                    model: currentConfig.model.name,
                     camera: currentConfig.camera.name,
-                    battery: currentConfig.battery.name,
-                    color: currentConfig.color.name
+                    battery: currentConfig.battery.name
                 },
-                price: calculateTotal()
+                price: currentConfig.model.price + currentConfig.camera.price + currentConfig.battery.price
             };
             
             cart.push(item);
@@ -574,7 +382,7 @@ const droneNavbar = document.querySelector('.navbar');
                 animation: slideIn 0.3s ease, fadeOut 0.3s ease 2s forwards;
                 box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             `;
-            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${name} added to cart!`;
+            notification.innerHTML = `<i class="bi bi-check-circle"></i> ${name} added to cart!`;
             document.body.appendChild(notification);
             
             setTimeout(() => notification.remove(), 2500);
@@ -609,7 +417,7 @@ const droneNavbar = document.querySelector('.navbar');
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = `
                     <div class="cart-empty">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="bi bi-cart-x"></i>
                         <p>Your cart is empty</p>
                     </div>
                 `;
@@ -620,11 +428,11 @@ const droneNavbar = document.querySelector('.navbar');
                         <div class="cart-item-details">
                             <span class="cart-item-type ${getTypeClass(item.type)}">${item.type}</span>
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-config">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                            <div class="cart-item-config">${item.config.audio || item.config.camera} â€¢ ${item.config.battery}</div>
                             <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
                         </div>
                         <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
-                            <i class="fas fa-times"></i>
+                            <i class="bi bi-x"></i>
                         </button>
                     </div>
                 `).join('');
@@ -661,7 +469,7 @@ const droneNavbar = document.querySelector('.navbar');
                     <div>
                         <span class="bill-item-type ${getTypeClass(item.type)}">${item.type}</span>
                         <div class="bill-item-name">${item.name}</div>
-                        <div class="bill-item-details">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                        <div class="bill-item-details">${item.config.audio || item.config.camera} â€¢ ${item.config.battery}</div>
                     </div>
                     <div class="bill-item-price">₹${item.price.toLocaleString('en-IN')}</div>
                 </div>
@@ -694,20 +502,4 @@ const droneNavbar = document.querySelector('.navbar');
 
         function printBill() {
             window.print();
-        }
-
-        // Initialize cart on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadCartFromStorage();
-            updateCartUI();
-        });
-
-        // Calculate Total
-        function calculateTotal() {
-            let total = 0;
-            if (currentConfig.drone) total += currentConfig.drone.price;
-            if (currentConfig.camera) total += currentConfig.camera.price;
-            if (currentConfig.battery) total += currentConfig.battery.price;
-            if (currentConfig.color) total += currentConfig.color.price;
-            return total;
         }
