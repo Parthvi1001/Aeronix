@@ -76,51 +76,100 @@
 
     function showToast(message, variant = 'info') {
         if (!message) return;
-        let container = document.querySelector('.aeronix-toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.className = 'aeronix-toast-container';
-            container.style.position = 'fixed';
-            container.style.top = '24px';
-            container.style.right = '24px';
-            container.style.display = 'flex';
-            container.style.flexDirection = 'column';
-            container.style.gap = '12px';
-            container.style.zIndex = '2000';
-            document.body.appendChild(container);
+        let overlay = document.querySelector('.aeronix-toast-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'aeronix-toast-overlay';
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+            overlay.style.zIndex = '2000';
+            overlay.style.pointerEvents = 'none';
+            overlay.style.transition = 'opacity 0.2s ease';
+            document.body.appendChild(overlay);
         }
 
         const toast = document.createElement('div');
         toast.className = `aeronix-toast aeronix-toast-${variant}`;
-        toast.textContent = message;
         toast.style.background = variant === 'error' ? '#dc2626' : variant === 'warning' ? '#f59e0b' : '#2563eb';
         toast.style.color = '#fff';
-        toast.style.padding = '12px 18px';
-        toast.style.borderRadius = '10px';
-        toast.style.boxShadow = '0 8px 24px rgba(15, 23, 42, 0.2)';
-        toast.style.fontSize = '14px';
+        toast.style.padding = '18px 24px 20px';
+        toast.style.borderRadius = '14px';
+        toast.style.boxShadow = '0 20px 40px rgba(15, 23, 42, 0.28)';
+        toast.style.fontSize = '15px';
         toast.style.fontWeight = '600';
+        toast.style.maxWidth = '320px';
+        toast.style.width = 'calc(100% - 64px)';
+        toast.style.position = 'relative';
         toast.style.opacity = '0';
-        toast.style.transform = 'translateY(-10px)';
+        toast.style.transform = 'translateY(-16px) scale(0.96)';
         toast.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        toast.style.pointerEvents = 'auto';
+        toast.style.textAlign = 'center';
 
-        container.appendChild(toast);
+        const text = document.createElement('div');
+        text.textContent = message;
+        toast.appendChild(text);
 
-        requestAnimationFrame(() => {
-            toast.style.opacity = '1';
-            toast.style.transform = 'translateY(0)';
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.setAttribute('aria-label', 'Close notification');
+        closeBtn.innerHTML = '&times;';
+        closeBtn.style.position = 'absolute';
+        closeBtn.style.top = '10px';
+        closeBtn.style.right = '14px';
+        closeBtn.style.background = 'transparent';
+        closeBtn.style.border = 'none';
+        closeBtn.style.color = '#fff';
+        closeBtn.style.fontSize = '20px';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.lineHeight = '1';
+        closeBtn.style.padding = '2px';
+        closeBtn.style.opacity = '0.85';
+        closeBtn.addEventListener('mouseenter', () => {
+            closeBtn.style.opacity = '1';
+        });
+        closeBtn.addEventListener('mouseleave', () => {
+            closeBtn.style.opacity = '0.85';
         });
 
-        setTimeout(() => {
+        toast.appendChild(closeBtn);
+        overlay.appendChild(toast);
+
+        const makeVisible = () => {
+            overlay.style.pointerEvents = 'auto';
+            overlay.style.opacity = '1';
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0) scale(1)';
+        };
+
+        const removeToast = () => {
             toast.style.opacity = '0';
-            toast.style.transform = 'translateY(-10px)';
+            toast.style.transform = 'translateY(-16px) scale(0.96)';
             setTimeout(() => {
                 toast.remove();
-                if (!container.children.length) {
-                    container.remove();
+                if (!overlay.children.length) {
+                    overlay.style.pointerEvents = 'none';
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        if (!overlay.children.length) {
+                            overlay.remove();
+                        }
+                    }, 200);
                 }
             }, 200);
-        }, 2400);
+        };
+
+        closeBtn.addEventListener('click', removeToast);
+
+        requestAnimationFrame(makeVisible);
+
+        setTimeout(removeToast, 3000);
     }
 
     function normalizeProduct(product) {
@@ -262,6 +311,12 @@
         if (!initial) return;
         applyFavoriteState(button, isFavorite(initial));
 
+        const syncState = () => {
+            const product = resolveProduct();
+            if (!product) return;
+            applyFavoriteState(button, isFavorite(product));
+        };
+
         button.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -271,6 +326,9 @@
             if (result.status === 'auth-required') return;
             applyFavoriteState(button, result.favorite);
         });
+
+        window.addEventListener('aeronix:user-change', syncState);
+        window.addEventListener('aeronix:favorites-change', syncState);
     }
 
     function getFavorites() {

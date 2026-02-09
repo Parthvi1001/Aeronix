@@ -7,6 +7,14 @@
       "password": "a62f992ffb88280f1da22a9e49ada05ddc44c76ac3b7d54b1e7d5a3dcb6d4ffe",
       "createdAt": "2026-02-09T08:42:02.982Z",
       "lastLogin": "2026-02-09T08:42:02.982Z"
+    },
+    {
+      "id": "dec574b7-0cc1-4214-8b3c-da6e44a796d0",
+      "email": "pqr@gmail.com",
+      "name": "pqr",
+      "password": "0cd1348b1489312dfbcb73e70a074d93c9e116bd1c76426b7668706e62fb9e1e",
+      "createdAt": "2026-02-09T09:13:16.758Z",
+      "lastLogin": "2026-02-09T09:14:21.587Z"
     }
   ]
 }

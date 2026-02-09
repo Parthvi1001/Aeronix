@@ -97,7 +97,7 @@ const NAVBAR_TEMPLATE = `
                 <a href="aeronix.html#about" class="nav-link">About</a>
             </li>
         </ul>
-        <div class="nav-actions">
+        <div class="nav-actions" id="navActions">
             <a href="index.html" class="nav-btn nav-btn-secondary">Sign In</a>
         </div>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -236,10 +236,83 @@ function mountNavbar() {
     root.dataset.navbarMounted = 'true';
     applyMobileMenuBehavior(root);
     handleAnchorNavigation(root);
+    setupAuthActions(root);
 }
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', mountNavbar);
 } else {
     mountNavbar();
+}
+
+function setupAuthActions(root) {
+    if (!root || root.dataset.authActionsMounted === 'true') {
+        return;
+    }
+
+    const navActions = root.querySelector('#navActions');
+    if (!navActions) {
+        return;
+    }
+
+    const render = () => {
+        const session = window.AeronixSession;
+        const user = session ? session.getActiveUser() : null;
+
+        navActions.innerHTML = '';
+
+        if (!user) {
+            const signInLink = document.createElement('a');
+            signInLink.href = 'index.html';
+            signInLink.className = 'nav-btn nav-btn-secondary';
+            signInLink.textContent = 'Sign In';
+            navActions.appendChild(signInLink);
+            return;
+        }
+
+        const signOutBtn = document.createElement('button');
+        signOutBtn.type = 'button';
+        signOutBtn.className = 'nav-btn nav-btn-secondary';
+        signOutBtn.textContent = 'Sign Out';
+        signOutBtn.addEventListener('click', () => {
+            const sessionApi = window.AeronixSession;
+            if (sessionApi) {
+                sessionApi.clearActiveUser();
+                if (typeof sessionApi.showToast === 'function') {
+                    sessionApi.showToast('Signed out', 'info');
+                }
+            }
+        });
+
+        navActions.appendChild(signOutBtn);
+    };
+
+    const attachSessionEvents = () => {
+        if (root.dataset.authListenersAttached === 'true') {
+            return;
+        }
+        window.addEventListener('aeronix:user-change', render);
+        root.dataset.authListenersAttached = 'true';
+    };
+
+    const initRender = () => {
+        if (window.AeronixSession) {
+            render();
+            attachSessionEvents();
+            return true;
+        }
+        return false;
+    };
+
+    if (!initRender()) {
+        const intervalId = setInterval(() => {
+            if (initRender()) {
+                clearInterval(intervalId);
+            }
+        }, 200);
+
+        setTimeout(() => clearInterval(intervalId), 5000);
+    }
+
+    root.dataset.authActionsMounted = 'true';
 }

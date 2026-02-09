@@ -142,12 +142,15 @@ app.get('/api/users', async (_req, res) => {
 
 ensureDatabase()
     .then(() => {
-        app.listen(PORT, () => {
-            console.log(`Server running on http://localhost:${PORT}`);
+                app.listen(PORT, () => {
+                    console.log(`Server running on http://localhost:${PORT}`);
             console.log(`Database file: ${DB_FILE}`);
         });
     })
     .catch((error) => {
         console.error('Failed to start server:', error);
+                if (error.code === 'EADDRINUSE') {
+                    console.error(`Port ${PORT} is already in use. Stop the other process or change PORT in server.js.`);
+                }
         process.exit(1);
     });
