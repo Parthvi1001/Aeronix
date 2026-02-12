@@ -180,7 +180,7 @@
             background: var(--button-bg);
             color: white;
         }
-
+        /* config */
         /* Configurator Page */
         .configurator-page {
             display: none;
