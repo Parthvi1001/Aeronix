@@ -239,8 +239,10 @@ function loadConfigOptions() {
 function loadModelOption() {
     document.getElementById('modelOptions').innerHTML = `
         <div class="option-card selected">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="option-name">${currentConfig.drone.name}</div>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                    <div class="option-name">${currentConfig.drone.name}</div>
+                </div>
                 <div class="option-price">₹${currentConfig.drone.price.toLocaleString('en-IN')}</div>
             </div>
         </div>
@@ -250,9 +252,11 @@ function loadModelOption() {
 function loadCameraOptions() {
     document.getElementById('cameraOptions').innerHTML = configOptions.cameras.map((camera) => `
         <div class="option-card ${currentConfig.camera.id === camera.id ? 'selected' : ''}" onclick="selectCameraById(${camera.id})">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="option-name">${camera.name}</div>
-                <div class="option-price">${camera.included ? 'Included' : '+₹' + camera.price.toLocaleString('en-IN')}</div>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                    <div class="option-name">${camera.name}</div>
+                </div>
+                <div class="option-price ${camera.included ? 'option-included' : ''}">${camera.included ? 'Included' : '+₹' + camera.price.toLocaleString('en-IN')}</div>
             </div>
         </div>
     `).join('');
@@ -261,9 +265,11 @@ function loadCameraOptions() {
 function loadBatteryOptions() {
     document.getElementById('batteryOptions').innerHTML = configOptions.batteries.map((battery) => `
         <div class="option-card ${currentConfig.battery.id === battery.id ? 'selected' : ''}" onclick="selectBatteryById(${battery.id})">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="option-name">${battery.name}</div>
-                <div class="option-price">${battery.included ? 'Included' : '+₹' + battery.price.toLocaleString('en-IN')}</div>
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                    <div class="option-name">${battery.name}</div>
+                </div>
+                <div class="option-price ${battery.included ? 'option-included' : ''}">${battery.included ? 'Included' : '+₹' + battery.price.toLocaleString('en-IN')}</div>
             </div>
         </div>
     `).join('');
@@ -271,6 +277,7 @@ function loadBatteryOptions() {
 
 function loadColorOptions() {
     const colorsEl = document.getElementById('colorOptions');
+    if (!colorsEl) return;
     colorsEl.innerHTML = configOptions.colors.map((color) => `
         <div class="color-option ${currentConfig.color.id === color.id ? 'selected' : ''}" onclick="selectColorById(${color.id})">
             <div class="color-circle" data-color="${color.hex}"></div>

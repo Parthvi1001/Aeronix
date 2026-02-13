@@ -285,15 +285,17 @@ const headphonesNavbar = document.querySelector('.navbar');
 
             // Colors
             const colorOptionsEl = document.getElementById('colorOptions');
-            colorOptionsEl.innerHTML = colorOptions.map((option, index) => `
-                <div class="color-option ${currentConfig.color.name === option.name ? 'selected' : ''}" 
-                     onclick="selectColor(${index})">
-                    <div class="color-circle" data-color="${option.color}"></div>
-                    <div class="color-name">${option.name}</div>
-                    <div class="color-price">${option.free ? 'Free' : '+₹' + option.price.toLocaleString('en-IN')}</div>
-                </div>
-            `).join('');
-            applyColorSwatches(colorOptionsEl);
+            if (colorOptionsEl) {
+                colorOptionsEl.innerHTML = colorOptions.map((option, index) => `
+                    <div class="color-option ${currentConfig.color.name === option.name ? 'selected' : ''}" 
+                         onclick="selectColor(${index})">
+                        <div class="color-circle" data-color="${option.color}"></div>
+                        <div class="color-name">${option.name}</div>
+                        <div class="color-price">${option.free ? 'Free' : '+₹' + option.price.toLocaleString('en-IN')}</div>
+                    </div>
+                `).join('');
+                applyColorSwatches(colorOptionsEl);
+            }
         }
 
         function applyColorSwatches(scope) {
@@ -349,7 +351,10 @@ const headphonesNavbar = document.querySelector('.navbar');
 
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
-            document.getElementById('summaryColor').textContent = currentConfig.color.name;
+            const summaryColor = document.getElementById('summaryColor');
+            if (summaryColor) {
+                summaryColor.textContent = currentConfig.color.name;
+            }
 
             const total = currentConfig.model.price +
                          currentConfig.audio.price +

@@ -1558,3 +1558,16 @@
     padding: 10px 12px;
     text-align: center;
 }
+
+/* Match headphone configurator option-panel behavior */
+.option-card {
+    display: block;
+}
+
+.option-card.selected .option-price {
+    color: var(--accent-strong);
+}
+
+.option-card.selected .option-price.option-included {
+    color: var(--text-secondary);
+}
