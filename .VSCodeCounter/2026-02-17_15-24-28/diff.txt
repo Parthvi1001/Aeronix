@@ -1,0 +1,82 @@
+Date : 2026-02-17 15:24:28
+Directory : c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix
+Total : 47 files,  691 codes, -1520 comments, 241 blanks, all -588 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| PostCSS    |          9 |      6,012 |     -1,515 |      1,172 |      5,669 |
+| JavaScript |         13 |      2,084 |         27 |        245 |      2,356 |
+| Markdown   |          5 |        -56 |          0 |        -13 |        -69 |
+| JSON       |          7 |        -96 |          0 |          0 |        -96 |
+| HTML       |         13 |     -7,253 |        -32 |     -1,163 |     -8,448 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                     |         31 |     16,194 |        770 |      2,851 |     19,815 |
+| . (Files)                                                             |         27 |     15,631 |        767 |      2,738 |     19,136 |
+| e:\                                                                   |         16 |    -15,503 |     -2,290 |     -2,610 |    -20,403 |
+| e:\project_s3                                                         |         16 |    -15,503 |     -2,290 |     -2,610 |    -20,403 |
+| e:\project_s3\project_sem3                                            |         16 |    -15,503 |     -2,290 |     -2,610 |    -20,403 |
+| e:\project_s3\project_sem3 (Files)                                    |         12 |    -14,879 |     -2,272 |     -2,477 |    -19,628 |
+| e:\project_s3\project_sem3\files                                      |          4 |       -624 |        -18 |       -133 |       -775 |
+| files                                                                 |          4 |        563 |          3 |        113 |        679 |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                              | language   | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\README.md             | Markdown   |         30 |          0 |         15 |         45 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\TODO.md               | Markdown   |         32 |          0 |          7 |         39 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\aeronix.html          | HTML       |        584 |        125 |         81 |        790 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\airburds.css          | PostCSS    |      1,035 |         12 |        179 |      1,226 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\airburds.html         | HTML       |        209 |         12 |         29 |        250 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\airburds.js           | JavaScript |        468 |         17 |         53 |        538 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\auth.js               | JavaScript |        219 |          6 |         42 |        267 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\drone-description.css | PostCSS    |        362 |          8 |         68 |        438 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\drone.css             | PostCSS    |      1,318 |         22 |        234 |      1,574 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\drone.html            | HTML       |        210 |          8 |         23 |        241 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\drone.js              | JavaScript |        464 |          3 |         43 |        510 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\files\README.md       | Markdown   |        118 |          0 |         35 |        153 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\files\index.html      | HTML       |        415 |          3 |         72 |        490 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\files\package.json    | JSON       |         15 |          0 |          1 |         16 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\files\server.js       | JavaScript |         15 |          0 |          5 |         20 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\headphones.css        | PostCSS    |      1,090 |         13 |        186 |      1,289 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\headphones.html       | HTML       |        210 |         12 |         26 |        248 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\headphones.js         | JavaScript |        524 |         18 |         54 |        596 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\home.css              | PostCSS    |      1,191 |         30 |        201 |      1,422 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\home.js               | JavaScript |         52 |          8 |         18 |         78 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\index.html            | HTML       |         96 |          5 |         22 |        123 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\navbar.js             | JavaScript |        287 |          1 |         31 |        319 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\package-lock.json     | JSON       |        828 |          0 |          1 |        829 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\package.json          | JSON       |         17 |          0 |          1 |         18 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\script.js             | JavaScript |        705 |        458 |        239 |      1,402 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\server.js             | JavaScript |         10 |          0 |          5 |         15 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\session.js            | JavaScript |        310 |          0 |         46 |        356 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\signin.css            | PostCSS    |        353 |          3 |         62 |        418 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\sponsor.html          | HTML       |        343 |          1 |         11 |        355 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\style.css             | PostCSS    |      4,664 |          5 |      1,061 |      5,730 |
+| c:\Users\Devarsh\Desktop\Coding\Aeronix\Aeronix\users.json            | JSON       |         20 |          0 |          0 |         20 |
+| e:\project_s3\project_sem3\README.md                                  | Markdown   |       -118 |          0 |        -35 |       -153 |
+| e:\project_s3\project_sem3\aeronix.html                               | HTML       |     -1,708 |       -136 |       -275 |     -2,119 |
+| e:\project_s3\project_sem3\airburds.html                              | HTML       |     -2,065 |        -16 |       -299 |     -2,380 |
+| e:\project_s3\project_sem3\drone-description.css                      | PostCSS    |       -360 |         -8 |        -68 |       -436 |
+| e:\project_s3\project_sem3\drone.html                                 | HTML       |     -2,430 |        -20 |       -359 |     -2,809 |
+| e:\project_s3\project_sem3\files\README.md                            | Markdown   |       -118 |          0 |        -35 |       -153 |
+| e:\project_s3\project_sem3\files\index.html                           | HTML       |       -393 |         -3 |        -73 |       -469 |
+| e:\project_s3\project_sem3\files\package.json                         | JSON       |        -15 |          0 |         -1 |        -16 |
+| e:\project_s3\project_sem3\files\server.js                            | JavaScript |        -98 |        -15 |        -24 |       -137 |
+| e:\project_s3\project_sem3\headphones.html                            | HTML       |     -2,015 |        -16 |       -295 |     -2,326 |
+| e:\project_s3\project_sem3\index.html                                 | HTML       |       -709 |         -7 |       -126 |       -842 |
+| e:\project_s3\project_sem3\package-lock.json                          | JSON       |       -945 |          0 |         -1 |       -946 |
+| e:\project_s3\project_sem3\package.json                               | JSON       |        -16 |          0 |         -1 |        -17 |
+| e:\project_s3\project_sem3\script.js                                  | JavaScript |       -708 |       -456 |       -239 |     -1,403 |
+| e:\project_s3\project_sem3\server.js                                  | JavaScript |       -164 |        -13 |        -28 |       -205 |
+| e:\project_s3\project_sem3\style.css                                  | PostCSS    |     -3,641 |     -1,600 |       -751 |     -5,992 |
+| Total                                                                 |            |        691 |     -1,520 |        241 |       -588 |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+

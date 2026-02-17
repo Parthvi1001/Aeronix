@@ -60,7 +60,7 @@ const drones = [
         price: 45999,
         tagline: "Industrial Power",
         badge: "ENTERPRISE",
-        image: "drone1.jfif",
+        image: "assets/drone1.jfif",
         specs: { speed: "60 km/h", flight: "90 min", camera: "12K" }
     },
     {
@@ -69,7 +69,7 @@ const drones = [
         price: 1999,
         tagline: "Pocket Explorer",
         badge: "CONSUMER",
-        image: "drone2.jpg",
+        image: "assets/drone2.jpg",
         specs: { speed: "25 km/h", flight: "15 min", camera: "1080p" }
     },
     {
@@ -78,7 +78,7 @@ const drones = [
         price: 74999,
         tagline: "Security Excellence",
         badge: "ENTERPRISE",
-        image: "drone3.jpeg",
+        image: "assets/drone3.jpeg",
         specs: { speed: "75 km/h", flight: "120 min", camera: "8K+ IR" }
     }
 ];

@@ -392,11 +392,11 @@ input.error {
     pointer-events: none;
 }
 
-.carousel-slide.slide-1 { background-image: url('headphone.jpg'); }
-.carousel-slide.slide-2 { background-image: url('hdrone.jpg'); }
-.carousel-slide.slide-3 { background-image: url('drone.jfif'); }
-.carousel-slide.slide-4 { background-image: url('979ab68fd602bd3440fc4fb12f3ea38e.png'); }
-.carousel-slide.slide-5 { background-image: url('hhadephone.jpg'); }
+.carousel-slide.slide-1 { background-image: url('assets/headphone.jpg'); }
+.carousel-slide.slide-2 { background-image: url('assets/hdrone.jpg'); }
+.carousel-slide.slide-3 { background-image: url('assets/drone.jfif'); }
+.carousel-slide.slide-4 { background-image: url('assets/979ab68fd602bd3440fc4fb12f3ea38e.png'); }
+.carousel-slide.slide-5 { background-image: url('assets/hhadephone.jpg'); }
 
 .account-details {
     background: #f8f9ff;

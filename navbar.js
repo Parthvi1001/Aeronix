@@ -20,13 +20,13 @@ const NAVBAR_TEMPLATE = `
                     <div class="right">
                         <div class="card">
                             <div class="img-box">
-                                <img src="earbuds.jpg" alt="Aeronix Earbuds">
+                                <img src="assets/earbuds.jpg" alt="Aeronix Earbuds">
                             </div>
                             <p>Aeronix Buds 4v ANC</p>
                         </div>
                         <div class="card">
                             <div class="img-box">
-                                <img src="hearbuds.jpg" alt="Aeronix Nord Buds 2r True">
+                                <img src="assets/hearbuds.jpg" alt="Aeronix Nord Buds 2r True">
                             </div>
                             <p>Aeronix Nord Buds 2r True</p>
                         </div>
@@ -50,13 +50,13 @@ const NAVBAR_TEMPLATE = `
                     <div class="right">
                         <div class="card">
                             <div class="img-box">
-                                <img src="headPhone.jpg" alt="Aeronix ANC Headphones">
+                                <img src="assets/headphone.jpg" alt="Aeronix ANC Headphones">
                             </div>
                             <p>Aeronix ANC Headphones</p>
                         </div>
                         <div class="card">
                             <div class="img-box">
-                                <img src="hhadephone.jpg" alt="Aeronix Studio Headphones">
+                                <img src="assets/hhadephone.jpg" alt="Aeronix Studio Headphones">
                             </div>
                             <p>Aeronix Studio Headphones</p>
                         </div>
@@ -80,13 +80,13 @@ const NAVBAR_TEMPLATE = `
                     <div class="right">
                         <div class="card">
                             <div class="img-box">
-                                <img src="drone1.jpg" alt="Aeronix SkyHawk X1">
+                                <img src="assets/drone1.jpg" alt="Aeronix SkyHawk X1">
                             </div>
                             <p>Aeronix SkyHawk X1</p>
                         </div>
                         <div class="card">
                             <div class="img-box">
-                                <img src="hdrone.jpg" alt="Aeronix Phantom Pro">
+                                <img src="assets/hdrone.jpg" alt="Aeronix Phantom Pro">
                             </div>
                             <p>Aeronix Phantom Pro</p>
                         </div>
@@ -266,6 +266,12 @@ function setupAuthActions(root) {
             signInLink.href = 'index.html';
             signInLink.className = 'nav-btn nav-btn-secondary';
             signInLink.textContent = 'Sign In';
+            signInLink.addEventListener('click', () => {
+                const sessionApi = window.AeronixSession;
+                if (sessionApi && typeof sessionApi.setPendingRedirect === 'function') {
+                    sessionApi.setPendingRedirect(window.location.href);
+                }
+            });
             navActions.appendChild(signInLink);
             return;
         }

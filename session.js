@@ -242,6 +242,11 @@
         return pending;
     }
 
+    function setPendingRedirect(url) {
+        const target = url || window.location.href;
+        sessionStorage.setItem(PENDING_REDIRECT_KEY, target);
+    }
+
     function resolveSignInUrl() {
         try {
             const loginUrl = new URL('index.html', window.location.href);
@@ -350,6 +355,7 @@
         showToast,
         consumePendingFavorite,
         consumePendingRedirect,
+        setPendingRedirect,
         getFavorites
     };
 })();
