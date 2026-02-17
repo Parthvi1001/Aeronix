@@ -502,6 +502,11 @@ body {
     transition: background 0.35s ease, color 0.35s ease;
 }
 
+body,
+body *:not(i):not(.fa):not(.fas):not(.far):not(.fab):not(.bi) {
+    font-family: var(--font-body) !important;
+}
+
 
 
 .engineered-container {

@@ -1368,8 +1368,8 @@ function animateDroneCounters() {
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-counter')) || 0;
         let current = 0;
-        const duration = 2000;
-        const increment = target / (duration / 16);
+        const duration = 4000;
+        const increment = target / (duration / 24);
         // Ensure counters visibly start at 0
         counter.textContent = '0';
         
@@ -1381,7 +1381,7 @@ function animateDroneCounters() {
             } else {
                 counter.textContent = Math.floor(current);
             }
-        }, 16);
+        }, 24);
     });
 }
 
