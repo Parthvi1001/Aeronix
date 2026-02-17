@@ -230,12 +230,6 @@
         });
     }
 
-    // Mobile menu toggle (if wired elsewhere)
-    window.toggleMenu = function toggleMenu() {
-        const navLinks = document.getElementById('navLinks');
-        if (navLinks) navLinks.classList.toggle('active');
-    };
-
     // Background Carousel Functionality
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
@@ -255,9 +249,6 @@
     }
 
     // Start carousel when page loads
-    document.addEventListener('DOMContentLoaded', initCarousel);
-
-    // Also initialize immediately in case DOM is already loaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initCarousel);
     } else {

@@ -322,3 +322,16 @@ function setupAuthActions(root) {
 
     root.dataset.authActionsMounted = 'true';
 }
+
+// Navbar scroll effect - adds 'scrolled' class when page is scrolled
+// This is shared across all pages so it only needs to be written once
+function initNavbarScrollEffect() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+    const updateScroll = () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 0);
+    };
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('load', updateScroll);
+}
+initNavbarScrollEffect();

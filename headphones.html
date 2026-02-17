@@ -111,137 +111,16 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-shell">
-            <div class="footer-brand-block">
-                <div class="footer-brand">AERONIX</div>
-                <p class="footer-description">Redefining audio excellence with studio-grade tuning and precision comfort.</p>
-            </div>
-
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h6 class="footer-title">Products</h6>
-                    <ul class="footer-links">
-                        <li><a href="headphones.html">Headphones</a></li>
-                        <li><a href="airburds.html">Earbuds</a></li>
-                        <li><a href="drone.html">Drones</a></li>
-                        <li><a href="aeronix.html#about">Why Aeronix</a></li>
-                        <li><a href="index.html">Customer Portal</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h6 class="footer-title">Company</h6>
-                    <ul class="footer-links">
-                        <li><a href="aeronix.html#about">Our Mission</a></li>
-                        <li><a href="aeronix.html#contactSection">Support Team</a></li>
-                        <li><a href="mailto:partners@aeronix.com">Partner With Us</a></li>
-                        <li><a href="mailto:careers@aeronix.com">Careers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h6 class="footer-title">Get in Touch</h6>
-                    <div class="footer-contact">
-                        <span><i class="bi bi-geo-alt"></i> San Francisco, CA</span>
-                        <a href="tel:+15551234567"><i class="bi bi-telephone"></i> +1 (555) 123-4567</a>
-                        <a href="mailto:support@aeronix.com"><i class="bi bi-envelope"></i> support@aeronix.com</a>
-                        <span><i class="bi bi-clock"></i> Mon–Fri · 9am–6pm PT</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span class="footer-copy">© 2026 AERONIX. All rights reserved.</span>
-            <div class="footer-legal">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </div>
-            <div class="footer-socials footer-bottom-socials">
-                <a href="#" class="footer-social" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="footer-social" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="footer-social" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="footer-social" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-root" data-tagline="Redefining audio excellence with studio-grade tuning and precision comfort."></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="session.js" defer></script>
-<script src="headphones.js" defer></script>
+    <script src="session.js" defer></script>
+    <script src="cart.js" defer></script>
+    <script src="cart-template.js" defer></script>
+    <script src="footer.js" defer></script>
+    <script src="headphones.js" defer></script>
     <script src="script.js" defer></script>
 
-    <!-- Cart Floating Button -->
-    <button class="cart-icon-btn" onclick="openCart()">
-        <i class="bi bi-cart3"></i>
-        <span class="cart-badge" id="cartBadge">0</span>
-    </button>
-
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h4><i class="bi bi-cart3"></i> Shopping Cart</h4>
-            <button class="cart-close" onclick="closeCart()">
-                <i class="bi bi-x-lg"></i>
-            </button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <div class="cart-empty">
-                <i class="bi bi-cart-x"></i>
-                <p>Your cart is empty</p>
-            </div>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span class="cart-total-price" id="cartTotalPrice">₹0</span>
-            </div>
-            <button class="btn-checkout" onclick="generateBill()">
-                <i class="bi bi-receipt"></i> Generate Bill
-            </button>
-            <button class="btn-clear-cart" onclick="clearCart()">
-                <i class="bi bi-trash"></i> Clear Cart
-            </button>
-        </div>
-    </div>
-
-    <!-- Bill Modal -->
-    <div class="bill-modal" id="billModal">
-        <div class="bill-content">
-            <div class="bill-header">
-                <h3>AERONIX</h3>
-                <p>Invoice <span id="billNumber"></span></p>
-                <p id="billDate"></p>
-            </div>
-            <div class="bill-body" id="billItems">
-                <!-- Bill items will be inserted here -->
-            </div>
-            <div class="bill-summary">
-                <div class="bill-row">
-                    <span>Subtotal</span>
-                    <span id="billSubtotal">₹0</span>
-                </div>
-                <div class="bill-row">
-                    <span>GST (18%)</span>
-                    <span id="billTax">₹0</span>
-                </div>
-                <div class="bill-row total">
-                    <span>Total</span>
-                    <span class="bill-amount" id="billTotal">₹0</span>
-                </div>
-            </div>
-            <div class="bill-footer">
-                <button class="btn-print" onclick="printBill()">
-                    <i class="bi bi-printer"></i> Print
-                </button>
-                <button class="btn-close-bill" onclick="closeBill()">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
+    <div id="cart-root"></div>
 </body>
 </html>

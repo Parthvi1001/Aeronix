@@ -1,12 +1,3 @@
-// Headphones page specific styles logic
-const headphonesNavbar = document.querySelector('.navbar');
-        const updateHeadphonesNavbar = () => {
-            if (!headphonesNavbar) return;
-            headphonesNavbar.classList.toggle('scrolled', window.scrollY > 0);
-        };
-        window.addEventListener('scroll', updateHeadphonesNavbar, { passive: true });
-        window.addEventListener('load', updateHeadphonesNavbar);
-
 // Product Data
         const products = [
             {
@@ -143,19 +134,10 @@ const headphonesNavbar = document.querySelector('.navbar');
             { name: "Ultra (50h)", price: 799 }
         ];
 
-        const colorOptions = [
-            { name: "Midnight Black", color: "#1a1a1a", price: 0, free: true },
-            { name: "Pearl White", color: "#f5f5f5", price: 199 },
-            { name: "Sunset Orange", color: "#FF6B35", price: 299 },
-            { name: "Ocean Blue", color: "#4A90E2", price: 299 },
-            { name: "Forest Green", color: "#00D084", price: 299 }
-        ];
-
         let currentConfig = {
             model: models[0],
             audio: audioOptions[0],
-            battery: batteryOptions[0],
-            color: colorOptions[0]
+            battery: batteryOptions[0]
         };
 
         // Load Products
@@ -283,31 +265,6 @@ const headphonesNavbar = document.querySelector('.navbar');
                 </div>
             `).join('');
 
-            // Colors
-            const colorOptionsEl = document.getElementById('colorOptions');
-            if (colorOptionsEl) {
-                colorOptionsEl.innerHTML = colorOptions.map((option, index) => `
-                    <div class="color-option ${currentConfig.color.name === option.name ? 'selected' : ''}" 
-                         onclick="selectColor(${index})">
-                        <div class="color-circle" data-color="${option.color}"></div>
-                        <div class="color-name">${option.name}</div>
-                        <div class="color-price">${option.free ? 'Free' : '+₹' + option.price.toLocaleString('en-IN')}</div>
-                    </div>
-                `).join('');
-                applyColorSwatches(colorOptionsEl);
-            }
-        }
-
-        function applyColorSwatches(scope) {
-            scope.querySelectorAll('.color-circle[data-color]').forEach((el) => {
-                el.style.backgroundColor = el.dataset.color;
-            });
-        }
-
-        function selectModel(index) {
-            currentConfig.model = models[index];
-            loadConfigOptions();
-            updateSummary();
         }
 
         function selectAudio(index) {
@@ -322,44 +279,16 @@ const headphonesNavbar = document.querySelector('.navbar');
             updateSummary();
         }
 
-        function selectColor(index) {
-            currentConfig.color = colorOptions[index];
-            loadConfigOptions();
-            updateSummary();
-            
-            // Apply color overlay to product image
-            const imageContainer = document.querySelector('#configuratorPage .product-image-container');
-            if (imageContainer) {
-                const selectedColor = colorOptions[index].color;
-                imageContainer.style.setProperty('--selected-color', selectedColor);
-                
-                // Remove all color classes
-                imageContainer.classList.remove('color-black', 'color-white');
-                
-                // Add specific class for black/white colors for better effect
-                if (colorOptions[index].name.toLowerCase().includes('black')) {
-                    imageContainer.classList.add('color-black');
-                } else if (colorOptions[index].name.toLowerCase().includes('white')) {
-                    imageContainer.classList.add('color-white');
-                }
-            }
-        }
-
         function updateSummary() {
             document.getElementById('summaryModel').textContent =
                 `${currentConfig.model.name} - ₹${currentConfig.model.price.toLocaleString('en-IN')}`;
 
             document.getElementById('summaryAudio').textContent = currentConfig.audio.name;
             document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
-            const summaryColor = document.getElementById('summaryColor');
-            if (summaryColor) {
-                summaryColor.textContent = currentConfig.color.name;
-            }
 
             const total = currentConfig.model.price +
                          currentConfig.audio.price +
-                         currentConfig.battery.price +
-                         currentConfig.color.price;
+                         currentConfig.battery.price;
 
             document.getElementById('summaryTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
         }
@@ -368,19 +297,10 @@ const headphonesNavbar = document.querySelector('.navbar');
             currentConfig = {
                 model: models[0],
                 audio: audioOptions[0],
-                battery: batteryOptions[0],
-                color: colorOptions[0]
+                battery: batteryOptions[0]
             };
             loadConfigOptions();
             updateSummary();
-            
-            // Reset color overlay to default (first color - Midnight Black)
-            const imageContainer = document.querySelector('#configuratorPage .product-image-container');
-            if (imageContainer) {
-                imageContainer.style.setProperty('--selected-color', colorOptions[0].color);
-                imageContainer.classList.remove('color-white');
-                imageContainer.classList.add('color-black');
-            }
         }
 
         // Initialize
@@ -398,8 +318,6 @@ const headphonesNavbar = document.querySelector('.navbar');
             });
         });
 
-        // Shopping Cart Functionality
-        let cart = [];
 
         function wireFavoriteButtons() {
             if (!window.AeronixSession) {
@@ -423,16 +341,6 @@ const headphonesNavbar = document.querySelector('.navbar');
             });
         }
 
-        function loadCartFromStorage() {
-            const savedCart = localStorage.getItem('aeronixCart');
-            if (savedCart) {
-                cart = JSON.parse(savedCart);
-            }
-        }
-
-        function saveCartToStorage() {
-            localStorage.setItem('aeronixCart', JSON.stringify(cart));
-        }
 
         function addToCart() {
             const item = {
@@ -443,10 +351,9 @@ const headphonesNavbar = document.querySelector('.navbar');
                 config: {
                     model: currentConfig.model.name,
                     audio: currentConfig.audio.name,
-                    battery: currentConfig.battery.name,
-                    color: currentConfig.color.name
+                    battery: currentConfig.battery.name
                 },
-                price: currentConfig.model.price + currentConfig.audio.price + currentConfig.battery.price + currentConfig.color.price
+                price: currentConfig.model.price + currentConfig.audio.price + currentConfig.battery.price
             };
             
             cart.push(item);
@@ -458,138 +365,3 @@ const headphonesNavbar = document.querySelector('.navbar');
             openCart();
         }
 
-        function showAddedToCartNotification(name) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 30px;
-                background: #4CAF50;
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
-                z-index: 10001;
-                animation: slideIn 0.3s ease, fadeOut 0.3s ease 2s forwards;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            `;
-            notification.innerHTML = `<i class="bi bi-check-circle"></i> ${name} added to cart!`;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => notification.remove(), 2500);
-        }
-
-        function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
-            saveCartToStorage();
-            updateCartUI();
-        }
-
-        function clearCart() {
-            cart = [];
-            saveCartToStorage();
-            updateCartUI();
-        }
-
-        function getTypeClass(type) {
-            return `type-${type.toLowerCase().replace(/\s+/g, '-')}`;
-        }
-
-        function updateCartUI() {
-            const cartItemsContainer = document.getElementById('cartItems');
-            const cartBadge = document.getElementById('cartBadge');
-            const cartTotal = document.getElementById('cartTotalPrice');
-            
-            // Update badge
-            cartBadge.textContent = cart.length;
-            cartBadge.style.display = cart.length > 0 ? 'flex' : 'none';
-            
-            // Update cart items
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                    <div class="cart-empty">
-                        <i class="bi bi-cart-x"></i>
-                        <p>Your cart is empty</p>
-                    </div>
-                `;
-            } else {
-                cartItemsContainer.innerHTML = cart.map(item => `
-                    <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                        <div class="cart-item-details">
-                            <span class="cart-item-type ${getTypeClass(item.type)}">${item.type}</span>
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-config">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
-                            <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
-                        </div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
-                            <i class="bi bi-x"></i>
-                        </button>
-                    </div>
-                `).join('');
-            }
-            
-            // Update total
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            cartTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
-        }
-
-        function openCart() {
-            document.getElementById('cartSidebar').classList.add('active');
-            document.getElementById('cartOverlay').classList.add('active');
-        }
-
-        function closeCart() {
-            document.getElementById('cartSidebar').classList.remove('active');
-            document.getElementById('cartOverlay').classList.remove('active');
-        }
-
-        function generateBill() {
-            if (cart.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-            
-            const billItemsContainer = document.getElementById('billItems');
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const tax = Math.round(subtotal * 0.18);
-            const total = subtotal + tax;
-            
-            billItemsContainer.innerHTML = cart.map(item => `
-                <div class="bill-item">
-                    <div>
-                        <span class="bill-item-type ${getTypeClass(item.type)}">${item.type}</span>
-                        <div class="bill-item-name">${item.name}</div>
-                        <div class="bill-item-details">${item.config.audio || item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
-                    </div>
-                    <div class="bill-item-price">₹${item.price.toLocaleString('en-IN')}</div>
-                </div>
-            `).join('');
-            
-            document.getElementById('billSubtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
-            document.getElementById('billTax').textContent = `₹${tax.toLocaleString('en-IN')}`;
-            document.getElementById('billTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
-            document.getElementById('billDate').textContent = new Date().toLocaleDateString('en-IN', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            });
-            document.getElementById('billNumber').textContent = `#INV-${Date.now().toString().slice(-8)}`;
-            
-            closeCart();
-            document.getElementById('billModal').classList.add('active');
-            
-            // Clear cart after generating bill
-            cart = [];
-            saveCartToStorage();
-            updateCartUI();
-        }
-
-        function closeBill() {
-            document.getElementById('billModal').classList.remove('active');
-        }
-
-        function printBill() {
-            window.print();
-        }

@@ -1,12 +1,3 @@
-// Drone page logic
-const droneNavbar = document.querySelector('.navbar');
-const updateDroneNavbar = () => {
-    if (!droneNavbar) return;
-    droneNavbar.classList.toggle('scrolled', window.scrollY > 0);
-};
-window.addEventListener('scroll', updateDroneNavbar, { passive: true });
-window.addEventListener('load', updateDroneNavbar);
-
 // Drone Data
 const drones = [
     {
@@ -93,13 +84,6 @@ const configOptions = {
         { id: 1, name: "Standard (28 min)", included: true, price: 0 },
         { id: 2, name: "Extended (42 min)", included: false, price: 1299 },
         { id: 3, name: "Ultra (55 min)", included: false, price: 2499 }
-    ],
-    colors: [
-        { id: 1, name: "Stealth Black", hex: "#1a1a1a", price: 0 },
-        { id: 2, name: "Arctic White", hex: "#f5f5f5", price: 399 },
-        { id: 3, name: "Sunset Orange", hex: "#ff6b35", price: 599 },
-        { id: 4, name: "Ocean Blue", hex: "#00b4d8", price: 599 },
-        { id: 5, name: "Forest Green", hex: "#2d6a4f", price: 599 }
     ]
 };
 
@@ -109,8 +93,6 @@ let currentConfig = {
     battery: configOptions.batteries[0]
 };
 
-// Shopping Cart
-let cart = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     loadDrones();
@@ -272,26 +254,6 @@ function loadBatteryOptions() {
     `).join('');
 }
 
-function loadColorOptions() {
-    const colorsEl = document.getElementById('colorOptions');
-    if (!colorsEl) return;
-    colorsEl.innerHTML = configOptions.colors.map((color) => `
-        <div class="color-option ${currentConfig.color.id === color.id ? 'selected' : ''}" onclick="selectColorById(${color.id})">
-            <div class="color-circle" data-color="${color.hex}"></div>
-            <div class="color-name">${color.name}</div>
-            <div class="color-price">${color.price === 0 ? 'Free' : '+₹' + color.price.toLocaleString('en-IN')}</div>
-        </div>
-    `).join('');
-
-    applyColorSwatches(colorsEl);
-}
-
-function applyColorSwatches(scope) {
-    scope.querySelectorAll('.color-circle[data-color]').forEach((el) => {
-        el.style.backgroundColor = el.dataset.color;
-    });
-}
-
 function selectCameraById(id) {
     const camera = configOptions.cameras.find((c) => c.id === id);
     if (!camera) return;
@@ -304,14 +266,6 @@ function selectBatteryById(id) {
     const battery = configOptions.batteries.find((b) => b.id === id);
     if (!battery) return;
     currentConfig.battery = battery;
-    loadConfigOptions();
-    updateSummary();
-}
-
-function selectColorById(id) {
-    const color = configOptions.colors.find((c) => c.id === id);
-    if (!color) return;
-    currentConfig.color = color;
     loadConfigOptions();
     updateSummary();
 }
@@ -334,16 +288,6 @@ function updateSummary() {
     document.getElementById('summaryTotal').textContent = `₹${calculateTotal().toLocaleString('en-IN')}`;
 }
 
-function loadCartFromStorage() {
-    const savedCart = localStorage.getItem('aeronixCart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-    }
-}
-
-function saveCartToStorage() {
-    localStorage.setItem('aeronixCart', JSON.stringify(cart));
-}
 
 function addToCart() {
     if (!currentConfig.drone) return;
@@ -368,133 +312,3 @@ function addToCart() {
     openCart();
 }
 
-function showAddedToCartNotification(name) {
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 30px;
-        background: #4CAF50;
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-        z-index: 10001;
-        animation: slideIn 0.3s ease, fadeOut 0.3s ease 2s forwards;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    `;
-    notification.innerHTML = `<i class="bi bi-check-circle"></i> ${name} added to cart!`;
-    document.body.appendChild(notification);
-    setTimeout(() => notification.remove(), 2500);
-}
-
-function removeFromCart(itemId) {
-    cart = cart.filter((item) => item.id !== itemId);
-    saveCartToStorage();
-    updateCartUI();
-}
-
-function clearCart() {
-    cart = [];
-    saveCartToStorage();
-    updateCartUI();
-}
-
-function getTypeClass(type) {
-    return `type-${type.toLowerCase().replace(/\s+/g, '-')}`;
-}
-
-function updateCartUI() {
-    const cartItemsContainer = document.getElementById('cartItems');
-    const cartBadge = document.getElementById('cartBadge');
-    const cartTotal = document.getElementById('cartTotalPrice');
-
-    cartBadge.textContent = cart.length;
-    cartBadge.style.display = cart.length > 0 ? 'flex' : 'none';
-
-    if (cart.length === 0) {
-        cartItemsContainer.innerHTML = `
-            <div class="cart-empty">
-                <i class="bi bi-cart-x"></i>
-                <p>Your cart is empty</p>
-            </div>
-        `;
-    } else {
-        cartItemsContainer.innerHTML = cart.map((item) => `
-            <div class="cart-item">
-                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                <div class="cart-item-details">
-                    <span class="cart-item-type ${getTypeClass(item.type)}">${item.type}</span>
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-config">${item.config.camera} • ${item.config.battery}</div>
-                    <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
-                </div>
-                <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
-                    <i class="bi bi-x-lg"></i>
-                </button>
-            </div>
-        `).join('');
-    }
-
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
-    cartTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
-}
-
-function openCart() {
-    document.getElementById('cartSidebar').classList.add('active');
-    document.getElementById('cartOverlay').classList.add('active');
-}
-
-function closeCart() {
-    document.getElementById('cartSidebar').classList.remove('active');
-    document.getElementById('cartOverlay').classList.remove('active');
-}
-
-function generateBill() {
-    if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-    }
-
-    const billItemsContainer = document.getElementById('billItems');
-    const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-    const tax = Math.round(subtotal * 0.18);
-    const total = subtotal + tax;
-
-    billItemsContainer.innerHTML = cart.map((item) => `
-        <div class="bill-item">
-            <div>
-                <span class="bill-item-type ${getTypeClass(item.type)}">${item.type}</span>
-                <div class="bill-item-name">${item.name}</div>
-                <div class="bill-item-details">${item.config.camera} • ${item.config.battery}</div>
-            </div>
-            <div class="bill-item-price">₹${item.price.toLocaleString('en-IN')}</div>
-        </div>
-    `).join('');
-
-    document.getElementById('billSubtotal').textContent = `₹${subtotal.toLocaleString('en-IN')}`;
-    document.getElementById('billTax').textContent = `₹${tax.toLocaleString('en-IN')}`;
-    document.getElementById('billTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
-    document.getElementById('billDate').textContent = new Date().toLocaleDateString('en-IN', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    });
-    document.getElementById('billNumber').textContent = `#INV-${Date.now().toString().slice(-8)}`;
-
-    closeCart();
-    document.getElementById('billModal').classList.add('active');
-
-    cart = [];
-    saveCartToStorage();
-    updateCartUI();
-}
-
-function closeBill() {
-    document.getElementById('billModal').classList.remove('active');
-}
-
-function printBill() {
-    window.print();
-}
