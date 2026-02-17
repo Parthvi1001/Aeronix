@@ -106,8 +106,7 @@ const configOptions = {
 let currentConfig = {
     drone: drones[0],
     camera: configOptions.cameras[0],
-    battery: configOptions.batteries[0],
-    color: configOptions.colors[0]
+    battery: configOptions.batteries[0]
 };
 
 // Shopping Cart
@@ -201,8 +200,7 @@ function openConfigurator(droneId) {
     currentConfig = {
         drone,
         camera: configOptions.cameras[0],
-        battery: configOptions.batteries[0],
-        color: configOptions.colors[0]
+        battery: configOptions.batteries[0]
     };
 
     document.getElementById('configProductName').textContent = drone.name;
@@ -233,7 +231,6 @@ function loadConfigOptions() {
     loadModelOption();
     loadCameraOptions();
     loadBatteryOptions();
-    loadColorOptions();
 }
 
 function loadModelOption() {
@@ -322,23 +319,18 @@ function selectColorById(id) {
 function resetConfig() {
     currentConfig.camera = configOptions.cameras[0];
     currentConfig.battery = configOptions.batteries[0];
-    currentConfig.color = configOptions.colors[0];
     loadConfigOptions();
     updateSummary();
 }
 
 function calculateTotal() {
-    return currentConfig.drone.price + currentConfig.camera.price + currentConfig.battery.price + currentConfig.color.price;
+    return currentConfig.drone.price + currentConfig.camera.price + currentConfig.battery.price;
 }
 
 function updateSummary() {
     document.getElementById('summaryModel').textContent = `${currentConfig.drone.name} - ₹${currentConfig.drone.price.toLocaleString('en-IN')}`;
     document.getElementById('summaryCamera').textContent = currentConfig.camera.name;
     document.getElementById('summaryBattery').textContent = currentConfig.battery.name;
-    const summaryColor = document.getElementById('summaryColor');
-    if (summaryColor) {
-        summaryColor.textContent = currentConfig.color.name;
-    }
     document.getElementById('summaryTotal').textContent = `₹${calculateTotal().toLocaleString('en-IN')}`;
 }
 
@@ -364,8 +356,7 @@ function addToCart() {
         config: {
             model: currentConfig.drone.name,
             camera: currentConfig.camera.name,
-            battery: currentConfig.battery.name,
-            color: currentConfig.color.name
+            battery: currentConfig.battery.name
         },
         price: calculateTotal()
     };
@@ -434,7 +425,7 @@ function updateCartUI() {
                 <div class="cart-item-details">
                     <span class="cart-item-type ${getTypeClass(item.type)}">${item.type}</span>
                     <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-config">${item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                    <div class="cart-item-config">${item.config.camera} • ${item.config.battery}</div>
                     <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
                 </div>
                 <button class="cart-item-remove" onclick="removeFromCart(${item.id})">
@@ -474,7 +465,7 @@ function generateBill() {
             <div>
                 <span class="bill-item-type ${getTypeClass(item.type)}">${item.type}</span>
                 <div class="bill-item-name">${item.name}</div>
-                <div class="bill-item-details">${item.config.camera} • ${item.config.battery} • ${item.config.color}</div>
+                <div class="bill-item-details">${item.config.camera} • ${item.config.battery}</div>
             </div>
             <div class="bill-item-price">₹${item.price.toLocaleString('en-IN')}</div>
         </div>
