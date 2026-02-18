@@ -1,7 +1,6 @@
 ﻿
 let horizontalFinished = false;
 
-document.body.classList.add('light-mode');
 const ASPECT_RATIO = 2 / 3;
 
 // Only run drone animation on pages that have the canvas elements
@@ -195,8 +194,6 @@ const TWS_CONFIG = {
 // TWS DOM Elements
 const twsElements = {
     canvas: document.getElementById('twsCanvas'),
-    loadingScreen: document.getElementById('twsLoadingScreen'),
-    loadingProgress: document.getElementById('twsLoadingProgress'),
     heroOverlay: document.getElementById('twsHeroOverlay'),
     scrollIndicator: document.getElementById('twsScrollIndicator'),
     textOverlay1: document.getElementById('twsText1'),
@@ -267,10 +264,7 @@ if (twsElements.canvas) {
 
     // Update Loading Progress
     function twsUpdateLoadingProgress() {
-        const progress = Math.round((twsState.imagesLoaded / TWS_CONFIG.FRAME_COUNT) * 100);
-        if (twsElements.loadingProgress) {
-            twsElements.loadingProgress.textContent = `${progress}%`;
-        }
+        // progress tracking (no visible loading UI)
     }
 
     // Finish Loading
@@ -398,23 +392,11 @@ if (twsElements.canvas) {
             twsElements.heroOverlay.style.transform = `scale(${heroScale})`;
         }
         
-        // Previously the navbar logo was hidden after scrolling past a threshold.
-        // Keep the logo visible at all times by not toggling the `hide-logo` class.
-        // const navbar = document.querySelector('.navbar');
-        // if (navbar) {
-        //     if (scrollTop > 300) {
-        //         navbar.classList.add('hide-logo');
-        //     } else {
-        //         navbar.classList.remove('hide-logo');
-        //     }
-        // }
-
         // Update Scroll Indicator
         if (twsElements.scrollIndicator) {
             const indicatorOpacity = relativeScroll > 100 ? 0 : 1;
             twsElements.scrollIndicator.style.opacity = indicatorOpacity;
         }
-// hello
         // Update Text Overlays
         if (twsElements.textOverlay1) {
             const text1Opacity = twsCalculateTextOpacity(scrollFraction, 0.15, 0.25, 0.4);
@@ -526,32 +508,12 @@ if (contactFormEl) {
 }
 
 
-// Smooth scroll and reveal About section on About nav click
-document.addEventListener('DOMContentLoaded', function() {
-    var aboutLink = document.querySelector('a[href="#about"]');
-    var aboutSection = document.getElementById('about');
-    if (aboutLink && aboutSection) {
-        aboutLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // Optionally, add a class to highlight or reveal the section
-            aboutSection.classList.add('visible');
-            setTimeout(function() {
-                aboutSection.classList.remove('visible');
-            }, 1200);
-        });
-    }
-});
-
-// Store recently viewed products in sessionStorage
-sessionStorage.setItem('lastVisited', new Date().toISOString());
 
 // ===================================
 // DRONE SHOWCASE COUNTER ANIMATION
 // ===================================
 function animateDroneCounters() {
     const counters = document.querySelectorAll('.drone-counter');
-    console.log('Found counters:', counters.length);
     
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-counter')) || 0;

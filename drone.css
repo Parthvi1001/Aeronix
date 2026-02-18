@@ -23,34 +23,9 @@
     flex-direction: column;
 }
 
-.product-card:hover {
+.product-card:hover { 
     transform: translateY(-10px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.product-badge {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: var(--button-bg);
-    color: white;
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    z-index: 2;
-}
-
-.badge-consumer {
-    background-color: #9B59B6;
-}
-
-.badge-professional {
-    background-color: var(--button-bg);
-}
-
-.badge-enterprise {
-    background-color: #E67E22;
 }
 
 .product-actions {
@@ -306,49 +281,6 @@
 .option-included {
     color: var(--text-secondary);
     font-size: 0.9rem;
-}
-
-.color-options {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.color-option {
-    width: 120px;
-    border: 3px solid var(--input-border);
-    border-radius: 15px;
-    padding: 1rem;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s;
-    background: var(--form-bg);
-}
-
-.color-option:hover,
-.color-option.selected {
-    border-color: var(--button-bg);
-    transform: scale(1.05);
-}
-
-.color-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 0 auto 0.8rem;
-    border: 2px solid var(--input-border);
-}
-
-.color-name {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-}
-
-.color-price {
-    color: var(--button-bg);
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
 }
 
 .summary-box {

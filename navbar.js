@@ -9,11 +9,11 @@ const NAVBAR_TEMPLATE = `
                     <div class="left"><br>
                         <h4>PRODUCTS</h4><br>
                         <ul>
-                            <li>Aeronix SkyHawk X1</li>
-                            <li>Aeronix Phantom Pro</li>
-                            <li>Aeronix Mavic Ultra</li>
-                            <li>Aeronix Spark Mini</li>
-                            <li>Aeronix FPV Racer</li>
+                            <li>Aeronix Buds 4v ANC</li>
+                            <li>Aeronix Nord Buds 2r True</li>
+                            <li>Aeronix Buds 3 Pro</li>
+                            <li>Aeronix Wireless Buds 3 TWS</li>
+                            <li>Aeronix Dual Mic Z2</li>
                         </ul><br><hr>
                         <p class="guarantee">🛡 30-Day Guarantee | 1-Year Warranty</p>
                     </div>
@@ -39,11 +39,11 @@ const NAVBAR_TEMPLATE = `
                     <div class="left"><br>
                         <h4>PRODUCTS</h4><br>
                         <ul>
-                            <li>Aeronix SkyHawk X1</li>
-                            <li>Aeronix Phantom Pro</li>
-                            <li>Aeronix Mavic Ultra</li>
-                            <li>Aeronix Spark Mini</li>
-                            <li>Aeronix FPV Racer</li>
+                            <li>Aeronix Rockerz 450</li>
+                            <li>Aeronix Tune 770NC</li>
+                            <li>Aeronix Horizon X</li>
+                            <li>Aeronix Studio H1</li>
+                            <li>Aeronix Quantum Pro</li>
                         </ul><br><hr>
                         <p class="guarantee">🛡 60-Day Guarantee | 6-Months Warranty</p>
                     </div>
