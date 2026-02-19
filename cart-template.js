@@ -64,9 +64,6 @@ const CART_TEMPLATE = `
                 </div>
             </div>
             <div class="bill-footer">
-                <button class="btn-print" onclick="printBill()">
-                    <i class="bi bi-printer"></i> Print
-                </button>
                 <button class="btn-close-bill" onclick="closeBill()">
                     Close
                 </button>

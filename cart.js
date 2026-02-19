@@ -135,10 +135,6 @@ function closeBill() {
     document.getElementById('billModal').classList.remove('active');
 }
 
-function printBill() {
-    window.print();
-}
-
 function showAddedToCartNotification(name) {
     const notification = document.createElement('div');
     notification.style.cssText = `
