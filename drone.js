@@ -6,7 +6,7 @@ const drones = [
         price: 6999,
         tagline: "The Perfect Start",
         badge: "CONSUMER",
-        image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?w=800&h=600&fit=crop",
+        image: "assets/drone1_p.jpeg",
         specs: { speed: "45 km/h", flight: "28 min", camera: "4K" }
     },
     {
@@ -15,7 +15,7 @@ const drones = [
         price: 12999,
         tagline: "Professional Grade",
         badge: "PROFESSIONAL",
-        image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&h=600&fit=crop",
+        image: "assets/drone2_p.jpg",
         specs: { speed: "68 km/h", flight: "42 min", camera: "6K" }
     },
     {
@@ -24,7 +24,7 @@ const drones = [
         price: 24999,
         tagline: "Beyond Limits",
         badge: "PROFESSIONAL",
-        image: "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9?w=800&h=600&fit=crop",
+        image: "assets/drone3_p.jpeg",
         specs: { speed: "85 km/h", flight: "55 min", camera: "8K" }
     },
     {
@@ -33,7 +33,7 @@ const drones = [
         price: 3499,
         tagline: "Compact Adventure",
         badge: "CONSUMER",
-        image: "https://images.unsplash.com/photo-1579829366248-204fe8413f31?w=800&h=600&fit=crop",
+        image: "assets/drone4_p.jpeg",
         specs: { speed: "35 km/h", flight: "20 min", camera: "2.7K" }
     },
     {
@@ -42,7 +42,7 @@ const drones = [
         price: 15999,
         tagline: "Racing Performance",
         badge: "PROFESSIONAL",
-        image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800&h=600&fit=crop",
+        image: "assets/drone5_p.jpeg",
         specs: { speed: "120 km/h", flight: "18 min", camera: "4K" }
     },
     {
