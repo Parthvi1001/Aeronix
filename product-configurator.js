@@ -1,25 +1,12 @@
-/**
- * Shared Product Configurator Module
- * Used by headphones.js and airburds.js (and extensible for future product pages).
- *
- * Usage:
- *   1. Define your product data (products, models, audioOptions, batteryOptions)
- *   2. Call initProductConfigurator({ products, models, audioOptions, batteryOptions, productType, productTypeDisplay })
- *
- * Expects the following DOM ids on the page:
- *   productsGrid, productsSection, configuratorPage,
- *   configProductName, configProductImage,
- *   modelOptions, audioOptions, batteryOptions,
- *   summaryModel, summaryAudio, summaryBattery, summaryTotal
- */
+
 
 let _cfg = {
     products: [],
     models: [],
     audioOptions: [],
     batteryOptions: [],
-    productType: '',          // e.g. 'headphone', 'earbud'
-    productTypeDisplay: ''    // e.g. 'Headphones', 'Earbuds'
+    productType: '',          
+    productTypeDisplay: ''   
 };
 
 let currentConfig = {
@@ -43,7 +30,7 @@ function initProductConfigurator(config) {
         loadCartFromStorage();
         updateCartUI();
 
-        // Highlight "Models" in navbar on page load
+        
         document.querySelectorAll('.nav-link').forEach(function (link) {
             link.classList.remove('active');
             if (link.textContent.trim() === 'Models') {
