@@ -28,14 +28,8 @@ function buildFooterTemplate(tagline) {
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h6 class="footer-title">Company</h6>
-                    <ul class="footer-links">
-                        <li><a href="aeronix.html#about">Our Mission</a></li>
-                        <li><a href="aeronix.html#contactSection">Support Team</a></li>
-                        <li><a href="mailto:partners@aeronix.com">Partner With Us</a></li>
-                        <li><a href="mailto:careers@aeronix.com">Careers</a></li>
-                    </ul>
                 </div>
+            
                 <div class="footer-col">
                     <h6 class="footer-title">Get in Touch</h6>
                     <div class="footer-contact">

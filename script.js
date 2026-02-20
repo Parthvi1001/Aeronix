@@ -470,42 +470,7 @@ if (aboutEl) {
     aboutObserver.observe(aboutEl);
 }
 
-// Contact Section Reveal
-const contactEl = document.getElementById('contactSection');
-if (contactEl) {
-    const contactObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.2 });
-
-    contactObserver.observe(contactEl);
-}
-
-// Contact Form Submission
-const contactFormEl = document.getElementById('contactForm');
-if (contactFormEl) {
-    contactFormEl.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const formData = {
-            name: document.getElementById('contactName').value,
-            email: document.getElementById('contactEmail').value,
-            message: document.getElementById('contactMessage').value,
-            timestamp: new Date().toISOString()
-        };
-
-        // Store in sessionStorage
-        const contacts = JSON.parse(sessionStorage.getItem('contacts') || '[]');
-        contacts.push(formData);
-        sessionStorage.setItem('contacts', JSON.stringify(contacts));
-
-        alert('Message sent successfully! We\'ll get back to you soon.');
-        e.target.reset();
-    });
-}
+// Contact section and its reveal logic removed (section removed from markup)
 
 
 
