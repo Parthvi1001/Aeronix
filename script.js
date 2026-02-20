@@ -52,11 +52,11 @@ window.addEventListener("scroll", () => {
   const start = section.offsetTop;
   const end = start + section.offsetHeight - window.innerHeight;
 
-  // raw progress (do NOT clamp to 1 yet)
+  
   let rawProgress = (scrollY - start) / (end - start);
   rawProgress = Math.max(0, rawProgress);
 
-  // normalised progress (0 â†’ 1)
+  
   let progress = Math.min(rawProgress, 1);
 
   const vw = window.innerWidth;
@@ -67,7 +67,7 @@ window.addEventListener("scroll", () => {
   const NAVBAR_OFFSET = 90;
 
   // =========================
-  // DRONE 1 (0 â†’ 50%)
+  // DRONE 1 
   // =========================
   if (progress < 0.5) {
     wrapper1.style.display = "flex";
@@ -111,7 +111,7 @@ window.addEventListener("scroll", () => {
   }
 
   // =========================
-  // DRONE 2 (50 â†’ END)
+  // DRONE 2 
   // =========================
   else {
     wrapper1.style.display = "none";
@@ -123,23 +123,19 @@ p = Math.max(0, Math.min(1, p));
 let x =
   (vw - droneWidth) / 2 + p * (-vw * 0.8);
 
-// ðŸ”¥ STOP WHEN DRONE TOUCHES SCREEN WALL
+
 if (x <= 0 && !horizontalFinished) {
   horizontalFinished = true;
 
-  // lock drone exactly at wall
   x = 0;
-  // p remains current to keep frame
-
-  // ðŸ”¥ RELEASE STICKY â†’ START VERTICAL SCROLL
   section.style.height = "200vh";
 }
 
 
-// ðŸ”¥ STOP HORIZONTAL WHEN DRONE-2 EXITS
+
     if (x <= 0) {
-      // p remains current to lock animation
-      x = 0;   // lock position
+     
+      x = 0;  
     }
 
     const y =
@@ -175,12 +171,10 @@ if (x <= 0 && !horizontalFinished) {
   }
 });
 
-} // end drone animation guard
-
-// ============================================
+}
 // TWS SCROLL ANIMATION
-// Add this JavaScript to the END of your script.js file
-// ============================================
+
+
 
 // TWS Configuration
 const TWS_CONFIG = {
@@ -202,7 +196,7 @@ const twsElements = {
     section: document.querySelector('.tws-scroll-section')
 };
 
-// Check if canvas exists before initializing
+
 if (twsElements.canvas) {
     const twsContext = twsElements.canvas.getContext('2d');
 
@@ -213,22 +207,22 @@ if (twsElements.canvas) {
         currentFrame: 0
     };
 
-    // Utility: Pad number with zeros
+   
     function twsPadNumber(num, size = TWS_CONFIG.PADDING_SIZE) {
         return String(num).padStart(size, '0');
     }
 
-    // Utility: Clamp value
+    
     function twsClamp(value, min, max) {
         return Math.max(min, Math.min(value, max));
     }
 
-    // Utility: Ease in-out
+    
     function twsEaseInOut(t) {
         return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
     }
 
-    // Preload TWS Images
+    
     function twsPreloadImages() {
         for (let i = 1; i <= TWS_CONFIG.FRAME_COUNT; i++) {
             const img = new Image();
@@ -240,7 +234,7 @@ if (twsElements.canvas) {
         }
     }
 
-    // Handle Image Load
+    
     function twsHandleImageLoad(img, index) {
         twsState.images[index - 1] = img;
         twsState.imagesLoaded++;
@@ -251,7 +245,6 @@ if (twsElements.canvas) {
         }
     }
 
-    // Handle Image Error
     function twsHandleImageError(src) {
         console.error(`Failed to load TWS frame: ${src}`);
         twsState.imagesLoaded++;
@@ -262,18 +255,15 @@ if (twsElements.canvas) {
         }
     }
 
-    // Update Loading Progress
     function twsUpdateLoadingProgress() {
         // progress tracking (no visible loading UI)
     }
 
-    // Finish Loading
     function twsFinishLoading() {
         twsSetCanvasSize();
         twsRenderFrame(0);
     }
 
-    // Set Canvas Size
     function twsSetCanvasSize() {
         if (twsElements.canvas) {
             twsElements.canvas.width = window.innerWidth;
@@ -282,7 +272,7 @@ if (twsElements.canvas) {
         }
     }
 
-    // Calculate Cover Dimensions
+    
     function twsCalculateCoverDimensions(canvasWidth, canvasHeight, imgWidth, imgHeight) {
         const canvasAspect = canvasWidth / canvasHeight;
         const imgAspect = imgWidth / imgHeight;
