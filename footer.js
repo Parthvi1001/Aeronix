@@ -39,10 +39,10 @@ function buildFooterTemplate(tagline) {
                 <div class="footer-col">
                     <h6 class="footer-title">Get in Touch</h6>
                     <div class="footer-contact">
-                        <span><i class="bi bi-geo-alt"></i> San Francisco, CA</span>
-                        <a href="tel:+15551234567"><i class="bi bi-telephone"></i> +1 (555) 123-4567</a>
+                        <span><i class="bi bi-geo-alt"></i> Gujarat, India</span>
+                        <a href="tel:+919876543210"><i class="bi bi-telephone"></i> +91 98765 43210</a>
                         <a href="mailto:support@aeronix.com"><i class="bi bi-envelope"></i> support@aeronix.com</a>
-                        <span><i class="bi bi-clock"></i> Mon\u2013Fri \u00b7 9am\u20136pm PT</span>
+                        <span><i class="bi bi-clock"></i> Mon\u2013Fri \u00b7 9am\u20136pm IST</span>
                     </div>
                 </div>
             </div>
